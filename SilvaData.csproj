@@ -190,7 +190,7 @@
 		<MauiImage Include="Resources\Images\Icons\iconsync.png" />
 		<MauiImage Include="Resources\Images\Icons\icontratamentowhite.png" />
 		<MauiImage Include="Resources\Images\Icons\iconue.png" />
-		<MauiImage Include="Resources\Images\Icons\silvadatalogo.svg" />
+		<MauiImage Include="Resources\Images\Icons\silvadatalogo.svg" BaseSize="128,128" />
 		<MauiImage Include="Resources\Images\Icons\isimacro.png" />
 		<MauiImage Include="Resources\Images\Icons\isimacrointestino.png" />
 		<MauiImage Include="Resources\Images\Icons\isimacrolocomotorcarcaca.png" />

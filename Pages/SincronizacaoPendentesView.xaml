@@ -38,7 +38,7 @@
                         Aspect="AspectFit"
                         HeightRequest="40"
                         HorizontalOptions="Center"
-                        Source="silvadatalogo.svg">
+                        Source="silvadatalogo">
                         <Image.Shadow>
                             <Shadow
                                 Brush="White"
