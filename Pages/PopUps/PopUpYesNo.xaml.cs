@@ -18,7 +18,7 @@ namespace SilvaData.Pages.PopUps
         }
 
         /// <summary>
-        /// Exibe um popup de confirmação com botões Sim e Não customizados.
+        /// Exibe um popup de confirmaï¿½ï¿½o com botï¿½es Sim e Nï¿½o customizados.
         /// </summary>
         // 2. ShowAsync agora aceita 4 argumentos
         public static async Task<bool> ShowAsync(string titulo, string mensagem)
@@ -30,7 +30,7 @@ namespace SilvaData.Pages.PopUps
 
 
         /// <summary>
-        /// Exibe um popup de confirmação com botões Sim e Não customizados.
+        /// Exibe um popup de confirmaï¿½ï¿½o com botï¿½es Sim e Nï¿½o customizados.
         /// </summary>
         // 2. ShowAsync agora aceita 4 argumentos
         public static async Task<bool> ShowAsync(string titulo, string mensagem, string textoSim, string textoNao)
@@ -42,8 +42,8 @@ namespace SilvaData.Pages.PopUps
             return result;
         }
 
-        [Obsolete("O método PopUpYesNo.Show é obsoleto. Use PopUpYesNo.ShowAsync.", false)]
-        // 3. Método obsoleto Show agora aceita 4 argumentos
+        [Obsolete("O mï¿½todo PopUpYesNo.Show ï¿½ obsoleto. Use PopUpYesNo.ShowAsync.", false)]
+        // 3. Mï¿½todo obsoleto Show agora aceita 4 argumentos
         public static Task<bool> Show(string titulo, string mensagem, string textoSim, string textoNao)
         {
             return ShowAsync(titulo, mensagem, textoSim, textoNao);
@@ -58,7 +58,7 @@ namespace SilvaData.Pages.PopUps
         public string Titulo { get; }
         public string Mensagem { get; }
 
-        // Mantenha estas propriedades. Elas serão usadas no XAML para os textos dos botões.
+        // Mantenha estas propriedades. Elas serï¿½o usadas no XAML para os textos dos botï¿½es.
         public string TextoSim { get; }
         public string TextoNao { get; }
 
@@ -69,7 +69,7 @@ namespace SilvaData.Pages.PopUps
             Titulo = titulo;
             Mensagem = mensagem;
 
-            // Inicializa as propriedades de texto dos botões
+            // Inicializa as propriedades de texto dos botï¿½es
             TextoSim = textoSim;
             TextoNao = textoNao;
         }

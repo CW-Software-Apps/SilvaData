@@ -6,7 +6,7 @@ using System.Text;
 namespace SilvaData.Models
 {
     /// <summary>
-    /// Classe que contém as informações do fechamento de lote.
+    /// Classe que contï¿½m as informaï¿½ï¿½es do fechamento de lote.
     /// (Mantida como classe interna)
     /// </summary>
     public class LoginInfo

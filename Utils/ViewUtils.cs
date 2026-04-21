@@ -11,7 +11,7 @@ namespace ISIInstitute.Views
         {
             await Database.CloseDatabaseAsync();
 
-            //Salva Informação de Login
+            //Salva Informaï¿½ï¿½o de Login
             var loginInfo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "logininfo.txt");
             var user = Preferences.Get("user", null);
             await File.WriteAllTextAsync(loginInfo, user);

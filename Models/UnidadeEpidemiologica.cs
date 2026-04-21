@@ -120,10 +120,10 @@ namespace SilvaData.Models
         }
 
         // REMOVIDO: Propriedades computadas que dependiam de DadosStatic
-        // Agora serão resolvidas no ViewModel ou CacheService
+        // Agora serï¿½o resolvidas no ViewModel ou CacheService
 
         /// <summary>
-        /// MIGRADO: Retorna a lista ao invés de modificar estático
+        /// MIGRADO: Retorna a lista ao invï¿½s de modificar estï¿½tico
         /// </summary>
         public static async Task<List<UnidadeEpidemiologica>> PegaListaUE()
         {
@@ -160,7 +160,7 @@ namespace SilvaData.Models
                 await Db.InsertAsync(item).ConfigureAwait(false);
             }
 
-            // MUDANÇA: Notifica o CacheService para atualizar
+            // MUDANï¿½A: Notifica o CacheService para atualizar
             WeakReferenceMessenger.Default.Send(new RefreshCacheMessage(CacheType.UnidadesEpidemiologicas));
         }
 
@@ -220,8 +220,8 @@ namespace SilvaData.Models
                 }
                 else
                 {
-                    await SentryHelper.LogErrorAsync("Unidades Epidemiológicas", "UnidadeEpidemiologica", result.mensagem).ConfigureAwait(false);
-                    throw new Exception(!string.IsNullOrEmpty(result.mensagem) ? result.mensagem : "Erro desconhecido ao enviar unidades epidemiológicas");
+                    await SentryHelper.LogErrorAsync("Unidades Epidemiolï¿½gicas", "UnidadeEpidemiologica", result.mensagem).ConfigureAwait(false);
+                    throw new Exception(!string.IsNullOrEmpty(result.mensagem) ? result.mensagem : "Erro desconhecido ao enviar unidades epidemiolï¿½gicas");
                 }
             }
             catch (Exception ex)
@@ -238,7 +238,7 @@ namespace SilvaData.Models
         public string? PropriedadeNome { get; set; }
 
         /// <summary>
-        /// MIGRADO: Retorna a lista ao invés de modificar estático
+        /// MIGRADO: Retorna a lista ao invï¿½s de modificar estï¿½tico
         /// </summary>
         public static async Task<List<UnidadeEpidemiologicaComDetalhes>> PegaListaUnidadesComDetalhesAsync()
         {

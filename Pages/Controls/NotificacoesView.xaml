@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <utils:ContentPageWithLocalization
     x:Class="ISIInstitute.Views.NotificacoesView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -14,7 +14,7 @@
     xmlns:utils="clr-namespace:SilvaData.Utils"
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
     x:Name="AtividadesView"
-    Title="{localization:Translate Notifica��es}"
+    Title="{localization:Translate Notificaï¿½ï¿½es}"
     BackgroundColor="{StaticResource PrimaryColor}"
     Shell.NavBarIsVisible="false"
     Shell.TabBarIsVisible="false">
@@ -116,7 +116,7 @@
                     FontFamily="Nunito"
                     FontSize="Large"
                     HorizontalTextAlignment="Start"
-                    Text="{localization:Translate Notifica��es}"
+                    Text="{localization:Translate Notificaï¿½ï¿½es}"
                     TextColor="{StaticResource PrimaryColor}"
                     VerticalOptions="Center" />
 
@@ -236,7 +236,7 @@
                 HorizontalOptions="Fill"
                 HorizontalTextAlignment="Center"
                 IsVisible="{Binding NaoTemNotificacao, Source={x:Reference AtividadesView}}"
-                Text="{localization:Translate NenhumaNotifica��oPendente}"
+                Text="{localization:Translate NenhumaNotificaï¿½ï¿½oPendente}"
                 VerticalOptions="Fill"
                 VerticalTextAlignment="Center" />
         </Grid>

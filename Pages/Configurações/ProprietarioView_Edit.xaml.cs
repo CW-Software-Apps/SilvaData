@@ -8,15 +8,15 @@ using SilvaData.ViewModels;
 namespace SilvaData.Controls
 {
     /// <summary>
-    /// View para editar ou criar um Proprietário.
-    /// MIGRADO: Usa Messaging para comunicação com o ViewModel (sem acoplamento direto).
+    /// View para editar ou criar um Proprietï¿½rio.
+    /// MIGRADO: Usa Messaging para comunicaï¿½ï¿½o com o ViewModel (sem acoplamento direto).
     /// </summary>
     public partial class ProprietarioView_Edit : ContentPageEdit
     {
         private new readonly ProprietarioEditViewModel ViewModel;
 
         /// <summary>
-        /// MIGRADO: Construtor não passa mais IValidatablePage para o ViewModel
+        /// MIGRADO: Construtor nï¿½o passa mais IValidatablePage para o ViewModel
         /// </summary>
         public ProprietarioView_Edit(Proprietario? proprietario = null)
         {
@@ -24,7 +24,7 @@ namespace SilvaData.Controls
 
             ViewModel = ServiceHelper.GetRequiredService<ProprietarioEditViewModel>();
 
-            // MUDANÇA: Não passa mais 'this' (IValidatablePage) para o SetInitialState
+            // MUDANï¿½A: Nï¿½o passa mais 'this' (IValidatablePage) para o SetInitialState
             ViewModel.SetInitialState(proprietario);
 
             BindingContext = ViewModel;

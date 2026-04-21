@@ -6,7 +6,7 @@ using SilvaData.ViewModels;
 namespace SilvaData.Pages.PopUps
 {
     /// <summary>
-    /// PopUp que exibe o menu do usuário (Minha Conta, Privacidade, Sair).
+    /// PopUp que exibe o menu do usuï¿½rio (Minha Conta, Privacidade, Sair).
     /// </summary>
     public partial class PopUpUsuario : Popup
     {
@@ -16,10 +16,10 @@ namespace SilvaData.Pages.PopUps
         {
             InitializeComponent();
 
-            // Resolve o ViewModel e suas dependências (ConfigViewModel, ISIWebService)
+            // Resolve o ViewModel e suas dependï¿½ncias (ConfigViewModel, ISIWebService)
             ViewModel = ServiceHelper.GetRequiredService<PopUpUsuarioViewModel>();
 
-            // Injeta a Ação de Fechar no ViewModel
+            // Injeta a Aï¿½ï¿½o de Fechar no ViewModel
             ViewModel.SetCloseAction(() => CloseAsync());
 
             BindingContext = ViewModel;

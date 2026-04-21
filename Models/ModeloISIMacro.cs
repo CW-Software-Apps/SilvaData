@@ -33,19 +33,19 @@ namespace SilvaData.Models
             // Busca todos os registros de ModeloIsiMacro no banco de dados.
             var modelos = await table.ToListAsync().ConfigureAwait(false);
 
-            // Lista para armazenar os modelos com seus parâmetros
+            // Lista para armazenar os modelos com seus parï¿½metros
             var listaModelosComParametros = new List<ModeloIsiMacroComParametros>();
 
-            // Itera sobre cada modelo para buscar os parâmetros associados
+            // Itera sobre cada modelo para buscar os parï¿½metros associados
             foreach (var modelo in modelos)
             {
-                // Consulta para obter os parâmetros relacionados ao modelo atual
+                // Consulta para obter os parï¿½metros relacionados ao modelo atual
                 var parametros = await Db.QueryAsync<Parametro>(
                     "SELECT p.* FROM Parametro p " +
                     "INNER JOIN ModeloIsiMacroParametro mp ON p.id = mp.ParametroId " +
                     "WHERE mp.ModeloIsiMacroId = ?", modelo.Id).ConfigureAwait(false);
 
-                // Cria um novo objeto combinando o modelo e seus parâmetros
+                // Cria um novo objeto combinando o modelo e seus parï¿½metros
                 var modeloComParametros = new ModeloIsiMacroComParametros
                 {
                     Id = modelo.Id,
@@ -53,16 +53,16 @@ namespace SilvaData.Models
                     Parametros = parametros
                 };
 
-                // Adiciona o objeto à lista de resultados
+                // Adiciona o objeto ï¿½ lista de resultados
                 listaModelosComParametros.Add(modeloComParametros);
             }
 
-            // Retorna a lista com os modelos e seus respectivos parâmetros
+            // Retorna a lista com os modelos e seus respectivos parï¿½metros
             return listaModelosComParametros;
         }
     }
 
-    // Tabela de junção para relacionamento many-to-many (caso seja necessário)
+    // Tabela de junï¿½ï¿½o para relacionamento many-to-many (caso seja necessï¿½rio)
     [Table("ModeloIsiMacroParametro")]
     public class ModeloIsiMacroParametro
     {

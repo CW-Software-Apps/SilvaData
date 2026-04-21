@@ -4,18 +4,18 @@ namespace SilvaData.Controls
 {
     public partial class AtividadeView : ContentPageWithLocalization
     {
-        // MUDANÇA: ViewModel is injected via DI
+        // MUDANï¿½A: ViewModel is injected via DI
         private readonly AtividadeViewModel ViewModel;
 
         public AtividadeView(AtividadeViewModel viewModel)
         {
             InitializeComponent();
 
-            // MUDANÇA: Use injected ViewModel
+            // MUDANï¿½A: Use injected ViewModel
             ViewModel = viewModel;
             BindingContext = ViewModel;
 
-            // MUDANÇA: Set Locale for MAUI SfScheduler
+            // MUDANï¿½A: Set Locale for MAUI SfScheduler
             // Calendario.Locale = new System.Globalization.CultureInfo(LocalizationManager.LocManager.IdiomaParaCalendario);
         }
 

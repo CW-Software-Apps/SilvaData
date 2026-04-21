@@ -69,18 +69,18 @@ namespace SilvaData.Utils
 
             Preferences.Set("newlanguage", linguagem);
 
-            // Obter o serviço de localização e definir a cultura
+            // Obter o serviï¿½o de localizaï¿½ï¿½o e definir a cultura
             var localizationResourceManager = Application.Current?.Handler?.MauiContext?.Services?.GetService<ILocalizationResourceManager>();
             if (localizationResourceManager != null)
             {
                 localizationResourceManager.CurrentCulture = new CultureInfo(linguagem);
             }
 
-            // MUDANÇA MAUI: Usando Thread.CurrentThread.CurrentCulture, que é o padrão .NET Core/MAUI
+            // MUDANï¿½A MAUI: Usando Thread.CurrentThread.CurrentCulture, que ï¿½ o padrï¿½o .NET Core/MAUI
             Thread.CurrentThread.CurrentCulture = new CultureInfo(linguagem);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(linguagem);
 
-            // Notificar mudanças nas propriedades
+            // Notificar mudanï¿½as nas propriedades
             OnPropertyChanged(nameof(CurrentLanguage));
             OnPropertyChanged(nameof(IdiomaParaWebService));
             OnPropertyChanged(nameof(IdiomaParaCalendario));

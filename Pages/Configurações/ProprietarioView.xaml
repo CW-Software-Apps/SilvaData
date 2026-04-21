@@ -44,7 +44,7 @@
                         FontFamily="Nunito"
                         FontSize="Large"
                         HorizontalOptions="Start"
-                        Text="{localization:Translate Proprietários}"
+                        Text="{localization:Translate Proprietï¿½rios}"
                         TextColor="White" />
                 </StackLayout>
 
@@ -64,7 +64,7 @@
                     Grid.Row="1"
                     Padding="15,0"
                     FontSize="Small"
-                    Text="{localization:Translate GerencieSeusProprietários}"
+                    Text="{localization:Translate GerencieSeusProprietï¿½rios}"
                     TextColor="White" />
             </Grid>
 
@@ -135,7 +135,7 @@
             </listView:SfListView>
         </Grid>
 
-        <!--  Botão Adicionar  -->
+        <!--  Botï¿½o Adicionar  -->
         <buttons:SfButton
             Grid.Row="0"
             Command="{Binding AddNewCommand, Source={x:Reference proprietarioView}}"

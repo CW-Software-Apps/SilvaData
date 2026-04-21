@@ -4,7 +4,7 @@ using SilvaData.Models;
 
 using System.Diagnostics;
 
-using Syncfusion.Maui.ListView; // Necessário para ItemTappedEventArgs
+using Syncfusion.Maui.ListView; // Necessï¿½rio para ItemTappedEventArgs
 
 namespace SilvaData.Controls
 {
@@ -22,7 +22,7 @@ namespace SilvaData.Controls
             // ? Busca ViewModel do DI
             _viewModel = ServiceHelper.GetRequiredService<AvaliacaoAlternativasViewModel>();
 
-            // ??? CRÍTICO: Seta o BindingContext! ???
+            // ??? CRï¿½TICO: Seta o BindingContext! ???
             BindingContext = _viewModel;
 
             Debug.WriteLine($"[AvaliacaoAlternativas] ? Construtor chamado");
@@ -31,7 +31,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// ? Expõe ViewModel para uso externo
+        /// ? Expï¿½e ViewModel para uso externo
         /// </summary>
         public AvaliacaoAlternativasViewModel ViewModel => _viewModel;
 
@@ -42,30 +42,30 @@ namespace SilvaData.Controls
         {
             if (e.DataItem is ParametroAlternativas itemTocado)
             {
-                // Só processa o clique se a tela estiver em modo de edição
+                // Sï¿½ processa o clique se a tela estiver em modo de ediï¿½ï¿½o
                 if (_viewModel.PodeEditar)
                 {
-                    // Chama a lógica de seleção existente no ViewModel
+                    // Chama a lï¿½gica de seleï¿½ï¿½o existente no ViewModel
                     _viewModel.FrameTapped(itemTocado);
                 }
             }
         }
 
         /// <summary>
-        /// Roteia o clique do botão nativo diretamente para o comando do ViewModel.
+        /// Roteia o clique do botï¿½o nativo diretamente para o comando do ViewModel.
         /// Fura o bloqueio de bindings complexos do SfListView.
         /// </summary>
         private void OnVerFotoClicked(object sender, EventArgs e)
         {
-            // Pega o botão que disparou o evento
+            // Pega o botï¿½o que disparou o evento
             if (sender is Button button)
             {
-                // O BindingContext do botão é o item da linha (ParametroAlternativas)
+                // O BindingContext do botï¿½o ï¿½ o item da linha (ParametroAlternativas)
                 if (button.BindingContext is ParametroAlternativas alternativaTocada)
                 {
                     Debug.WriteLine($"[AvaliacaoAlternativas] Disparando clique da foto via Code-Behind: {alternativaTocada.descricao}");
 
-                    // Executa o comando que já existe no ViewModel
+                    // Executa o comando que jï¿½ existe no ViewModel
                     if (_viewModel.VerFotoCommand.CanExecute(alternativaTocada))
                     {
                         _viewModel.VerFotoCommand.Execute(alternativaTocada);

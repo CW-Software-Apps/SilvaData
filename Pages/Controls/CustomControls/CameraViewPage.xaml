@@ -29,7 +29,7 @@
                     WidthRequest="180" />
             </Grid>
 
-            <!--  Botão de voltar no canto superior esquerdo  -->
+            <!--  Botï¿½o de voltar no canto superior esquerdo  -->
             <buttons:SfButton
                 Margin="16"
                 Clicked="BackButton_Clicked"
@@ -48,7 +48,7 @@
             ColumnSpacing="16"
             RowDefinitions="Auto">
 
-            <!--  Botão Flash  -->
+            <!--  Botï¿½o Flash  -->
             <buttons:SfButton
                 Grid.Column="0"
                 Clicked="FlashButton_Clicked"
@@ -71,7 +71,7 @@
                 </buttons:SfButton.Content>
             </buttons:SfButton>
 
-            <!--  Botão principal de captura  -->
+            <!--  Botï¿½o principal de captura  -->
             <buttons:SfButton
                 x:Name="captureButton"
                 Grid.Column="1"
@@ -99,7 +99,7 @@
                 </buttons:SfButton.Shadow>
             </buttons:SfButton>
 
-            <!--  Botão trocar câmera  -->
+            <!--  Botï¿½o trocar cï¿½mera  -->
             <buttons:SfButton
                 Grid.Column="2"
                 Clicked="SwitchCameraButton_Clicked"

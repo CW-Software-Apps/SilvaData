@@ -73,11 +73,11 @@ namespace SilvaData.Models
             else
             {
                 await SentryHelper.LogErrorAsync(updateJson, "Notificacao", result.mensagem);
-                throw new Exception(!string.IsNullOrEmpty(result.mensagem) ? result.mensagem : "Erro desconhecido ao enviar notificações");
+                throw new Exception(!string.IsNullOrEmpty(result.mensagem) ? result.mensagem : "Erro desconhecido ao enviar notificaï¿½ï¿½es");
             }
         }
 
-        /// <summary>Cria notificações locais para os itens agendados.</summary>
+        /// <summary>Cria notificaï¿½ï¿½es locais para os itens agendados.</summary>
         public static async Task CreateNotificationsAsync()
         {
             try
@@ -86,12 +86,12 @@ namespace SilvaData.Models
                 var temPermissao = await EnsureNotificationPermissionAsync();
                 if (!temPermissao)
                 {
-                    Debug.WriteLine("Notificações: permissão negada. Agendamento cancelado.");
+                    Debug.WriteLine("Notificaï¿½ï¿½es: permissï¿½o negada. Agendamento cancelado.");
                     return;
                 }
                 var notificacoes = await PegaNotificacoesAtivas();
                 var futuras = notificacoes.Where(n => n.dataHora.HasValue && n.dataHora > DateTime.Now).ToList();
-                Debug.WriteLine($"Agendando {futuras.Count} notificações");
+                Debug.WriteLine($"Agendando {futuras.Count} notificaï¿½ï¿½es");
                 int idx = 0;
                 foreach (var n in futuras)
                 {
@@ -103,13 +103,13 @@ namespace SilvaData.Models
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"Erro ao agendar notificação (idBD:{n.idBD}): {ex.Message}");
+                        Debug.WriteLine($"Erro ao agendar notificaï¿½ï¿½o (idBD:{n.idBD}): {ex.Message}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Erro ao criar notificações: {ex.Message}");
+                Debug.WriteLine($"Erro ao criar notificaï¿½ï¿½es: {ex.Message}");
             }
         }
 
@@ -124,7 +124,7 @@ namespace SilvaData.Models
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Permissão de notificação falhou: {ex.Message}");
+                Debug.WriteLine($"Permissï¿½o de notificaï¿½ï¿½o falhou: {ex.Message}");
                 return false;
             }
         }
@@ -133,7 +133,7 @@ namespace SilvaData.Models
         {
             if (!notificacao.dataHora.HasValue)
             {
-                Debug.WriteLine($"ERRO: Notificação (idBD:{notificacao.idBD}) sem dataHora válida.");
+                Debug.WriteLine($"ERRO: Notificaï¿½ï¿½o (idBD:{notificacao.idBD}) sem dataHora vï¿½lida.");
                 return Task.CompletedTask;
             }
             var notification = new NotificationRequest

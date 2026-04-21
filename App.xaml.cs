@@ -13,13 +13,13 @@ namespace SilvaData
     {
         public App(IServiceProvider serviceProvider)
         {
-            // Inicializa o ServiceHelper o mais cedo possível,
+            // Inicializa o ServiceHelper o mais cedo possï¿½vel,
             // antes que as views XAML comecem a resolver ViewModels.
             SilvaData.Infrastructure.ServiceHelper.Initialize(serviceProvider);
 
             RegisterGlobalExceptionHandlers();
 
-            // Força o tema Light ANTES do InitializeComponent()
+            // Forï¿½a o tema Light ANTES do InitializeComponent()
             UserAppTheme = AppTheme.Light;
 
             InitializeComponent();
@@ -39,30 +39,30 @@ namespace SilvaData
             
             try
             {
-                // Salvar estado crítico ao app entrar em modo sleep
-                Debug.WriteLine("[App] OnSleep - Salvando estado crítico");
+                // Salvar estado crï¿½tico ao app entrar em modo sleep
+                Debug.WriteLine("[App] OnSleep - Salvando estado crï¿½tico");
                 
-                // Força sincronização de dados pendentes se necessário
+                // Forï¿½a sincronizaï¿½ï¿½o de dados pendentes se necessï¿½rio
                 _ = Task.Run(async () =>
                 {
                     try
                     {
-                        // Verificar se há alterações pendentes que precisam de atenção especial
+                        // Verificar se hï¿½ alteraï¿½ï¿½es pendentes que precisam de atenï¿½ï¿½o especial
                         await ManutencaoTabelas.UpdateTotalAlteracoes();
                         
-                        // Salvar formulários em andamento (já implementado)
+                        // Salvar formulï¿½rios em andamento (jï¿½ implementado)
                         // Esta chamama garante que o estado atual seja persistido
                         var formularioEmAndamento = Preferences.Get("FormularioEmAndamento", "");
                         if (!string.IsNullOrEmpty(formularioEmAndamento))
                         {
-                            // O formulário já está sendo salvo automaticamente pelo SalvaEmAndamento()
-                            Debug.WriteLine("[App] OnSleep - Formulário em andamento detectado");
+                            // O formulï¿½rio jï¿½ estï¿½ sendo salvo automaticamente pelo SalvaEmAndamento()
+                            Debug.WriteLine("[App] OnSleep - Formulï¿½rio em andamento detectado");
                         }
                         
                         // Garantir que o banco de dados esteja em estado consistente
                         await Database.GetInstanceAsync();
                         
-                        Debug.WriteLine("[App] OnSleep - Estado crítico salvo com sucesso");
+                        Debug.WriteLine("[App] OnSleep - Estado crï¿½tico salvo com sucesso");
                     }
                     catch (Exception ex)
                     {
@@ -91,10 +91,10 @@ namespace SilvaData
                 {
                     try
                     {
-                        // Verificar se há inconsistências nos dados
+                        // Verificar se hï¿½ inconsistï¿½ncias nos dados
                         await ManutencaoTabelas.UpdateTotalAlteracoes();
                         
-                        // Garantir que o banco de dados esteja acessível
+                        // Garantir que o banco de dados esteja acessï¿½vel
                         await Database.GetInstanceAsync();
                         
                         Debug.WriteLine("[App] OnResume - Estado restaurado com sucesso");
@@ -115,7 +115,7 @@ namespace SilvaData
 
         private void RegisterGlobalExceptionHandlers()
         {
-            // Exceções não tratadas em threads background
+            // Exceï¿½ï¿½es nï¿½o tratadas em threads background
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
                 var ex = args.ExceptionObject as Exception ?? new Exception("Erro desconhecido (UnhandledException)");
@@ -124,7 +124,7 @@ namespace SilvaData
                     await MostrarErroGlobal(ex));
             };
 
-            // Tasks assíncronas cujas exceções não foram observadas
+            // Tasks assï¿½ncronas cujas exceï¿½ï¿½es nï¿½o foram observadas
             TaskScheduler.UnobservedTaskException += (sender, args) =>
             {
                 SentrySdk.CaptureException(args.Exception);
@@ -148,7 +148,7 @@ namespace SilvaData
             }
             catch
             {
-                // Último recurso: não deixa o tratamento de erro causar outro crash
+                // ï¿½ltimo recurso: nï¿½o deixa o tratamento de erro causar outro crash
             }
         }
     }

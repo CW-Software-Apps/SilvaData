@@ -57,8 +57,8 @@ namespace SilvaData.ViewModels
         [ObservableProperty]
         private bool mostrarLogs;
 
-        // Timer próprio para o cronômetro de tempo decorrido — independente do CancellationToken
-        // da sincronização para que continue visível mesmo durante popups de erro/retry.
+        // Timer prï¿½prio para o cronï¿½metro de tempo decorrido ï¿½ independente do CancellationToken
+        // da sincronizaï¿½ï¿½o para que continue visï¿½vel mesmo durante popups de erro/retry.
         private CancellationTokenSource? _timerCts;
 
         public SincronizacaoViewModel(SyncService syncService, CacheService cacheService)
@@ -88,7 +88,7 @@ namespace SilvaData.ViewModels
                             ? $"{elapsed.Minutes:00}m {elapsed.Seconds:00}s"
                             : $"{elapsed.Seconds:00}s";
 
-                        // Atualiza apenas se necessário (evita marshaling desnecessário)
+                        // Atualiza apenas se necessï¿½rio (evita marshaling desnecessï¿½rio)
                         if (tempo != TempoDecorrido)
                         {
                             MainThread.BeginInvokeOnMainThread(() => TempoDecorrido = tempo);
@@ -163,7 +163,7 @@ namespace SilvaData.ViewModels
                 {
                     if (Cancelado)
                     {
-                        await PopUpOK.ShowAsync(Traducao.Atencao, Traducao.OperaçãoCancelada);
+                        await PopUpOK.ShowAsync(Traducao.Atencao, Traducao.Operaï¿½ï¿½oCancelada);
                         repeat = false;
                         break;
                     }
@@ -171,9 +171,9 @@ namespace SilvaData.ViewModels
                     Debug.WriteLine($"[Sync] Erro: {e.Message}");
                     bool querTentarNovamente = await PopUpYesNo.ShowAsync(
                         Traducao.Erro,
-                        $"{Traducao.ASincronizaçãoFalhouComAMensagem}\n\n'{e.Message}'\n\n{Traducao.DesejaTentarNovamente}",
+                        $"{Traducao.ASincronizaï¿½ï¿½oFalhouComAMensagem}\n\n'{e.Message}'\n\n{Traducao.DesejaTentarNovamente}",
                         Traducao.Sim,
-                        Traducao.Não);
+                        Traducao.Nï¿½o);
 
                     if (querTentarNovamente)
                     {
@@ -183,7 +183,7 @@ namespace SilvaData.ViewModels
                             bool continueChecking = true;
                             while (continueChecking && !temInternet)
                             {
-                                if (!await PopUpYesNo.ShowAsync(Traducao.SemInternet, Traducao.ConectadoAInternet, Traducao.Sim, Traducao.Não))
+                                if (!await PopUpYesNo.ShowAsync(Traducao.SemInternet, Traducao.ConectadoAInternet, Traducao.Sim, Traducao.Nï¿½o))
                                     continueChecking = false;
                                 await Task.Delay(2000);
                                 temInternet = Connectivity.NetworkAccess == NetworkAccess.Internet;
@@ -198,7 +198,7 @@ namespace SilvaData.ViewModels
                 }
             }
 
-            // ? Garante que o timer é parado SEMPRE no fim
+            // ? Garante que o timer ï¿½ parado SEMPRE no fim
             StopTimer();
 
             IsBusy = false;
@@ -207,10 +207,10 @@ namespace SilvaData.ViewModels
 
             if (!Cancelado)
             {
-                // Mostra spinner de "finalizando" enquanto o trabalho pós-sync roda,
-                // para que o popup de sucesso apareça só quando tudo estiver pronto
-                // e o OK feche a tela sem delay perceptível.
-                EtapaAtual = "Sincronização concluída!";
+                // Mostra spinner de "finalizando" enquanto o trabalho pï¿½s-sync roda,
+                // para que o popup de sucesso apareï¿½a sï¿½ quando tudo estiver pronto
+                // e o OK feche a tela sem delay perceptï¿½vel.
+                EtapaAtual = "Sincronizaï¿½ï¿½o concluï¿½da!";
                 SubTexto = "Atualizando dados locais, aguarde...";
                 IndicadorVisivel = true;
 

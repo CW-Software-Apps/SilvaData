@@ -11,15 +11,15 @@ using System.Windows.Input;
 namespace SilvaData.Pages.PopUps
 {
     /// <summary>
-    /// Popup para avaliação Net Promoter Score (NPS).
+    /// Popup para avaliaï¿½ï¿½o Net Promoter Score (NPS).
     /// </summary>
     public partial class PopUpNPS : Popup<NPSResult>
     {
         /// <summary>
-        /// Inicializa uma nova instância do popup de avaliação NPS.
+        /// Inicializa uma nova instï¿½ncia do popup de avaliaï¿½ï¿½o NPS.
         /// </summary>
-        /// <param name="titulo">Título do popup</param>
-        /// <param name="mensagem">Mensagem explicativa sobre a avaliação</param>
+        /// <param name="titulo">Tï¿½tulo do popup</param>
+        /// <param name="mensagem">Mensagem explicativa sobre a avaliaï¿½ï¿½o</param>
         public PopUpNPS(string titulo, string mensagem)
         {
             InitializeComponent();
@@ -27,73 +27,73 @@ namespace SilvaData.Pages.PopUps
         }
 
         /// <summary>
-        /// Exibe um popup de avaliação NPS e retorna o resultado da avaliação.
+        /// Exibe um popup de avaliaï¿½ï¿½o NPS e retorna o resultado da avaliaï¿½ï¿½o.
         /// </summary>
-        /// <param name="titulo">Título do popup</param>
-        /// <param name="mensagem">Mensagem explicativa sobre a avaliação</param>
-        /// <returns>Resultado da avaliação (nota e comentários) ou valores padrão se cancelado</returns>
+        /// <param name="titulo">Tï¿½tulo do popup</param>
+        /// <param name="mensagem">Mensagem explicativa sobre a avaliaï¿½ï¿½o</param>
+        /// <returns>Resultado da avaliaï¿½ï¿½o (nota e comentï¿½rios) ou valores padrï¿½o se cancelado</returns>
         public static async Task<NPSResult> ShowAsync(string titulo, string mensagem)
         {
             var popup = new PopUpNPS(titulo, mensagem);
 
-            // Usa o método genérico do NavigationUtils que já lida com o tipo de retorno
+            // Usa o mï¿½todo genï¿½rico do NavigationUtils que jï¿½ lida com o tipo de retorno
             var result = await NavigationUtils.ShowPopupAsync<NPSResult>(popup);
 
-            // Garante que nunca retorne nulo, mesmo se o usuário fechar o popup sem selecionar
+            // Garante que nunca retorne nulo, mesmo se o usuï¿½rio fechar o popup sem selecionar
             return result ?? NPSResult.Default();
         }
     }
 
     /// <summary>
-    /// ViewModel para o popup de avaliação NPS.
+    /// ViewModel para o popup de avaliaï¿½ï¿½o NPS.
     /// </summary>
     public partial class PopUpNPSViewModel : ObservableObject
     {
         private readonly PopUpNPS _popup;
 
         /// <summary>
-        /// Título do popup.
+        /// Tï¿½tulo do popup.
         /// </summary>
         public string Titulo { get; }
 
         /// <summary>
-        /// Mensagem explicativa sobre a avaliação.
+        /// Mensagem explicativa sobre a avaliaï¿½ï¿½o.
         /// </summary>
         public string Mensagem { get; }
 
         /// <summary>
-        /// Nota dada pelo usuário (0-10).
+        /// Nota dada pelo usuï¿½rio (0-10).
         /// </summary>
         [ObservableProperty]
         private double rating = 5;
 
         /// <summary>
-        /// Comentários adicionais fornecidos pelo usuário.
+        /// Comentï¿½rios adicionais fornecidos pelo usuï¿½rio.
         /// </summary>
         [ObservableProperty]
         private string comments = string.Empty;
 
         /// <summary>
-        /// Comando para enviar a avaliação.
+        /// Comando para enviar a avaliaï¿½ï¿½o.
         /// </summary>
         public ICommand EnviarCommand { get; }
 
         /// <summary>
-        /// Comando para cancelar a avaliação.
+        /// Comando para cancelar a avaliaï¿½ï¿½o.
         /// </summary>
         public ICommand CancelarCommand { get; }
 
         /// <summary>
-        /// Inicializa uma nova instância do ViewModel.
+        /// Inicializa uma nova instï¿½ncia do ViewModel.
         /// </summary>
-        /// <param name="popup">Referência para o popup</param>
-        /// <param name="titulo">Título do popup</param>
-        /// <param name="mensagem">Mensagem explicativa sobre a avaliação</param>
+        /// <param name="popup">Referï¿½ncia para o popup</param>
+        /// <param name="titulo">Tï¿½tulo do popup</param>
+        /// <param name="mensagem">Mensagem explicativa sobre a avaliaï¿½ï¿½o</param>
         public PopUpNPSViewModel(PopUpNPS popup, string titulo, string mensagem)
         {
             _popup = popup ?? throw new ArgumentNullException(nameof(popup));
-            Titulo = titulo ?? "Avaliação";
-            Mensagem = mensagem ?? "Avalie nossa solução";
+            Titulo = titulo ?? "Avaliaï¿½ï¿½o";
+            Mensagem = mensagem ?? "Avalie nossa soluï¿½ï¿½o";
 
             EnviarCommand = new Command(Enviar);
             CancelarCommand = new Command(Cancelar);

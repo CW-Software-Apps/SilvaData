@@ -8,14 +8,14 @@ namespace SilvaData
     {
         static void Main(string[] args)
         {
-            // Captura exceções nativas ObjC antes de iniciar o app
+            // Captura exceï¿½ï¿½es nativas ObjC antes de iniciar o app
             ObjCRuntime.Runtime.MarshalObjectiveCException += (sender, e) =>
             {
-                Console.WriteLine($"[iOS-CRASH] ObjC Exception: {e.Exception.Name} — {e.Exception.Reason}");
-                System.Diagnostics.Debug.WriteLine($"[iOS-CRASH] ObjC Exception: {e.Exception.Name} — {e.Exception.Reason}");
+                Console.WriteLine($"[iOS-CRASH] ObjC Exception: {e.Exception.Name} ï¿½ {e.Exception.Reason}");
+                System.Diagnostics.Debug.WriteLine($"[iOS-CRASH] ObjC Exception: {e.Exception.Name} ï¿½ {e.Exception.Reason}");
             };
 
-            // Captura exceções não tratadas do .NET
+            // Captura exceï¿½ï¿½es nï¿½o tratadas do .NET
             AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
             {
                 Console.WriteLine($"[iOS-CRASH] Unhandled .NET Exception: {e.ExceptionObject}");

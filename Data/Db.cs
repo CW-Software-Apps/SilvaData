@@ -8,20 +8,20 @@ using SQLite;
 namespace SilvaData.Models
 {
     /// <summary>
-    /// Fachada estática para simplificar o acesso assíncrono ao banco de dados.
-    /// Substitui o padrão 'Db.XXX'
-    /// e centraliza a obtenção da conexão.
+    /// Fachada estï¿½tica para simplificar o acesso assï¿½ncrono ao banco de dados.
+    /// Substitui o padrï¿½o 'Db.XXX'
+    /// e centraliza a obtenï¿½ï¿½o da conexï¿½o.
     /// </summary>
     public static class Db
     {
-        // Conexão de escrita — usada por INSERT, UPDATE, DELETE, ExecuteAsync, RunInTransactionAsync
+        // Conexï¿½o de escrita ï¿½ usada por INSERT, UPDATE, DELETE, ExecuteAsync, RunInTransactionAsync
         private static async Task<SQLiteAsyncConnection> GetDb()
         {
             return await Database.GetConnectionAsync();
         }
 
-        // Conexão read-only — usada por SELECT, Table<T>, FindAsync, etc.
-        // Conexão separada da de escrita para não ficar na fila do SyncService (WAL garante concorrência).
+        // Conexï¿½o read-only ï¿½ usada por SELECT, Table<T>, FindAsync, etc.
+        // Conexï¿½o separada da de escrita para nï¿½o ficar na fila do SyncService (WAL garante concorrï¿½ncia).
         private static async Task<SQLiteAsyncConnection> GetReadDb()
         {
             return await Database.GetReadConnectionAsync();
@@ -39,7 +39,7 @@ namespace SilvaData.Models
         }
 
         /// <summary>
-        /// Insere um item. Se já existir (baseado na Chave Primária), ele será substituído.
+        /// Insere um item. Se jï¿½ existir (baseado na Chave Primï¿½ria), ele serï¿½ substituï¿½do.
         /// </summary>
         public static async Task<int> InsertOrReplaceAsync(object item)
         {
@@ -66,7 +66,7 @@ namespace SilvaData.Models
         }
 
         /// <summary>
-        /// Deleta um item por sua chave primária.
+        /// Deleta um item por sua chave primï¿½ria.
         /// </summary>
         public static async Task<int> DeleteAsync<T>(object primaryKey)
         {
@@ -88,7 +88,7 @@ namespace SilvaData.Models
         }
 
         /// <summary>
-        /// Executa um comando SQL bruto (não-consulta, ex: UPDATE, DELETE).
+        /// Executa um comando SQL bruto (nï¿½o-consulta, ex: UPDATE, DELETE).
         /// </summary>
         public static async Task<int> ExecuteAsync(string query, params object[] args)
         {
@@ -97,7 +97,7 @@ namespace SilvaData.Models
         }
 
         /// <summary>
-        /// Retorna uma referência à tabela para construir consultas LINQ.
+        /// Retorna uma referï¿½ncia ï¿½ tabela para construir consultas LINQ.
         /// </summary>
         public static async Task<AsyncTableQuery<T>> Table<T>() where T : new()
         {
@@ -130,11 +130,11 @@ namespace SilvaData.Models
         }
 
         /// <summary>
-        /// Executa uma ação síncrona dentro de uma transação de banco de dados.
-        /// A ação recebe uma conexão SÍNCRONA.
-        /// Se a ação falhar (lançar exceção), a transação fará rollback.
+        /// Executa uma aï¿½ï¿½o sï¿½ncrona dentro de uma transaï¿½ï¿½o de banco de dados.
+        /// A aï¿½ï¿½o recebe uma conexï¿½o Sï¿½NCRONA.
+        /// Se a aï¿½ï¿½o falhar (lanï¿½ar exceï¿½ï¿½o), a transaï¿½ï¿½o farï¿½ rollback.
         /// </summary>
-        /// <param name="action">A ação síncrona a ser executada (que recebe um SQLiteConnection síncrono).</param>
+        /// <param name="action">A aï¿½ï¿½o sï¿½ncrona a ser executada (que recebe um SQLiteConnection sï¿½ncrono).</param>
         public static async Task RunInTransactionAsync(Action<SQLiteConnection> action)
         {
             var db = await GetDb(); // GetDb() retorna SQLiteAsyncConnection

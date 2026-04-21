@@ -41,7 +41,7 @@ namespace SilvaData.Models
         }
 
         /// <summary>
-        /// MIGRADO: Retorna a lista ao invés de modificar estático
+        /// MIGRADO: Retorna a lista ao invï¿½s de modificar estï¿½tico
         /// </summary>
         public static async Task<List<Proprietario>> PegaListaProprietarioAsync()
         {
@@ -66,7 +66,7 @@ namespace SilvaData.Models
                 await Db.InsertAsync(item).ConfigureAwait(false);
             }
 
-            // MUDANÇA: Notifica o CacheService
+            // MUDANï¿½A: Notifica o CacheService
             WeakReferenceMessenger.Default.Send(new RefreshCacheMessage(CacheType.Proprietarios));
         }
 
@@ -121,7 +121,7 @@ namespace SilvaData.Models
             else
             {
                 await SentryHelper.LogErrorAsync(UpdateJson, "Proprietario", result.mensagem);
-                throw new Exception(!string.IsNullOrEmpty(result.mensagem) ? result.mensagem : "Erro desconhecido ao enviar proprietários");
+                throw new Exception(!string.IsNullOrEmpty(result.mensagem) ? result.mensagem : "Erro desconhecido ao enviar proprietï¿½rios");
             }
         }
 

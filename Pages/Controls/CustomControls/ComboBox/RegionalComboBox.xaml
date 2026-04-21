@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <controls:ValidatableFieldBase
     x:Class="SilvaData.Controls.RegionalComboBox"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -14,7 +14,7 @@
 
     <StackLayout Padding="2" Spacing="4">
 
-        <!--  Título + asterisco de obrigatório  -->
+        <!--  TÃ­tulo + asterisco de obrigatÃ³rio  -->
         <Grid ColumnDefinitions="*,Auto">
             <Label
                 x:Name="labelTitle"

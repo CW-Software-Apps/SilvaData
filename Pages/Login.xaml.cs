@@ -4,19 +4,19 @@ using SilvaData.ViewModels;
 namespace SilvaData.Controls
 {
     /// <summary>
-    /// View (Página) para Login. Esta página é modal e não pode ser fechada
-    /// pelo usuário (ex: botão "Voltar" do Android).
+    /// View (Pï¿½gina) para Login. Esta pï¿½gina ï¿½ modal e nï¿½o pode ser fechada
+    /// pelo usuï¿½rio (ex: botï¿½o "Voltar" do Android).
     /// </summary>
     public partial class Login : ContentPage
     {
         /// <summary>
-        /// Flag estática usada pelo MainPageModel para saber
-        /// que o app deve rodar a sincronização inicial.
+        /// Flag estï¿½tica usada pelo MainPageModel para saber
+        /// que o app deve rodar a sincronizaï¿½ï¿½o inicial.
         /// </summary>
         public static bool AcabouDeLogar;
 
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="Login"/>.
+        /// Inicializa uma nova instï¿½ncia da classe <see cref="Login"/>.
         /// </summary>
         public Login(LoginViewModel viewModel)
         {
@@ -29,16 +29,16 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Chamado quando a página é exibida.
+        /// Chamado quando a pï¿½gina ï¿½ exibida.
         /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            // Define a flag estática que o MainPageModel usará
+            // Define a flag estï¿½tica que o MainPageModel usarï¿½
             AcabouDeLogar = true;
 
-            // Animação de Fade-in (lógica de View)
+            // Animaï¿½ï¿½o de Fade-in (lï¿½gica de View)
             // Assumindo que o Grid no XAML tem x:Name="loginPanel"
             var loginPanel = this.FindByName<Grid>("loginPanel");
             if (loginPanel != null)
@@ -48,14 +48,14 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// CORREÇÃO: Impede que o botão "Voltar" do hardware (Android)
-        /// feche a página de login.
+        /// CORREï¿½ï¿½O: Impede que o botï¿½o "Voltar" do hardware (Android)
+        /// feche a pï¿½gina de login.
         /// </summary>
         /// <returns>Sempre <c>true</c> para indicar que o evento foi tratado.</returns>
         protected override bool OnBackButtonPressed()
         {
             // Retorna 'true' para "consumir" o evento e impedir
-            // que a página seja fechada.
+            // que a pï¿½gina seja fechada.
             return true;
         }
     }

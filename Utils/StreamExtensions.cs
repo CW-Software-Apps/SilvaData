@@ -3,21 +3,21 @@ using System.Diagnostics;
 namespace SilvaData.Utilities
 {
     /// <summary>
-    /// Extensões para <see cref="HttpClient"/> que facilitam download com progresso.
+    /// Extensï¿½es para <see cref="HttpClient"/> que facilitam download com progresso.
     /// </summary>
     public static class HttpClientExtensions
     {
         private const int DefaultBufferSize = 81920; // .NET default
 
         /// <summary>
-        /// Faz o download do conteúdo de <paramref name="requestUri"/> para <paramref name="destination"/> com suporte a cancelamento e progresso.
+        /// Faz o download do conteï¿½do de <paramref name="requestUri"/> para <paramref name="destination"/> com suporte a cancelamento e progresso.
         /// </summary>
-        /// <param name="client">Instância de <see cref="HttpClient"/>.</param>
+        /// <param name="client">Instï¿½ncia de <see cref="HttpClient"/>.</param>
         /// <param name="requestUri">URL do recurso a ser baixado.</param>
-        /// <param name="destination">Stream de destino (gravável) que receberá os bytes baixados.</param>
+        /// <param name="destination">Stream de destino (gravï¿½vel) que receberï¿½ os bytes baixados.</param>
         /// <param name="progress">
-        /// Progresso do download: valor fracionário entre 0.0 e 1.0 (0% a 100%).
-        /// Reporta 0 no início e 1 no final quando o tamanho do conteúdo é conhecido.
+        /// Progresso do download: valor fracionï¿½rio entre 0.0 e 1.0 (0% a 100%).
+        /// Reporta 0 no inï¿½cio e 1 no final quando o tamanho do conteï¿½do ï¿½ conhecido.
         /// </param>
         /// <param name="cancellationToken">Token de cancelamento.</param>
         /// <returns><c>true</c> em caso de sucesso; <c>false</c> caso ocorra alguma falha.</returns>
@@ -31,9 +31,9 @@ namespace SilvaData.Utilities
             try
             {
                 ArgumentNullException.ThrowIfNull(client);
-                if (string.IsNullOrWhiteSpace(requestUri)) throw new ArgumentException("requestUri inválido.", nameof(requestUri));
+                if (string.IsNullOrWhiteSpace(requestUri)) throw new ArgumentException("requestUri invï¿½lido.", nameof(requestUri));
                 ArgumentNullException.ThrowIfNull(destination);
-                if (!destination.CanWrite) throw new ArgumentException("O stream de destino precisa ser gravável.", nameof(destination));
+                if (!destination.CanWrite) throw new ArgumentException("O stream de destino precisa ser gravï¿½vel.", nameof(destination));
 
                 using var response = await client
                     .GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
@@ -75,7 +75,7 @@ namespace SilvaData.Utilities
             }
             catch (OperationCanceledException)
             {
-                // Cancelado pelo usuário/chamada
+                // Cancelado pelo usuï¿½rio/chamada
                 Debug.WriteLine("DownloadAsync cancelado.");
                 return false;
             }
@@ -88,7 +88,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// Extensões para <see cref="Stream"/> com suporte a progresso e cancelamento.
+    /// Extensï¿½es para <see cref="Stream"/> com suporte a progresso e cancelamento.
     /// </summary>
     public static class StreamExtensions
     {
@@ -97,10 +97,10 @@ namespace SilvaData.Utilities
         /// <summary>
         /// Copia dados do <paramref name="source"/> para <paramref name="destination"/> com buffer e progresso.
         /// </summary>
-        /// <param name="source">Stream de origem (legível).</param>
-        /// <param name="destination">Stream de destino (gravável).</param>
+        /// <param name="source">Stream de origem (legï¿½vel).</param>
+        /// <param name="destination">Stream de destino (gravï¿½vel).</param>
         /// <param name="bufferSize">Tamanho do buffer em bytes (&gt; 0).</param>
-        /// <param name="progress">Progresso em bytes totais já copiados.</param>
+        /// <param name="progress">Progresso em bytes totais jï¿½ copiados.</param>
         /// <param name="cancellationToken">Token de cancelamento.</param>
         public static async Task CopyToAsync(
             this Stream source,
@@ -110,9 +110,9 @@ namespace SilvaData.Utilities
             CancellationToken cancellationToken = default)
         {
             if (source is null) throw new ArgumentNullException(nameof(source));
-            if (!source.CanRead) throw new ArgumentException("O stream de origem precisa ser legível.", nameof(source));
+            if (!source.CanRead) throw new ArgumentException("O stream de origem precisa ser legï¿½vel.", nameof(source));
             if (destination is null) throw new ArgumentNullException(nameof(destination));
-            if (!destination.CanWrite) throw new ArgumentException("O stream de destino precisa ser gravável.", nameof(destination));
+            if (!destination.CanWrite) throw new ArgumentException("O stream de destino precisa ser gravï¿½vel.", nameof(destination));
             if (bufferSize <= 0) throw new ArgumentOutOfRangeException(nameof(bufferSize), "O tamanho do buffer deve ser maior que zero.");
 
             var buffer = new byte[bufferSize];
@@ -128,17 +128,17 @@ namespace SilvaData.Utilities
                 progress?.Report(totalBytesRead);
             }
 
-            // Garante flush do destino (quando aplicável)
+            // Garante flush do destino (quando aplicï¿½vel)
             await destination.FlushAsync(cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Copia dados do <paramref name="source"/> para <paramref name="destination"/> usando o buffer padrão,
+        /// Copia dados do <paramref name="source"/> para <paramref name="destination"/> usando o buffer padrï¿½o,
         /// com suporte a progresso e cancelamento.
         /// </summary>
-        /// <param name="source">Stream de origem (legível).</param>
-        /// <param name="destination">Stream de destino (gravável).</param>
-        /// <param name="progress">Progresso em bytes totais já copiados.</param>
+        /// <param name="source">Stream de origem (legï¿½vel).</param>
+        /// <param name="destination">Stream de destino (gravï¿½vel).</param>
+        /// <param name="progress">Progresso em bytes totais jï¿½ copiados.</param>
         /// <param name="cancellationToken">Token de cancelamento.</param>
         public static Task CopyToAsync(
             this Stream source,

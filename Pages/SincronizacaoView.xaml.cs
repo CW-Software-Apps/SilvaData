@@ -11,12 +11,12 @@ namespace SilvaData.Controls
     public partial class SincronizacaoView : ContentView
     {
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="SincronizacaoView"/>.
+        /// Inicializa uma nova instï¿½ncia da classe <see cref="SincronizacaoView"/>.
         /// </summary>
         public SincronizacaoView()
         {
             InitializeComponent();
-            // O BindingContext é definido aqui, como no seu código original
+            // O BindingContext ï¿½ definido aqui, como no seu cï¿½digo original
             BindingContext = ServiceHelper.GetRequiredService<SincronizacaoViewModel>();
         }
     }

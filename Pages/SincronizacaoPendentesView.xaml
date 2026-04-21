@@ -92,7 +92,7 @@
                         TextColor="{StaticResource SecondaryColor}" />
                 </VerticalStackLayout>
 
-                <!--  ??? ROW 1: Título da Lista ???  -->
+                <!--  ??? ROW 1: Tï¿½tulo da Lista ???  -->
                 <Border
                     Grid.Row="1"
                     Padding="16,12"
@@ -119,7 +119,7 @@
                         <Label
                             FontAttributes="Bold"
                             FontSize="16"
-                            Text="{localization:Translate ListaDeMudançasIdentificadas}"
+                            Text="{localization:Translate ListaDeMudanï¿½asIdentificadas}"
                             TextColor="{StaticResource PrimaryColor}"
                             VerticalTextAlignment="Center" />
 
@@ -138,7 +138,7 @@
                     </HorizontalStackLayout>
                 </Border>
 
-                <!--  ??? ROW 2: SfListView (ocupa o espaço restante com SCROLL PRÓPRIO) ???  -->
+                <!--  ??? ROW 2: SfListView (ocupa o espaï¿½o restante com SCROLL PRï¿½PRIO) ???  -->
                 <Border
                     Grid.Row="2"
                     Padding="0"
@@ -171,7 +171,7 @@
                                         StrokeShape="Rectangle"
                                         StrokeThickness="0">
 
-                                        <!--  Linha divisória  -->
+                                        <!--  Linha divisï¿½ria  -->
                                         <Border.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding .}"
@@ -183,7 +183,7 @@
 
                                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
 
-                                            <!--  Ícone  -->
+                                            <!--  ï¿½cone  -->
                                             <Border
                                                 Grid.Column="0"
                                                 Padding="1"
@@ -254,14 +254,14 @@
                                             FontAttributes="Bold"
                                             FontSize="16"
                                             HorizontalTextAlignment="Center"
-                                            Text="{localization:Translate NenhumaMudançaPendenteDeSincronização}"
+                                            Text="{localization:Translate NenhumaMudanï¿½aPendenteDeSincronizaï¿½ï¿½o}"
                                             TextColor="#212121" />
 
                                         <Label
                                             FontSize="13"
                                             HorizontalTextAlignment="Center"
                                             Opacity="0.7"
-                                            Text="Todos os dados estão sincronizados"
+                                            Text="Todos os dados estï¿½o sincronizados"
                                             TextColor="#757575" />
                                     </VerticalStackLayout>
                                 </VerticalStackLayout>
@@ -295,10 +295,10 @@
                     </Grid>
                 </Border>
 
-                <!--  ??? ROW 3: Botões de Ação (fixo no fundo) ???  -->
+                <!--  ??? ROW 3: Botï¿½es de Aï¿½ï¿½o (fixo no fundo) ???  -->
                 <VerticalStackLayout Grid.Row="3" Spacing="12">
 
-                    <!--  Botões de Upload  -->
+                    <!--  Botï¿½es de Upload  -->
                     <Grid
                         ColumnDefinitions="*,*"
                         ColumnSpacing="12"
@@ -333,7 +333,7 @@
                             CornerRadius="14"
                             HeightRequest="56"
                             Style="{StaticResource PrimaryButton}"
-                            Text="{localization:Translate BuscarAtualizações}"
+                            Text="{localization:Translate BuscarAtualizaï¿½ï¿½es}"
                             TextColor="White"
                             VerticalOptions="Center">
                             <buttons:SfButton.Shadow>
@@ -346,7 +346,7 @@
                         </buttons:SfButton>
                     </Grid>
 
-                    <!--  Card: Última Sincronização + Baixar Dados  -->
+                    <!--  Card: ï¿½ltima Sincronizaï¿½ï¿½o + Baixar Dados  -->
                     <Border
                         Padding="20,16"
                         Background="White"
@@ -364,7 +364,7 @@
 
                         <VerticalStackLayout Spacing="16">
 
-                            <!--  Última Sincronização  -->
+                            <!--  ï¿½ltima Sincronizaï¿½ï¿½o  -->
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
                                 <Label
                                     FontFamily="FontAwesomeSolid"
@@ -375,7 +375,7 @@
 
                                 <Label
                                     FontSize="13"
-                                    Text="{localization:Translate ÚltimaSincronização}"
+                                    Text="{localization:Translate ï¿½ltimaSincronizaï¿½ï¿½o}"
                                     TextColor="{StaticResource SecondaryColor}"
                                     VerticalTextAlignment="Center" />
 
@@ -387,7 +387,7 @@
                                     VerticalTextAlignment="Center" />
                             </HorizontalStackLayout>
 
-                            <!--  Botão: Baixar Dados  -->
+                            <!--  Botï¿½o: Baixar Dados  -->
                             <buttons:SfButton
                                 Padding="0"
                                 Background="{StaticResource PrimaryColor}"

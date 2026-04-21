@@ -12,8 +12,8 @@ using System.Linq;
 namespace SilvaData.Controls
 {
     /// <summary>
-    /// Página para visualização e gerenciamento de Unidades Epidemiológicas (UE).
-    /// MIGRADO: Usa CacheService ao invés de DadosStatic.
+    /// Pï¿½gina para visualizaï¿½ï¿½o e gerenciamento de Unidades Epidemiolï¿½gicas (UE).
+    /// MIGRADO: Usa CacheService ao invï¿½s de DadosStatic.
     /// </summary>
     public partial class UnidadeEpidemiologicaView : ContentPageWithLocalization
     {
@@ -42,7 +42,7 @@ namespace SilvaData.Controls
         #region Ciclo de Vida (Loaded/Unloaded/Appearing)
 
         /// <summary>
-        /// Chamado quando a página é carregada. Registra mensagens persistentes.
+        /// Chamado quando a pï¿½gina ï¿½ carregada. Registra mensagens persistentes.
         /// </summary>
         private void OnPageLoaded(object? sender, EventArgs e)
         {
@@ -50,13 +50,13 @@ namespace SilvaData.Controls
             WeakReferenceMessenger.Default.Register<UnidadeEpidemiologicaView, UEAdicionadaMessage>(this, OnUEAdicionadaMessage);
             WeakReferenceMessenger.Default.Register<UnidadeEpidemiologicaView, UESalvaMessage>(this, OnUESalvaMessage);
 
-            // Mensagens de dependências (que podem ser abertas por modais)
+            // Mensagens de dependï¿½ncias (que podem ser abertas por modais)
             WeakReferenceMessenger.Default.Register<PropriedadeAdicionadaMessage>(this, (r, m) => RefreshDataOnMainThread());
             WeakReferenceMessenger.Default.Register<RegionalAdicionadaMessage>(this, (r, m) => RefreshDataOnMainThread());
         }
 
         /// <summary>
-        /// Chamado quando a página é descarregada (destruída).
+        /// Chamado quando a pï¿½gina ï¿½ descarregada (destruï¿½da).
         /// Limpa os registros de mensagens.
         /// </summary>
         private void OnPageUnloaded(object? sender, EventArgs e)
@@ -68,21 +68,21 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Chamado quando a página está prestes a se tornar visível.
+        /// Chamado quando a pï¿½gina estï¿½ prestes a se tornar visï¿½vel.
         /// Recarrega os dados da lista.
         /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            // MIGRADO: Usa CacheService ao invés de DadosStatic
+            // MIGRADO: Usa CacheService ao invï¿½s de DadosStatic
             ListaUE = new ObservableCollection<UnidadeEpidemiologica>(_cacheService.UEList);
             OnPropertyChanged(nameof(ListaUE));
             RefreshData();
         }
 
         /// <summary>
-        /// Substitui o comportamento do botão "Voltar" do dispositivo.
+        /// Substitui o comportamento do botï¿½o "Voltar" do dispositivo.
         /// </summary>
         protected override bool OnBackButtonPressed()
         {
@@ -130,7 +130,7 @@ namespace SilvaData.Controls
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                // MIGRADO: Usa CacheService ao invés de DadosStatic
+                // MIGRADO: Usa CacheService ao invï¿½s de DadosStatic
                 ListaUE = new ObservableCollection<UnidadeEpidemiologica>(_cacheService.UEList);
                 OnPropertyChanged(nameof(ListaUE));
                 RefreshData();
@@ -186,17 +186,17 @@ namespace SilvaData.Controls
 
         #endregion
 
-        #region Permissões
+        #region Permissï¿½es
 
         public bool PodeEditar => Permissoes.UsuarioPermissoes?.regionais.atualizar ?? false;
         public bool PodeAdicionar => Permissoes.UsuarioPermissoes?.regionais.cadastrar ?? false;
 
         #endregion
 
-        #region Lógica de Filtro e Dados
+        #region Lï¿½gica de Filtro e Dados
 
         /// <summary>
-        /// Aplica o filtro atual à fonte de dados da SfListView.
+        /// Aplica o filtro atual ï¿½ fonte de dados da SfListView.
         /// </summary>
         public void RefreshData()
         {
@@ -208,7 +208,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Método de predicado de filtro para a SfListView.
+        /// Mï¿½todo de predicado de filtro para a SfListView.
         /// </summary>
         private bool filterData(object obj)
         {
@@ -227,7 +227,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Manipulador de evento para alteração de texto na barra de pesquisa.
+        /// Manipulador de evento para alteraï¿½ï¿½o de texto na barra de pesquisa.
         /// </summary>
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -236,7 +236,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Navega para a página de edição de uma UE específica.
+        /// Navega para a pï¿½gina de ediï¿½ï¿½o de uma UE especï¿½fica.
         /// </summary>
         public async Task Editar(UnidadeEpidemiologica ue)
         {

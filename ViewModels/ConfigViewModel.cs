@@ -108,7 +108,7 @@ namespace SilvaData.ViewModels
 
         public async Task PerguntaLogOff()
         {
-            if (await PopUpYesNo.ShowAsync(Traducao.Atenção, Traducao.ConfirmacaodeLogOff, Traducao.Sim, Traducao.Cancelar))
+            if (await PopUpYesNo.ShowAsync(Traducao.Atenï¿½ï¿½o, Traducao.ConfirmacaodeLogOff, Traducao.Sim, Traducao.Cancelar))
             {
                 if (await ISIWebService.Instance.LogOut())
                 {

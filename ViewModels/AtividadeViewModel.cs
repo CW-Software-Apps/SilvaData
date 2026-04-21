@@ -27,7 +27,7 @@ namespace SilvaData.ViewModels
         public Command _ShowListaCommand;
 
         [ObservableProperty]
-        public bool calendarioVisible = true; //Se true mostra calendário, senão Lista
+        public bool calendarioVisible = true; //Se true mostra calendï¿½rio, senï¿½o Lista
 
         [ObservableProperty]
 

@@ -18,7 +18,7 @@ namespace SilvaData.Pages.PopUps
             await NavigationUtils.ShowPopupAsync(popup);
         }
 
-        [Obsolete("O método PopUpOK.Show é obsoleto. Use PopUpOK.ShowAsync.", false)]
+        [Obsolete("O mï¿½todo PopUpOK.Show ï¿½ obsoleto. Use PopUpOK.ShowAsync.", false)]
         public static Task Show(string titulo, string mensagem) => ShowAsync(titulo, mensagem);
     }
 

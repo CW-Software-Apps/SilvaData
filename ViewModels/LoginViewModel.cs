@@ -11,7 +11,7 @@ using LocalizationResourceManager.Maui; // Para o LocalizationManager
 namespace SilvaData.ViewModels
 {
     /// <summary>
-    /// ViewModel para a página de Login.
+    /// ViewModel para a pï¿½gina de Login.
     /// </summary>
     public partial class LoginViewModel : ObservableObject
     {
@@ -45,14 +45,14 @@ namespace SilvaData.ViewModels
         private readonly ConfigViewModel _configViewModel;
 
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="LoginViewModel"/>.
+        /// Inicializa uma nova instï¿½ncia da classe <see cref="LoginViewModel"/>.
         /// </summary>
         public LoginViewModel(ConfigViewModel configViewModel)
         {
             _configViewModel = configViewModel;
 
-            // Define o texto da versão
-            VersionText = $"{Traducao.Versão} {AppInfo.Current.VersionString}";
+            // Define o texto da versï¿½o
+            VersionText = $"{Traducao.Versï¿½o} {AppInfo.Current.VersionString}";
 
             // Define o idioma inicial
             UpdateLanguage();
@@ -86,7 +86,7 @@ namespace SilvaData.ViewModels
             {
                 string mensagem = string.Format(Traducao.UsuarioJaLogado, sessionAtiva.dispositivoDescricao, sessionAtiva.dataInicio);
 
-                if (!await PopUpYesNo.ShowAsync(Traducao.Atenção, mensagem, Traducao.Sim, Traducao.Não))
+                if (!await PopUpYesNo.ShowAsync(Traducao.Atenï¿½ï¿½o, mensagem, Traducao.Sim, Traducao.Nï¿½o))
                 {
                     IsBusy = false;
                     return;
@@ -100,7 +100,7 @@ namespace SilvaData.ViewModels
             if (logged is LoginResult.FailedWebService or LoginResult.Wrong)
             {
                 if (logged == LoginResult.Wrong)
-                    await PopUpOK.ShowAsync(Traducao.Login, Traducao.LoginInválido);
+                    await PopUpOK.ShowAsync(Traducao.Login, Traducao.LoginInvï¿½lido);
                 else
                     await PopUpOK.ShowAsync(Traducao.SemInternet, Traducao.NaoPodeAtualizarSemInternet);
 
@@ -111,7 +111,7 @@ namespace SilvaData.ViewModels
             Preferences.Set("PrecisaSincronizacaoCompleta", true);
             Graficos.ZeraDadosGraficos();
 
-            // Define a flag que o MainPageModel verificará
+            // Define a flag que o MainPageModel verificarï¿½
             Login.AcabouDeLogar = true;
 
             _ = NavigationUtils.PopModalAsync();
@@ -120,7 +120,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Comando para mostrar a política de privacidade.
+        /// Comando para mostrar a polï¿½tica de privacidade.
         /// </summary>
         [RelayCommand]
         private async Task PolicyPrivacyAsync()
@@ -129,7 +129,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Comando para abrir a página de "Esqueci a Senha".
+        /// Comando para abrir a pï¿½gina de "Esqueci a Senha".
         /// </summary>
         [RelayCommand]
         private async Task ForgotPasswordAsync()
@@ -139,7 +139,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Comando para alterar o idioma da aplicação.
+        /// Comando para alterar o idioma da aplicaï¿½ï¿½o.
         /// </summary>
         [RelayCommand]
         private void SetLanguage(string culture)
@@ -149,7 +149,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Atualiza a opacidade das bandeiras de idioma com base na seleção atual.
+        /// Atualiza a opacidade das bandeiras de idioma com base na seleï¿½ï¿½o atual.
         /// </summary>
         private void UpdateLanguage()
         {

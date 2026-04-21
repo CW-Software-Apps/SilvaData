@@ -15,14 +15,14 @@ namespace SilvaData.Controls
         protected override void OnParentSet()
         {
             base.OnParentSet();
-            // Auto-atualiza sempre que a view entra na árvore visual
+            // Auto-atualiza sempre que a view entra na ï¿½rvore visual
             TryRefresh();
         }
 
         protected override void OnHandlerChanged()
         {
             base.OnHandlerChanged();
-            // Garantia extra para cenários de recriação do handler
+            // Garantia extra para cenï¿½rios de recriaï¿½ï¿½o do handler
             TryRefresh();
         }
 
@@ -33,7 +33,7 @@ namespace SilvaData.Controls
                 var cmd = vm.AtualizaListaAlteracoesCommand;
                 if (cmd?.CanExecute(null) == true)
                 {
-                    // dispara assíncrono sem bloquear a UI
+                    // dispara assï¿½ncrono sem bloquear a UI
                     _ = vm.AtualizaListaAlteracoesCommand.ExecuteAsync(null);
                 }
             }

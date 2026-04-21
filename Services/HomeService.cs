@@ -5,8 +5,8 @@ using Newtonsoft.Json;
 namespace SilvaData.Services
 {
     /// <summary>
-    /// Serviço responsável por buscar e armazenar em cache os dados
-    /// dos cartões de mídia do Dashboard (HomeViewModel).
+    /// Serviï¿½o responsï¿½vel por buscar e armazenar em cache os dados
+    /// dos cartï¿½es de mï¿½dia do Dashboard (HomeViewModel).
     /// </summary>
     public class HomeService
     {
@@ -18,8 +18,8 @@ namespace SilvaData.Services
         }
 
         /// <summary>
-        /// Busca os dados de mídia dos cartões do dashboard,
-        /// primeiramente do cache, ou (se forçado) da web.
+        /// Busca os dados de mï¿½dia dos cartï¿½es do dashboard,
+        /// primeiramente do cache, ou (se forï¿½ado) da web.
         /// </summary>
         /// <param name="forceWebFetch">Se true, ignora o cache e busca na web.</param>
         public async Task<DashboardMedia> AtualizaDadosMediaAsync(bool forceWebFetch = false)
@@ -43,11 +43,11 @@ namespace SilvaData.Services
                 }
             }
 
-            // 2. Se o cache falhar, for forçado, ou estiver vazio, busca na Web
+            // 2. Se o cache falhar, for forï¿½ado, ou estiver vazio, busca na Web
             if (_webService.LoggedUser == null)
             {
-                Debug.WriteLine("HomeService: Usuário não logado, retornando dados vazios.");
-                return new DashboardMedia(); // Retorna vazio se não estiver logado
+                Debug.WriteLine("HomeService: Usuï¿½rio nï¿½o logado, retornando dados vazios.");
+                return new DashboardMedia(); // Retorna vazio se nï¿½o estiver logado
             }
 
             try
@@ -62,7 +62,7 @@ namespace SilvaData.Services
                 var jsonParams = JsonConvert.SerializeObject(getDashboardMediaParametros);
                 using var requestBody = new StringContent(EncryptDecrypt.Encrypt(jsonParams));
 
-                // Esta é a lógica que estava no DashboardMedia.AtualizaDados()
+                // Esta ï¿½ a lï¿½gica que estava no DashboardMedia.AtualizaDados()
                 ISIWebServiceResult result = await _webService.ExecutePostAndWaitResult(requestBody, "getDashboardMedia", "dashboard")
                     .ConfigureAwait(false);
 

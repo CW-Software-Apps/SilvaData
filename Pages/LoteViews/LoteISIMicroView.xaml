@@ -64,7 +64,7 @@
                 <Label
                     FontSize="Micro"
                     HorizontalTextAlignment="Start"
-                    Text="{localization:Translate ResumoDasAnálisesDoLote}"
+                    Text="{localization:Translate ResumoDasAnï¿½lisesDoLote}"
                     TextColor="White" />
             </StackLayout>
         </Grid>

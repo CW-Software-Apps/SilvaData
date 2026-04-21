@@ -1,16 +1,16 @@
-using CommunityToolkit.Mvvm.ComponentModel; // Necessário para ObservableObject
+using CommunityToolkit.Mvvm.ComponentModel; // Necessï¿½rio para ObservableObject
 
 namespace SilvaData.Models
 {
     /// <summary>
-    /// Modelo de dados (DTO) que armazena as médias
-    /// exibidas nos cartões do Dashboard (Home).
+    /// Modelo de dados (DTO) que armazena as mï¿½dias
+    /// exibidas nos cartï¿½es do Dashboard (Home).
     /// </summary>
     public partial class DashboardMedia : ObservableObject
     {
         // Propriedades permanecem, mas podem ser ObservableProperties
-        // se você precisar de binding granular.
-        // Se você sempre substitui o objeto inteiro, { get; set; } é suficiente.
+        // se vocï¿½ precisar de binding granular.
+        // Se vocï¿½ sempre substitui o objeto inteiro, { get; set; } ï¿½ suficiente.
         public double mediaIsiMacroClienteUsuario { get; set; }
         public double mediaIsiMacroCliente { get; set; }
         public double mediaIsiMacroGlobal { get; set; }

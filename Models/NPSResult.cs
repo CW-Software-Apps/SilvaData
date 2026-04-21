@@ -1,22 +1,22 @@
 namespace SilvaData.Models
 {
     /// <summary>
-    /// Resultado da avaliação NPS.
+    /// Resultado da avaliaï¿½ï¿½o NPS.
     /// </summary>
     public class NPSResult
     {
         /// <summary>
-        /// Nota dada pelo usuário (0-10).
+        /// Nota dada pelo usuï¿½rio (0-10).
         /// </summary>
         public int Rating { get; set; }
 
         /// <summary>
-        /// Comentários adicionais fornecidos pelo usuário.
+        /// Comentï¿½rios adicionais fornecidos pelo usuï¿½rio.
         /// </summary>
         public string Comments { get; set; } = string.Empty;
 
         /// <summary>
-        /// Cria um novo resultado NPS com valores padrão.
+        /// Cria um novo resultado NPS com valores padrï¿½o.
         /// </summary>
         public static NPSResult Default() => new()
         {

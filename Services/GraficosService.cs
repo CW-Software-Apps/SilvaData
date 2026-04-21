@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace SilvaData.Services
 {
     /// <summary>
-    /// Serviço responsável por baixar, processar e cachear dados de gráficos.
+    /// Serviï¿½o responsï¿½vel por baixar, processar e cachear dados de grï¿½ficos.
     /// </summary>
     public class GraficosService
     {
@@ -66,7 +66,7 @@ namespace SilvaData.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Falha ao carregar gráficos do cache: {ex.Message}");
+                Debug.WriteLine($"Falha ao carregar grï¿½ficos do cache: {ex.Message}");
                 Graficos.ListaSuperCategorias = new List<ObservableCollection<GraficoSuperCategoriaAgrupado>>();
                 Graficos.DadosGraficosDispersao = new ObservableCollection<GraficoDispersao>();
             }
@@ -84,7 +84,7 @@ namespace SilvaData.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Falha ao salvar gráficos no cache: {ex.Message}");
+                Debug.WriteLine($"Falha ao salvar grï¿½ficos no cache: {ex.Message}");
             }
         }
     }

@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 using Microsoft.Maui.Storage; // Preferences
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq; // LINQ para ordenação
+using System.Linq; // LINQ para ordenaï¿½ï¿½o
 
 namespace SilvaData.ViewModels
 {
@@ -24,7 +24,7 @@ namespace SilvaData.ViewModels
 
     /// <summary>
     /// ViewModel principal da Dashboard (abas Meus Resultados/Empresa/Global).
-    /// Migrado de HomeViewModel incorporando lógica de comparação, mensagens e carregamento de dados.
+    /// Migrado de HomeViewModel incorporando lï¿½gica de comparaï¿½ï¿½o, mensagens e carregamento de dados.
     /// </summary>
     public partial class DashboardViewModel : ViewModelBase, IDisposable
     {
@@ -34,25 +34,25 @@ namespace SilvaData.ViewModels
         private DateTime _lastFullReload = DateTime.MinValue;
         private static readonly TimeSpan MinReloadInterval = TimeSpan.FromSeconds(3);
 
-        // Sub-ViewModels dos gráficos (injeção)
+        // Sub-ViewModels dos grï¿½ficos (injeï¿½ï¿½o)
         [ObservableProperty] private GraficoResultadosViewModel meusResultadosViewModel;
         [ObservableProperty] private GraficoResultadosViewModel empresaViewModel;
         [ObservableProperty] private GraficoResultadosViewModel globalViewModel;
 
-        // Dados do Dashboard (médias cacheadas)
+        // Dados do Dashboard (mï¿½dias cacheadas)
         [ObservableProperty] private DashboardMedia dadosDashboard = new();
 
         // Lotes em Alerta
         [ObservableProperty] private ObservableCollection<Lote> lotesEmAlerta = new();
         private DateTime _lastAlertRefresh = DateTime.MinValue;
-        private bool _updatingAlerts; // evita reentrância
+        private bool _updatingAlerts; // evita reentrï¿½ncia
 
         // Score total da aba atual
         [ObservableProperty] private double iSIScoreTotal;
         public string ISIScoreText => ISIMacro.StatusText(ISIScoreTotal);
         public Color ISIScoreTextColor => ISIMacro.StatusColor(ISIScoreTotal);
 
-        // Comparação
+        // Comparaï¿½ï¿½o
         [ObservableProperty] private Color mediaBackground = Colors.Transparent;
         [ObservableProperty] private Color mediaTextColor = Colors.Gray;
         [ObservableProperty] private string mediaIcon = string.Empty;
@@ -104,13 +104,13 @@ namespace SilvaData.ViewModels
             try
             {
                 IsBusy = true;
-                await AtualizaDadosGraficos(forceRefresh); // Já inclui CarregaLotesEmAlerta
-                Debug.WriteLine("[Dashboard] Inicialização concluída");
+                await AtualizaDadosGraficos(forceRefresh); // Jï¿½ inclui CarregaLotesEmAlerta
+                Debug.WriteLine("[Dashboard] Inicializaï¿½ï¿½o concluï¿½da");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[Dashboard] Erro na inicialização: {ex.Message}");
-                // Não crasha a app, só loga
+                Debug.WriteLine($"[Dashboard] Erro na inicializaï¿½ï¿½o: {ex.Message}");
+                // Nï¿½o crasha a app, sï¿½ loga
             }
             finally
             {
@@ -119,7 +119,7 @@ namespace SilvaData.ViewModels
         }
 
         private async Task RefreshDashboard() => await AtualizaDadosGraficos(false);
-        private void OnGraficosAtualizados(Graficos g) { /* já tratado */ }
+        private void OnGraficosAtualizados(Graficos g) { /* jï¿½ tratado */ }
 
         private async Task OnShowDashboardAsync()
         {
@@ -129,7 +129,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Comando para atualizar manualmente os dados dos gráficos (Sync/Refresh externo).
+        /// Comando para atualizar manualmente os dados dos grï¿½ficos (Sync/Refresh externo).
         /// </summary>
         [RelayCommand]
         public async Task AtualizaDadosGraficos(bool showError = true)
@@ -178,7 +178,7 @@ namespace SilvaData.ViewModels
             finally { IsBusy = false; }
         }
 
-        // NOVO: força recarga completa (dados + lotes em alerta) ignorando popups de erro.
+        // NOVO: forï¿½a recarga completa (dados + lotes em alerta) ignorando popups de erro.
         private async Task ForceReloadAsync()
         {
             try
@@ -198,7 +198,7 @@ namespace SilvaData.ViewModels
         {
             try
             {
-                if (_updatingAlerts) return; // proteção reentrante
+                if (_updatingAlerts) return; // proteï¿½ï¿½o reentrante
                 _updatingAlerts = true;
                 if ((DateTime.UtcNow - _lastAlertRefresh).TotalSeconds < 3) return;
                 _lastAlertRefresh = DateTime.UtcNow;
@@ -274,7 +274,7 @@ namespace SilvaData.ViewModels
                 MediaIcon = FontAwesomeIcons.CircleArrowDown;
                 TextoMedia = $"{DoubleToPercentageString(percentual)} {Traducao.Pior}";
             }
-            TextoMedia2 = comparaComEmpresa ? Traducao.QueAMédiaDaEmpresa : Traducao.QueAMédiaGlobal;
+            TextoMedia2 = comparaComEmpresa ? Traducao.QueAMï¿½diaDaEmpresa : Traducao.QueAMï¿½diaGlobal;
         }
 
         private void ResetMedia()
@@ -301,7 +301,7 @@ namespace SilvaData.ViewModels
             if (value == 2) IsGlobalTabLoaded = true;
         }
 
-        #region Comandos de navegação e interação
+        #region Comandos de navegaï¿½ï¿½o e interaï¿½ï¿½o
 
         [RelayCommand]
         private async Task ShowUsuario(View button)
@@ -310,7 +310,7 @@ namespace SilvaData.ViewModels
         [RelayCommand] private void Empresa() => TabIndexSelecionado = 1;
         [RelayCommand] private void Global() => TabIndexSelecionado = 2;
 
-        // Abre página de gráficos com tipo inicial
+        // Abre pï¿½gina de grï¿½ficos com tipo inicial
         [RelayCommand]
         private async Task AbrirGraficoAsync(DashboardTipoGrafico tipo)
         {

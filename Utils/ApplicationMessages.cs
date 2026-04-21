@@ -7,69 +7,69 @@ using System.Diagnostics;
 namespace SilvaData.Utilities
 {
     // -------------------------------------------------------------------------------
-    // SEÇÃO 1: NAVEGAÇÃO E INTERFACE (MainPage Tabs)
+    // SEï¿½ï¿½O 1: NAVEGAï¿½ï¿½O E INTERFACE (MainPage Tabs)
     // -------------------------------------------------------------------------------
-    // Mensagens que controlam mudanças de abas na MainPage.
+    // Mensagens que controlam mudanï¿½as de abas na MainPage.
     // Enviadas por: ViewModels que precisam navegar entre telas principais.
     // Recebidas por: MainPageViewModel.
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// Solicita mudança para a aba Dashboard.
+    /// Solicita mudanï¿½a para a aba Dashboard.
     /// </summary>
     public class ShowDashboardMessage { }
 
     /// <summary>
-    /// Solicita mudança para a aba Lotes.
+    /// Solicita mudanï¿½a para a aba Lotes.
     /// </summary>
     public class ShowLotesMessage { }
 
     /// <summary>
-    /// Solicita mudança para a aba Sincronização.
+    /// Solicita mudanï¿½a para a aba Sincronizaï¿½ï¿½o.
     /// </summary>
     public class ShowSyncMessage { }
 
     /// <summary>
-    /// Solicita mudança para a aba Configurações.
+    /// Solicita mudanï¿½a para a aba Configuraï¿½ï¿½es.
     /// </summary>
     public class ShowSettingsMessage { }
 
     /// <summary>
-    /// Solicita mudança para a aba Suporte.
+    /// Solicita mudanï¿½a para a aba Suporte.
     /// </summary>
     public class ShowSuporteMessage { }
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 2: ORIENTAÇÃO DE TELA
+    // SEï¿½ï¿½O 2: ORIENTAï¿½ï¿½O DE TELA
     // -------------------------------------------------------------------------------
-    // Controla rotação da tela (Portrait/Landscape).
-    // Enviadas por: ViewModels de formulários complexos.
+    // Controla rotaï¿½ï¿½o da tela (Portrait/Landscape).
+    // Enviadas por: ViewModels de formulï¿½rios complexos.
     // Recebidas por: App.xaml.cs ou AppShell.xaml.cs.
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// ? Força orientação Paisagem (Landscape).
-    /// Usada em formulários que precisam de mais espaço horizontal.
+    /// ? Forï¿½a orientaï¿½ï¿½o Paisagem (Landscape).
+    /// Usada em formulï¿½rios que precisam de mais espaï¿½o horizontal.
     /// </summary>
     public class SetLandscapeModeOnMessage { }
 
     /// <summary>
-    /// ? Restaura orientação padrão (destravar).
+    /// ? Restaura orientaï¿½ï¿½o padrï¿½o (destravar).
     /// </summary>
     public class SetLandscapeModeOffMessage { }
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 3: CRUD - ENTIDADES PRINCIPAIS (Create/Update)
+    // SEï¿½ï¿½O 3: CRUD - ENTIDADES PRINCIPAIS (Create/Update)
     // -------------------------------------------------------------------------------
-    // Mensagens disparadas após operações de criação ou alteração de entidades.
-    // Padrão: NomeEntidadeAdicionadaMessage (novo) / NomeEntidadeSalvaMessage (edição).
+    // Mensagens disparadas apï¿½s operaï¿½ï¿½es de criaï¿½ï¿½o ou alteraï¿½ï¿½o de entidades.
+    // Padrï¿½o: NomeEntidadeAdicionadaMessage (novo) / NomeEntidadeSalvaMessage (ediï¿½ï¿½o).
     // Recebidas por: ViewModels de listagem (para atualizar lista).
     // -------------------------------------------------------------------------------
 
     #region CRUD - Lote
 
     /// <summary>
-    /// ? Disparado quando um NOVO Lote é criado.
+    /// ? Disparado quando um NOVO Lote ï¿½ criado.
     /// Enviada por: LoteEditViewModel.Salvar().
     /// Recebida por: LoteViewModel (adiciona item na lista).
     /// </summary>
@@ -80,7 +80,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Disparado quando um Lote EXISTENTE é alterado.
+    /// ? Disparado quando um Lote EXISTENTE ï¿½ alterado.
     /// Enviada por: LoteEditViewModel.Salvar().
     /// Recebida por: LoteViewModel (atualiza item na lista).
     /// </summary>
@@ -92,10 +92,10 @@ namespace SilvaData.Utilities
 
     #endregion
 
-    #region CRUD - Unidade Epidemiológica (UE)
+    #region CRUD - Unidade Epidemiolï¿½gica (UE)
 
     /// <summary>
-    /// ? Disparado quando uma NOVA Unidade Epidemiológica é criada.
+    /// ? Disparado quando uma NOVA Unidade Epidemiolï¿½gica ï¿½ criada.
     /// Enviada por: UnidadeEpidemiologicaEditViewModel.Salvar().
     /// Recebida por: UnidadeEpidemiologicaViewModel, LoteEditView (recarrega combo).
     /// </summary>
@@ -106,7 +106,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Disparado quando uma UE EXISTENTE é salva.
+    /// ? Disparado quando uma UE EXISTENTE ï¿½ salva.
     /// Enviada por: UnidadeEpidemiologicaEditViewModel.Salvar().
     /// Recebida por: UnidadeEpidemiologicaViewModel (atualiza item).
     /// </summary>
@@ -121,7 +121,7 @@ namespace SilvaData.Utilities
     #region CRUD - Propriedade
 
     /// <summary>
-    /// ? Disparado quando uma NOVA Propriedade é criada.
+    /// ? Disparado quando uma NOVA Propriedade ï¿½ criada.
     /// Enviada por: PropriedadeEditViewModel.Salvar().
     /// Recebida por: PropriedadeViewModel, UEEditView (recarrega combo).
     /// </summary>
@@ -132,7 +132,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Disparado quando uma Propriedade EXISTENTE é salva.
+    /// ? Disparado quando uma Propriedade EXISTENTE ï¿½ salva.
     /// Enviada por: PropriedadeEditViewModel.Salvar().
     /// Recebida por: PropriedadeViewModel (atualiza item).
     /// </summary>
@@ -144,10 +144,10 @@ namespace SilvaData.Utilities
 
     #endregion
 
-    #region CRUD - Proprietário
+    #region CRUD - Proprietï¿½rio
 
     /// <summary>
-    /// ? Disparado quando um NOVO Proprietário é criado.
+    /// ? Disparado quando um NOVO Proprietï¿½rio ï¿½ criado.
     /// Enviada por: ProprietarioEditViewModel.Salvar().
     /// Recebida por: ProprietarioViewModel, UEEditView (recarrega combo).
     /// </summary>
@@ -158,7 +158,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Disparado quando um Proprietário EXISTENTE é salvo.
+    /// ? Disparado quando um Proprietï¿½rio EXISTENTE ï¿½ salvo.
     /// Enviada por: ProprietarioEditViewModel.Salvar().
     /// Recebida por: ProprietarioViewModel (atualiza item).
     /// </summary>
@@ -173,7 +173,7 @@ namespace SilvaData.Utilities
     #region CRUD - Regional
 
     /// <summary>
-    /// ? Disparado quando uma NOVA Regional é criada.
+    /// ? Disparado quando uma NOVA Regional ï¿½ criada.
     /// Enviada por: RegionalEditViewModel.Salvar().
     /// Recebida por: RegionalViewModel, PropriedadeEditView (recarrega combo).
     /// </summary>
@@ -184,7 +184,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Disparado quando uma Regional EXISTENTE é salva.
+    /// ? Disparado quando uma Regional EXISTENTE ï¿½ salva.
     /// Enviada por: RegionalEditViewModel.Salvar().
     /// Recebida por: RegionalViewModel (atualiza item).
     /// </summary>
@@ -199,7 +199,7 @@ namespace SilvaData.Utilities
     #region CRUD - Atividade
 
     /// <summary>
-    /// ? Disparado quando uma NOVA Atividade é criada.
+    /// ? Disparado quando uma NOVA Atividade ï¿½ criada.
     /// Enviada por: AtividadeEditViewModel.Salvar().
     /// Recebida por: AtividadeViewModel (atualiza lista).
     /// </summary>
@@ -210,7 +210,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Disparado quando uma Atividade EXISTENTE é salva.
+    /// ? Disparado quando uma Atividade EXISTENTE ï¿½ salva.
     /// Enviada por: AtividadeEditViewModel.Salvar().
     /// Recebida por: AtividadeViewModel (atualiza item).
     /// </summary>
@@ -223,17 +223,17 @@ namespace SilvaData.Utilities
     #endregion
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 4: FORMULÁRIOS E AVALIAÇÕES (LoteForm)
+    // SEï¿½ï¿½O 4: FORMULï¿½RIOS E AVALIAï¿½ï¿½ES (LoteForm)
     // -------------------------------------------------------------------------------
-    // Mensagens relacionadas ao fluxo de preenchimento de formulários de lote.
-    // Inclui: ISI Macro, Avaliações do Galpão, Scores, etc.
+    // Mensagens relacionadas ao fluxo de preenchimento de formulï¿½rios de lote.
+    // Inclui: ISI Macro, Avaliaï¿½ï¿½es do Galpï¿½o, Scores, etc.
     // -------------------------------------------------------------------------------
 
-    #region Formulários - Configuração e Estado
+    #region Formulï¿½rios - Configuraï¿½ï¿½o e Estado
 
     /// <summary>
-    /// ??? Define o estado inicial do formulário (novo ou edição) ???
-    /// Passa todos os parâmetros necessários para inicializar corretamente.
+    /// ??? Define o estado inicial do formulï¿½rio (novo ou ediï¿½ï¿½o) ???
+    /// Passa todos os parï¿½metros necessï¿½rios para inicializar corretamente.
     /// Enviada por: NavigationUtils.OpenLoteFormularioAsync().
     /// Recebida por: LoteFormularioView (OnNavigatedTo ou via Message).
     /// </summary>
@@ -271,8 +271,8 @@ namespace SilvaData.Utilities
 
     /// <summary>
     /// ? Sinaliza que LoteFormularioView deve fazer refresh dos dados.
-    /// Utilizado após salvar ou quando dados externos mudam.
-    /// Enviada por: ViewModels após operações que afetam o formulário.
+    /// Utilizado apï¿½s salvar ou quando dados externos mudam.
+    /// Enviada por: ViewModels apï¿½s operaï¿½ï¿½es que afetam o formulï¿½rio.
     /// Recebida por: LoteFormularioView (recarrega dados).
     /// </summary>
     public class RefreshLoteFormularioMessage
@@ -290,7 +290,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Sinaliza que o formulário será fechado e loading deve ser mostrado.
+    /// ? Sinaliza que o formulï¿½rio serï¿½ fechado e loading deve ser mostrado.
     /// Enviada por: LoteFormularioView.OnDisappearing().
     /// Recebida por: LoadingView ou MainPage (mostra overlay).
     /// </summary>
@@ -302,8 +302,8 @@ namespace SilvaData.Utilities
 
     /// <summary>
     /// ? Define qual modelo ISI Macro foi selecionado.
-    /// Utilizado para pré-preencher formulário com template específico.
-    /// Enviada por: Popup/Modal de seleção de modelo.
+    /// Utilizado para prï¿½-preencher formulï¿½rio com template especï¿½fico.
+    /// Enviada por: Popup/Modal de seleï¿½ï¿½o de modelo.
     /// Recebida por: LoteFormularioViewModel (carrega template).
     /// </summary>
     public class SetModeloISIMacroMessage
@@ -314,22 +314,22 @@ namespace SilvaData.Utilities
 
     #endregion
 
-    #region Formulários - Score e Avaliações
+    #region Formulï¿½rios - Score e Avaliaï¿½ï¿½es
 
     /// <summary>
-    /// ??? Solicita recálculo do score total de um formulário ???
-    /// Disparado quando parâmetros, alternativas ou valores são alterados.
+    /// ??? Solicita recï¿½lculo do score total de um formulï¿½rio ???
+    /// Disparado quando parï¿½metros, alternativas ou valores sï¿½o alterados.
     /// Enviada por: Controles de entrada, LoteFormAvaliacaoGalpao, ParametroComAlternativas.
     /// Recebida por: LoteFormularioViewModel.UpdateTotal().
     /// </summary>
     public class UpdateScoreMessage { }
 
     /// <summary>
-    /// ??? Recalcula totais e média de avaliações do galpão ???
-    /// Disparado quando uma resposta (quantitativa ou qualitativa) é alterada.
+    /// ??? Recalcula totais e mï¿½dia de avaliaï¿½ï¿½es do galpï¿½o ???
+    /// Disparado quando uma resposta (quantitativa ou qualitativa) ï¿½ alterada.
     /// O LoteFormularioViewModel escuta e recalcula:
-    /// - Total de avaliações respondidas
-    /// - Média dos valores quantitativos
+    /// - Total de avaliaï¿½ï¿½es respondidas
+    /// - Mï¿½dia dos valores quantitativos
     /// 
     /// Enviada por: LoteFormAvaliacaoGalpao.OnRespostaQtdeChanged().
     /// Recebida por: LoteFormularioViewModel.RecalculaTotaisAvaliacaoGalpao().
@@ -341,15 +341,15 @@ namespace SilvaData.Utilities
         public RecalcularAvaliacaoGalpaoMessage()
         {
             Timestamp = DateTime.Now;
-            Debug.WriteLine($"[RecalcularAvaliacaoGalpaoMessage] ? Enviada às {Timestamp:HH:mm:ss.fff}");
+            Debug.WriteLine($"[RecalcularAvaliacaoGalpaoMessage] ? Enviada ï¿½s {Timestamp:HH:mm:ss.fff}");
         }
     }
 
     /// <summary>
-    /// ? Notifica que o score médio (ISI Macro) de um lote foi recalculado.
-    /// Dispara atualização da UI com novo score.
+    /// ? Notifica que o score mï¿½dio (ISI Macro) de um lote foi recalculado.
+    /// Dispara atualizaï¿½ï¿½o da UI com novo score.
     /// Enviada por: Lote.AtualizaISIMacroScoreMedio().
-    /// Recebida por: LoteViewModel, DashboardViewModel (atualiza cards/gráficos).
+    /// Recebida por: LoteViewModel, DashboardViewModel (atualiza cards/grï¿½ficos).
     /// </summary>
     public class ISIMacroScoreMedioAtualizadoMessage
     {
@@ -365,7 +365,7 @@ namespace SilvaData.Utilities
 
     /// <summary>
     /// ? Notifica que um ISIMacro foi salvo com sucesso.
-    /// Utilizado para atualizar dados do lote após avaliação de necropsia.
+    /// Utilizado para atualizar dados do lote apï¿½s avaliaï¿½ï¿½o de necropsia.
     /// Enviada por: ISIMacroViewModel.Salvar().
     /// Recebida por: LoteViewModel (recarrega score do lote).
     /// </summary>
@@ -389,13 +389,13 @@ namespace SilvaData.Utilities
 
     #endregion
 
-    #region Formulários - Avaliações do Galpão (Específico)
+    #region Formulï¿½rios - Avaliaï¿½ï¿½es do Galpï¿½o (Especï¿½fico)
 
     /// <summary>
-    /// ? Notifica que uma avaliação qualitativa (com foto) foi selecionada.
-    /// Passa a avaliação completa para permitir edição.
+    /// ? Notifica que uma avaliaï¿½ï¿½o qualitativa (com foto) foi selecionada.
+    /// Passa a avaliaï¿½ï¿½o completa para permitir ediï¿½ï¿½o.
     /// Enviada por: LoteAvaliacaoGalpaoView (item tapped).
-    /// Recebida por: Modal de edição de avaliação qualitativa.
+    /// Recebida por: Modal de ediï¿½ï¿½o de avaliaï¿½ï¿½o qualitativa.
     /// </summary>
     public class SelecionouAvaliacaoQualitativaMessage
     {
@@ -404,10 +404,10 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Solicita navegação até um registro específico na lista de avaliações.
-    /// Utilizado para avaliação quantitativa.
-    /// Enviada por: VerRegistrosPopup (após seleção).
-    /// Recebida por: LoteFormularioView (faz scroll até o item).
+    /// ? Solicita navegaï¿½ï¿½o atï¿½ um registro especï¿½fico na lista de avaliaï¿½ï¿½es.
+    /// Utilizado para avaliaï¿½ï¿½o quantitativa.
+    /// Enviada por: VerRegistrosPopup (apï¿½s seleï¿½ï¿½o).
+    /// Recebida por: LoteFormularioView (faz scroll atï¿½ o item).
     /// </summary>
     public class NavigateToRegistroMessage
     {
@@ -417,11 +417,11 @@ namespace SilvaData.Utilities
 
     #endregion
 
-    #region Formulários - Datas e Mudanças
+    #region Formulï¿½rios - Datas e Mudanï¿½as
 
     /// <summary>
     /// ? Notifica que a data de um LoteForm foi alterada.
-    /// Dispara recálculo de idade do lote.
+    /// Dispara recï¿½lculo de idade do lote.
     /// Enviada por: LoteForm.data (setter).
     /// Recebida por: LoteFormularioView, controles que exibem idade.
     /// </summary>
@@ -429,9 +429,9 @@ namespace SilvaData.Utilities
 
     /// <summary>
     /// ? Notifica que uma LoteVisita foi alterada.
-    /// Dispara recarregamento de formulários relacionados.
+    /// Dispara recarregamento de formulï¿½rios relacionados.
     /// Enviada por: LoteVisitaViewModel.Salvar().
-    /// Recebida por: LoteViewModel (recarrega formulários da visita).
+    /// Recebida por: LoteViewModel (recarrega formulï¿½rios da visita).
     /// </summary>
     public class MudouVisitaMessage
     {
@@ -442,14 +442,14 @@ namespace SilvaData.Utilities
     #endregion
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 5: VALIDAÇÃO E CONTROLE DE FORMULÁRIOS (Base)
+    // SEï¿½ï¿½O 5: VALIDAï¿½ï¿½O E CONTROLE DE FORMULï¿½RIOS (Base)
     // -------------------------------------------------------------------------------
-    // Mensagens de validação e controle de fluxo de formulários.
-    // Usadas pelo BaseEditViewModel para comunicação com a View.
+    // Mensagens de validaï¿½ï¿½o e controle de fluxo de formulï¿½rios.
+    // Usadas pelo BaseEditViewModel para comunicaï¿½ï¿½o com a View.
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// ? Solicita que a View execute validação dos campos.
+    /// ? Solicita que a View execute validaï¿½ï¿½o dos campos.
     /// A View deve responder com ValidationCompleteMessage.
     /// Enviada por: BaseEditViewModel.SaveAndReturn().
     /// Recebida por: ContentPageEdit (code-behind).
@@ -465,7 +465,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Resposta da View com resultado da validação.
+    /// ? Resposta da View com resultado da validaï¿½ï¿½o.
     /// Enviada por: ContentPageEdit.OnValidateFormRequest().
     /// Recebida por: BaseEditViewModel.ValidateViewAsync() (aguarda resultado).
     /// </summary>
@@ -482,35 +482,35 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Solicita que a View feche a página modal.
-    /// Enviada por: BaseEditViewModel.SaveAndReturn() após salvar com sucesso.
+    /// ? Solicita que a View feche a pï¿½gina modal.
+    /// Enviada por: BaseEditViewModel.SaveAndReturn() apï¿½s salvar com sucesso.
     /// Recebida por: ContentPageEdit (chama Navigation.PopModalAsync()).
     /// </summary>
     public class ClosePageRequestMessage { }
 
     /// <summary>
-    /// ? Solicita confirmação de saída quando há dados não salvos (para popup de 3 opções).
+    /// ? Solicita confirmaï¿½ï¿½o de saï¿½da quando hï¿½ dados nï¿½o salvos (para popup de 3 opï¿½ï¿½es).
     /// Enviada por: BaseEditViewModel.BackNow() quando DataSaved == false.
     /// Recebida por: ContentPageEdit (mostra PopUpThreeOptions).
     /// </summary>
     public class ConfirmExitRequestMessage { }
 
     /// <summary>
-    /// ? Ações possíveis ao sair de uma tela com dados não salvos.
-    /// Usado pelo PopUpThreeOptions para determinar a ação do usuário.
+    /// ? Aï¿½ï¿½es possï¿½veis ao sair de uma tela com dados nï¿½o salvos.
+    /// Usado pelo PopUpThreeOptions para determinar a aï¿½ï¿½o do usuï¿½rio.
     /// </summary>
     public enum ExitAction
     {
-        /// <summary>Salva as alterações e fecha a página</summary>
+        /// <summary>Salva as alteraï¿½ï¿½es e fecha a pï¿½gina</summary>
         Save,
-        /// <summary>Descarta as alterações e fecha a página</summary>
+        /// <summary>Descarta as alteraï¿½ï¿½es e fecha a pï¿½gina</summary>
         Discard,
-        /// <summary>Cancela a ação de sair e permanece na página</summary>
+        /// <summary>Cancela a aï¿½ï¿½o de sair e permanece na pï¿½gina</summary>
         Cancel
     }
 
     /// <summary>
-    /// ? Solicita confirmação de saída quando há dados não salvos (versão com 3 opções).
+    /// ? Solicita confirmaï¿½ï¿½o de saï¿½da quando hï¿½ dados nï¿½o salvos (versï¿½o com 3 opï¿½ï¿½es).
     /// Enviada por: BaseEditViewModel.BackNow() quando DataSaved == false.
     /// Recebida por: ContentPageEdit (mostra PopUpThreeOptions).
     /// </summary>
@@ -525,29 +525,29 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Notifica que o usuário escolheu salvar e fechar.
-    /// Enviada por: ContentPageEdit após confirmação no PopUpThreeOptions.
+    /// ? Notifica que o usuï¿½rio escolheu salvar e fechar.
+    /// Enviada por: ContentPageEdit apï¿½s confirmaï¿½ï¿½o no PopUpThreeOptions.
     /// Recebida por: BaseEditViewModel (dispara SaveAndReturn).
     /// </summary>
     public class SaveAndCloseMessage { }
 
     /// <summary>
-    /// ? Notifica que o usuário escolheu descartar e fechar.
-    /// Enviada por: ContentPageEdit após confirmação no PopUpThreeOptions.
-    /// Recebida por: BaseEditViewModel (fecha página sem salvar).
+    /// ? Notifica que o usuï¿½rio escolheu descartar e fechar.
+    /// Enviada por: ContentPageEdit apï¿½s confirmaï¿½ï¿½o no PopUpThreeOptions.
+    /// Recebida por: BaseEditViewModel (fecha pï¿½gina sem salvar).
     /// </summary>
     public class DiscardAndCloseMessage { }
 
     /// <summary>
-    /// ? Notifica que o usuário cancelou a ação de sair.
-    /// Enviada por: ContentPageEdit quando usuário clica Cancelar no PopUpThreeOptions.
+    /// ? Notifica que o usuï¿½rio cancelou a aï¿½ï¿½o de sair.
+    /// Enviada por: ContentPageEdit quando usuï¿½rio clica Cancelar no PopUpThreeOptions.
     /// </summary>
     public class CancelExitMessage { }
 
     /// <summary>
-    /// ? Sinal global: destaca campos obrigatórios vazios em vermelho.
-    /// Enviada por: ViewModel ao clicar Salvar com campos obrigatórios vazios.
-    /// Recebida por: Controles customizados (Entry, ComboBox) que implementam validação visual.
+    /// ? Sinal global: destaca campos obrigatï¿½rios vazios em vermelho.
+    /// Enviada por: ViewModel ao clicar Salvar com campos obrigatï¿½rios vazios.
+    /// Recebida por: Controles customizados (Entry, ComboBox) que implementam validaï¿½ï¿½o visual.
     /// </summary>
     public class HighlightRequiredFieldsMessage
     {
@@ -560,8 +560,8 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// Solicita que todos os controles obrigatórios limpem seu estado de erro visual.
-    /// Enviada por: ContentPageEdit.OnAppearing ao reabrir a página.
+    /// Solicita que todos os controles obrigatï¿½rios limpem seu estado de erro visual.
+    /// Enviada por: ContentPageEdit.OnAppearing ao reabrir a pï¿½gina.
     /// Recebida por: Controles customizados (ISITextField, ComboBox, etc.) que mostram erro visual.
     /// </summary>
     public class ClearValidationErrorsMessage
@@ -575,15 +575,15 @@ namespace SilvaData.Utilities
     }
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 6: NAVEGAÇÃO E FOCO
+    // SEï¿½ï¿½O 6: NAVEGAï¿½ï¿½O E FOCO
     // -------------------------------------------------------------------------------
-    // Mensagens que controlam foco e navegação entre campos.
-    // ?? ACOPLAMENTO: Algumas mensagens passam objetos View (não ideal).
+    // Mensagens que controlam foco e navegaï¿½ï¿½o entre campos.
+    // ?? ACOPLAMENTO: Algumas mensagens passam objetos View (nï¿½o ideal).
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// ? Solicita que o foco mova para o próximo campo.
-    /// ?? ACOPLAMENTO: Passa View diretamente (não ideal, melhor usar code-behind).
+    /// ? Solicita que o foco mova para o prï¿½ximo campo.
+    /// ?? ACOPLAMENTO: Passa View diretamente (nï¿½o ideal, melhor usar code-behind).
     /// Enviada por: Entry ao pressionar Enter.
     /// Recebida por: View code-behind (move foco programaticamente).
     /// </summary>
@@ -594,10 +594,10 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Solicita abertura de modal de seleção de foto para ISI Macro.
-    /// Passa o parâmetro que precisa de foto.
-    /// Enviada por: ISIMacroNota control (botão de foto).
-    /// Recebida por: LoteFormularioView (abre modal de câmera/galeria).
+    /// ? Solicita abertura de modal de seleï¿½ï¿½o de foto para ISI Macro.
+    /// Passa o parï¿½metro que precisa de foto.
+    /// Enviada por: ISIMacroNota control (botï¿½o de foto).
+    /// Recebida por: LoteFormularioView (abre modal de cï¿½mera/galeria).
     /// </summary>
     public class ISIMacroFotoRequestedMessage
     {
@@ -612,22 +612,22 @@ namespace SilvaData.Utilities
     }
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 7: CACHE E SINCRONIZAÇÃO
+    // SEï¿½ï¿½O 7: CACHE E SINCRONIZAï¿½ï¿½O
     // -------------------------------------------------------------------------------
-    // Mensagens relacionadas ao gerenciamento de cache e sincronização de dados.
+    // Mensagens relacionadas ao gerenciamento de cache e sincronizaï¿½ï¿½o de dados.
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// ? Enumeração dos tipos de cache disponíveis.
-    /// Utilizado para controlar qual seção do cache será recarregada.
+    /// ? Enumeraï¿½ï¿½o dos tipos de cache disponï¿½veis.
+    /// Utilizado para controlar qual seï¿½ï¿½o do cache serï¿½ recarregada.
     /// </summary>
     public enum CacheType
     {
-        /// <summary>Cache de Unidades Epidemiológicas</summary>
+        /// <summary>Cache de Unidades Epidemiolï¿½gicas</summary>
         UnidadesEpidemiologicas,
         /// <summary>Cache de Propriedades</summary>
         Propriedades,
-        /// <summary>Cache de Proprietários</summary>
+        /// <summary>Cache de Proprietï¿½rios</summary>
         Proprietarios,
         /// <summary>Cache de Regionais</summary>
         Regionais,
@@ -636,9 +636,9 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Solicita recarga de um setor específico do cache.
-    /// Utilizado após operações de CRUD para sincronizar dados em memória.
-    /// Enviada por: ViewModels após criar/editar/deletar entidades.
+    /// ? Solicita recarga de um setor especï¿½fico do cache.
+    /// Utilizado apï¿½s operaï¿½ï¿½es de CRUD para sincronizar dados em memï¿½ria.
+    /// Enviada por: ViewModels apï¿½s criar/editar/deletar entidades.
     /// Recebida por: CacheService (recarrega dados do banco).
     /// </summary>
     public class RefreshCacheMessage
@@ -652,53 +652,53 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// ? Notifica que sincronização (Download) completa foi finalizada.
+    /// ? Notifica que sincronizaï¿½ï¿½o (Download) completa foi finalizada.
     /// Todos os controles devem recarregar seus dados do CacheService.
     /// Utilizado por ComboBoxes e listas que dependem de dados baixados.
-    /// Enviada por: SincronizacaoViewModel.BaixarDados() (após sucesso).
-    /// Recebida por: Múltiplos ViewModels (recarregam combos e listas).
+    /// Enviada por: SincronizacaoViewModel.BaixarDados() (apï¿½s sucesso).
+    /// Recebida por: Mï¿½ltiplos ViewModels (recarregam combos e listas).
     /// </summary>
     public class UpdateDadosIniciaisMessage { }
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 8: DASHBOARD E GRÁFICOS
+    // SEï¿½ï¿½O 8: DASHBOARD E GRï¿½FICOS
     // -------------------------------------------------------------------------------
-    // Mensagens relacionadas à Dashboard e visualização de gráficos.
+    // Mensagens relacionadas ï¿½ Dashboard e visualizaï¿½ï¿½o de grï¿½ficos.
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// Nível de detalhamento do gráfico exibido (drilldown) dentro de "ISI Score Total".
+    /// Nï¿½vel de detalhamento do grï¿½fico exibido (drilldown) dentro de "ISI Score Total".
     /// Foi renomeado de TipoGrafico para evitar conflito com DashboardTipoGrafico.
     /// </summary>
     public enum GraficoNivel
     {
-        /// <summary>Gráfico de SuperCategoria (agrupamento maior)</summary>
+        /// <summary>Grï¿½fico de SuperCategoria (agrupamento maior)</summary>
         SuperCategoria,
-        /// <summary>Gráfico de Categoria (nível intermediário)</summary>
+        /// <summary>Grï¿½fico de Categoria (nï¿½vel intermediï¿½rio)</summary>
         Categoria,
-        /// <summary>Gráfico de Parâmetro (mais detalhado)</summary>
+        /// <summary>Grï¿½fico de Parï¿½metro (mais detalhado)</summary>
         Parametro,
-        /// <summary>Gráfico de Dispersão (scatter plot, fora do drilldown)</summary>
+        /// <summary>Grï¿½fico de Dispersï¿½o (scatter plot, fora do drilldown)</summary>
         Dispersao
     }
 
     /// <summary>
-    /// Tipo de gráfico principal da Dashboard (abas superiores), controla qual conjunto de visualizações mostrar.
+    /// Tipo de grï¿½fico principal da Dashboard (abas superiores), controla qual conjunto de visualizaï¿½ï¿½es mostrar.
     /// </summary>
     public enum DashboardTipoGrafico
     {
-        /// <summary>Conjunto ISI Score Total (SuperCategoria ? Categoria ? Parâmetro)</summary>
+        /// <summary>Conjunto ISI Score Total (SuperCategoria ? Categoria ? Parï¿½metro)</summary>
         ISIScoreTotal,
-        /// <summary>Conjunto Acometimento (séries de linhas por SuperCategoria)</summary>
+        /// <summary>Conjunto Acometimento (sï¿½ries de linhas por SuperCategoria)</summary>
         Acometimento,
-        /// <summary>Conjunto Dispersão (Scatter plot por dia)</summary>
+        /// <summary>Conjunto Dispersï¿½o (Scatter plot por dia)</summary>
         ISIDispersaoScore
     }
 
     /// <summary>
-    /// ? Solicita mudança para aba de gráficos e exibe gráfico específico.
-    /// Enviada por: Botões/Cards em home que querem mostrar análise visual.
-    /// Recebida por: DashboardViewModel (muda aba e renderiza gráfico).
+    /// ? Solicita mudanï¿½a para aba de grï¿½ficos e exibe grï¿½fico especï¿½fico.
+    /// Enviada por: Botï¿½es/Cards em home que querem mostrar anï¿½lise visual.
+    /// Recebida por: DashboardViewModel (muda aba e renderiza grï¿½fico).
     /// </summary>
     public class ShowGraficoMessage
     {
@@ -711,8 +711,8 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// Notifica mudança no total de alterações pendentes de sincronização.
-    /// Enviada por: SincronizacaoPendentesViewModel (após buscar/alterar a lista).
+    /// Notifica mudanï¿½a no total de alteraï¿½ï¿½es pendentes de sincronizaï¿½ï¿½o.
+    /// Enviada por: SincronizacaoPendentesViewModel (apï¿½s buscar/alterar a lista).
     /// Recebida por: MainPageModel (para exibir badge/contador na aba de Sync).
     ///
     /// Exemplo de envio:
@@ -728,14 +728,14 @@ namespace SilvaData.Utilities
     public class SyncPendentesTotalChangedMessage
     {
         /// <summary>
-        /// Quantidade total de mudanças pendentes para sincronizar.
+        /// Quantidade total de mudanï¿½as pendentes para sincronizar.
         /// </summary>
         public int Total { get; }
 
         /// <summary>
-        /// Cria a mensagem com o total de pendências.
+        /// Cria a mensagem com o total de pendï¿½ncias.
         /// </summary>
-        /// <param name="total">Número de registros pendentes (>= 0).</param>
+        /// <param name="total">Nï¿½mero de registros pendentes (>= 0).</param>
         public SyncPendentesTotalChangedMessage(int total)
         {
             Total = total;
@@ -744,38 +744,38 @@ namespace SilvaData.Utilities
 
 
     /// <summary>
-    /// ? Solicita atualização completa dos dados da Dashboard.
-    /// Dispara recarregamento de gráficos, cards e estatísticas.
+    /// ? Solicita atualizaï¿½ï¿½o completa dos dados da Dashboard.
+    /// Dispara recarregamento de grï¿½ficos, cards e estatï¿½sticas.
     /// Enviada por: HomeViewModel quando dados ficam obsoletos.
     /// Recebida por: DashboardViewModel (dispara carregamento).
     /// </summary>
     public class RequestDashboardRefreshMessage { }
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 9: AUTENTICAÇÃO E SESSÃO
+    // SEï¿½ï¿½O 9: AUTENTICAï¿½ï¿½O E SESSï¿½O
     // -------------------------------------------------------------------------------
     // Mensagens relacionadas ao fluxo de login/logout.
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// ? Notifica que o usuário fez logout com sucesso.
-    /// O AppShell deve limpar navegação e retornar ao Login.
+    /// ? Notifica que o usuï¿½rio fez logout com sucesso.
+    /// O AppShell deve limpar navegaï¿½ï¿½o e retornar ao Login.
     /// Enviada por: MinhaContaViewModel.LogOff().
-    /// Recebida por: AppShell (fecha sessão e volta ao LoginPage).
+    /// Recebida por: AppShell (fecha sessï¿½o e volta ao LoginPage).
     /// </summary>
     public class LogoutSuccessMessage { }
 
     // -------------------------------------------------------------------------------
-    // SEÇÃO 10: MENSAGENS GENÉRICAS E UTILITÁRIAS
+    // SEï¿½ï¿½O 10: MENSAGENS GENï¿½RICAS E UTILITï¿½RIAS
     // -------------------------------------------------------------------------------
-    // Mensagens de propósito geral que não se encaixam em categorias específicas.
+    // Mensagens de propï¿½sito geral que nï¿½o se encaixam em categorias especï¿½ficas.
     // -------------------------------------------------------------------------------
 
     /// <summary>
-    /// ? Mensagem genérica para notificar mudança em qualquer propriedade.
-    /// Utilizada para rastrear alterações e disparar ações reativas.
+    /// ? Mensagem genï¿½rica para notificar mudanï¿½a em qualquer propriedade.
+    /// Utilizada para rastrear alteraï¿½ï¿½es e disparar aï¿½ï¿½es reativas.
     /// Enviada por: Qualquer ViewModel/Model quando uma propriedade muda.
-    /// Recebida por: Listeners interessados em rastrear mudanças específicas.
+    /// Recebida por: Listeners interessados em rastrear mudanï¿½as especï¿½ficas.
     /// 
     /// Exemplo de uso:
     /// <code>
@@ -798,36 +798,36 @@ namespace SilvaData.Utilities
     }
 
     // -------------------------------------------------------------------------------
-    // DOCUMENTAÇÃO DE PADRÕES DE USO
+    // DOCUMENTAï¿½ï¿½O DE PADRï¿½ES DE USO
     // -------------------------------------------------------------------------------
     /*
-     * PADRÃO DE ENVIO:
+     * PADRï¿½O DE ENVIO:
      * ----------------
      * WeakReferenceMessenger.Default.Send(new NomeDaMensagem(parametros));
      * 
-     * PADRÃO DE RECEBIMENTO:
+     * PADRï¿½O DE RECEBIMENTO:
      * ----------------------
      * // No construtor ou OnAppearing:
      * WeakReferenceMessenger.Default.Register<NomeDaMensagem>(this, (recipient, message) =>
      * {
-     *     // Lógica de tratamento
+     *     // Lï¿½gica de tratamento
      * });
      * 
      * // No OnDisappearing ou Cleanup:
      * WeakReferenceMessenger.Default.Unregister<NomeDaMensagem>(this);
      * 
-     * BOAS PRÁTICAS:
+     * BOAS PRï¿½TICAS:
      * --------------
      * 1. ? SEMPRE Unregister no OnDisappearing/Cleanup (evita memory leak)
-     * 2. ? Use WeakReferenceMessenger (não mantém referências fortes)
-     * 3. ? Prefira mensagens específicas a genéricas (ex: LoteAlteradoMessage vs PropriedadeMudouMessage)
+     * 2. ? Use WeakReferenceMessenger (nï¿½o mantï¿½m referï¿½ncias fortes)
+     * 3. ? Prefira mensagens especï¿½ficas a genï¿½ricas (ex: LoteAlteradoMessage vs PropriedadeMudouMessage)
      * 4. ? Documente QUEM envia e QUEM recebe
      * 5. ?? Evite passar objetos View em mensagens (acoplamento)
      * 6. ? Use try-catch nos handlers (previne crashes)
      * 
      * EXEMPLO COMPLETO:
      * -----------------
-     * // Envio (no ViewModel após salvar):
+     * // Envio (no ViewModel apï¿½s salvar):
      * WeakReferenceMessenger.Default.Send(new LoteAlteradoMessage(lote));
      * 
      * // Recebimento (no LoteViewModel):

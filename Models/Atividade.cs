@@ -84,7 +84,7 @@ namespace SilvaData.Models
 
         public DateTime dataUltimaAtualizacao { get; set; }
 
-        //Datas Convertidas para Não Serem NULL
+        //Datas Convertidas para Nï¿½o Serem NULL
         public DateTime dataInicio { get; set; }
         public TimeSpan horaInicio { get; set; }
         public DateTime? dataHoraInicio { get; set; }
@@ -225,7 +225,7 @@ namespace SilvaData.Models
 
             var settings = new JsonSerializerSettings { DateFormatString = "yyyy-MM-dd" };
 
-            //Arruma Diferança nos Nomes dos Campos
+            //Arruma Diferanï¿½a nos Nomes dos Campos
             var UpdateDataParametros = new UpdateDataParametrosAtividade
             {
                 array = Alteracoes
@@ -258,7 +258,7 @@ namespace SilvaData.Models
                     if (resultinfo.id != resultinfo.idApp) await Db.ExecuteAsync($"update Atividade set id={resultinfo.id} where id={resultinfo.idApp}");
                 }
 
-                //Limpa Atualizações
+                //Limpa Atualizaï¿½ï¿½es
                 await Db.ExecuteAsync($"update Atividade set temmudanca=0 where temmudanca=1");
             }
             else
@@ -309,7 +309,7 @@ namespace SilvaData.Models
             "Preto" => Colors.Black,
             "Cinza" => Colors.Gray,
             "Marrom" => Colors.Maroon,
-            "Púrpura" => Colors.MediumPurple,
+            "Pï¿½rpura" => Colors.MediumPurple,
             "Azul Escuro" => Colors.DarkBlue,
             "Verde Escuro" => Colors.DarkGreen,
             _ => Colors.Black,
@@ -317,7 +317,7 @@ namespace SilvaData.Models
 
         [Ignore]
         [JsonIgnore]
-        public string DataHoraInicioPrazo => $"{dataHoraInicio:dd/MM HH:mm} {Traducao.Até} {dataHoraPrazo:dd/MM HH:mm}";
+        public string DataHoraInicioPrazo => $"{dataHoraInicio:dd/MM HH:mm} {Traducao.Atï¿½} {dataHoraPrazo:dd/MM HH:mm}";
 
         public string DescricaoTitulo => $"{titulo}\n{descricao}";
 

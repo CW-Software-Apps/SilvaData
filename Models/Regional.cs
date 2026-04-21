@@ -31,7 +31,7 @@ namespace SilvaData.Models
         // REMOVIDO: public static bool NeedRefresh = true;
 
         /// <summary>
-        /// MIGRADO: Retorna a lista ao invés de modificar estático
+        /// MIGRADO: Retorna a lista ao invï¿½s de modificar estï¿½tico
         /// </summary>
         public static async Task<List<Regional>> PegaListaRegionaisAsync()
         {
@@ -62,7 +62,7 @@ namespace SilvaData.Models
                 await Db.InsertAsync(item);
             }
 
-            // MUDANÇA: Notifica o CacheService
+            // MUDANï¿½A: Notifica o CacheService
             WeakReferenceMessenger.Default.Send(new RefreshCacheMessage(CacheType.Regionais));
         }
 

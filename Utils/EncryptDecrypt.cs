@@ -125,7 +125,7 @@ namespace SilvaData.Utils
             }
             catch (ArgumentException ex)
             {
-                Debug.WriteLine($"[EncryptDecrypt] Argumento inválido: {ex.Message}");
+                Debug.WriteLine($"[EncryptDecrypt] Argumento invï¿½lido: {ex.Message}");
                 return string.Empty; // Retorna vazio em caso de erro
             }
             catch (Exception ex)

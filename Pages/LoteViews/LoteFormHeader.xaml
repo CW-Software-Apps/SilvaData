@@ -29,7 +29,7 @@
                     FontSize="Small"
                     HorizontalOptions="Fill"
                     HorizontalTextAlignment="End"
-                    Text="{Binding IdadeLote, Source={RelativeSource AncestorType={x:Type viewmodels:LoteFormularioViewModel}}, FallbackValue='Não Conseguiu Calcular'}"
+                    Text="{Binding IdadeLote, Source={RelativeSource AncestorType={x:Type viewmodels:LoteFormularioViewModel}}, FallbackValue='Nï¿½o Conseguiu Calcular'}"
                     TextColor="{StaticResource PrimaryColor}"
                     VerticalOptions="Fill"
                     VerticalTextAlignment="Start" />

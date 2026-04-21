@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-// MUDANÇA: Substituindo Xamarin.Forms por Microsoft.Maui.Controls
+// MUDANï¿½A: Substituindo Xamarin.Forms por Microsoft.Maui.Controls
 using Microsoft.Maui.Controls;
 
 namespace ISIInstitute.Views.Templates
 {
-    // A lógica do DataTemplateSelector é 100% compatível com MAUI
+    // A lï¿½gica do DataTemplateSelector ï¿½ 100% compatï¿½vel com MAUI
     public class AvaliacaoGalpaoTemplateSelector : DataTemplateSelector
     {
         public DataTemplate Quantitativo { get; set; }
@@ -18,7 +18,7 @@ namespace ISIInstitute.Views.Templates
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            // O tipo do item (LoteFormAvaliacaoGalpao) e a lógica do switch são mantidos
+            // O tipo do item (LoteFormAvaliacaoGalpao) e a lï¿½gica do switch sï¿½o mantidos
             switch (((LoteFormAvaliacaoGalpao)item).Parametro?.campoTipo)
             {
                 case null:
@@ -31,7 +31,7 @@ namespace ISIInstitute.Views.Templates
         }
     }
 
-    // A lógica do DataTemplateSelector é 100% compatível com MAUI
+    // A lï¿½gica do DataTemplateSelector ï¿½ 100% compatï¿½vel com MAUI
     public class AvaliacaoGalpaoListagemGridTemplateSelector : DataTemplateSelector
     {
         public DataTemplate Quantitativo { get; set; }
@@ -40,7 +40,7 @@ namespace ISIInstitute.Views.Templates
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            // O tipo do item (AvaliacaoGalpaoButton) e a lógica do switch são mantidos
+            // O tipo do item (AvaliacaoGalpaoButton) e a lï¿½gica do switch sï¿½o mantidos
             switch (((AvaliacaoGalpaoButton)item).CampoTipo)
             {
                 case null:

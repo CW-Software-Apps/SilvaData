@@ -9,29 +9,29 @@ using System; // Adicionado para Uri
 namespace SilvaData.PageModels
 {
     /// <summary>
-    /// ViewModel da página de suporte.
-    /// Contém comandos para abrir o site, enviar e-mail, abrir WhatsApp e enviar backup do banco de dados.
+    /// ViewModel da pï¿½gina de suporte.
+    /// Contï¿½m comandos para abrir o site, enviar e-mail, abrir WhatsApp e enviar backup do banco de dados.
     /// </summary>
     public partial class SuportePageViewModel : PageModelBase
     {
         /// <summary>
-        /// Obtém a string da versão formatada do aplicativo (ex: "Versão 1.0.0").
+        /// Obtï¿½m a string da versï¿½o formatada do aplicativo (ex: "Versï¿½o 1.0.0").
         /// </summary>
         [ObservableProperty]
         private string versaoApp = string.Empty;
 
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="SuportePageViewModel"/>.
+        /// Inicializa uma nova instï¿½ncia da classe <see cref="SuportePageViewModel"/>.
         /// </summary>
         public SuportePageViewModel()
         {
-            // Define a versão do app ao inicializar o ViewModel
+            // Define a versï¿½o do app ao inicializar o ViewModel
             var version = AppInfo.Current.VersionString;
-            VersaoApp = $"{Traducao.Versão} {version}";
+            VersaoApp = $"{Traducao.Versï¿½o} {version}";
         }
 
         /// <summary>
-        /// Comando que abre o site oficial do ISI no navegador padrão do dispositivo.
+        /// Comando que abre o site oficial do ISI no navegador padrï¿½o do dispositivo.
         /// </summary>
         [RelayCommand]
         private async Task Site()
@@ -40,7 +40,7 @@ namespace SilvaData.PageModels
         }
 
         /// <summary>
-        /// Comando que inicia o cliente de e-mail com o endereço do suporte.
+        /// Comando que inicia o cliente de e-mail com o endereï¿½o do suporte.
         /// </summary>
         [RelayCommand]
         async Task Email()
@@ -50,7 +50,7 @@ namespace SilvaData.PageModels
         }
 
         /// <summary>
-        /// Comando que tenta abrir uma conversa no WhatsApp com o número de suporte.
+        /// Comando que tenta abrir uma conversa no WhatsApp com o nï¿½mero de suporte.
         /// </summary>
         [RelayCommand]
         async Task WhatsApp()
@@ -59,7 +59,7 @@ namespace SilvaData.PageModels
         }
 
         /// <summary>
-        /// Comando que cria um backup completo (zip) e inicia o diálogo de compartilhamento.
+        /// Comando que cria um backup completo (zip) e inicia o diï¿½logo de compartilhamento.
         /// </summary>
         [RelayCommand]
         private async Task EnviarBancoDadosSuporte()

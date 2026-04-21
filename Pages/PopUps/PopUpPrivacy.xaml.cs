@@ -12,19 +12,19 @@ namespace SilvaData.Pages.PopUps
         }
         
         /// <summary>
-        /// Exibe um popup com a política de privacidade para o usuário aceitar ou recusar.
+        /// Exibe um popup com a polï¿½tica de privacidade para o usuï¿½rio aceitar ou recusar.
         /// </summary>
-        /// <param name="titulo">Título do popup</param>
-        /// <param name="textoPrivacidade">Texto completo da política de privacidade</param>
-        /// <returns>True se o usuário aceitar, False se recusar ou fechar o popup</returns>
+        /// <param name="titulo">Tï¿½tulo do popup</param>
+        /// <param name="textoPrivacidade">Texto completo da polï¿½tica de privacidade</param>
+        /// <returns>True se o usuï¿½rio aceitar, False se recusar ou fechar o popup</returns>
         public static async Task<bool> ShowAsync(string titulo, string textoPrivacidade)
         {
             var popup = new PopUpPrivacy(titulo, textoPrivacidade);
             
-            // Usa o método genérico do NavigationUtils que já lida com o tipo de retorno
+            // Usa o mï¿½todo genï¿½rico do NavigationUtils que jï¿½ lida com o tipo de retorno
             var result = await NavigationUtils.ShowPopupAsync<bool>(popup);
             
-            // Retorna o resultado ou false (Recusar) se o usuário fechou o popup sem escolher
+            // Retorna o resultado ou false (Recusar) se o usuï¿½rio fechou o popup sem escolher
             return result;
         }
     }

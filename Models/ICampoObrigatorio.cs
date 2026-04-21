@@ -1,13 +1,13 @@
 namespace SilvaData.Controls
 {
     /// <summary>
-    /// Essa INTERFACE serve para permitir o controle de campos obrigatórios no Form
+    /// Essa INTERFACE serve para permitir o controle de campos obrigatï¿½rios no Form
     /// </summary>
     public interface ICampoObrigatorio
     {
         /// <summary>
-        /// Função Obrigatória para Verificar se o Campo Está Preenchido Corratamente
-        /// Nesta função é necessário setar o hasError do sfInputField
+        /// Funï¿½ï¿½o Obrigatï¿½ria para Verificar se o Campo Estï¿½ Preenchido Corratamente
+        /// Nesta funï¿½ï¿½o ï¿½ necessï¿½rio setar o hasError do sfInputField
         /// </summary>
         bool PreenchidoCorretamente();
     }

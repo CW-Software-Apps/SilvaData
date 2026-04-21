@@ -19,7 +19,7 @@
 
     <!--  Grid raiz para sobrepor o overlay de loading  -->
     <Grid>
-        <!--  Conteúdo rolável (centralizado)  -->
+        <!--  Conteï¿½do rolï¿½vel (centralizado)  -->
         <Grid
             Padding="10"
             ColumnDefinitions="*,Auto,*"
@@ -85,7 +85,7 @@
                             Text="{Binding Password, Mode=TwoWay}" />
                     </StackLayout>
 
-                    <!--  Botão Login  -->
+                    <!--  Botï¿½o Login  -->
                     <button:SfButton
                         Grid.Row="2"
                         Margin="0,8,0,0"
@@ -138,7 +138,7 @@
                         </Image>
                     </Grid>
 
-                    <!--  Ações secundárias  -->
+                    <!--  Aï¿½ï¿½es secundï¿½rias  -->
                     <Grid
                         Grid.Row="4"
                         Margin="0,8,0,0"
@@ -156,14 +156,14 @@
                             BackgroundColor="White"
                             Command="{Binding PolicyPrivacyCommand}"
                             Style="{StaticResource ButtonSecondary}"
-                            Text="{localization:Translate PolíticaDePrivacidade}"
+                            Text="{localization:Translate Polï¿½ticaDePrivacidade}"
                             TextColor="{StaticResource PrimaryColor}" />
                     </Grid>
                 </Grid>
             </Border>
         </Grid>
 
-        <!--  Overlay de carregamento (scrim + cartão central sem borda)  -->
+        <!--  Overlay de carregamento (scrim + cartï¿½o central sem borda)  -->
 
         <controls:LoadingView
             x:Name="busyindicator"

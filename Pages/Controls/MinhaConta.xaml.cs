@@ -6,14 +6,14 @@ using SilvaData.Utils; // Adicionado
 namespace ISIInstitute.Views // (Mantendo seu namespace original)
 {
     /// <summary>
-    /// View (Página) para a tela "Minha Conta".
+    /// View (Pï¿½gina) para a tela "Minha Conta".
     /// </summary>
     public partial class MinhaConta : ContentPageWithLocalization
     {
         private readonly MinhaContaViewModel ViewModel;
 
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="MinhaConta"/>.
+        /// Inicializa uma nova instï¿½ncia da classe <see cref="MinhaConta"/>.
         /// </summary>
         public MinhaConta()
         {

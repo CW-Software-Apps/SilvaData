@@ -188,13 +188,13 @@
                                 FontAttributes="Bold"
                                 FontSize="18"
                                 HorizontalTextAlignment="Center"
-                                Text="Nenhuma alternativa disponível"
+                                Text="Nenhuma alternativa disponï¿½vel"
                                 TextColor="#424242" />
                             <Label
                                 FontSize="14"
                                 HorizontalTextAlignment="Center"
                                 Opacity="0.7"
-                                Text="Adicione alternativas para começar"
+                                Text="Adicione alternativas para comeï¿½ar"
                                 TextColor="#757575" />
                         </VerticalStackLayout>
                     </VerticalStackLayout>

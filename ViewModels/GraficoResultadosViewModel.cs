@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 namespace SilvaData.ViewModels
 {
     /// <summary>
-    /// ViewModel para a aba "Meus Resultados" (Gráficos).
+    /// ViewModel para a aba "Meus Resultados" (Grï¿½ficos).
     /// </summary>
     public partial class GraficoResultadosViewModel : ViewModelBase
     {
@@ -28,7 +28,7 @@ namespace SilvaData.ViewModels
         [NotifyPropertyChangedFor(nameof(PodeVoltarParaCategoria))]
         private DashboardTipoGrafico tipoGrafico = DashboardTipoGrafico.ISIScoreTotal;
 
-        // Nível atual dentro do conjunto ISI Score Total (drilldown)
+        // Nï¿½vel atual dentro do conjunto ISI Score Total (drilldown)
         private GraficoNivel nivelAtual = GraficoNivel.SuperCategoria;
 
         // Propriedades de Visibilidade
@@ -47,7 +47,7 @@ namespace SilvaData.ViewModels
         [ObservableProperty][NotifyPropertyChangedFor(nameof(PrecisaMostraFiltros))] private bool filtroVisible = false;
         public bool PrecisaMostraFiltros => !IsLandscape && FiltroVisible;
 
-        // Coleções de Séries dos Gráficos
+        // Coleï¿½ï¿½es de Sï¿½ries dos Grï¿½ficos
         [ObservableProperty] ChartSeriesCollection acometimentoSeriesCollection = new();
         [ObservableProperty] ChartSeriesCollection superCategoriaSeriesCollection = new();
         [ObservableProperty] ChartSeriesCollection categoriaSeriesCollection = new();
@@ -75,9 +75,9 @@ namespace SilvaData.ViewModels
                 var result = $"{lastSync.ToShortDateString()} {lastSync.ToShortTimeString()}";
 
                 if (diferenca.TotalSeconds < 60)
-                    result += $" ({string.Format(Traducao._0SegundosAtrás, (int)diferenca.TotalSeconds)})";
+                    result += $" ({string.Format(Traducao._0SegundosAtrï¿½s, (int)diferenca.TotalSeconds)})";
                 else
-                    result += $" ({string.Format(Traducao._0MinutosAtrás, (int)diferenca.TotalMinutes)})";
+                    result += $" ({string.Format(Traducao._0MinutosAtrï¿½s, (int)diferenca.TotalMinutes)})";
 
                 return result;
             }
@@ -130,8 +130,8 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// (Este comando é chamado pelo Pai: DashboardViewModel)
-        /// Também faz download dos dados na web antes de redesenhar.
+        /// (Este comando ï¿½ chamado pelo Pai: DashboardViewModel)
+        /// Tambï¿½m faz download dos dados na web antes de redesenhar.
         /// </summary>
         [RelayCommand]
         public async Task AtualizaAgora()
@@ -153,7 +153,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Chamado pelos filtros ou pela atualização para redesenhar os gráficos.
+        /// Chamado pelos filtros ou pela atualizaï¿½ï¿½o para redesenhar os grï¿½ficos.
         /// </summary>
         [RelayCommand(CanExecute = nameof(CanExecuteCommands))]
         public void AtualizaGraficos()
@@ -224,7 +224,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// (Este método é chamado pelo Messenger)
+        /// (Este mï¿½todo ï¿½ chamado pelo Messenger)
         /// </summary>
         public void AtualizaGraficos(Graficos graficos)
         {
@@ -357,7 +357,7 @@ namespace SilvaData.ViewModels
         {
             DashboardTipoGrafico.ISIScoreTotal => Traducao.ISIScoreTotal,
             DashboardTipoGrafico.Acometimento => Traducao.Acometimento,
-            DashboardTipoGrafico.ISIDispersaoScore => "Dispersão",
+            DashboardTipoGrafico.ISIDispersaoScore => "Dispersï¿½o",
             _ => "Resultados"
         };
 

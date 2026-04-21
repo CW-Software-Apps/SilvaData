@@ -4,12 +4,12 @@ using SilvaData.PageModels; // Para SuportePageViewModel
 namespace SilvaData.Controls
 {
     /// <summary>
-    /// View (ContentView) para a página de Suporte.
+    /// View (ContentView) para a pï¿½gina de Suporte.
     /// </summary>
     public partial class SuportePage : ContentView
     {
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="SuportePage"/>.
+        /// Inicializa uma nova instï¿½ncia da classe <see cref="SuportePage"/>.
         /// </summary>
         public SuportePage()
         {

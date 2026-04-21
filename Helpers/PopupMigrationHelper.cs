@@ -9,16 +9,16 @@ namespace SilvaData.Pages.PopUps
     public class PopupMigrationHelper
     {
         /// <summary>
-        /// Lista de alterações necessárias para migrar popups do Xamarin para MAUI
+        /// Lista de alteraï¿½ï¿½es necessï¿½rias para migrar popups do Xamarin para MAUI
         /// </summary>
         public static IEnumerable<string> MigrationSteps()
         {
             return new[]
             {
-                "1. Alterar a herança de PopupPage para Popup (CommunityToolkit.Maui.Views)",
+                "1. Alterar a heranï¿½a de PopupPage para Popup (CommunityToolkit.Maui.Views)",
                 "2. Alterar o namespace de ISIInstitute.Views.PopUps para SilvaData.Pages.PopUps",
                 "3. Remover o atributo [XamlCompilation(XamlCompilationOptions.Compile)]",
-                "4. Alterar os métodos de navegação:",
+                "4. Alterar os mï¿½todos de navegaï¿½ï¿½o:",
                 "   - Navigation.PushPopupAsync() -> page.ShowPopupAsync()",
                 "   - Navigation.PopPopupAsync() -> popup.Close(result)",
                 "5. Substituir OnDisappearing pelo evento Closed",
@@ -26,7 +26,7 @@ namespace SilvaData.Pages.PopUps
                 "   - xmlns:pages=\"http://rotorgames.com\" -> xmlns:toolkit=\"http://schemas.microsoft.com/dotnet/2022/maui/toolkit\"",
                 "   - pages:PopupPage -> toolkit:Popup",
                 "   - Atualizar os controles para equivalentes MAUI",
-                "7. Adicionar métodos de extensão no PopupExtensions.cs para uso conveniente"
+                "7. Adicionar mï¿½todos de extensï¿½o no PopupExtensions.cs para uso conveniente"
             };
         }
         
@@ -39,28 +39,28 @@ namespace SilvaData.Pages.PopUps
             {
                 (
                     "PopUpOK",
-                    @"// Exemplo 1: Usando o método estático
-await PopUpOK.ShowAsync(""Título"", ""Mensagem"");
+                    @"// Exemplo 1: Usando o mï¿½todo estï¿½tico
+await PopUpOK.ShowAsync(""Tï¿½tulo"", ""Mensagem"");
 
-// Exemplo 2: Usando a extensão
-await this.ShowOKPopupAsync(""Título"", ""Mensagem"");
+// Exemplo 2: Usando a extensï¿½o
+await this.ShowOKPopupAsync(""Tï¿½tulo"", ""Mensagem"");
 
-// Exemplo 3: Usando a instância diretamente
-var popup = new PopUpOK(""Título"", ""Mensagem"");
+// Exemplo 3: Usando a instï¿½ncia diretamente
+var popup = new PopUpOK(""Tï¿½tulo"", ""Mensagem"");
 await Shell.Current.CurrentPage.ShowPopupAsync(popup);"
                 ),
                 (
                     "PopUpYesNo",
-                    @"// Retorna true se Sim, false se Não
-bool resposta = await this.ShowYesNoPopupAsync(""Confirmação"", ""Deseja continuar?"");
+                    @"// Retorna true se Sim, false se Nï¿½o
+bool resposta = await this.ShowYesNoPopupAsync(""Confirmaï¿½ï¿½o"", ""Deseja continuar?"");
 if (resposta)
 {
-    // Usuário escolheu Sim
+    // Usuï¿½rio escolheu Sim
 }"
                 ),
                 (
                     "SelectModeloPopup",
-                    @"// T é o tipo de objeto a ser selecionado
+                    @"// T ï¿½ o tipo de objeto a ser selecionado
 var modelo = await this.ShowSelectModeloPopupAsync<Cliente>(
     ""Selecione um cliente"", 
     listaClientes, 
@@ -69,7 +69,7 @@ var modelo = await this.ShowSelectModeloPopupAsync<Cliente>(
 
 if (modelo != null)
 {
-    // Usuário selecionou um modelo
+    // Usuï¿½rio selecionou um modelo
 }"
                 )
             };

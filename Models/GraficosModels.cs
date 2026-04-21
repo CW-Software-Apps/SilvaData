@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace SilvaData.Models
 {
     /// <summary>
-    /// DTO para os parâmetros de requisição dos gráficos.
+    /// DTO para os parï¿½metros de requisiï¿½ï¿½o dos grï¿½ficos.
     /// </summary>
     public class pegaGraficosParametros
     {
@@ -30,14 +30,14 @@ namespace SilvaData.Models
 
     /// <summary>
     /// Modelo para dados de SuperCategoria agrupados por UE.
-    /// MIGRADO: Propriedade computada removida (será resolvida no ViewModel).
+    /// MIGRADO: Propriedade computada removida (serï¿½ resolvida no ViewModel).
     /// </summary>
     public partial class GraficoSuperCategoriaAgrupadoPorUE : GraficoSuperCategoriaAgrupado
     {
         public int UnidadeEpidemiologicaId { get; set; }
 
         // REMOVIDO: [JsonIgnore] public string? UnidadeEpidemiologicaNome => ...
-        // Agora será resolvido no ViewModel usando CacheService quando necessário:
+        // Agora serï¿½ resolvido no ViewModel usando CacheService quando necessï¿½rio:
         // var nomeDaUE = _cacheService.UEList.FirstOrDefault(ue => ue.id == item.UnidadeEpidemiologicaId)?.nome;
     }
 
@@ -56,7 +56,7 @@ namespace SilvaData.Models
 
     /// <summary>
     /// Modelo para dados de Categoria agrupados por UE.
-    /// MIGRADO: Propriedade computada removida (será resolvida no ViewModel).
+    /// MIGRADO: Propriedade computada removida (serï¿½ resolvida no ViewModel).
     /// </summary>
     public partial class GraficoCategoriaAgrupadoPorUE : GraficoCategoriaAgrupado
     {
@@ -66,7 +66,7 @@ namespace SilvaData.Models
     }
 
     /// <summary>
-    /// Modelo base para dados de Parâmetro agrupados.
+    /// Modelo base para dados de Parï¿½metro agrupados.
     /// </summary>
     public partial class GraficoParametroAgrupado : ObservableObject
     {
@@ -79,8 +79,8 @@ namespace SilvaData.Models
     }
 
     /// <summary>
-    /// Modelo para dados de Parâmetro agrupados por UE.
-    /// MIGRADO: Propriedade computada removida (será resolvida no ViewModel).
+    /// Modelo para dados de Parï¿½metro agrupados por UE.
+    /// MIGRADO: Propriedade computada removida (serï¿½ resolvida no ViewModel).
     /// </summary>
     public partial class GraficoParametroAgrupadoPorUE : GraficoParametroAgrupado
     {
@@ -91,7 +91,7 @@ namespace SilvaData.Models
 
     /// <summary>
     /// Modelo de dados brutos (DTO) vindo da API para SuperCategoria.
-    /// MIGRADO: Propriedades computadas removidas (serão resolvidas no ViewModel).
+    /// MIGRADO: Propriedades computadas removidas (serï¿½o resolvidas no ViewModel).
     /// </summary>
     public partial class GraficoSuperCategoria : ObservableObject
     {
@@ -116,8 +116,8 @@ namespace SilvaData.Models
     }
 
     /// <summary>
-    /// Modelo de dados brutos (DTO) vindo da API para Dispersão.
-    /// MIGRADO: Modelo simplificado (sem dependências externas).
+    /// Modelo de dados brutos (DTO) vindo da API para Dispersï¿½o.
+    /// MIGRADO: Modelo simplificado (sem dependï¿½ncias externas).
     /// </summary>
     public partial class GraficoDispersao : ObservableObject
     {

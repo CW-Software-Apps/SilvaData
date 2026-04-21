@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace SilvaData.ViewModels
 {
     /// <summary>
-    /// ViewModel para o PopUp do Menu do Usuário (Minha Conta, Privacidade, Sair).
+    /// ViewModel para o PopUp do Menu do Usuï¿½rio (Minha Conta, Privacidade, Sair).
     /// </summary>
     public partial class PopUpUsuarioViewModel : ObservableObject
     {
@@ -77,7 +77,7 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Fecha o popup e pergunta se o usuário quer deslogar.
+        /// Fecha o popup e pergunta se o usuï¿½rio quer deslogar.
         /// </summary>
         [RelayCommand]
         private async Task LogOffAsync()

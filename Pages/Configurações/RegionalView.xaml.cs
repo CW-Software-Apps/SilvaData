@@ -10,8 +10,8 @@ using System.Linq;
 namespace SilvaData.Controls
 {
     /// <summary>
-    /// Página para visualizar e gerenciar a lista de Regionais.
-    /// MIGRADO: Usa CacheService ao invés de DadosStatic.
+    /// Pï¿½gina para visualizar e gerenciar a lista de Regionais.
+    /// MIGRADO: Usa CacheService ao invï¿½s de DadosStatic.
     /// </summary>
     public partial class RegionalView : ContentPageWithLocalization
     {
@@ -34,26 +34,26 @@ namespace SilvaData.Controls
             BindingContext = this;
         }
 
-        #region Ciclo de Vida da Página
+        #region Ciclo de Vida da Pï¿½gina
 
         /// <summary>
-        /// Chamado quando a página está prestes a se tornar visível.
+        /// Chamado quando a pï¿½gina estï¿½ prestes a se tornar visï¿½vel.
         /// Carrega os dados e registra os receptores de mensagens.
         /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            // MIGRADO: Usa CacheService ao invés de DadosStatic
+            // MIGRADO: Usa CacheService ao invï¿½s de DadosStatic
             ListaRegionais = new ObservableCollection<Regional>(_cacheService.RegionalList);
 
-            // Notifica a UI (o SfListView) que a propriedade da coleção mudou.
+            // Notifica a UI (o SfListView) que a propriedade da coleï¿½ï¿½o mudou.
             OnPropertyChanged(nameof(ListaRegionais));
 
             // Aplica o filtro
             RefreshData();
 
-            // Registra as mensagens para atualizações em tempo real
+            // Registra as mensagens para atualizaï¿½ï¿½es em tempo real
             WeakReferenceMessenger.Default.Register<RegionalAdicionadaMessage>(this, (recipient, message) =>
             {
                 ListaRegionais.Insert(0, message.Regional);
@@ -83,7 +83,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Chamado quando a página não está mais visível.
+        /// Chamado quando a pï¿½gina nï¿½o estï¿½ mais visï¿½vel.
         /// Remove o registro dos receptores de mensagens.
         /// </summary>
         protected override void OnDisappearing()
@@ -100,7 +100,7 @@ namespace SilvaData.Controls
         #region Comandos
 
         /// <summary>
-        /// Comando para navegar para a tela de edição de uma regional.
+        /// Comando para navegar para a tela de ediï¿½ï¿½o de uma regional.
         /// </summary>
         [RelayCommand(CanExecute = nameof(PodeEditar))]
         private async Task Edit(Regional regional)
@@ -109,7 +109,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Comando para navegar para a tela de adição de uma nova regional.
+        /// Comando para navegar para a tela de adiï¿½ï¿½o de uma nova regional.
         /// </summary>
         [RelayCommand(CanExecute = nameof(PodeAdicionar))]
         private async Task AddNew()
@@ -118,7 +118,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Comando para fechar a página modal atual.
+        /// Comando para fechar a pï¿½gina modal atual.
         /// </summary>
         [RelayCommand]
         public async Task Voltar()
@@ -128,28 +128,28 @@ namespace SilvaData.Controls
 
         #endregion
 
-        #region Permissões
+        #region Permissï¿½es
 
         /// <summary>
-        /// Obtém um valor que indica se o usuário pode editar regionais.
+        /// Obtï¿½m um valor que indica se o usuï¿½rio pode editar regionais.
         /// </summary>
         public bool PodeEditar => Permissoes.UsuarioPermissoes?.regionais.atualizar ?? false;
 
         /// <summary>
-        /// Obtém um valor que indica se o usuário pode adicionar novas regionais.
+        /// Obtï¿½m um valor que indica se o usuï¿½rio pode adicionar novas regionais.
         /// </summary>
         public bool PodeAdicionar => Permissoes.UsuarioPermissoes?.regionais.cadastrar ?? false;
 
         #endregion
 
-        #region Lógica de Filtro e Dados
+        #region Lï¿½gica de Filtro e Dados
 
         /// <summary>
         /// Atualiza o filtro da SfListView.
         /// </summary>
         public void RefreshData()
         {
-            // Assumindo que 'listaRegionais' é o x:Name do SfListView no XAML
+            // Assumindo que 'listaRegionais' ï¿½ o x:Name do SfListView no XAML
             if (listaRegionais.DataSource != null)
             {
                 listaRegionais.DataSource.Filter = filterData;
@@ -158,7 +158,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Método de predicado de filtro para a SfListView.
+        /// Mï¿½todo de predicado de filtro para a SfListView.
         /// </summary>
         private bool filterData(object obj)
         {
@@ -177,7 +177,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Manipulador de evento para alteração de texto na barra de pesquisa.
+        /// Manipulador de evento para alteraï¿½ï¿½o de texto na barra de pesquisa.
         /// </summary>
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -186,7 +186,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Navega para a página de edição de uma regional específica.
+        /// Navega para a pï¿½gina de ediï¿½ï¿½o de uma regional especï¿½fica.
         /// </summary>
         public async Task Editar(Regional regional)
         {

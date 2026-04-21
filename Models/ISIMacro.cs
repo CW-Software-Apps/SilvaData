@@ -17,25 +17,25 @@ namespace SilvaData.Models
 
 
         /// <summary>
-        /// Obtém os itens com detalhes do loteFormId especificado. 
+        /// Obtï¿½m os itens com detalhes do loteFormId especificado. 
         /// </summary>
         /// <param name="loteFormId"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         public static async Task<List<ISIMacro>> GetItemsComDetalhesAsync(int? loteFormId)
         {
-            // Verifica se o loteFormId é nulo
+            // Verifica se o loteFormId ï¿½ nulo
             if (loteFormId == null)
             {
-                throw new ArgumentNullException(nameof(loteFormId), "O ID do lote não pode ser nulo.");
+                throw new ArgumentNullException(nameof(loteFormId), "O ID do lote nï¿½o pode ser nulo.");
             }
 
             // Executa a consulta SQL para obter os itens com detalhes
-            // IMPORTANTE: O filtro "p.Tipo = 0" é INTENCIONAL aqui.
-            // Esta query calcula o score total por categoria para exibição no resumo do ISI Macro.
-            // Parâmetros "Isolados" (Tipo = 1) são registrados no formulário mas NÃO entram
-            // no cálculo do score — por isso o JOIN exclui Tipo != 0.
-            // No formulário de preenchimento, os parâmetros Isolados SÃO exibidos (ver
+            // IMPORTANTE: O filtro "p.Tipo = 0" ï¿½ INTENCIONAL aqui.
+            // Esta query calcula o score total por categoria para exibiï¿½ï¿½o no resumo do ISI Macro.
+            // Parï¿½metros "Isolados" (Tipo = 1) sï¿½o registrados no formulï¿½rio mas Nï¿½O entram
+            // no cï¿½lculo do score ï¿½ por isso o JOIN exclui Tipo != 0.
+            // No formulï¿½rio de preenchimento, os parï¿½metros Isolados Sï¿½O exibidos (ver
             // GetForFormAsync em Parametros.cs), mas a propriedade Nota deles retorna 0.
             return await Db.QueryAsync<ISIMacro>(
                 "SELECT p.parametroCategoriaId, pc.nome, SUM(pa.score * p.peso) AS scoreTotal " +

@@ -16,9 +16,9 @@ namespace SilvaData.Models
 
     public class UpdateDataParametros
     {
-        public string usuario; //id do usuário
-        public string dispositivoId; //identificador do dispositivo de sessão
-        public string session; //id da sessão (que é retornado no login)
+        public string usuario; //id do usuï¿½rio
+        public string dispositivoId; //identificador do dispositivo de sessï¿½o
+        public string session; //id da sessï¿½o (que ï¿½ retornado no login)
         public string array;
 
         public UpdateDataParametros()

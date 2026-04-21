@@ -6,7 +6,7 @@ namespace SilvaData.Controls
     public interface IValidatablePage
     {
         /// <summary>
-        /// Executa a validação da UI e retorna true se for válida.
+        /// Executa a validaï¿½ï¿½o da UI e retorna true se for vï¿½lida.
         /// </summary>
         Task<bool> ValidateFormAsync();
     }

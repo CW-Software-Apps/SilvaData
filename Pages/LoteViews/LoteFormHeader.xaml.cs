@@ -6,13 +6,13 @@ namespace SilvaData.Controls
 {
     public partial class LoteFormHeader : ContentView
     {
-        // Construtor sem parâmetros necessário para instanciação via XAML
+        // Construtor sem parï¿½metros necessï¿½rio para instanciaï¿½ï¿½o via XAML
         public LoteFormHeader()
         {
             InitializeComponent();
         }
 
-        // Construtor opcional com ViewModel para cenários de DI
+        // Construtor opcional com ViewModel para cenï¿½rios de DI
         public LoteFormHeader(LoteFormularioViewModel loteFormViewModel)
         {
             InitializeComponent();

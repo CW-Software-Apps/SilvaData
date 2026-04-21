@@ -5,15 +5,15 @@ using CommunityToolkit.Maui.Views;
 namespace SilvaData.Pages.PopUps
 {
     /// <summary>
-    /// Popup que exibe uma imagem em tela cheia com título.
+    /// Popup que exibe uma imagem em tela cheia com tï¿½tulo.
     /// </summary>
     public partial class PhotoPopup : Popup
     {
         /// <summary>
-        /// Inicializa uma nova instância do popup de foto.
+        /// Inicializa uma nova instï¿½ncia do popup de foto.
         /// </summary>
         /// <param name="photoUrl">URL ou caminho da imagem a ser exibida</param>
-        /// <param name="titulo">Título a ser mostrado acima da imagem</param>
+        /// <param name="titulo">Tï¿½tulo a ser mostrado acima da imagem</param>
         public PhotoPopup(string photoUrl, string titulo)
         {
             InitializeComponent();
@@ -24,13 +24,13 @@ namespace SilvaData.Pages.PopUps
         /// Exibe um popup com uma imagem em tela cheia.
         /// </summary>
         /// <param name="photoUrl">URL ou caminho da imagem a ser exibida</param>
-        /// <param name="titulo">Título a ser mostrado acima da imagem</param>
-        /// <returns>Task que completa quando o popup é fechado</returns>
+        /// <param name="titulo">Tï¿½tulo a ser mostrado acima da imagem</param>
+        /// <returns>Task que completa quando o popup ï¿½ fechado</returns>
         public static Task ShowAsync(string photoUrl, string titulo)
         {
             var popup = new PhotoPopup(photoUrl, titulo);
 
-            // Usa o método do NavigationUtils para exibir o popup
+            // Usa o mï¿½todo do NavigationUtils para exibir o popup
             return NavigationUtils.ShowPopupAsync(popup);
         }
     }
@@ -57,7 +57,7 @@ namespace SilvaData.Pages.PopUps
         /// Comando para fechar o popup.
         /// </summary>
         [RelayCommand]
-        private Task CloseAsync() // **MUDANÇA:** Renomeado e tornado assíncrono para Task
+        private Task CloseAsync() // **MUDANï¿½A:** Renomeado e tornado assï¿½ncrono para Task
         {
             return _popup.CloseAsync();
         }

@@ -7,6 +7,6 @@ global using SilvaData.Utilities;
 global using Microsoft.Maui.Controls;
 global using Microsoft.Maui.Graphics;
 
-// Adiciona alias global para localização baseado nos Resources (.resx)
+// Adiciona alias global para localizaï¿½ï¿½o baseado nos Resources (.resx)
 global using Traducao = SilvaData.Resources.Localization.Localization;
 global using Microsoft.Maui.ApplicationModel.DataTransfer;

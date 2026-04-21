@@ -25,7 +25,7 @@ namespace SilvaData.ViewModels
         public static SincronizacaoPendentesViewModel? Instance { get; private set; }
 
         /// <summary>
-        /// Número total de alterações pendentes na UI.
+        /// Nï¿½mero total de alteraï¿½ï¿½es pendentes na UI.
         /// </summary>
         public int TotalAlteracoes => ListaAlteracoes?.Sum(la => la.Qtde) ?? 0;
 
@@ -36,7 +36,7 @@ namespace SilvaData.ViewModels
             // Torna a ObservableCollection thread-safe para updates paralelos
             BindingBase.EnableCollectionSynchronization(ListaAlteracoes, null, ObservableCollectionCallback);
 
-            // Monitora mudanças para notificar o total (ex: badge no tab)
+            // Monitora mudanï¿½as para notificar o total (ex: badge no tab)
             ListaAlteracoes.CollectionChanged += (s, e) =>
             {
                 OnPropertyChanged(nameof(TotalAlteracoes));
@@ -44,7 +44,7 @@ namespace SilvaData.ViewModels
             };
         }
 
-        // Callback para sincronização thread-safe — necessário para evitar exceções em acesso concorrente
+        // Callback para sincronizaï¿½ï¿½o thread-safe ï¿½ necessï¿½rio para evitar exceï¿½ï¿½es em acesso concorrente
         private static void ObservableCollectionCallback(object collection, object context, Action accessMethod, bool writeAccess)
         {
             lock (collection)
@@ -54,17 +54,17 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Indica se há alterações *na interface* (pode estar desatualizado após upload)
+        /// Indica se hï¿½ alteraï¿½ï¿½es *na interface* (pode estar desatualizado apï¿½s upload)
         /// </summary>
         public bool TemAlteracoes => ListaAlteracoes.Count > 0;
 
         /// <summary>
-        /// Data/hora da última sincronização salva nas preferências.
+        /// Data/hora da ï¿½ltima sincronizaï¿½ï¿½o salva nas preferï¿½ncias.
         /// </summary>
         public DateTime LastSync => Preferences.Get("lastsyncdatetime", DateTime.MinValue);
 
         /// <summary>
-        /// Texto formatado exibindo quando foi a última sincronização.
+        /// Texto formatado exibindo quando foi a ï¿½ltima sincronizaï¿½ï¿½o.
         /// </summary>
         public string LastSyncronization
         {
@@ -77,21 +77,21 @@ namespace SilvaData.ViewModels
                 var result = $"{LastSync:dd/MM/yyyy HH:mm}";
 
                 if (diferenca.TotalSeconds < 60)
-                    result += $" ({string.Format(Traducao._0SegundosAtrás, (int)diferenca.TotalSeconds)})";
+                    result += $" ({string.Format(Traducao._0SegundosAtrï¿½s, (int)diferenca.TotalSeconds)})";
                 else if (diferenca.TotalMinutes < 60)
-                    result += $" ({string.Format(Traducao._0MinutosAtrás, (int)diferenca.TotalMinutes)})";
+                    result += $" ({string.Format(Traducao._0MinutosAtrï¿½s, (int)diferenca.TotalMinutes)})";
                 else if (diferenca.TotalHours < 24)
-                    result += $" ({(int)diferenca.TotalHours}h atrás)";
+                    result += $" ({(int)diferenca.TotalHours}h atrï¿½s)";
                 else
-                    result += $" ({(int)diferenca.TotalDays}d atrás)";
+                    result += $" ({(int)diferenca.TotalDays}d atrï¿½s)";
 
                 return result;
             }
         }
 
         /// <summary>
-        /// Atualiza a lista de alterações pendentes em paralelo.
-        /// Lança exceção se falhar — importante para o fluxo de upload saber que falhou.
+        /// Atualiza a lista de alteraï¿½ï¿½es pendentes em paralelo.
+        /// Lanï¿½a exceï¿½ï¿½o se falhar ï¿½ importante para o fluxo de upload saber que falhou.
         /// </summary>
         [RelayCommand]
         private async Task<int> AtualizaListaAlteracoes()
@@ -106,42 +106,42 @@ namespace SilvaData.ViewModels
                 // Prepara todas as consultas em paralelo
                 var tasks = new[]
                 {
-                    AdicionaSeTiverAlteracao("Proprietario", Traducao.Proprietários),
+                    AdicionaSeTiverAlteracao("Proprietario", Traducao.Proprietï¿½rios),
                     AdicionaSeTiverAlteracao("Regional", Traducao.Regionais),
                     AdicionaSeTiverAlteracao("Atividade", Traducao.Atividades),
-                    AdicionaSeTiverAlteracao("Notificacao", Traducao.Notificações),
+                    AdicionaSeTiverAlteracao("Notificacao", Traducao.Notificaï¿½ï¿½es),
                     AdicionaSeTiverAlteracao("Propriedade", Traducao.Propriedades),
-                    AdicionaSeTiverAlteracao("UnidadeEpidemiologica", Traducao.UnidadesEpidemiológicas),
+                    AdicionaSeTiverAlteracao("UnidadeEpidemiologica", Traducao.UnidadesEpidemiolï¿½gicas),
                     AdicionaSeTiverAlteracao("Lote", Traducao.Lotes),
-                    AdicionaSeTiverAlteracao("LoteForm", Traducao.FormuláriosDosLotes),
-                    AdicionaSeTiverAlteracao("LoteFormImagem", Traducao.ImagensDosFormulários)
+                    AdicionaSeTiverAlteracao("LoteForm", Traducao.Formulï¿½riosDosLotes),
+                    AdicionaSeTiverAlteracao("LoteFormImagem", Traducao.ImagensDosFormulï¿½rios)
                 };
 
-                // Limpa a lista ANTES de processar, para evitar inconsistências visuais
-                // (ex: manter registros antigos enquanto novos são carregados)
+                // Limpa a lista ANTES de processar, para evitar inconsistï¿½ncias visuais
+                // (ex: manter registros antigos enquanto novos sï¿½o carregados)
                 ListaAlteracoes.Clear();
 
                 // Executa todas as consultas em paralelo
                 await Task.WhenAll(tasks);
 
-                // Força notificação das propriedades dependentes
+                // Forï¿½a notificaï¿½ï¿½o das propriedades dependentes
                 OnPropertyChanged(nameof(TemAlteracoes));
                 OnPropertyChanged(nameof(TotalAlteracoes));
                 OnPropertyChanged(nameof(LastSync));
                 OnPropertyChanged(nameof(LastSyncronization));
 
-                // Atualiza badge global (ex: no tab de sincronização)
+                // Atualiza badge global (ex: no tab de sincronizaï¿½ï¿½o)
                 WeakReferenceMessenger.Default.Send(new Utilities.SyncPendentesTotalChangedMessage(TotalAlteracoes));
 
-                Debug.WriteLine($"[Sync] Atualização da lista concluída. Total pendente: {TotalAlteracoes}");
+                Debug.WriteLine($"[Sync] Atualizaï¿½ï¿½o da lista concluï¿½da. Total pendente: {TotalAlteracoes}");
 
                 return TotalAlteracoes;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[Sync] Erro crítico ao atualizar lista de alterações: {ex}");
-                // Lança a exceção para que chamadores (ex: UploadNow) saibam que falhou
-                throw new InvalidOperationException("Falha ao atualizar lista de alterações pendentes", ex);
+                Debug.WriteLine($"[Sync] Erro crï¿½tico ao atualizar lista de alteraï¿½ï¿½es: {ex}");
+                // Lanï¿½a a exceï¿½ï¿½o para que chamadores (ex: UploadNow) saibam que falhou
+                throw new InvalidOperationException("Falha ao atualizar lista de alteraï¿½ï¿½es pendentes", ex);
             }
             finally
             {
@@ -152,10 +152,10 @@ namespace SilvaData.ViewModels
         }
 
         /// <summary>
-        /// Verifica se há alterações em uma tabela e adiciona à lista se houver.
+        /// Verifica se hï¿½ alteraï¿½ï¿½es em uma tabela e adiciona ï¿½ lista se houver.
         /// </summary>
         /// <param name="tabela">Nome da tabela no banco (ex: 'Proprietario')</param>
-        /// <param name="texto">Texto amigável para exibição</param>
+        /// <param name="texto">Texto amigï¿½vel para exibiï¿½ï¿½o</param>
         /// <param name="filtroAdicional">Filtro SQL opcional</param>
         private async Task AdicionaSeTiverAlteracao(string tabela, string texto, string filtroAdicional = "")
         {
@@ -170,15 +170,15 @@ namespace SilvaData.ViewModels
             }
             catch (Exception ex)
             {
-                // Loga, mas NÃO quebra o fluxo — outras tabelas devem continuar
-                Debug.WriteLine($"[Sync] Falha ao verificar alterações em {tabela}: {ex.Message}");
+                // Loga, mas Nï¿½O quebra o fluxo ï¿½ outras tabelas devem continuar
+                Debug.WriteLine($"[Sync] Falha ao verificar alteraï¿½ï¿½es em {tabela}: {ex.Message}");
                 // Opcional: adicionar um item de erro na UI?
             }
         }
 
         /// <summary>
-        /// Realiza o upload de todas as alterações pendentes para o servidor.
-        /// Após o upload, reconsulta o banco para garantir o estado real antes de validar sucesso.
+        /// Realiza o upload de todas as alteraï¿½ï¿½es pendentes para o servidor.
+        /// Apï¿½s o upload, reconsulta o banco para garantir o estado real antes de validar sucesso.
         /// </summary>
         [RelayCommand]
         private async Task UploadNow()
@@ -192,30 +192,30 @@ namespace SilvaData.ViewModels
 
             try
             {
-                // Faz upload em ordem definida (evita dependências não resolvidas).
-                // Erros por etapa são coletados — o processo continua nas etapas seguintes.
-                await UploadDados(Traducao.Proprietários, Proprietario.UploadUpdates(), erros);
+                // Faz upload em ordem definida (evita dependï¿½ncias nï¿½o resolvidas).
+                // Erros por etapa sï¿½o coletados ï¿½ o processo continua nas etapas seguintes.
+                await UploadDados(Traducao.Proprietï¿½rios, Proprietario.UploadUpdates(), erros);
                 await UploadDados(Traducao.Regionais, Regional.UploadUpdates(), erros);
                 await UploadDados(Traducao.Propriedades, Propriedade.UploadUpdates(), erros);
-                await UploadDados(Traducao.UnidadesEpidemiológicas, UnidadeEpidemiologica.UploadUpdates(), erros);
+                await UploadDados(Traducao.UnidadesEpidemiolï¿½gicas, UnidadeEpidemiologica.UploadUpdates(), erros);
                 await UploadDados(Traducao.Lotes, Lote.UploadUpdates(), erros);
                 await UploadDados(Traducao.Atividades, Atividade.UploadUpdates(), erros);
-                await UploadDados(Traducao.Notificações, Notificacao.UploadUpdates(), erros);
-                await UploadDados(Traducao.FormuláriosDosLotes, LoteForm.FazUploadLoteFormsAtualizados(), erros);
-                await UploadDados(Traducao.ImagensDosFormulários, LoteFormImagem.UploadUpdates(), erros);
+                await UploadDados(Traducao.Notificaï¿½ï¿½es, Notificacao.UploadUpdates(), erros);
+                await UploadDados(Traducao.Formulï¿½riosDosLotes, LoteForm.FazUploadLoteFormsAtualizados(), erros);
+                await UploadDados(Traducao.ImagensDosFormulï¿½rios, LoteFormImagem.UploadUpdates(), erros);
 
-                // ?? Verifica o estado REAL no banco após todos os uploads
+                // ?? Verifica o estado REAL no banco apï¿½s todos os uploads
                 var totalPendenteReal = await AtualizaListaAlteracoes();
 
                 if (totalPendenteReal == 0)
                 {
                     // ? SUCESSO: Todos os dados foram enviados
-                    Debug.WriteLine("[Sync] Upload concluído com sucesso — nenhum registro pendente.");
+                    Debug.WriteLine("[Sync] Upload concluï¿½do com sucesso ï¿½ nenhum registro pendente.");
 
-                    // Limpa estado de formulário em andamento
+                    // Limpa estado de formulï¿½rio em andamento
                     Preferences.Set("FormularioEmAndamento", "");
 
-                    // Remove lotes fechados que já subiram (otimização de espaço)
+                    // Remove lotes fechados que jï¿½ subiram (otimizaï¿½ï¿½o de espaï¿½o)
                     await Lote.ApagaLotesFechadosQueJaFizeramUploadEEstaoFechados();
                     Lote.NeedRefresh = true;
 
@@ -227,27 +227,27 @@ namespace SilvaData.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"[Sync] Aviso: falha ao atualizar cache pós-upload (não crítico): {ex.Message}");
+                        Debug.WriteLine($"[Sync] Aviso: falha ao atualizar cache pï¿½s-upload (nï¿½o crï¿½tico): {ex.Message}");
                     }
 
                     await PopUpOK.ShowAsync(Traducao.Sucesso, Traducao.DadosEnviadosComSucesso);
                 }
                 else
                 {
-                    // ? FALHA: Ainda há registros pendentes no banco
-                    Debug.WriteLine($"[Sync] Upload concluído, mas ainda há {totalPendenteReal} registros pendentes.");
+                    // ? FALHA: Ainda hï¿½ registros pendentes no banco
+                    Debug.WriteLine($"[Sync] Upload concluï¿½do, mas ainda hï¿½ {totalPendenteReal} registros pendentes.");
 
-                    var detalhes = string.Join("\n", ListaAlteracoes.Select(a => $"  • {a.TabelaTexto}: {a.Qtde}"));
+                    var detalhes = string.Join("\n", ListaAlteracoes.Select(a => $"  ï¿½ {a.TabelaTexto}: {a.Qtde}"));
                     var mensagem = $"{string.Format(Traducao.AindaHa0RegistrosPendentes, totalPendenteReal)}\n\n{detalhes}";
                     if (erros.Any())
                         mensagem += $"\n\nErros:\n{string.Join("\n", erros)}";
 
-                    await PopUpOK.ShowAsync(Traducao.Atenção, mensagem);
+                    await PopUpOK.ShowAsync(Traducao.Atenï¿½ï¿½o, mensagem);
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[Sync] Erro crítico durante o upload: {ex}");
+                Debug.WriteLine($"[Sync] Erro crï¿½tico durante o upload: {ex}");
                 await PopUpOK.ShowAsync(Traducao.Erro, $"{Traducao.FalhaAoEnviarDados} - {ex.Message}");
             }
             finally
@@ -259,7 +259,7 @@ namespace SilvaData.ViewModels
 
         /// <summary>
         /// Executa o upload de uma etapa, coletando o erro na lista caso falhe.
-        /// Não interrompe o fluxo — as demais etapas continuam sendo enviadas.
+        /// Nï¿½o interrompe o fluxo ï¿½ as demais etapas continuam sendo enviadas.
         /// </summary>
         private async Task UploadDados(string tabelaTexto, Task task, List<string> erros)
         {
@@ -268,17 +268,17 @@ namespace SilvaData.ViewModels
             try
             {
                 await task;
-                Debug.WriteLine($"[Sync] Upload concluído: {tabelaTexto}");
+                Debug.WriteLine($"[Sync] Upload concluï¿½do: {tabelaTexto}");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"[Sync] Erro ao enviar {tabelaTexto}: {ex.Message}");
-                erros.Add($"  • {tabelaTexto}: {ex.Message}");
+                erros.Add($"  ï¿½ {tabelaTexto}: {ex.Message}");
             }
         }
 
         /// <summary>
-        /// Abre a tela de download (sincronização descendente) em modal.
+        /// Abre a tela de download (sincronizaï¿½ï¿½o descendente) em modal.
         /// </summary>
         [RelayCommand]
         private async Task DownloadNow()

@@ -204,7 +204,7 @@
                                 Grid.Column="0"
                                 HorizontalTextAlignment="End"
                                 Style="{StaticResource Caption1Strong}"
-                                Text="{localization:Translate Sessão}"
+                                Text="{localization:Translate Sessï¿½o}"
                                 TextColor="Gray" />
                             <Label
                                 Grid.Row="1"

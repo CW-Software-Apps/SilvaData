@@ -4,7 +4,7 @@ using System.Threading;
 namespace SilvaData.Utilities
 {
     /// <summary>
-    /// Agrega múltiplos downloads e reporta o progresso consolidado
+    /// Agrega mï¿½ltiplos downloads e reporta o progresso consolidado
     /// </summary>
     public class DownloadProgressAggregator
     {
@@ -58,7 +58,7 @@ namespace SilvaData.Utilities
         }
 
         /// <summary>
-        /// Obtém o número de itens completados
+        /// Obtï¿½m o nï¿½mero de itens completados
         /// </summary>
         public int CompletedItems
         {
@@ -72,7 +72,7 @@ namespace SilvaData.Utilities
         }
 
         /// <summary>
-        /// Obtém o percentual de conclusão
+        /// Obtï¿½m o percentual de conclusï¿½o
         /// </summary>
         public float PercentComplete
         {

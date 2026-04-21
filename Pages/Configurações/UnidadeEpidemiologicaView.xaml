@@ -43,7 +43,7 @@
                         FontFamily="Nunito"
                         FontSize="Large"
                         HorizontalOptions="Start"
-                        Text="{localization:Translate UnidadesEpidemiológicas}"
+                        Text="{localization:Translate UnidadesEpidemiolï¿½gicas}"
                         TextColor="White" />
                 </StackLayout>
 
@@ -62,7 +62,7 @@
                     Grid.Row="1"
                     Padding="15,0"
                     FontSize="Small"
-                    Text="{localization:Translate GerencieSuasUnidadesEpidemiológicas}"
+                    Text="{localization:Translate GerencieSuasUnidadesEpidemiolï¿½gicas}"
                     TextColor="White" />
             </Grid>
 

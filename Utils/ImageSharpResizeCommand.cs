@@ -17,15 +17,15 @@ namespace SilvaData.Utilities
         public byte[]? ResizedImage { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-        public float Quality { get; set; } = 0.75f; // Qualidade JPEG padrão (75%)
+        public float Quality { get; set; } = 0.75f; // Qualidade JPEG padrï¿½o (75%)
         public TaskResult TaskResult { get; set; }
     }
 
     public enum TaskResult { Success, Canceled, Faulted }
 
     /// <summary>
-    /// Implementação de redimensionamento de imagem usando SkiaSharp.
-    /// Oferece melhor performance e menor uso de memória no MAUI Android.
+    /// Implementaï¿½ï¿½o de redimensionamento de imagem usando SkiaSharp.
+    /// Oferece melhor performance e menor uso de memï¿½ria no MAUI Android.
     /// </summary>
     public class SkiaSharpResizeCommand : IResizeImageCommand
     {
@@ -40,13 +40,13 @@ namespace SilvaData.Utilities
 
             try
             {
-                // Executar processamento em thread separada para não bloquear UI
+                // Executar processamento em thread separada para nï¿½o bloquear UI
                 await Task.Run(() => ProcessResize(context)).ConfigureAwait(false);
                 return context;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[SkiaSharpResize] Erro crítico: {ex.Message}");
+                Debug.WriteLine($"[SkiaSharpResize] Erro crï¿½tico: {ex.Message}");
                 context.TaskResult = TaskResult.Faulted;
                 return context;
             }
@@ -75,20 +75,20 @@ namespace SilvaData.Utilities
 
                 if (original.Width <= 0 || original.Height <= 0)
                 {
-                    Debug.WriteLine("[SkiaSharpResize] Dimensões inválidas");
+                    Debug.WriteLine("[SkiaSharpResize] Dimensï¿½es invï¿½lidas");
                     context.TaskResult = TaskResult.Faulted;
                     return;
                 }
 
                 Debug.WriteLine($"[SkiaSharpResize] Imagem original: {original.Width}x{original.Height}, {context.OriginalImage.Length:N0} bytes");
 
-                // 2. Calcular escala mantendo proporção
+                // 2. Calcular escala mantendo proporï¿½ï¿½o
                 float scale = Math.Min(
                     (float)context.Width / original.Width,
                     (float)context.Height / original.Height
                 );
 
-                // Se a imagem já é menor que o tamanho desejado, retornar original
+                // Se a imagem jï¿½ ï¿½ menor que o tamanho desejado, retornar original
                 if (scale >= 1.0f)
                 {
                     Debug.WriteLine($"[SkiaSharpResize] Imagem original mantida (escala {scale:F2})");
@@ -97,7 +97,7 @@ namespace SilvaData.Utilities
                     return;
                 }
 
-                // 3. Calcular novas dimensões
+                // 3. Calcular novas dimensï¿½es
                 int newWidth = (int)(original.Width * scale);
                 int newHeight = (int)(original.Height * scale);
 
@@ -144,7 +144,7 @@ namespace SilvaData.Utilities
                 float resizedLength = context.ResizedImage.Length;
                 float reducao = (1 - (resizedLength / originalLength)) * 100;
 
-                Debug.WriteLine($"[SkiaSharpResize] ? Sucesso: {originalLength:N0} bytes -> {resizedLength:N0} bytes (redução de {reducao:F1}%)");
+                Debug.WriteLine($"[SkiaSharpResize] ? Sucesso: {originalLength:N0} bytes -> {resizedLength:N0} bytes (reduï¿½ï¿½o de {reducao:F1}%)");
             }
             catch (Exception ex)
             {
@@ -154,8 +154,8 @@ namespace SilvaData.Utilities
             }
             finally
             {
-                // IMPORTANTE: Liberar TODA memória nativa
-                // SkiaSharp usa memória não-gerenciada que precisa ser liberada manualmente
+                // IMPORTANTE: Liberar TODA memï¿½ria nativa
+                // SkiaSharp usa memï¿½ria nï¿½o-gerenciada que precisa ser liberada manualmente
                 encoded?.Dispose();
                 image?.Dispose();
                 resized?.Dispose();

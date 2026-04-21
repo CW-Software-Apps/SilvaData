@@ -1,4 +1,4 @@
-﻿namespace ISIInstitute.Controls.PageModels
+namespace ISIInstitute.Controls.PageModels
 {
     public class TabWithNotification : FlyoutItem
     {

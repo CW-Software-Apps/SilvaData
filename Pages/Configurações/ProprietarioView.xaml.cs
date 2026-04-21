@@ -10,8 +10,8 @@ using System.Linq;
 namespace SilvaData.Controls
 {
     /// <summary>
-    /// Página para visualizar e gerenciar a lista de Proprietários.
-    /// MIGRADO: Usa CacheService ao invés de DadosStatic.
+    /// Pï¿½gina para visualizar e gerenciar a lista de Proprietï¿½rios.
+    /// MIGRADO: Usa CacheService ao invï¿½s de DadosStatic.
     /// </summary>
     public partial class ProprietarioView : ContentPageWithLocalization
     {
@@ -34,26 +34,26 @@ namespace SilvaData.Controls
             BindingContext = this;
         }
 
-        #region Ciclo de Vida da Página
+        #region Ciclo de Vida da Pï¿½gina
 
         /// <summary>
-        /// Chamado quando a página está prestes a se tornar visível.
+        /// Chamado quando a pï¿½gina estï¿½ prestes a se tornar visï¿½vel.
         /// Carrega os dados e registra os receptores de mensagens.
         /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            // MIGRADO: Usa CacheService ao invés de DadosStatic
+            // MIGRADO: Usa CacheService ao invï¿½s de DadosStatic
             ListaProprietarios = new ObservableCollection<Proprietario>(_cacheService.ProprietarioList);
 
-            // Notifica a UI que a coleção mudou
+            // Notifica a UI que a coleï¿½ï¿½o mudou
             OnPropertyChanged(nameof(ListaProprietarios));
 
             // Aplica o filtro
             RefreshData();
 
-            // Registra as mensagens para atualizações em tempo real
+            // Registra as mensagens para atualizaï¿½ï¿½es em tempo real
             WeakReferenceMessenger.Default.Register<ProprietarioAdicionadoMessage>(this, (recipient, message) =>
             {
                 ListaProprietarios.Insert(0, message.Proprietario);
@@ -72,7 +72,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Chamado quando a página não está mais visível.
+        /// Chamado quando a pï¿½gina nï¿½o estï¿½ mais visï¿½vel.
         /// Remove o registro dos receptores de mensagens.
         /// </summary>
         protected override void OnDisappearing()
@@ -88,7 +88,7 @@ namespace SilvaData.Controls
         #region Comandos
 
         /// <summary>
-        /// Comando para navegar para a tela de edição de um proprietário.
+        /// Comando para navegar para a tela de ediï¿½ï¿½o de um proprietï¿½rio.
         /// </summary>
         [RelayCommand(CanExecute = nameof(PodeEditar))]
         private async Task Edit(Proprietario proprietario)
@@ -97,7 +97,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Comando para navegar para a tela de adição de um novo proprietário.
+        /// Comando para navegar para a tela de adiï¿½ï¿½o de um novo proprietï¿½rio.
         /// </summary>
         [RelayCommand(CanExecute = nameof(PodeAdicionar))]
         private async Task AddNew()
@@ -106,7 +106,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Comando para fechar a página modal atual.
+        /// Comando para fechar a pï¿½gina modal atual.
         /// </summary>
         [RelayCommand]
         public async Task Voltar()
@@ -116,21 +116,21 @@ namespace SilvaData.Controls
 
         #endregion
 
-        #region Permissões
+        #region Permissï¿½es
 
         /// <summary>
-        /// Obtém um valor que indica se o usuário pode editar proprietários.
+        /// Obtï¿½m um valor que indica se o usuï¿½rio pode editar proprietï¿½rios.
         /// </summary>
         public bool PodeEditar => Permissoes.UsuarioPermissoes?.proprietarios.atualizar ?? false;
 
         /// <summary>
-        /// Obtém um valor que indica se o usuário pode adicionar novos proprietários.
+        /// Obtï¿½m um valor que indica se o usuï¿½rio pode adicionar novos proprietï¿½rios.
         /// </summary>
         public bool PodeAdicionar => Permissoes.UsuarioPermissoes?.proprietarios.cadastrar ?? false;
 
         #endregion
 
-        #region Lógica de Filtro e Dados
+        #region Lï¿½gica de Filtro e Dados
 
         /// <summary>
         /// Atualiza o filtro da SfListView.
@@ -145,7 +145,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Método de predicado de filtro para a SfListView.
+        /// Mï¿½todo de predicado de filtro para a SfListView.
         /// </summary>
         private bool filterData(object obj)
         {
@@ -164,7 +164,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Manipulador de evento para alteração de texto na barra de pesquisa.
+        /// Manipulador de evento para alteraï¿½ï¿½o de texto na barra de pesquisa.
         /// </summary>
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -173,7 +173,7 @@ namespace SilvaData.Controls
         }
 
         /// <summary>
-        /// Navega para a página de edição de um proprietário específico.
+        /// Navega para a pï¿½gina de ediï¿½ï¿½o de um proprietï¿½rio especï¿½fico.
         /// </summary>
         public async Task Editar(Proprietario proprietario)
         {

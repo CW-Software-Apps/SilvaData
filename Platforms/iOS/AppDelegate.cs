@@ -14,14 +14,14 @@ namespace SilvaData
             try
             {
                 var app = MauiProgram.CreateMauiApp();
-                System.Console.WriteLine("[AppDelegate] CreateMauiApp CONCLUÍDO com sucesso.");
-                System.Diagnostics.Debug.WriteLine("[AppDelegate] CreateMauiApp CONCLUÍDO com sucesso.");
+                System.Console.WriteLine("[AppDelegate] CreateMauiApp CONCLUï¿½DO com sucesso.");
+                System.Diagnostics.Debug.WriteLine("[AppDelegate] CreateMauiApp CONCLUï¿½DO com sucesso.");
                 return app;
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine($"[AppDelegate] EXCEÇÃO em CreateMauiApp: {ex}");
-                System.Diagnostics.Debug.WriteLine($"[AppDelegate] EXCEÇÃO em CreateMauiApp: {ex}");
+                System.Console.WriteLine($"[AppDelegate] EXCEï¿½ï¿½O em CreateMauiApp: {ex}");
+                System.Diagnostics.Debug.WriteLine($"[AppDelegate] EXCEï¿½ï¿½O em CreateMauiApp: {ex}");
                 throw;
             }
         }
@@ -34,14 +34,14 @@ namespace SilvaData
             try
             {
                 var result = base.FinishedLaunching(application, launchOptions);
-                System.Console.WriteLine("[AppDelegate] FinishedLaunching CONCLUÍDO com sucesso.");
-                System.Diagnostics.Debug.WriteLine("[AppDelegate] FinishedLaunching CONCLUÍDO com sucesso.");
+                System.Console.WriteLine("[AppDelegate] FinishedLaunching CONCLUï¿½DO com sucesso.");
+                System.Diagnostics.Debug.WriteLine("[AppDelegate] FinishedLaunching CONCLUï¿½DO com sucesso.");
                 return result;
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine($"[AppDelegate] EXCEÇÃO em FinishedLaunching: {ex}");
-                System.Diagnostics.Debug.WriteLine($"[AppDelegate] EXCEÇÃO em FinishedLaunching: {ex}");
+                System.Console.WriteLine($"[AppDelegate] EXCEï¿½ï¿½O em FinishedLaunching: {ex}");
+                System.Diagnostics.Debug.WriteLine($"[AppDelegate] EXCEï¿½ï¿½O em FinishedLaunching: {ex}");
                 throw;
             }
         }

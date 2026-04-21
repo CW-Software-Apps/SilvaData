@@ -6,14 +6,14 @@ namespace SilvaData.Resources
     public static class LocalizationHelper
     {
         /// <summary>
-        /// Obtém um texto localizado formatado com os argumentos fornecidos
+        /// Obtï¿½m um texto localizado formatado com os argumentos fornecidos
         /// </summary>
-        /// <param name="resourceKey">Chave do recurso de localização</param>
-        /// <param name="args">Argumentos para formatação</param>
+        /// <param name="resourceKey">Chave do recurso de localizaï¿½ï¿½o</param>
+        /// <param name="args">Argumentos para formataï¿½ï¿½o</param>
         /// <returns>Texto localizado e formatado</returns>
         public static string Format(string resourceKey, params object[] args)
         {
-            // Obtém a propriedade do recurso usando reflexão
+            // Obtï¿½m a propriedade do recurso usando reflexï¿½o
             var property = typeof(Localization.Localization).GetProperty(resourceKey);
             if (property == null)
                 return $"[{resourceKey}]";

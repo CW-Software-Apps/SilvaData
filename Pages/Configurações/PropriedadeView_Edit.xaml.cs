@@ -9,14 +9,14 @@ namespace SilvaData.Controls
 {
     /// <summary>
     /// View para editar ou criar uma Propriedade.
-    /// Delega toda a lógica para <see cref="PropriedadeEditViewModel"/>.
+    /// Delega toda a lï¿½gica para <see cref="PropriedadeEditViewModel"/>.
     /// </summary>
     public partial class PropriedadeView_Edit : ContentPageEdit
     {
         private new readonly PropriedadeEditViewModel ViewModel;
 
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="PropriedadeView_Edit"/>.
+        /// Inicializa uma nova instï¿½ncia da classe <see cref="PropriedadeView_Edit"/>.
         /// </summary>
         public PropriedadeView_Edit(Propriedade? propriedade = null, int? regionalID = -1)
         {
@@ -24,19 +24,19 @@ namespace SilvaData.Controls
 
             ViewModel = ServiceHelper.GetRequiredService<PropriedadeEditViewModel>();
 
-            // CORREÇÃO: Chamando o SetInitialState desacoplado (sem 'this')
+            // CORREï¿½ï¿½O: Chamando o SetInitialState desacoplado (sem 'this')
             ViewModel.SetInitialState(propriedade, regionalID);
 
             BindingContext = ViewModel;
 
-            // Popula a lista de campos obrigatórios (lógica de UI)
+            // Popula a lista de campos obrigatï¿½rios (lï¿½gica de UI)
             RequiredInputFields.Add(this.FindByName<ISITextField>("nome"));
             RequiredInputFields.Add(this.FindByName<ISIComboBox>("proprietariocombobox"));
             RequiredInputFields.Add(this.FindByName<RegionalComboBox>("regionalcombobox"));
         }
 
         /// <summary>
-        /// Garante que o ViewModel carregue os dados quando a página aparecer.
+        /// Garante que o ViewModel carregue os dados quando a pï¿½gina aparecer.
         /// (Herdado de ContentPageEdit)
         /// </summary>
         protected override void OnAppearing()

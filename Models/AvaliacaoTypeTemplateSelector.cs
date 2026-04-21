@@ -6,7 +6,7 @@ namespace SilvaData.Utilities
 {
     /// <summary>
     /// ? Selector que escolhe qual template/content renderizar
-    /// Renderiza APENAS o que é necessário
+    /// Renderiza APENAS o que ï¿½ necessï¿½rio
     /// </summary>
     public class AvaliacaoTypeTemplateSelector : DataTemplateSelector
     {
@@ -16,7 +16,7 @@ namespace SilvaData.Utilities
 
         protected override DataTemplate? OnSelectTemplate(object item, BindableObject container)
         {
-            // item é um enum ou tipo que define qual visualizar
+            // item ï¿½ um enum ou tipo que define qual visualizar
             if (item is AvaliacaoType tipo)
             {
                 return tipo switch
@@ -33,7 +33,7 @@ namespace SilvaData.Utilities
     }
 
     /// <summary>
-    /// Enum para definir tipo de avaliação
+    /// Enum para definir tipo de avaliaï¿½ï¿½o
     /// </summary>
     public enum AvaliacaoType
     {

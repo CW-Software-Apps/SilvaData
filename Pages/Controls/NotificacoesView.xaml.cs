@@ -70,7 +70,7 @@ namespace ISIInstitute.Views
         {
             if (notificacaoSelecionada is Notificacao notificacao)
             {
-                if (await PopUpYesNo.ShowAsync(Traducao.NotificacoesView_ArquivarNotificação, Traducao.ArquivarNotificacaoDesc, Traducao.Sim, Traducao.Nao))
+                if (await PopUpYesNo.ShowAsync(Traducao.NotificacoesView_ArquivarNotificaï¿½ï¿½o, Traducao.ArquivarNotificacaoDesc, Traducao.Sim, Traducao.Nao))
                 {
                     var busy = this.FindByName<LoadingView>("busyindicator");
                     if (busy != null) busy.IsVisible = true;

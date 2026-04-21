@@ -15,7 +15,7 @@
 
             <Label
                 Margin="0,10,0,10"
-                Text="{localization:Translate Observações}"
+                Text="{localization:Translate Observaï¿½ï¿½es}"
                 TextColor="{StaticResource PrimaryColor}" />
 
             <Editor

@@ -6,7 +6,7 @@ using Microsoft.Maui.Graphics;
 namespace SilvaData.Models
 {
     /// <summary>
-    /// Gerencia a paleta de cores dinâmicas para os gráficos.
+    /// Gerencia a paleta de cores dinï¿½micas para os grï¿½ficos.
     /// </summary>
     public class CoresGrafico
     {

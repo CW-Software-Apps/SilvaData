@@ -3,7 +3,7 @@ using SilvaData.Models;
 namespace SilvaData.Extensions
 {
     /// <summary>
-    /// Extensões para facilitar o uso de popups em toda a aplicação
+    /// Extensï¿½es para facilitar o uso de popups em toda a aplicaï¿½ï¿½o
     /// </summary>
     public static class PopupExtensions
     {
@@ -21,7 +21,7 @@ namespace SilvaData.Extensions
 
         #region YesNoPopup
         /// <summary>
-        /// Mostra um popup de confirmação com botões Sim/Não
+        /// Mostra um popup de confirmaï¿½ï¿½o com botï¿½es Sim/Nï¿½o
         /// </summary>
         public static Task<bool> ShowYesNoPopupAsync(this Page page, string titulo, string mensagem, string? textoSim = null, string? textoNao = null)
         {
@@ -32,7 +32,7 @@ namespace SilvaData.Extensions
         }
 
         /// <summary>
-        /// Mostra um popup de confirmação com botões Sim/Não a partir do Shell atual
+        /// Mostra um popup de confirmaï¿½ï¿½o com botï¿½es Sim/Nï¿½o a partir do Shell atual
         /// </summary>
         public static Task<bool> ShowYesNoPopupAsync(string titulo, string mensagem, string? textoSim = null, string? textoNao = null)
         {
@@ -93,7 +93,7 @@ namespace SilvaData.Extensions
 
         //#region SelectModeloPopup
         ///// <summary>
-        ///// Mostra um popup para seleção de modelo
+        ///// Mostra um popup para seleï¿½ï¿½o de modelo
         ///// </summary>
         //public static Task<T?> ShowSelectModeloPopupAsync<T>(this Page page, string titulo, IEnumerable<T> modelos, Func<T, string> nomeSelector) where T : class
         //{
@@ -101,7 +101,7 @@ namespace SilvaData.Extensions
         //}
 
         ///// <summary>
-        ///// Mostra um popup para seleção de modelo a partir do Shell atual
+        ///// Mostra um popup para seleï¿½ï¿½o de modelo a partir do Shell atual
         ///// </summary>
         //public static Task<T?> ShowSelectModeloPopupAsync<T>(string titulo, IEnumerable<T> modelos, Func<T, string> nomeSelector) where T : class
         //{
