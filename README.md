@@ -24,6 +24,17 @@ Este projeto representa a evolução da marca **SilvaData**, apresentando uma id
 
 ---
 
+## 🔗 Origem e Sincronização
+
+O **SilvaData** é um fork especializado derivado do projeto [ISISys-MAUI](https://github.com/CW-Software-Apps/ISISys-MAUI). Enquanto o ISISys serve como a plataforma base genérica da CW Software, o SilvaData é a implementação customizada com branding e regras de negócio específicas para o ecossistema SilvaData.
+
+### Estratégia de Manutenção (Cherry-pick)
+Para garantir que melhorias de estabilidade e correções de bugs sejam compartilhadas entre as plataformas:
+- **Fluxo de Upstream**: Correções de bugs genéricos realizados no core do **ISISys** são integrados periodicamente ao **SilvaData** via `git cherry-pick`.
+- **Sincronia**: Este modelo de engenharia permite que o SilvaData evolua sua identidade visual e recursos exclusivos de forma independente, sem perder o acesso às evoluções constantes do motor principal do sistema.
+
+---
+
 ## ✨ Funcionalidades Principais
 
 *   **Gestão de Lotes**: Visualização completa de status, idades e métricas zootécnicas.
