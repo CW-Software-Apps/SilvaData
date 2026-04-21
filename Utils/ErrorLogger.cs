@@ -303,61 +303,6 @@ namespace SilvaData.Utils
         }
 
         /// <summary>
-        /// Log no Sentry - DESABILITADO (usings removidos)
-        /// </summary>
-        /*
-        private static void LogToSentry(ErrorDetails errorDetails)
-        {
-            try
-            {
-                using (SentrySdk.PushScope())
-                {
-                    SentrySdk.ConfigureScope(scope =>
-                    {
-                        scope.SetTag("error-type", errorDetails.ErrorType.ToString());
-                        scope.SetTag("method", errorDetails.MethodName);
-                        scope.SetTag("request-id", errorDetails.RequestId);
-                        
-                        scope.SetExtras(new Dictionary<string, object>
-                        {
-                            ["user_message"] = errorDetails.UserFriendlyMessage,
-                            ["status_code"] = errorDetails.StatusCode,
-                            ["retry_count"] = errorDetails.RetryCount,
-                            ["is_retryable"] = errorDetails.IsRetryable,
-                            ["request_url"] = errorDetails.RequestUrl,
-                            ["response_content"] = errorDetails.ResponseContent,
-                            ["context"] = errorDetails.Context
-                        });
-
-                        // Adiciona informações do usuário se disponível
-                        if (!string.IsNullOrEmpty(errorDetails.UserId))
-                        {
-                            scope.User = new SentryUser
-                            {
-                                Id = errorDetails.UserId,
-                                Username = errorDetails.UserName,
-                                Email = errorDetails.UserName
-                            };
-                        }
-                    });
-
-                    // Cria exceção para o Sentry
-                    var sentryException = new Exception(
-                        $"[{errorDetails.ErrorType}] {errorDetails.MethodName}: {errorDetails.ExceptionMessage}",
-                        new Exception(errorDetails.StackTrace)
-                    );
-
-                    SentrySdk.CaptureException(sentryException);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[ErrorLogger] Falha ao enviar para Sentry: {ex.Message}");
-            }
-        }
-        */
-
-        /// <summary>
         /// Adiciona ao cache em memória
         /// </summary>
         private static void AddToMemoryCache(ErrorDetails errorDetails)

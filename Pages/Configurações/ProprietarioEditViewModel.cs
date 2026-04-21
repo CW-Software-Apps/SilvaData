@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using SilvaData.Models;
 using SilvaData.Pages.PopUps;
 using SilvaData.Utilities;
+
 using HapticHelper = global::SilvaData.Utilities.HapticHelper;
 
 
@@ -114,26 +115,5 @@ namespace SilvaData.ViewModels
                 IsBusy = false;
             }
         }
-    }
-
-    // --- Mensagens específicas para Proprietário ---
-
-    /// <summary>
-    /// Enviada quando um novo Proprietário é adicionado.
-    /// Outros ViewModels podem escutar para atualizar suas listas.
-    /// </summary>
-    public class ProprietarioAdicionadoMessage
-    {
-        public Proprietario Proprietario { get; }
-        public ProprietarioAdicionadoMessage(Proprietario proprietario) => Proprietario = proprietario;
-    }
-
-    /// <summary>
-    /// Enviada quando um Proprietário existente é salvo/atualizado.
-    /// </summary>
-    public class ProprietarioSalvoMessage
-    {
-        public Proprietario Proprietario { get; }
-        public ProprietarioSalvoMessage(Proprietario proprietario) => Proprietario = proprietario;
     }
 }
