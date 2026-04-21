@@ -13,7 +13,7 @@
     xmlns:views="clr-namespace:SilvaData.Pages"
     x:Name="mainPage"
     x:DataType="pageModels:MainPageModel"
-    Background="#0888CD"
+    Background="{StaticResource PrimaryColor}"
     Shell.NavBarIsVisible="false">
 
     <ContentPage.Behaviors>
@@ -177,8 +177,8 @@
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Offset="0.1" Color="#26558D" />
-                    <GradientStop Offset="1.0" Color="#0888CD" />
+                    <GradientStop Offset="0.1" Color="{StaticResource SecondaryColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource PrimaryColor}" />
                 </LinearGradientBrush>
             </Grid.Background>
 

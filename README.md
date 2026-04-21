@@ -1,98 +1,67 @@
-<h1 align="center">
-  <br>
-  SilvaData 📱
-  <br>
-</h1>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/wagenheimer/SilvaData/master/SilvaData/Resources/AppIcon/appicon.svg" width="128" alt="SilvaData Logo" />
+</p>
 
-<h4 align="center">Aplicativo robusto multiplataforma para gestão e avaliação avançada de lotes aviários, desenvolvido em <a href="https://dotnet.microsoft.com/en-us/apps/maui" target="_blank">.NET MAUI</a>.</h4>
+<h1 align="center">SilvaData 🚀</h1>
 
 <p align="center">
-  <a href="#principais-funcionalidades">Funcionalidades</a> •
-  <a href="#arquitetura-e-design">Arquitetura</a> •
-  <a href="#boas-práticas-implementadas">Boas Práticas</a> •
-  <a href="#pacotes-e-dependências">Dependências</a> •
-  <a href="#instalação-e-execução">Execução</a>
+  <strong>Ecossistema Avançado de Gestão e Auditoria Avícola</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET-8.0-70AC3E?style=for-the-badge&logo=dotnet" alt=".NET 8.0" />
+  <img src="https://img.shields.io/badge/MAUI-Multi--platform-70AC3E?style=for-the-badge&logo=dotnet" alt="MAUI" />
+  <img src="https://img.shields.io/badge/CI%2FCD-Worker%20Central-gray?style=for-the-badge" alt="CI/CD" />
 </p>
 
 ---
 
-## 📋 Visão Geral
+## 📋 Sobre o Projeto
 
-O **SilvaData** é a evolução moderna e otimizada da aplicação de Avaliações e Diagnósticos de lotes em campo. Desenvolvido nativamente usando o framework **.NET MAUI**, ele opera graciosamente em plataformas **Android** e **iOS**, entregando performance quase instantânea, coleta de dados offline, além de uma interface limpa e responsiva voltada a técnicos de campo e veterinários. 
+O **SilvaData** é uma solução de auditoria de campo desenvolvida pela CW Software, especificamente otimizada para o setor avícola. Utilizando a robustez do **.NET MAUI**, o aplicativo permite que técnicos realizem inspeções detalhadas, gerenciem lotes e sincronizem dados críticos em ambientes de baixa conectividade.
 
-## 🌟 Principais Funcionalidades
-
-* 📊 **Gestão Completa de Lotes**: Ferramentas paramétricas para avaliações amplas (Galpão, Nutrição, Zootécnico, Diagnósticos, Tratamento via Água e Vacinas).
-* 📝 **Formulários Dinâmicos e Inteligentes**: Carregamento dinâmico do formulário por SQLite suportando dados qualitativos e quantitativos complexos.
-* ⚡ **Alta Performance Offshore (Offline First)**: Armazenamento integral através do `sqlite-net-pcl` altamente otimizado para não gargalar o preenchimento, ideal para campo rural profundo.
-* 📳 **Respostas Táteis Naturais**: Integração profunda de Haptic Feedback (vibração controlada) nos componentes interativos (ex. Modificadores Quantitativos) para garantir percepção de toque pelo operador usando luvas.
-* 📸 **Capturas de Campo Multimídia**: Uso da câmera otimizado por `CommunityToolkit.Maui.Camera` para anexação performática de fotos aos formulários na fase de necrópsias.
+Este projeto representa a evolução da marca **SilvaData**, apresentando uma identidade visual moderna em tons de Verde e Cinza, focada em produtividade e clareza.
 
 ---
 
-## 🏗 Arquitetura e Design
+## ✨ Funcionalidades Principais
 
-Construído sob o rígido padrão **MVVM (Model-View-ViewModel)** com **Injeção de Dependências**, garantindo a fácil testabilidade e isolamento lógico.
-
-* **Componentes de UI de Alta Fidelidade**: Implementação do conjunto `Syncfusion.Maui` (ListView, NumericUpDown, TabView) reajustados para oferecer interatividade premium e fluidez visual.
-* **Mensageria Fraca (WeakReferenceMessenger)**: Para atualizações rápidas em tempo real entre camadas e abas sem criar acoplamento hard-coded (ex. `FormularioSalvoMessage`).
-* **Singleton vs Transient Lifecycle**:  
-  - Visões de Dashboard e Configurações pesadas operam como **Singletons** para garantir que a navegação do Shell ocorra em "zero ms".
-  - Formulários dinâmicos de Lote funcionam como **Transient**, economizando recursos globais mediante destruição quando fechados.
+*   **Gestão de Lotes**: Visualização completa de status, idades e métricas zootécnicas.
+*   **Sincronização Inteligente**: Motor de persistência SQLite com filas de sincronização assíncronas.
+*   **Dashboard Executivo**: Visão consolidada de indicadores de performance diretamente na tela inicial.
+*   **Modo Offline**: Primeiro a dados, garantindo que nenhuma auditoria seja perdida em campo.
 
 ---
 
-## 🏆 Boas Práticas Implementadas
+## 🛠 Arquitetura Técnica
 
-Garantimos que o SilvaData não seja apenas mais um aplicativo, mas de **Classificação Empresarial (Enterprise Grade)**. 
+Implementamos os padrões mais modernos da engenharia de software para garantir estabilidade empresarial:
 
-1. **Gestão Limpa de Vida Útil (GC Assurance) 🧹**: 
-   Cada página descartável (*Transient*) que usa `WeakReferenceMessenger` obrigatoriamente implementa a interface `IDisposable`, anulando proativamente as assinaturas de memória ao sair da tela (*OnBackButtonPressed/PopModalAsync*). Acaba definitivamente com eventuais vazamentos de memória (Memory Leaks).
-2. **Ciclo Silencioso no Banco de Dados 🔕**: 
-   Introduzido o conceito de `IsLoadingData`. As rotinas de "hidratação de modelo" pelo banco SQLite agora agem silenciosamente, impedindo que interações UI ou vibrações haptics ativem desnecessariamente nos construtores em loop.
-3. **Gerenciamento Ativo de Sentry 🚧**: 
-   Reportes instantâneos de falha para a nuvem através do `Sentry.Maui`. O App está preparado para documentar não apenas Exceções Fatais não Tratadas (Unhandled), mas também capturar o fluxo do rastreamento de pilha (stack trace) em tempo real, priorizando resoluções rápidas de incidentes.
-4. **Proteções e Clamping em Controls 🔒**: 
-   Limpeza contextual de propriedades destrutivas e campos excessivos em UX – ex: Ocultação sistêmica de ClearButtons em entradas de números e "clamping" proativo impedindo crashs via Input incorreto.
+*   **MVVM (Model-View-ViewModel)**: Separação rigorosa de interesses.
+*   **Injeção de Dependências**: Gerenciamento modular de serviços e PageModels.
+*   **Observabilidade Controlada**: Integração nativa com Sentry para telemetria de erros.
+*   **Otimização de Memória**: Estratégias de GC Assurance para evitar vazamentos em execuções longas.
 
 ---
 
-## 📦 Pacotes e Dependências Core
+## 🚀 Pipeline de Entrega (CI/CD)
 
-| Pacote | Função Especial |
-| --- | --- |
-| `CommunityToolkit.Mvvm` | Data-Bindings ultraperformantes usando "Source Generator" para ViewModels (`@ObservableProperty` e `@RelayCommand`). |
-| `CommunityToolkit.Maui` | Extensões nativas globais e popups cross-platform. |
-| `Syncfusion.Maui.*` | Extensão essencial para grades (DataGrids), componentes de agendamento, seletores e NumericUpDowns industriais. |
-| `sqlite-net-pcl` | ORM leve para mapear e interagir de forma brutalmente rápida com o banco relacional local. |
-| `Sentry.Maui` | Observabilidade, rastreamento de falhas e análise de desempenho. |
-| `LocalizationResourceManager`| Gestão traduzida universal baseada em ResX. |
+O SilvaData está totalmente integrado ao sistema de automação da CW Software:
+
+*   **Build Automatizado**: Processamento de artefatos `.aab` e `.apk` em cada interação.
+*   **Monitoramento**: Painel online disponível em [dashboard.appdeployhub.com](https://dashboard.appdeployhub.com/).
+*   **Telemetria de Build**: Logs detalhados e rastreio de versão simplificado.
 
 ---
 
-## 🚀 Instalação e Execução
+## 💻 Tech Stack
 
-Para rodar este projeto localmente, assegure que você tenha o [.NET MAUI SDK](https://learn.microsoft.com/en-us/dotnet/maui/get-started/installation) devidamente configurado, o Visual Studio atualizado (com cargas C# e SDK Target Mobile adequadas) e execute:
-
-```bash
-# 1. Restaure aos pacotes as ferramentas (Se aplicável)
-dotnet restore SilvaData.sln
-
-# 2. Construa a aplicação (Recomenda-se via IDE para gerenciamento correto do Emulador iOS/Android)
-```
-*(Para iOS, possua as Chaves da Apple de Distribuição vinculadas à pasta Secrets ou use a conta Enterprise da CW-Software configurada via IDE)*.
-
-## 🚀 Automação de Build (CI/CD)
-
-Este projeto está integrado ao **Worker Central** da CW Software. O build é disparado automaticamente via Webhook do GitHub.
-
-### Como funciona:
-- **Trigger**: Qualquer `push` no branch `master`.
-- **Script**: Localizado em `.cwbuild/build.sh`.
-- **Monitoramento**: Acompanhe o status, telemetria e logs em tempo real no nosso [Dashboard de Builds](https://builds.cwsoftware.com.br).
-
-### Artefatos:
-Os arquivos `.aab` (assinados) e `.apk` de debug são gerados automaticamente e disponibilizados para download no portal após o sucesso da compilação.
+- **Framework**: .NET MAUI 8.0
+- **UI Toolkit**: Syncfusion Maui Toolkit
+- **Banco de Dados**: SQLite (Local) / API REST (Sync)
+- **Linguagem**: C# 12
 
 ---
-> Elaborado por **Advanced Agentic AI Assistant** - Implementando excelência na migração de dados e ciclo MAUI. 🚀
+<p align="center">
+  <em>Desenvolvido com excelência por <strong>CW Software</strong></em>
+</p>

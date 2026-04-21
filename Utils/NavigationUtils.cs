@@ -249,7 +249,7 @@ namespace SilvaData.Utils
                             {
                                 page.Behaviors.Add(new StatusBarBehavior
                                 {
-                                    StatusBarColor = Color.FromArgb("#0888CD"),
+                                    StatusBarColor = Color.FromArgb("#70AC3E"),
                                     StatusBarStyle = StatusBarStyle.LightContent
                                 });
                             }

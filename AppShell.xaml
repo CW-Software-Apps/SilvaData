@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:SilvaData.Pages"
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
-    BackgroundColor="#0888CD"
+    Shell.BackgroundColor="{StaticResource PrimaryColor}"
     Shell.FlyoutBehavior="Flyout">
 
     <ShellContent

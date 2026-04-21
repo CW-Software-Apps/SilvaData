@@ -20,17 +20,32 @@
         CORES (PALETA)
         ═══════════════════════════════════════════════════
     -->
-    <Color x:Key="PrimaryColor">#0888CD</Color>
-    <Color x:Key="PrimaryLightColor">#41ABD9</Color>
-    <Color x:Key="SecondaryColor">#26558D</Color>
-    <Color x:Key="DarkColor">#324275</Color>
-    <Color x:Key="HeaderColor">#03A7FF</Color>
+    <Color x:Key="PrimaryColor">#70AC3E</Color>
+    <Color x:Key="PrimaryLightColor">#C6E2AE</Color>
+    <Color x:Key="SecondaryColor">#5A8A32</Color>
+    <Color x:Key="DarkColor">#3D3D3D</Color>
+    <Color x:Key="HeaderColor">#282828</Color>
 
-    <Color x:Key="ButtonColor">#108bce</Color>
-    <Color x:Key="CorBotao">#5377AA</Color>
+    <Color x:Key="ButtonColor">#70AC3E</Color>
+    <Color x:Key="CorBotao">#70AC3E</Color>
     <Color x:Key="DarkButtonColor">#324275</Color>
     <Color x:Key="LightButtonColor">#f2f9fd</Color>
     <Color x:Key="FundoClarinhoBotao">#EFF3F8</Color>
+
+    <LinearGradientBrush x:Key="HeaderGradient" EndPoint="0,1">
+        <GradientStop Offset="0.1" Color="#282828" />
+        <GradientStop Offset="1.0" Color="#373737" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="FooterGradient" EndPoint="0,1">
+        <GradientStop Offset="1.0" Color="#282828" />
+        <GradientStop Offset="0.1" Color="#373737" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SoftGradient" EndPoint="0,1">
+        <GradientStop Offset="0.1" Color="#F5F5F5" />
+        <GradientStop Offset="1.0" Color="#E0E0E0" />
+    </LinearGradientBrush>
 
     <Color x:Key="DisabledBackgroundColor">#E0E0E0</Color>
     <Color x:Key="DisabledTextColor">#A0A0A0</Color>
@@ -43,7 +58,7 @@
 
     <Color x:Key="BackgroudColor">White</Color>
     <Color x:Key="FlyoutBackgroundColor">White</Color>
-    <Color x:Key="QuaseBranco">#f6f6f9</Color>
+    <Color x:Key="QuaseBranco">#F5F5F5</Color>
 
     <Color x:Key="ScoreBackground">#f2f9fc</Color>
     <Color x:Key="ScoreTextColor">#0888cd</Color>
@@ -97,6 +112,13 @@
         ESTILOS DE BADGES (REUTILIZÁVEIS)
         ═══════════════════════════════════════════════════
     -->
+
+    <Style x:Key="BadgeBackground" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="#70AC3E" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Padding" Value="5,2" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+    </Style>
 
     <!--  Badge azul (Primary)  -->
     <Style x:Key="BadgePrimary" TargetType="Border">

@@ -5,12 +5,12 @@
     <!--  Note: For Android please see also Platforms\Android\Resources\values\colors.xml  -->
 
     <LinearGradientBrush x:Key="PrimaryGradientBrush" EndPoint="0,1">
-        <GradientStop Offset="0.1" Color="#0888CD" />
-        <GradientStop Offset="1.0" Color="#26558D" />
+        <GradientStop Offset="0.1" Color="#70AC3E" />
+        <GradientStop Offset="1.0" Color="#5A8A32" />
     </LinearGradientBrush>
 
-    <Color x:Key="Primary">#0888CD</Color>
-    <Color x:Key="PrimaryDark">#324275</Color>
+    <Color x:Key="Primary">#70AC3E</Color>
+    <Color x:Key="PrimaryDark">#5A8A32</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="SecondaryDarkText">#324275</Color>
