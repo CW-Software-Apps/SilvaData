@@ -24,7 +24,7 @@
                 <Image
                     Aspect="AspectFit"
                     HeightRequest="100"
-                    Source="isilogo.png" />
+                    Source="silvadatalogo.svg" />
 
                 <Label
                     FontSize="Micro"

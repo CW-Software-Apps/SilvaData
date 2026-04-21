@@ -44,7 +44,7 @@
                             Aspect="AspectFit"
                             HeightRequest="90"
                             HorizontalOptions="Center"
-                            Source="isilogo.png" />
+                            Source="silvadatalogo.svg" />
                         <Label
                             Grid.Row="1"
                             FontSize="Micro"

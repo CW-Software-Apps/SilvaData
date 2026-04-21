@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="SilvaData/Resources/Images/Icons/isilogo.png" width="128" alt="SilvaData Logo" />
+  <img src="SilvaData/Resources/Images/Icons/silvadatalogo.svg" width="128" alt="SilvaData Logo" />
 </p>
 
 <h1 align="center">SilvaData 🚀</h1>
@@ -29,7 +29,9 @@ Este projeto representa a evolução da marca **SilvaData**, apresentando uma id
 O **SilvaData** é um fork especializado derivado do projeto [ISISys-MAUI](https://github.com/CW-Software-Apps/ISISys-MAUI). Enquanto o ISISys serve como a plataforma base genérica da CW Software, o SilvaData é a implementação customizada com branding e regras de negócio específicas para o ecossistema SilvaData.
 
 ### Estratégia de Manutenção (Cherry-pick)
+
 Para garantir que melhorias de estabilidade e correções de bugs sejam compartilhadas entre as plataformas:
+
 - **Fluxo de Upstream**: Correções de bugs genéricos realizados no core do **ISISys** são integrados periodicamente ao **SilvaData** via `git cherry-pick`.
 - **Sincronia**: Este modelo de engenharia permite que o SilvaData evolua sua identidade visual e recursos exclusivos de forma independente, sem perder o acesso às evoluções constantes do motor principal do sistema.
 
@@ -37,10 +39,10 @@ Para garantir que melhorias de estabilidade e correções de bugs sejam comparti
 
 ## ✨ Funcionalidades Principais
 
-*   **Gestão de Lotes**: Visualização completa de status, idades e métricas zootécnicas.
-*   **Sincronização Inteligente**: Motor de persistência SQLite com filas de sincronização assíncronas.
-*   **Dashboard Executivo**: Visão consolidada de indicadores de performance diretamente na tela inicial.
-*   **Modo Offline**: Primeiro a dados, garantindo que nenhuma auditoria seja perdida em campo.
+- **Gestão de Lotes**: Visualização completa de status, idades e métricas zootécnicas.
+- **Sincronização Inteligente**: Motor de persistência SQLite com filas de sincronização assíncronas.
+- **Dashboard Executivo**: Visão consolidada de indicadores de performance diretamente na tela inicial.
+- **Modo Offline**: Primeiro a dados, garantindo que nenhuma auditoria seja perdida em campo.
 
 ---
 
@@ -48,10 +50,10 @@ Para garantir que melhorias de estabilidade e correções de bugs sejam comparti
 
 Implementamos os padrões mais modernos da engenharia de software para garantir estabilidade empresarial:
 
-*   **MVVM (Model-View-ViewModel)**: Separação rigorosa de interesses.
-*   **Injeção de Dependências**: Gerenciamento modular de serviços e PageModels.
-*   **Observabilidade Controlada**: Integração nativa com Sentry para telemetria de erros.
-*   **Otimização de Memória**: Estratégias de GC Assurance para evitar vazamentos em execuções longas.
+- **MVVM (Model-View-ViewModel)**: Separação rigorosa de interesses.
+- **Injeção de Dependências**: Gerenciamento modular de serviços e PageModels.
+- **Observabilidade Controlada**: Integração nativa com Sentry para telemetria de erros.
+- **Otimização de Memória**: Estratégias de GC Assurance para evitar vazamentos em execuções longas.
 
 ---
 
@@ -59,9 +61,9 @@ Implementamos os padrões mais modernos da engenharia de software para garantir 
 
 O SilvaData está totalmente integrado ao sistema de automação da CW Software:
 
-*   **Build Automatizado**: Processamento de artefatos `.aab` e `.apk` em cada interação.
-*   **Monitoramento**: Painel online disponível em [dashboard.appdeployhub.com](https://dashboard.appdeployhub.com/).
-*   **Telemetria de Build**: Logs detalhados e rastreio de versão simplificado.
+- **Build Automatizado**: Processamento de artefatos `.aab` e `.apk` em cada interação.
+- **Monitoramento**: Painel online disponível em [dashboard.appdeployhub.com](https://dashboard.appdeployhub.com/).
+- **Telemetria de Build**: Logs detalhados e rastreio de versão simplificado.
 
 ---
 

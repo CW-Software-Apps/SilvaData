@@ -74,12 +74,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Resources\Raw\**" />
-	  <Compile Remove="Resources\Raw\**" />
-	  <EmbeddedResource Remove="Resources\Raw\**" />
-	  <MauiCss Remove="Resources\Raw\**" />
-	  <MauiXaml Remove="Resources\Raw\**" />
-	  <None Remove="Resources\Raw\**" />
+		<AndroidResource Remove="Resources\Raw\**" />
+		<Compile Remove="Resources\Raw\**" />
+		<EmbeddedResource Remove="Resources\Raw\**" />
+		<MauiCss Remove="Resources\Raw\**" />
+		<MauiXaml Remove="Resources\Raw\**" />
+		<None Remove="Resources\Raw\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -111,7 +111,6 @@
 		<None Remove="Resources\Images\Icons\IconSync.png" />
 		<None Remove="Resources\Images\Icons\IconTratamentoWhite.png" />
 		<None Remove="Resources\Images\Icons\IconUE.png" />
-		<None Remove="Resources\Images\Icons\ISILogo.png" />
 		<None Remove="Resources\Images\Icons\ISIMacro.png" />
 		<None Remove="Resources\Images\Icons\ISIMacroIntestino.png" />
 		<None Remove="Resources\Images\Icons\ISIMacroOrgaos.png" />
@@ -194,7 +193,7 @@
 		<MauiImage Include="Resources\Images\Icons\iconsync.png" />
 		<MauiImage Include="Resources\Images\Icons\icontratamentowhite.png" />
 		<MauiImage Include="Resources\Images\Icons\iconue.png" />
-		<MauiImage Include="Resources\Images\Icons\isilogo.png" />
+		<MauiImage Include="Resources\Images\Icons\silvadatalogo.svg" />
 		<MauiImage Include="Resources\Images\Icons\isimacro.png" />
 		<MauiImage Include="Resources\Images\Icons\isimacrointestino.png" />
 		<MauiImage Include="Resources\Images\Icons\isimacrolocomotorcarcaca.png" />
@@ -303,7 +302,7 @@
 
 	<ItemGroup>
 		<MauiXaml Update="Pages\Controls\CustomControls\Dashboard\DashboardTabMeusResultados.xaml">
-		  <Generator>MSBuild:Compile</Generator>
+			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Pages\Controls\LoadingView.xaml">
 			<Generator>MSBuild:Compile</Generator>
