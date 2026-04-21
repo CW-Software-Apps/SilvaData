@@ -1,12 +1,26 @@
-global using SilvaData_MAUI.PageModels;
-global using SilvaData_MAUI.Pages;
-global using SilvaData_MAUI.Controls;
-global using SilvaData_MAUI.Utils;
-global using SilvaData_MAUI.Infrastructure;
-global using SilvaData_MAUI.Utilities;
+global using System;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using System.Windows.Input;
+global using Microsoft.Maui;
 global using Microsoft.Maui.Controls;
+global using Microsoft.Maui.Controls.Hosting;
 global using Microsoft.Maui.Graphics;
-
-// Adiciona alias global para localiza��o baseado nos Resources (.resx)
-global using Traducao = SilvaData_MAUI.Resources.Localization.Localization;
+global using Microsoft.Extensions.Logging;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using CommunityToolkit.Maui;
+global using CommunityToolkit.Maui.Alerts;
+global using CommunityToolkit.Maui.Views;
+global using Syncfusion.Maui.Core;
+global using SilvaData.Models;
+global using SilvaData.PageModels;
+global using SilvaData.ViewModels;
+global using SilvaData.Services;
+global using SilvaData.Utils;
+global using SilvaData.Infrastructure;
+global using Traducao = SilvaData.Resources.Localization.Localization;
 global using Microsoft.Maui.ApplicationModel.DataTransfer;

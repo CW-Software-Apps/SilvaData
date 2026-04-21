@@ -2,6 +2,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 
+using SilvaData.Infrastructure;
+using SilvaData.Pages;
+using SilvaData.Services;
+using SilvaData.ViewModels;
+
 using SilvaData_MAUI.Models;
 using SilvaData_MAUI.Pages.PopUps;
 using SilvaData_MAUI.Services;
