@@ -10,7 +10,7 @@
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
 
     x:DataType="viewModels:ISIMacroNotaSelecionaImagemViewModel"
-    Background="#0888CD"
+    Background="{StaticResource PrimaryColor}"
     Shell.TabBarIsVisible="False">
 
     <Grid
@@ -50,7 +50,7 @@
             RowDefinitions="50,*,Auto,Auto,70">
 
             <!--  Barra decorativa superior  -->
-            <BoxView Grid.Row="0" Background="#26558D" />
+            <BoxView Grid.Row="0" Background="{StaticResource SecondaryColor}" />
 
             <!--  Imagem com zoom  -->
             <Border

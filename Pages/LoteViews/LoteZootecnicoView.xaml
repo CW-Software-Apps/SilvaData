@@ -12,7 +12,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
     x:DataType="viewModels:LoteZootecnicoViewModel"
-    Background="#0888CD">
+    Background="{StaticResource PrimaryColor}">
 
     <Grid Background="{StaticResource QuaseBranco}" RowDefinitions="Auto,*">
         <!--  Header  -->
@@ -72,13 +72,13 @@
                             FontAttributes="Bold"
                             FontSize="14"
                             Text="{localization:Translate AbaGeral}"
-                            TextColor="#0888CD">
+                            TextColor="{StaticResource PrimaryColor}">
                             <buttons:SfButton.Triggers>
                                 <DataTrigger
                                     Binding="{Binding IsAbaGeralSelecionada}"
                                     TargetType="buttons:SfButton"
                                     Value="True">
-                                    <Setter Property="Background" Value="#0888CD" />
+                                    <Setter Property="Background" Value="{StaticResource PrimaryColor}" />
                                     <Setter Property="TextColor" Value="White" />
                                 </DataTrigger>
                             </buttons:SfButton.Triggers>
@@ -101,13 +101,13 @@
                             FontAttributes="Bold"
                             FontSize="14"
                             Text="{localization:Translate AbaPorIdade}"
-                            TextColor="#0888CD">
+                            TextColor="{StaticResource PrimaryColor}">
                             <buttons:SfButton.Triggers>
                                 <DataTrigger
                                     Binding="{Binding IsAbaPorIdadeSelecionada}"
                                     TargetType="buttons:SfButton"
                                     Value="True">
-                                    <Setter Property="Background" Value="#0888CD" />
+                                    <Setter Property="Background" Value="{StaticResource PrimaryColor}" />
                                     <Setter Property="TextColor" Value="White" />
                                 </DataTrigger>
                             </buttons:SfButton.Triggers>
@@ -143,7 +143,7 @@
                                         FontSize="40"
                                         HorizontalTextAlignment="Center"
                                         Text="{x:Static fontawesome:FontAwesomeIcons.Hourglass}"
-                                        TextColor="#0888CD" />
+                                        TextColor="{StaticResource PrimaryColor}" />
                                     <Label
                                         FontSize="Medium"
                                         HorizontalTextAlignment="Center"

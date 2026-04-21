@@ -95,7 +95,7 @@
                 <buttons:SfButton
                     Text="OK"
                     Command="{Binding OKCommand}"
-                    Background="#26558D"
+                    Background="{StaticResource SecondaryColor}"
                     TextColor="White"
                     CornerRadius="12"
                     HeightRequest="48"

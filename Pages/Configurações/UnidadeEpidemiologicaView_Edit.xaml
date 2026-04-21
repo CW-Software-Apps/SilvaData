@@ -11,7 +11,7 @@
     xmlns:utils="clr-namespace:SilvaData.Utils"
     xmlns:viewmodels="clr-namespace:SilvaData.ViewModels"
     x:DataType="viewmodels:UnidadeEpidemiologicaEditViewModel"
-    BackgroundColor="#0888CD"
+    BackgroundColor="{StaticResource PrimaryColor}"
     Shell.TabBarIsVisible="false">
 
     <Grid BackgroundColor="{StaticResource QuaseBranco}" RowDefinitions="Auto,*">
@@ -25,8 +25,8 @@
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Offset="0.1" Color="#0888CD" />
-                    <GradientStop Offset="1.0" Color="#26558D" />
+                    <GradientStop Offset="0.1" Color="{StaticResource PrimaryColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource SecondaryColor}" />
                 </LinearGradientBrush>
             </Grid.Background>
 

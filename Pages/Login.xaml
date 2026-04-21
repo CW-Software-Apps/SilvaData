@@ -14,7 +14,7 @@
     Style="{StaticResource HeaderGradient}">
 
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="#0888CD" StatusBarStyle="LightContent" />
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource PrimaryColor}" StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
 
     <!--  Grid raiz para sobrepor o overlay de loading  -->

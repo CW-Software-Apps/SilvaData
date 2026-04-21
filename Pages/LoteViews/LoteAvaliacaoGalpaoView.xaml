@@ -12,7 +12,7 @@ xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=Loca
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
     xmlns:numericupdown="http://schemas.syncfusion.com/maui/toolkit"
     x:DataType="viewModels:LoteAvaliacaoGalpaoViewModel"
-    Background="#0888CD">
+    Background="{StaticResource PrimaryColor}">
 
     <ContentPage.Resources>
         <ResourceDictionary>

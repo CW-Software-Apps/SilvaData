@@ -8,7 +8,7 @@
     Title="SincronizacaoPageModal">
 
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="#0888CD" StatusBarStyle="LightContent" />
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource PrimaryColor}" StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
 
     <controls:SincronizacaoView x:Name="SincronizacaoViewControl" />

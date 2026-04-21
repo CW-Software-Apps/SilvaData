@@ -25,10 +25,10 @@
 
             <!--  Quantitativo: Mínimo / Realizado / Máximo / Média  -->
             <Grid
-                Background="#26558D"
+                Background="{StaticResource SecondaryColor}"
                 IsVisible="{Binding AvaliacaoGalpaoQuantitativo}"
                 RowDefinitions="40,80">
-                <BoxView Grid.Row="0" Background="#26558D" />
+                <BoxView Grid.Row="0" Background="{StaticResource SecondaryColor}" />
                 <BoxView Grid.Row="1" Background="{StaticResource QuaseBranco}" />
 
                 <Border
@@ -59,10 +59,10 @@
 
             <!--  Qualitativo: Mínimo / Realizado / Máximo  -->
             <Grid
-                Background="#26558D"
+                Background="{StaticResource SecondaryColor}"
                 IsVisible="{Binding AvaliacaoGalpaoQualitativo}"
                 RowDefinitions="40,80">
-                <BoxView Grid.Row="0" Background="#26558D" />
+                <BoxView Grid.Row="0" Background="{StaticResource SecondaryColor}" />
                 <BoxView Grid.Row="1" Background="{StaticResource QuaseBranco}" />
 
                 <Border

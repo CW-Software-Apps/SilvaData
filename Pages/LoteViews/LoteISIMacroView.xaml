@@ -11,7 +11,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
     x:DataType="viewModels:LoteISIMacroViewModel"
-    Background="#0888CD">
+    Background="{StaticResource PrimaryColor}">
 
     <Grid
         Background="{StaticResource QuaseBranco}"
@@ -61,7 +61,7 @@
             IsVisible="{Binding IsBusy, Converter={StaticResource InvertBoolean}}"
             RowDefinitions="50,Auto">
 
-            <Grid Grid.Row="0" Background="#26558D" />
+            <Grid Grid.Row="0" Background="{StaticResource SecondaryColor}" />
 
             <Border
                 Grid.Row="1"

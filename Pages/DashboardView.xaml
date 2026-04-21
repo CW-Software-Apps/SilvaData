@@ -13,7 +13,7 @@
     xmlns:viewmodels="clr-namespace:SilvaData.ViewModels"
     x:Name="dashboardView"
     x:DataType="viewmodels:DashboardViewModel"
-    Background="#26558D">
+    Background="{StaticResource SecondaryColor}">
 
     <Grid RowDefinitions="Auto,Auto,*" RowSpacing="0">
 

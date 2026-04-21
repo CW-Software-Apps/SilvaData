@@ -10,7 +10,7 @@
     xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
     x:DataType="viewModels:LoteSalmonellaViewModel"
-    Background="#0888CD">
+    Background="{StaticResource PrimaryColor}">
 
     <Grid Background="{StaticResource QuaseBranco}" RowDefinitions="Auto,*">
 
@@ -23,8 +23,8 @@
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Offset="0.1" Color="#0888CD" />
-                    <GradientStop Offset="1.0" Color="#26558D" />
+                    <GradientStop Offset="0.1" Color="{StaticResource PrimaryColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource SecondaryColor}" />
                 </LinearGradientBrush>
             </Grid.Background>
 

@@ -28,7 +28,7 @@ namespace SilvaData
                 .UseMauiApp<App>()
                 .UseSentry(options =>
                 {
-                    options.Dsn = "https://c4f90dd5f89c273e798c61acbb117441@o4508410137411584.ingest.us.sentry.io/4510347489705984";
+                    options.Dsn = "https://c90d809b75da1f7771108dedcb78e9be@o4508410137411584.ingest.us.sentry.io/4511259248492544";
                     options.Debug = false;
                     options.AutoSessionTracking = true;
                     options.CaptureFailedRequests = true;

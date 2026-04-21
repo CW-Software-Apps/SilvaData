@@ -12,9 +12,9 @@
     <Color x:Key="Primary">#70AC3E</Color>
     <Color x:Key="PrimaryDark">#5A8A32</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="SecondaryDarkText">#324275</Color>
-    <Color x:Key="Tertiary">#324275</Color>
+    <Color x:Key="Secondary">#C6E2AE</Color>
+    <Color x:Key="SecondaryDarkText">#3D3D3D</Color>
+    <Color x:Key="Tertiary">#3D3D3D</Color>
 
     <Color x:Key="DarkBackground">#17171a</Color>
     <Color x:Key="LightOnDarkBackground">#C3C3C3</Color>
@@ -27,7 +27,7 @@
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
     <Color x:Key="Magenta">#D600AA</Color>
-    <Color x:Key="MidnightBlue">#190649</Color>
+    <Color x:Key="MidnightBlue">#212121</Color>
     <Color x:Key="OffBlack">#1f1f1f</Color>
 
     <Color x:Key="Gray100">#E1E1E1</Color>

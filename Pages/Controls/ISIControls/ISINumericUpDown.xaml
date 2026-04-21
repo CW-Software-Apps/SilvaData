@@ -21,7 +21,7 @@
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsNotReadOnly, Source={x:Reference rootControl}}"
                 Text="{x:Static fontawesome:FontAwesomeIcons.Minus}"
-                TextColor="{OnPlatform iOS='#0888CD', Default={StaticResource PrimaryColor}}"
+                TextColor="{OnPlatform iOS='{StaticResource PrimaryColor}', Default={StaticResource PrimaryColor}}"
                 VerticalOptions="Center"
                 WidthRequest="40" />
 
@@ -53,7 +53,7 @@
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsNotReadOnly, Source={x:Reference rootControl}}"
                 Text="{x:Static fontawesome:FontAwesomeIcons.Plus}"
-                TextColor="{OnPlatform iOS='#0888CD', Default={StaticResource PrimaryColor}}"
+                TextColor="{OnPlatform iOS='{StaticResource PrimaryColor}', Default={StaticResource PrimaryColor}}"
                 VerticalOptions="Center"
                 WidthRequest="40" />
         </Grid>

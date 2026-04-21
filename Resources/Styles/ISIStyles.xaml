@@ -28,8 +28,8 @@
 
     <Color x:Key="ButtonColor">#70AC3E</Color>
     <Color x:Key="CorBotao">#70AC3E</Color>
-    <Color x:Key="DarkButtonColor">#324275</Color>
-    <Color x:Key="LightButtonColor">#f2f9fd</Color>
+    <Color x:Key="DarkButtonColor">#3D3D3D</Color>
+    <Color x:Key="LightButtonColor">#EFF3F8</Color>
     <Color x:Key="FundoClarinhoBotao">#EFF3F8</Color>
 
     <LinearGradientBrush x:Key="HeaderGradientBrush" EndPoint="0,1">
@@ -50,7 +50,7 @@
     <Color x:Key="DisabledBackgroundColor">#E0E0E0</Color>
     <Color x:Key="DisabledTextColor">#A0A0A0</Color>
 
-    <Color x:Key="TextEnabled">#324275</Color>
+    <Color x:Key="TextEnabled">#3D3D3D</Color>
     <Color x:Key="TextDisabled">LightGray</Color>
     <Color x:Key="TextColorLight">White</Color>
     <Color x:Key="TextColor">Black</Color>
@@ -60,14 +60,14 @@
     <Color x:Key="FlyoutBackgroundColor">White</Color>
     <Color x:Key="QuaseBranco">#F5F5F5</Color>
 
-    <Color x:Key="ScoreBackground">#f2f9fc</Color>
-    <Color x:Key="ScoreTextColor">#0888cd</Color>
-
-    <Color x:Key="AcometimentoBackground">#f4f5fc</Color>
-    <Color x:Key="AcometimentoTextColor">#04289a</Color>
-
-    <Color x:Key="DispersaoBackground">#f5f5fc</Color>
-    <Color x:Key="DispersaoTextColor">#8079dd</Color>
+    <Color x:Key="ScoreBackground">#F2F9F2</Color>
+    <Color x:Key="ScoreTextColor">{StaticResource PrimaryColor}</Color>
+ 
+    <Color x:Key="AcometimentoBackground">#F4F8F4</Color>
+    <Color x:Key="AcometimentoTextColor">{StaticResource SecondaryColor}</Color>
+ 
+    <Color x:Key="DispersaoBackground">#F5F8F5</Color>
+    <Color x:Key="DispersaoTextColor">#70AC3E</Color>
 
 
 
@@ -1081,8 +1081,8 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Offset="0.1" Color="#0888CD" />
-                    <GradientStop Offset="1.0" Color="#26558D" />
+                    <GradientStop Offset="0.1" Color="{StaticResource PrimaryColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource SecondaryColor}" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -1093,8 +1093,8 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Offset="0.1" Color="#26558D" />
-                    <GradientStop Offset="1.0" Color="#0888CD" />
+                    <GradientStop Offset="0.1" Color="{StaticResource SecondaryColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource PrimaryColor}" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -1105,7 +1105,7 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Offset="0.0" Color="#26558D" />
+                    <GradientStop Offset="0.0" Color="{StaticResource SecondaryColor}" />
                     <GradientStop Offset="1.0" Color="{StaticResource QuaseBranco}" />
                 </LinearGradientBrush>
             </Setter.Value>
