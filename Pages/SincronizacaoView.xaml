@@ -12,63 +12,47 @@
         <conv:IsNotZeroConverter x:Key="IsNotZeroConverter" />
     </ContentView.Resources>
 
-    <Grid RowDefinitions="Auto,Auto,*" Style="{StaticResource HeaderGradient}">
-        <!--  Header  -->
-        <Grid
-            Grid.Row="0"
-            Margin="0"
-            Padding="5,10"
-            ColumnDefinitions="*,Auto"
-            RowDefinitions="Auto">
-            <HorizontalStackLayout
-                Grid.Row="0"
-                Spacing="0"
-                VerticalOptions="Center">
+    <Grid RowDefinitions="Auto,*" BackgroundColor="{StaticResource QuaseBranco}">
+        <!-- ── Header logo (padrão global) ── -->
+        <Grid Grid.Row="0" Padding="20,16,20,16">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Offset="0.0" Color="{StaticResource PrimaryLightColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource QuaseBranco}" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
                 <Image
-                    Margin="5,0,0,0"
+                    Grid.Column="0"
+                    HeightRequest="44"
+                    WidthRequest="44"
                     Aspect="AspectFit"
-                    HeightRequest="40"
-                    HorizontalOptions="Center"
-                    Source="isilogo.png">
-                    <Image.Shadow>
-                        <Shadow
-                            Brush="White"
-                            Opacity="0.5"
-                            Radius="10"
-                            Offset="0,1" />
-                    </Image.Shadow>
-                </Image>
-                <Label
-                    Margin="5,0,2,0"
-                    Padding="5,0"
-                    FontAttributes="Bold"
-                    FontFamily="Nunito"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Start"
-                    Text="Silvadata"
-                    TextColor="White"
-                    VerticalOptions="Center" />
-                <Label
-                    Margin="0,6"
-                    FontAttributes="Bold"
-                    FontSize="Micro"
-                    HorizontalTextAlignment="Start"
-                    Text="from ISI Institute"
-                    TextColor="White"
-                    VerticalOptions="End" />
-            </HorizontalStackLayout>
+                    Source="silvadatalogo" />
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Silvadata"
+                        TextColor="{StaticResource SecondaryColor}" />
+                    <Label
+                        FontSize="12"
+                        Text="from Silvateam"
+                        TextColor="{StaticResource Gray400}" />
+                </VerticalStackLayout>
+            </Grid>
         </Grid>
 
         <VerticalStackLayout
-            Grid.Row="2"
+            Grid.Row="1"
             Margin="10"
             Spacing="16"
             VerticalOptions="Center">
             <Label
-                FontSize="Large"
+                FontSize="24"
+                FontAttributes="Bold"
                 HorizontalTextAlignment="Center"
                 Text="Sincronização de Dados"
-                TextColor="White" />
+                TextColor="{StaticResource PrimaryColor}" />
 
             <Border
                 Padding="24"

@@ -17,69 +17,51 @@
 
     <Grid RowDefinitions="Auto,Auto,*" RowSpacing="0">
 
-        <!--  Header Section  -->
-        <Grid
-            Grid.Row="0"
-            Margin="0,0,0,0"
-            Background="{StaticResource PrimaryGradientBrush}"
-            ColumnDefinitions="Auto,*,Auto"
-            RowDefinitions="Auto">
-            <HorizontalStackLayout
-                Grid.Row="0"
-                Spacing="0"
-                VerticalOptions="Center">
-
+        <!-- ── Header logo (padrão global) ── -->
+        <Grid Grid.Row="0" Padding="10,8,20,8">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Offset="0.0" Color="{StaticResource PrimaryLightColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource QuaseBranco}" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
                 <Image
-                    Margin="10,0,0,0"
+                    Grid.Column="0"
+                    HeightRequest="44"
+                    WidthRequest="44"
                     Aspect="AspectFit"
-                    HeightRequest="30"
-                    HorizontalOptions="Center"
-                    Source="isilogo.png">
+                    Source="silvadatalogo" />
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Silvadata"
+                        TextColor="{StaticResource SecondaryColor}" />
+                    <Label
+                        FontSize="12"
+                        Text="from Silvateam"
+                        TextColor="{StaticResource Gray400}" />
+                </VerticalStackLayout>
 
-                    <Image.Shadow>
-                        <Shadow
-                            Brush="White"
-                            Opacity="0.5"
-                            Radius="10"
-                            Offset="0,1" />
-                    </Image.Shadow>
-
-                </Image>
-
-                <Label
-                    Margin="5,0,2,0"
-                    Padding="5,0"
-                    FontAttributes="Bold"
-                    FontFamily="Nunito"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Start"
-                    Text="Silvadata"
-                    TextColor="White"
-                    VerticalOptions="Center" />
-                <Label
-                    Margin="0,6"
-                    FontAttributes="Bold"
-                    FontSize="Micro"
-                    HorizontalTextAlignment="Start"
-                    Text="from Silvateam"
-                    TextColor="White"
-                    VerticalOptions="End"
-                    VerticalTextAlignment="End" />
-            </HorizontalStackLayout>
-            <buttons:SfButton
-                x:Name="userButton"
-                Grid.Row="0"
-                Grid.Column="2"
-                Margin="10,10"
-                Command="{Binding ShowUsuarioCommand}"
-                CommandParameter="{x:Reference userButton}"
-                CornerRadius="40"
-                FontAttributes="Bold"
-                FontSize="Large"
-                HeightRequest="50"
-                Style="{StaticResource NovoBotao}"
-                Text="{x:Static fontawesome:FontAwesomeIcons.User}"
-                WidthRequest="50" />
+                <buttons:SfButton
+                    x:Name="userButton"
+                    Grid.Column="2"
+                    Command="{Binding ShowUsuarioCommand}"
+                    CommandParameter="{x:Reference userButton}"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    Background="White"
+                    FontFamily="FontAwesomeSolid"
+                    FontSize="22"
+                    Text="&#xf007;"
+                    TextColor="{StaticResource PrimaryColor}">
+                    <buttons:SfButton.Shadow>
+                        <Shadow Brush="Black" Opacity="0.1" Radius="10" Offset="0,2" />
+                    </buttons:SfButton.Shadow>
+                </buttons:SfButton>
+            </Grid>
         </Grid>
 
         <!--  Background Layer  -->
