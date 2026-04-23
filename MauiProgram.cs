@@ -138,8 +138,8 @@ namespace SilvaData
             builder.Services.AddSingleton<PopUpUsuarioViewModel>();
 
             //Lote
-            builder.Services.AddSingleton<LoteEditView>();
-            builder.Services.AddSingleton<LoteEditViewModel>();
+            builder.Services.AddTransient<LoteEditView>();
+            builder.Services.AddTransient<LoteEditViewModel>();
 
             //Lote Monitoramento (View transient para evitar reuso visual no iOS; ViewModel singleton para manter o fluxo atual de SetInitialState)
             builder.Services.AddTransient<LoteMonitoramentoView>();
