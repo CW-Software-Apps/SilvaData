@@ -12,30 +12,36 @@ namespace SilvaData.ViewModels
         [ObservableProperty]
         private ObservableCollection<UnidadeEpidemiologicaComDetalhes> _listaFiltrada = [];
 
-        public static bool PodeAdicionar => Permissoes.UsuarioPermissoes?.regionais.cadastrar ?? false;
-        public static bool PodeEditar => Permissoes.UsuarioPermissoes?.regionais.atualizar ?? false;
+        public static bool PodeAdicionar => Permissoes.PodeAdicionarUE;
+        public static bool PodeEditar => Permissoes.PodeEditarUE;
 
         public int TotalGalpoes => _listaFiltrada.Count;
 
         public GalpoesViewModel(CacheService cacheService)
         {
             _cacheService = cacheService;
-            AplicaFiltro();
+
+            // Escuta mudanças na lista global do cache
+            _cacheService.UEList.CollectionChanged += (s, e) => AplicaFiltro();
 
             WeakReferenceMessenger.Default.Register<UEAdicionadaMessage>(this, (_, m) =>
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    ListaFiltrada.Insert(0, (UnidadeEpidemiologicaComDetalhes)m.UnidadeEpidemiologica);
-                    OnPropertyChanged(nameof(TotalGalpoes));
+                    // A própria lista do cache já vai ser atualizada, o CollectionChanged cuida do resto
+                    AplicaFiltro();
                 }));
 
             WeakReferenceMessenger.Default.Register<UESalvaMessage>(this, (_, m) =>
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    var idx = ListaFiltrada.IndexOf(ListaFiltrada.FirstOrDefault(u => u.id == m.UnidadeEpidemiologica.id)!);
-                    if (idx >= 0)
-                        ListaFiltrada[idx] = (UnidadeEpidemiologicaComDetalhes)m.UnidadeEpidemiologica;
+                    AplicaFiltro();
                 }));
+        }
+
+        public Task InitializeAsync()
+        {
+            AplicaFiltro();
+            return Task.CompletedTask;
         }
 
         partial void OnTextoPesquisaChanged(string _) => AplicaFiltro();

@@ -61,10 +61,10 @@
     <Color x:Key="QuaseBranco">#F5F5F5</Color>
 
     <Color x:Key="ScoreBackground">#F2F9F2</Color>
-    <Color x:Key="ScoreTextColor">{StaticResource PrimaryColor}</Color>
+    <Color x:Key="ScoreTextColor">#70AC3E</Color>
  
     <Color x:Key="AcometimentoBackground">#F4F8F4</Color>
-    <Color x:Key="AcometimentoTextColor">{StaticResource SecondaryColor}</Color>
+    <Color x:Key="AcometimentoTextColor">#5A8A32</Color>
  
     <Color x:Key="DispersaoBackground">#F5F8F5</Color>
     <Color x:Key="DispersaoTextColor">#70AC3E</Color>

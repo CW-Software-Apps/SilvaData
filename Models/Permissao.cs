@@ -116,6 +116,13 @@ namespace SilvaData.Models
         public static bool PodeEditarZootecnico => UsuarioPermissoes.lotes.monitoramento.zootecnico.editar;
         public static bool TratamentoEmVezDeLote => UsuarioPermissoes.SistemaTermos.ID == 2;
 
+        public static bool PodeAdicionarUE => UsuarioPermissoes.unidadesEpidemiologicas.cadastrar;
+        public static bool PodeEditarUE => UsuarioPermissoes.unidadesEpidemiologicas.atualizar;
+
+        // Compatibilidade com XAML antigo
+        public static bool PodeAdicionar => PodeAdicionarUE;
+        public static bool PodeEditar => PodeEditarUE;
+
         #endregion
 
         /// <summary>

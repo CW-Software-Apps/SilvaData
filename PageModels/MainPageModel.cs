@@ -213,6 +213,7 @@ namespace SilvaData.PageModels
                     var dashboardVm = ServiceHelper.GetRequiredService<DashboardViewModel>();
                     var homeVm = ServiceHelper.GetRequiredService<HomeViewModel>();
                     var loteVm = ServiceHelper.GetRequiredService<LoteViewModel>();
+                    var galpoesVm = ServiceHelper.GetRequiredService<GalpoesViewModel>();
 
                     // Inicializa cada um explicitamente (com tratamento de erros)
                     if (dashboardVm != null)
@@ -222,6 +223,7 @@ namespace SilvaData.PageModels
                     }
                     if (homeVm != null) await homeVm.InitializeAsync();
                     if (loteVm != null) await loteVm.InitializeAsync();
+                    if (galpoesVm != null) await galpoesVm.InitializeAsync();
                     // Pré-aquece Singletons de UI: roda InitializeComponent() durante o startup
                     // (spinner visível) para que a primeira abertura seja instantânea.
                     _ = ServiceHelper.GetRequiredService<ISIInstitute.Views.LoteViews.LoteMonitoramentoView>();

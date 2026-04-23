@@ -111,6 +111,7 @@
                         <Entry
                             x:Name="PesquisaEntry"
                             Background="White"
+                            SelectionColor="{StaticResource PrimaryColor}"
                             Text="{Binding PesquisaLoteText, Mode=TwoWay}"
                             TextColor="{StaticResource SecondaryColor}" />
                     </Border>
@@ -138,6 +139,7 @@
                                 DisplayMemberPath="nome"
                                 IsEditable="True"
                                 ItemsSource="{Binding RegionalList}"
+                                SelectionColor="{StaticResource PrimaryColor}"
                                 SelectedItem="{Binding SelectedFiltroRegional, Mode=TwoWay}" />
                         </Border>
                     </VerticalStackLayout>
@@ -163,6 +165,7 @@
                                 DisplayMemberPath="nome"
                                 IsEditable="True"
                                 ItemsSource="{Binding PropriedadeList}"
+                                SelectionColor="{StaticResource PrimaryColor}"
                                 SelectedItem="{Binding SelectedFiltroPropriedade, Mode=TwoWay}" />
                         </Border>
                     </VerticalStackLayout>
@@ -189,6 +192,7 @@
                             DisplayMemberPath="nome"
                             IsEditable="True"
                             ItemsSource="{Binding UEList}"
+                            SelectionColor="{StaticResource PrimaryColor}"
                             SelectedItem="{Binding SelectedFiltroUE, Mode=TwoWay}" />
                     </Border>
                 </StackLayout>

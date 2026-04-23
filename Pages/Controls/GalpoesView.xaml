@@ -89,7 +89,7 @@
         <!-- ── Linha 2: Cabeçalho das colunas ── -->
         <Grid
             Grid.Row="2"
-            ColumnDefinitions="*,60,48"
+            ColumnDefinitions="*,60,48,48"
             Padding="16,4,16,4">
             <Label
                 Grid.Column="0"
@@ -106,7 +106,7 @@
                 TextColor="{StaticResource PrimaryColor}" />
             <BoxView
                 Grid.Column="0"
-                Grid.ColumnSpan="3"
+                Grid.ColumnSpan="4"
                 BackgroundColor="{StaticResource PrimaryColor}"
                 HeightRequest="1.5"
                 VerticalOptions="End" />
@@ -125,7 +125,7 @@
                     <DataTemplate x:DataType="models:UnidadeEpidemiologicaComDetalhes">
                         <Grid
                             BackgroundColor="{StaticResource QuaseBranco}"
-                            ColumnDefinitions="*,60,48"
+                            ColumnDefinitions="*,60,48,48"
                             Padding="16,0">
                             <Label
                                 Grid.Column="0"
@@ -142,6 +142,18 @@
                                 VerticalOptions="Center" />
                             <buttons:SfButton
                                 Grid.Column="2"
+                                Command="{Binding EditarCommand, Source={RelativeSource AncestorType={x:Type viewModels:GalpoesViewModel}}}"
+                                CommandParameter="{Binding .}"
+                                Background="Transparent"
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="20"
+                                HasShadow="False"
+                                ShowIcon="False"
+                                Text="&#xf044;"
+                                TextColor="{StaticResource SecondaryColor}"
+                                VerticalOptions="Center" />
+                            <buttons:SfButton
+                                Grid.Column="3"
                                 Command="{Binding ShowLoteCommand, Source={RelativeSource AncestorType={x:Type viewModels:GalpoesViewModel}}}"
                                 x:DataType="x:Null"
                                 CommandParameter="{Binding .}"
@@ -155,7 +167,7 @@
                                 VerticalOptions="Center" />
                             <BoxView
                                 Grid.Column="0"
-                                Grid.ColumnSpan="3"
+                                Grid.ColumnSpan="4"
                                 BackgroundColor="{StaticResource Gray100}"
                                 HeightRequest="1"
                                 VerticalOptions="End" />
@@ -171,7 +183,7 @@
             <!-- FAB -->
             <buttons:SfButton
                 Command="{Binding AdicionarGalpaoCommand}"
-                IsVisible="{x:Static models:Permissoes.PodeAdicionar}"
+                IsVisible="{x:Static viewModels:GalpoesViewModel.PodeAdicionar}"
                 Background="{StaticResource PrimaryBrush}"
                 CornerRadius="28"
                 HeightRequest="56"

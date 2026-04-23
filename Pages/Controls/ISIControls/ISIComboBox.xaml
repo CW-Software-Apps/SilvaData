@@ -67,7 +67,7 @@
                 ItemsSource="{Binding ItemsSource, Source={x:Reference comboBox}}"
                 Text="{Binding Text, Source={x:Reference comboBox}, Mode=TwoWay}"
                 SelectionChanged="OnComboBoxSelectionChanged"
-                SelectionTextHighlightColor="AliceBlue"
+                SelectionTextHighlightColor="{StaticResource PrimaryLightColor}"
                 ShowBorder="false"
                 TextColor="{Binding IsReadOnly, x:DataType={x:Type controls:ISIComboBox}, Source={x:Reference comboBox}, Converter={StaticResource BoolToColorConverter}}" />
         </Border>

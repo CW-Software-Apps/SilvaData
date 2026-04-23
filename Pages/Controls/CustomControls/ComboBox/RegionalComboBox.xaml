@@ -68,11 +68,11 @@
                     DisplayMemberPath="nome"
                     DropDownItemTextColor="{StaticResource PrimaryColor}"
                     HeightRequest="52"
-                    HighlightedTextColor="AliceBlue"
+                    HighlightedTextColor="{StaticResource PrimaryLightColor}"
                     IsEnabled="{Binding IsReadOnly, Source={x:Reference reginalComboBox}, Converter={StaticResource InvertBoolean}}"
                     ItemsSource="{Binding RegionalList, Source={x:Reference reginalComboBox}}"
                     SelectionChanged="OnComboBoxSelectionChanged"
-                    SelectionTextHighlightColor="AliceBlue"
+                    SelectionTextHighlightColor="{StaticResource PrimaryLightColor}"
                     ShowBorder="False"
                     TextColor="{Binding IsReadOnly, Source={x:Reference reginalComboBox}, Converter={StaticResource BoolToColorConverter}}" />
             </Border>

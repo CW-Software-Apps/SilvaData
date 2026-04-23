@@ -60,7 +60,6 @@
             Grid.Row="0"
             HeaderDisplayMode="Image"
             IndicatorBackground="{StaticResource PrimaryBrush}"
-            IndicatorHeight="4"
             IndicatorPlacement="Bottom"
             IndicatorWidthMode="Stretch"
             IsVisible="{Binding IsBusy, Converter={StaticResource InvertBoolean}}"
