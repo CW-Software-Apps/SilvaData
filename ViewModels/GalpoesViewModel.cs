@@ -74,15 +74,18 @@ namespace SilvaData.ViewModels
         [RelayCommand]
         private async Task Editar(UnidadeEpidemiologicaComDetalhes ue)
         {
+            if (ue == null) return;
             await NavigationUtils.ShowViewAsModalAsync<UnidadeEpidemiologicaView_Edit>(ue);
         }
 
         [RelayCommand]
         private async Task ShowLote(UnidadeEpidemiologicaComDetalhes ue)
         {
+            if (ue == null) return;
+
             var loteViewModel = ServiceHelper.GetRequiredService<LoteViewModel>();
             await loteViewModel.LimparFiltros();
-            loteViewModel.SelectedFiltroUE = loteViewModel.UEList.FirstOrDefault(u => u.id == ue.id);
+            loteViewModel.SelectedFiltroUE = loteViewModel.UEList.FirstOrDefault(u => u?.id == ue.id);
             await loteViewModel.CarregaLotes();
             WeakReferenceMessenger.Default.Send(new ShowLotesMessage());
         }

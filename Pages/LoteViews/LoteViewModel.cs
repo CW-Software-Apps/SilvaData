@@ -182,20 +182,20 @@ namespace SilvaData.ViewModels
 
         private void HandleNovoLote(NovoLoteMessage m)
         {
-            if (_isDisposed) return;
+            if (_isDisposed || m.Lote == null) return;
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                if (ListaLotes.FirstOrDefault(l => l.id == m.Lote.id) == null)
+                if (ListaLotes.FirstOrDefault(l => l?.id == m.Lote.id) == null)
                     ListaLotes.Insert(0, m.Lote);
             });
         }
 
         private void HandleLoteAlterado(LoteAlteradoMessage m)
         {
-            if (_isDisposed) return;
+            if (_isDisposed || m.Lote == null) return;
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                var existente = ListaLotes.FirstOrDefault(l => l.id == m.Lote.id);
+                var existente = ListaLotes.FirstOrDefault(l => l?.id == m.Lote.id);
                 if (existente != null)
                 {
                     var index = ListaLotes.IndexOf(existente);
@@ -223,7 +223,7 @@ namespace SilvaData.ViewModels
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    var existente = ListaLotes.FirstOrDefault(l => l.id == loteId);
+                    var existente = ListaLotes.FirstOrDefault(l => l?.id == loteId);
                     if (existente != null)
                     {
                         var index = ListaLotes.IndexOf(existente);

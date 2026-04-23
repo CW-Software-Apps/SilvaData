@@ -240,8 +240,12 @@ namespace SilvaData.PageModels
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"[MainPage] Erro ao inicializar ViewModels: {ex.Message}");
-                    await PopUpOK.ShowAsync(Traducao.Atenção, "Erro ao carregar dados iniciais");
+                    Debug.WriteLine($"[MainPage] Erro ao inicializar ViewModels: {ex}");
+                    SentryHelper.CaptureExceptionWithUser(ex, "MainPageModel.InitializeAppAsync");
+                    await PopUpOK.ShowAsync(
+                        Traducao.Atenção,
+                        $"Erro ao carregar dados iniciais - [MainPage] {ex.GetType().Name}: {ex.Message}\n\n{ex.StackTrace}"
+                    );
                 }
 
                 Debug.WriteLine("[MainPageModel] ViewModels carregados.");

@@ -172,7 +172,7 @@
                                     <buttons:SfButton.Content>
                                         <DataTemplate x:DataType="models:UnidadeEpidemiologicaComDetalhes">
                                             <Grid HeightRequest="36" WidthRequest="36">
-                                                <Image Source="iconlotes.svg" Aspect="AspectFit" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Image Source="iconlotes" Aspect="AspectFit" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center">
                                                     <Image.Behaviors>
                                                         <toolkit:IconTintColorBehavior TintColor="{StaticResource PrimaryColor}" />
                                                     </Image.Behaviors>
