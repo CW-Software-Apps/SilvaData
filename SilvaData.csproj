@@ -62,10 +62,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<MauiIcon Condition="$(TargetFramework.Contains('-ios'))" Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#364271" ForegroundScale="1" />
-		<MauiIcon Condition="!$(TargetFramework.Contains('-ios'))" Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#364271" ForegroundScale="0.85" />
-
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FFFFFF" BaseSize="256,256" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#70AC3E" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FFFFFF" BaseSize="128,128" />
 
 		<MauiImage Include="Resources\Images\*" />
 
@@ -178,7 +176,7 @@
 		<MauiImage Include="Resources\Images\Icons\icondashboard.png" />
 		<MauiImage Include="Resources\Images\Icons\icondispersao.png" />
 		<MauiImage Include="Resources\Images\Icons\iconlogoff.png" />
-		<MauiImage Include="Resources\Images\Icons\iconlotes.png" />
+		<MauiImage Include="Resources\Images\Icons\iconlotes.svg" />
 		<MauiImage Include="Resources\Images\Icons\iconminhaconta.png" />
 		<MauiImage Include="Resources\Images\Icons\iconnotificacoes.png" />
 		<MauiImage Include="Resources\Images\Icons\iconprivacy.png" />
@@ -210,6 +208,8 @@
 		<MauiImage Include="Resources\Images\Icons\syncselected.png" />
 		<MauiImage Include="Resources\Images\Icons\tratamentoviaagua.png" />
 		<MauiImage Include="Resources\Images\Icons\vacinas.png" />
+		<MauiImage Include="Resources\Images\Icons\iconmercado.svg" />
+		<MauiImage Include="Resources\Images\Icons\icongalpao.svg" />
 		<MauiImage Include="Resources\Images\Icons\voltar.svg" />
 		<MauiImage Include="Resources\Images\Icons\whatsapp.png" />
 		<MauiImage Include="Resources\Images\Icons\zootecnico.png" />

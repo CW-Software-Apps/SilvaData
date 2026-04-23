@@ -144,6 +144,19 @@ namespace SilvaData.Controls
             }
         }
 
+        private void OnIsiMacroItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+        {
+            if (e.DataItem is not SilvaData.ViewModels.ISIMacroButton button) return;
+            _viewModel.ShowISIMacroCommand.Execute(button);
+            _ = ClearSelectionAsync();
+        }
+
+        private async Task ClearSelectionAsync()
+        {
+            await Task.Delay(300);
+            isiMacroListView.SelectedItem = null;
+        }
+
         protected override bool OnBackButtonPressed()
         {
             _ = NavigationUtils.PopModalAsync();

@@ -34,19 +34,19 @@ namespace SilvaData.PageModels
         private string loadingText = "Loading...";
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(DashboardSelected))]
+        [NotifyPropertyChangedFor(nameof(MercadosSelected))]
+        [NotifyPropertyChangedFor(nameof(GalpoesSelected))]
         [NotifyPropertyChangedFor(nameof(LotesSelected))]
         [NotifyPropertyChangedFor(nameof(SyncSelected))]
-        [NotifyPropertyChangedFor(nameof(ConfigSelected))]
-        [NotifyPropertyChangedFor(nameof(SuporteSelected))]
+        [NotifyPropertyChangedFor(nameof(ContaSelected))]
         private int selectedIndex;
 
         // Propriedades calculadas para os estilos das Tabs
-        public bool DashboardSelected => SelectedIndex == 0;
-        public bool LotesSelected => SelectedIndex == 1;
-        public bool SyncSelected => SelectedIndex == 2;
-        public bool ConfigSelected => SelectedIndex == 3;
-        public bool SuporteSelected => SelectedIndex == 4;
+        public bool MercadosSelected => SelectedIndex == 0;
+        public bool GalpoesSelected => SelectedIndex == 1;
+        public bool LotesSelected => SelectedIndex == 2;
+        public bool SyncSelected => SelectedIndex == 3;
+        public bool ContaSelected => SelectedIndex == 4;
 
         // ★ Badge do Sync
         [ObservableProperty]
@@ -65,9 +65,9 @@ namespace SilvaData.PageModels
 
             // Registra os ouvintes de mensagens para mudar de aba
             WeakReferenceMessenger.Default.Register<ShowLotesMessage>(this, (r, m) => ShowLotes());
-            WeakReferenceMessenger.Default.Register<ShowDashboardMessage>(this, (r, m) => ShowDashboard());
+            WeakReferenceMessenger.Default.Register<ShowDashboardMessage>(this, (r, m) => ShowMercados());
             WeakReferenceMessenger.Default.Register<ShowSyncMessage>(this, (r, m) => ShowSync());
-            WeakReferenceMessenger.Default.Register<ShowSuporteMessage>(this, (r, m) => ShowSuporte());
+            WeakReferenceMessenger.Default.Register<ShowSuporteMessage>(this, (r, m) => ShowConta());
 
             // Recebe mudanças de total de pendências (badge)
             WeakReferenceMessenger.Default.Register<SyncPendentesTotalChangedMessage>(this, (r, m) =>
@@ -81,10 +81,11 @@ namespace SilvaData.PageModels
 
         #region Lógica de Navegação (Tabs)
 
-        public void ShowDashboard() => SelectedIndex = 0;
-        public void ShowLotes() => SelectedIndex = 1;
-        public void ShowSync() => SelectedIndex = 2;
-        public void ShowSuporte() => SelectedIndex = 4;
+        public void ShowMercados() => SelectedIndex = 0;
+        public void ShowGalpoes() => SelectedIndex = 1;
+        public void ShowLotes() => SelectedIndex = 2;
+        public void ShowSync() => SelectedIndex = 3;
+        public void ShowConta() => SelectedIndex = 4;
 
         #endregion
 

@@ -20,56 +20,78 @@
         <Grid
             Grid.Row="0"
             Margin="0"
-            ColumnDefinitions="*,Auto"
-            RowDefinitions="Auto,Auto,Auto"
-            RowSpacing="0"
-            Style="{StaticResource HeaderGradient}">
+            RowDefinitions="Auto,Auto"
+            RowSpacing="0">
 
-            <Grid
-                Grid.Row="0"
-                Padding="10,0"
-                ColumnDefinitions="Auto,*,Auto"
-                RowDefinitions="Auto">
-                <StackLayout Orientation="Horizontal" Spacing="0">
-                    <Label
-                        Padding="0"
-                        FontFamily="Nunito"
-                        FontSize="Large"
-                        HorizontalOptions="Center"
-                        Text="{Binding Title}"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Label
-                        Padding="5,0"
-                        FontFamily="Nunito"
-                        FontSize="Large"
-                        HorizontalOptions="Center"
-                        Text="{Binding ListaLotes.Count, StringFormat='({0})'}"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                </StackLayout>
-
-                <buttons:SfButton
-                    Grid.Column="2"
-                    Margin="2,5"
-                    Background="{StaticResource CorBotao}"
-                    Command="{Binding ShowHidePesquisaCommand}"
-                    FontFamily="FontAwesomeLight"
-                    FontSize="Small"
-                    IsVisible="{Binding PesquisaVisible, Converter={StaticResource InvertBoolean}}"
-                    Style="{StaticResource IconTopButtonStyle}"
-                    Text="{x:Static fontawesome:FontAwesomeIcons.Down}"
-                    TextColor="White"
-                    VerticalOptions="Center"
-                    WidthRequest="40" />
-
+            <!-- ── Header logo (padrão global) ── -->
+            <Grid Grid.Row="0" Padding="20,16,20,16">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="{StaticResource PrimaryLightColor}" />
+                        <GradientStop Offset="1.0" Color="{StaticResource QuaseBranco}" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image
+                        Grid.Column="0"
+                        HeightRequest="44"
+                        WidthRequest="44"
+                        Aspect="AspectFit"
+                        Source="silvadatalogo" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Silvadata"
+                            TextColor="{StaticResource SecondaryColor}" />
+                        <Label
+                            FontSize="12"
+                            Text="from Silvateam"
+                            TextColor="{StaticResource Gray400}" />
+                    </VerticalStackLayout>
+                    <HorizontalStackLayout Grid.Column="2" Spacing="6" VerticalOptions="Center">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalTextAlignment="End"
+                            TextColor="{StaticResource PrimaryColor}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Title}" TextColor="{StaticResource PrimaryColor}"/>
+                                    <Span Text=" (" TextColor="{StaticResource PrimaryColor}" />
+                                    <Span Text="{Binding ListaLotes.Count}" TextColor="{StaticResource PrimaryColor}"/>
+                                    <Span Text=")" TextColor="{StaticResource PrimaryColor}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <buttons:SfButton
+                            Background="Transparent"
+                            Command="{Binding ShowHidePesquisaCommand}"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="Small"
+                            HasShadow="False"
+                            ShowIcon="False"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Down}"
+                            TextColor="{StaticResource PrimaryColor}"
+                            VerticalOptions="Center"
+                            WidthRequest="36" />
+                    </HorizontalStackLayout>
+                </Grid>
             </Grid>
 
+            <!-- ── Painel de filtros (colapsável) ── -->
             <Grid
                 Grid.Row="1"
                 Padding="10,0,10,0"
                 IsVisible="{Binding PesquisaVisible}"
                 RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Offset="0.1" Color="{StaticResource PrimaryColor}" />
+                        <GradientStop Offset="1.0" Color="{StaticResource SecondaryColor}" />
+                    </LinearGradientBrush>
+                </Grid.Background>
 
                 <!--  Pesquisar Lote  -->
                 <StackLayout Grid.Row="0" Padding="2">

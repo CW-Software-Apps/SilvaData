@@ -24,13 +24,6 @@ namespace SilvaData.Pages
             ViewModel = mainPageModel;
             BindingContext = ViewModel;
 
-            // Sincroniza SelectedIndex do ViewModel → SfTabView sem usar binding (evita conflito de state)
-            ViewModel.PropertyChanged += (s, e) =>
-            {
-                if (e.PropertyName == nameof(MainPageModel.SelectedIndex))
-                    MainThread.BeginInvokeOnMainThread(() => mainTabView.SelectedIndex = ViewModel.SelectedIndex);
-            };
-
             // Mantém a tela ativa
             DeviceDisplay.KeepScreenOn = true;
         }
@@ -66,13 +59,11 @@ namespace SilvaData.Pages
         {
             try
             {
-                // No Toolkit 1.0.9, a propriedade ainda é NewIndex (retorna double)
                 ViewModel.SelectedIndex = (int)e.NewIndex;
 
-                // Índice 0 = Dashboard
+                // Índice 0 = Mercados
                 if (e.NewIndex == 0)
                 {
-                    // Envia mensagem para revalidar dados (dashboard decide debounce)
                     WeakReferenceMessenger.Default.Send(new ShowDashboardMessage());
                 }
             }

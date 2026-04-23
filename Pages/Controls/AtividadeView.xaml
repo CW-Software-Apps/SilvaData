@@ -22,6 +22,10 @@
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="False">
 
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource PrimaryColor}" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Resources>
         <ResourceDictionary>
 

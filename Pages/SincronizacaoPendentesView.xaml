@@ -20,52 +20,41 @@
 
         <Grid RowDefinitions="Auto,*">
 
-            <!--  Header  -->
-            <Grid
-                Grid.Row="0"
-                Margin="0"
-                Padding="5,10"
-                ColumnDefinitions="*,Auto"
-                RowDefinitions="Auto"
-                Style="{StaticResource HeaderGradient}">
-
-                <HorizontalStackLayout
-                    Grid.Row="0"
-                    Spacing="0"
-                    VerticalOptions="Center">
+            <!--  Header logo (padrão global)  -->
+            <Grid Grid.Row="0" Padding="20,16,20,16">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="{StaticResource PrimaryLightColor}" />
+                        <GradientStop Offset="1.0" Color="{StaticResource QuaseBranco}" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
                     <Image
-                        Margin="5,0,0,0"
+                        Grid.Column="0"
+                        HeightRequest="44"
+                        WidthRequest="44"
                         Aspect="AspectFit"
-                        HeightRequest="40"
-                        HorizontalOptions="Center"
-                        Source="silvadatalogo">
-                        <Image.Shadow>
-                            <Shadow
-                                Brush="White"
-                                Opacity="0.5"
-                                Radius="10"
-                                Offset="0,1" />
-                        </Image.Shadow>
-                    </Image>
+                        Source="silvadatalogo" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Silvadata"
+                            TextColor="{StaticResource SecondaryColor}" />
+                        <Label
+                            FontSize="12"
+                            Text="from Silvateam"
+                            TextColor="{StaticResource Gray400}" />
+                    </VerticalStackLayout>
                     <Label
-                        Margin="5,0,2,0"
-                        Padding="5,0"
+                        Grid.Column="2"
                         FontAttributes="Bold"
-                        FontFamily="Nunito"
-                        FontSize="Large"
-                        HorizontalTextAlignment="Start"
-                        Text="Silvadata"
-                        TextColor="White"
+                        FontSize="15"
+                        HorizontalTextAlignment="End"
+                        Text="{localization:Translate SincronizarDados}"
+                        TextColor="{StaticResource PrimaryColor}"
                         VerticalOptions="Center" />
-                    <Label
-                        Margin="0,6"
-                        FontAttributes="Bold"
-                        FontSize="Micro"
-                        HorizontalTextAlignment="Start"
-                        Text="from ISI Institute"
-                        TextColor="White"
-                        VerticalOptions="End" />
-                </HorizontalStackLayout>
+                </Grid>
             </Grid>
 
 
@@ -73,28 +62,12 @@
             <Grid
                 Grid.Row="1"
                 Padding="20"
-                RowDefinitions="Auto,Auto,*,Auto"
+                RowDefinitions="Auto,*,Auto"
                 RowSpacing="20">
 
-                <!--  ★★★ ROW 0: HEADER (fixo no topo) ★★★  -->
-                <VerticalStackLayout Grid.Row="0" Spacing="12">
-                    <Label
-                        FontAttributes="Bold"
-                        FontFamily="Nunito"
-                        FontSize="24"
-                        Text="{localization:Translate SincronizarDados}"
-                        TextColor="{StaticResource PrimaryColor}" />
-
-                    <Label
-                        FontSize="14"
-                        Opacity="0.8"
-                        Text="{localization:Translate SincronizarDadosExplicacao}"
-                        TextColor="{StaticResource SecondaryColor}" />
-                </VerticalStackLayout>
-
-                <!--  ★★★ ROW 1: Título da Lista ★★★  -->
+                <!--  ★★★ ROW 0: Título da Lista ★★★  -->
                 <Border
-                    Grid.Row="1"
+                    Grid.Row="0"
                     Padding="16,12"
                     Background="White"
                     StrokeShape="RoundRectangle 16"
@@ -140,7 +113,7 @@
 
                 <!--  ★★★ ROW 2: SfListView (ocupa o espaço restante com SCROLL PRÓPRIO) ★★★  -->
                 <Border
-                    Grid.Row="2"
+                    Grid.Row="1"
                     Padding="0"
                     Background="White"
                     StrokeShape="RoundRectangle 16"
@@ -296,7 +269,7 @@
                 </Border>
 
                 <!--  ★★★ ROW 3: Botões de Ação (fixo no fundo) ★★★  -->
-                <VerticalStackLayout Grid.Row="3" Spacing="12">
+                <VerticalStackLayout Grid.Row="2" Spacing="12">
 
                     <!--  Botões de Upload  -->
                     <Grid
@@ -328,7 +301,7 @@
                         <buttons:SfButton
                             Grid.Column="1"
                             Padding="0"
-                            Background="#607D8B"
+                            Background="{StaticResource SecondaryColor}"
                             Command="{Binding AtualizaListaAlteracoesCommand}"
                             CornerRadius="14"
                             HeightRequest="56"
@@ -368,9 +341,7 @@
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
                                 <Label
                                     FontFamily="FontAwesomeSolid"
-                                    FontSize="14"
-                                    Text="&#xf017;"
-                                    TextColor="#1976D2"
+                                    TextColor="{StaticResource PrimaryColor}"
                                     VerticalTextAlignment="Center" />
 
                                 <Label
@@ -380,10 +351,7 @@
                                     VerticalTextAlignment="Center" />
 
                                 <Label
-                                    FontAttributes="Bold"
-                                    FontSize="14"
-                                    Text="{Binding LastSyncronization}"
-                                    TextColor="#1976D2"
+                                    TextColor="{StaticResource PrimaryColor}"
                                     VerticalTextAlignment="Center" />
                             </HorizontalStackLayout>
 

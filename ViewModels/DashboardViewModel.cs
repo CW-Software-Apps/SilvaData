@@ -138,16 +138,16 @@ namespace SilvaData.ViewModels
             IsBusy = true;
             try
             {
-                string resultado = await _graficosService.AtualizaDadosGraficos(showError);
-                if (!string.IsNullOrEmpty(resultado) && showError)
-                    await Snackbar.Make(resultado, duration: TimeSpan.FromSeconds(8), visualOptions: new SnackbarOptions
-                    {
-                        BackgroundColor = Color.FromArgb("#0D3D72"),
-                        TextColor = Colors.White,
-                        ActionButtonTextColor = Color.FromArgb("#41ABD9"),
-                        CornerRadius = new CornerRadius(14),
-                        CharacterSpacing = 0.2
-                    }).Show();
+                // string resultado = await _graficosService.AtualizaDadosGraficos(showError);
+                // if (!string.IsNullOrEmpty(resultado) && showError)
+                //    await Snackbar.Make(resultado, duration: TimeSpan.FromSeconds(8), visualOptions: new SnackbarOptions
+                //    {
+                //        BackgroundColor = Color.FromArgb("#0D3D72"),
+                //        TextColor = Colors.White,
+                //        ActionButtonTextColor = Color.FromArgb("#41ABD9"),
+                //        CornerRadius = new CornerRadius(14),
+                //        CharacterSpacing = 0.2
+                //    }).Show();
 
                 // Carrega DashboardMedia do cache (Preferences)
                 var dadosDashboardJson = Preferences.Get("DadosDashboard", "");

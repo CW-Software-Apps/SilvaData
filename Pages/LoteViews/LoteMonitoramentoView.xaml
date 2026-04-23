@@ -12,6 +12,10 @@
     x:DataType="viewModels:LoteMonitoramentoViewModel"
     Background="{StaticResource QuaseBranco}">
 
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource PrimaryColor}" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
     <Grid
         Background="{StaticResource QuaseBranco}"
         RowDefinitions="Auto,*"

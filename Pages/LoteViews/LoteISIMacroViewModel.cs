@@ -25,7 +25,7 @@ namespace SilvaData.ViewModels
         [ObservableProperty] private LoteForm? loteForm;
         public Color SaudeColor => ISIMacro.StatusColor(Score);
 
-        public IRelayCommand? ShowISIMacroCommand { get; set; }
+        
     }
 
     public partial class LoteISIMacroViewModel : ViewModelBase
@@ -105,8 +105,7 @@ namespace SilvaData.ViewModels
                         Numero = form.item,
                         Score = score,
                         Data = form.data,
-                        LoteForm = form,
-                        ShowISIMacroCommand = new AsyncRelayCommand<ISIMacroButton>(ShowISIMacro)
+                        LoteForm = form
                     });
                 }
 
@@ -138,11 +137,7 @@ namespace SilvaData.ViewModels
         public bool PodeEditarISIMacro => Permissoes.UsuarioPermissoes?.lotes.monitoramento.isiMacro.editar ?? false;
 
 
-        public async Task ShowISIMacro(object isiMacro)
-        {
-            if (isiMacro is ISIMacroButton button)
-                await ShowISIMacro(button);
-        }
+
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task ShowISIMacro(ISIMacroButton? isiMacro)

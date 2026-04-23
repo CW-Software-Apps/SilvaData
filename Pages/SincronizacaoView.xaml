@@ -151,18 +151,18 @@
                     <!--  Tempo Decorrido  -->
                     <Border
                         Padding="12,10"
-                        Background="#E3F2FD"
+                        Background="#F1F8E9"
                         StrokeShape="RoundRectangle 10">
                         <VerticalStackLayout Spacing="4">
                             <Label
                                 FontSize="11"
                                 Text="Tempo Decorrido"
-                                TextColor="#1565C0" />
+                                TextColor="{StaticResource SecondaryColor}" />
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="14"
                                 Text="{Binding TempoDecorrido}"
-                                TextColor="#0D47A1" />
+                                TextColor="{StaticResource PrimaryColor}" />
                         </VerticalStackLayout>
                     </Border>
 

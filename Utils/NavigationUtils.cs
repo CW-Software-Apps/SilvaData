@@ -810,10 +810,33 @@ namespace SilvaData.Utils
                 if (limpaFormularioAtual)
                     vm.Cleanup();
 
+                // Configura estado ANTES de abrir a modal para evitar race condition:
+                // OnAppearing dispara Carregar() que lê esses params, e deve encontrá-los já corretos.
+                LogNavigation($"OpenLoteFormularioAsync configurando estado antes de abrir modal | loteFormId={loteFormId} | parametroTipoId={parametroTipoId}");
+                vm.SetInitialState(
+                    lote: loteAtual,
+                    loteFormId: loteFormId,
+                    parametroTipoId: parametroTipoId,
+                    fase: fase,
+                    isReadOnly: isReadOnly,
+                    podeEditar: podeEditar,
+                    recoveredForm: recoveredForm,
+                    loteFormVinculado: loteFormVinculado);
+
+                if (item.HasValue)
+                    vm.Item = item;
+
+                if (parametroSelecionado != null)
+                    vm.ParametroSelecionado = parametroSelecionado;
+
+                vm.SetPendingLoadParams(limpaFormularioAtual, modeloIsiMacroSelecionado);
+                vm.IsBusy = true;
+                vm.MostrarBotaoCarregar = false;
+
+                LogNavigation("OpenLoteFormularioAsync estado configurado, abrindo modal");
+
                 SilvaData.Controls.LoteFormularioView? formPage = null;
 
-                // Abre a view ANTES de carregar dados.
-                // Em iOS, manter o fluxo linear reduz race condition com transição modal.
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     LogNavigation("OpenLoteFormularioAsync aguardando estabilizacao iOS (350ms) antes de abrir modal");
@@ -845,39 +868,6 @@ namespace SilvaData.Utils
                     LogNavigation("OpenLoteFormularioAsync modal padrão aberta");
                 }
 
-                // ★★★ 2. CONFIGURA ESTADO INICIAL NA MAIN THREAD (evita race/crash iOS) ★★★
-                LogNavigation($"OpenLoteFormularioAsync checkpoint: antes do SetInitialState | thread={Environment.CurrentManagedThreadId} | main={MainThread.IsMainThread}");
-                await MainThread.InvokeOnMainThreadAsync(() =>
-                {
-                    LogNavigation($"OpenLoteFormularioAsync checkpoint: dentro do SetInitialState | thread={Environment.CurrentManagedThreadId} | main={MainThread.IsMainThread}");
-                    vm.SetInitialState(
-                        lote: loteAtual,
-                        loteFormId: loteFormId,
-                        parametroTipoId: parametroTipoId,
-                        fase: fase,
-                        isReadOnly: isReadOnly,
-                        podeEditar: podeEditar,
-                        recoveredForm: recoveredForm,
-                        loteFormVinculado: loteFormVinculado);
-
-                    if (item.HasValue)
-                        vm.Item = item;
-
-                    if (parametroSelecionado != null)
-                        vm.ParametroSelecionado = parametroSelecionado;
-
-                    vm.SetPendingLoadParams(limpaFormularioAtual, modeloIsiMacroSelecionado);
-                    vm.IsBusy = true;
-                    vm.MostrarBotaoCarregar = false;
-
-                    LogNavigation($"OpenLoteFormularioAsync checkpoint: fim do SetInitialState | thread={Environment.CurrentManagedThreadId} | main={MainThread.IsMainThread}");
-                });
-
-                LogNavigation("OpenLoteFormularioAsync estado inicial aplicado após abertura da modal (main thread)");
-
-                // IMPORTANT: não carregar aqui.
-                // O carregamento é disparado na própria View, em OnAppearing,
-                // depois do delay/injeção de templates pesados para evitar deadlock no iOS.
                 LogNavigation("OpenLoteFormularioAsync params salvos; carregamento sera disparado apos OnAppearing da View");
 
                 return true;

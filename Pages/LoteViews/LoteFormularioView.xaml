@@ -8,11 +8,16 @@
     xmlns:fontawesome="clr-namespace:SilvaData.FontAwesome"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:models="clr-namespace:SilvaData.Models"
     xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
     x:DataType="viewModels:LoteFormularioViewModel"
     Background="{StaticResource PrimaryColor}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource PrimaryColor}" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <ResourceDictionary>

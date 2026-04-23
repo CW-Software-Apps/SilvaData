@@ -1,20 +1,12 @@
 using SilvaData.Infrastructure;
-using SilvaData.Models;
 using SilvaData.ViewModels;
-using SilvaData.Utils; // Adicionado
 
-namespace ISIInstitute.Views // (Mantendo seu namespace original)
+namespace SilvaData.Controls
 {
-    /// <summary>
-    /// View (Página) para a tela "Minha Conta".
-    /// </summary>
-    public partial class MinhaConta : ContentPageWithLocalization
+    public partial class MinhaConta : ContentView
     {
         private readonly MinhaContaViewModel ViewModel;
 
-        /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="MinhaConta"/>.
-        /// </summary>
         public MinhaConta()
         {
             InitializeComponent();

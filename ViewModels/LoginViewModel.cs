@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using SilvaData.Controls; // Para a classe Login
 using SilvaData.Models;
 using SilvaData.Pages.PopUps;
@@ -113,6 +114,7 @@ namespace SilvaData.ViewModels
 
             // Define a flag que o MainPageModel verificará
             Login.AcabouDeLogar = true;
+            WeakReferenceMessenger.Default.Send(new LoginSuccessMessage());
 
             _ = NavigationUtils.PopModalAsync();
 

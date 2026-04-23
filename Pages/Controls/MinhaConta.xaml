@@ -1,224 +1,347 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<utils:ContentPageWithLocalization
-    x:Class="ISIInstitute.Views.MinhaConta"
+<ContentView
+    x:Class="SilvaData.Controls.MinhaConta"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:fontawesome="clr-namespace:SilvaData.FontAwesome"
     xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
     xmlns:models="clr-namespace:SilvaData.Models"
-    xmlns:utils="clr-namespace:SilvaData.Utils"
     xmlns:viewmodels="clr-namespace:SilvaData.ViewModels"
-    Title="{localization:Translate MinhaConta}"
-    x:DataType="viewmodels:MinhaContaViewModel"
-    BackgroundColor="{StaticResource PrimaryColor}"
-    Shell.TabBarIsVisible="false">
+    x:DataType="viewmodels:MinhaContaViewModel">
 
-    <ContentPage.Content>
-        <ScrollView>
-            <Grid
-                Padding="{StaticResource LayoutPadding}"
-                BackgroundColor="{StaticResource QuaseBranco}"
-                RowDefinitions="Auto,Auto,*,Auto"
-                RowSpacing="{StaticResource LayoutSpacing}">
+    <ContentView.Content>
+        <Grid RowDefinitions="Auto,*,Auto" BackgroundColor="{StaticResource QuaseBranco}">
 
-                <Grid
-                    Grid.Row="0"
-                    Margin="0,0,0,5"
-                    ColumnDefinitions="*,Auto"
-                    RowDefinitions="Auto">
-
+            <!-- ── Header logo (padrão global) ── -->
+            <Grid Grid.Row="0" Padding="20,16,20,16">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="{StaticResource PrimaryLightColor}" />
+                        <GradientStop Offset="1.0" Color="{StaticResource QuaseBranco}" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image
+                        Grid.Column="0"
+                        HeightRequest="44"
+                        WidthRequest="44"
+                        Aspect="AspectFit"
+                        Source="silvadatalogo" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Silvadata"
+                            TextColor="{StaticResource SecondaryColor}" />
+                        <Label
+                            FontSize="12"
+                            Text="from Silvateam"
+                            TextColor="{StaticResource Gray400}" />
+                    </VerticalStackLayout>
                     <Label
-                        Padding="0"
-                        SemanticProperties.HeadingLevel="Level1"
-                        Style="{StaticResource Title2}"
+                        Grid.Column="2"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        HorizontalTextAlignment="End"
                         Text="{localization:Translate MinhaConta}"
-                        TextColor="{StaticResource PrimaryColor}" />
-
-                    <buttons:SfButton
-                        Grid.Column="1"
-                        Command="{Binding VoltarCommand}"
-                        Style="{StaticResource CircleButton}"
-                        Text="{x:Static fontawesome:FontAwesomeIcons.TurnDownLeft}" />
+                        TextColor="{StaticResource PrimaryColor}"
+                        VerticalOptions="Center" />
                 </Grid>
+            </Grid>
 
-                <Label
-                    Grid.Row="1"
-                    Margin="0,0,0,5"
-                    Style="{StaticResource Caption1}"
-                    Text="{localization:Translate VejaDadosConta}"
-                    TextColor="Gray" />
+            <!-- ── Conteúdo ── -->
+            <ScrollView Grid.Row="1" Background="{StaticResource Gray100}">
+                <VerticalStackLayout Padding="20,16,20,24" Spacing="0">
 
-                <Grid
-                    Grid.Row="2"
-                    RowDefinitions="Auto,*,Auto"
-                    RowSpacing="{StaticResource LayoutSpacing}">
+                    <!-- Título e subtítulo da seção -->
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        Margin="0,0,0,4"
+                        Text="Suporte e Conta"
+                        TextColor="{StaticResource PrimaryColor}" />
+                    <Label
+                        FontSize="13"
+                        Margin="0,0,0,20"
+                        Text="Acesso um canal de suporte ou saia da sessão"
+                        TextColor="{StaticResource Gray400}" />
 
+                    <!-- Card do usuário -->
                     <Border
-                        Grid.Row="0"
-                        Margin="0,0,0,10"
-                        Padding="15"
-                        Style="{StaticResource CardStyle}">
-
-                        <Grid
-                            x:Name="userinfo"
-                            x:DataType="models:dataLoginResult"
-                            BindingContext="{Binding LoggedUser}"
-                            ColumnDefinitions="Auto,*"
-                            ColumnSpacing="15"
-                            RowSpacing="4">
-
-                            <Label
+                        Margin="0,0,0,24"
+                        Padding="10,5"
+                        Background="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 16">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Opacity="0.08" Radius="12" Offset="0,4" />
+                        </Border.Shadow>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="18">
+                            <Border
                                 Grid.Column="0"
-                                FontFamily="FontAwesomeLight"
-                                FontSize="50"
-                                Text="{x:Static fontawesome:FontAwesomeIcons.CircleUser}"
-                                TextColor="{StaticResource ButtonColor}"
-                                VerticalTextAlignment="Center" />
-
-                            <Grid
-                                Grid.Column="1"
-                                ColumnDefinitions="*"
-                                RowDefinitions="Auto,Auto">
+                                Background="White"
+                                StrokeThickness="0"
+                                Margin="0"
+                                Padding="0"
+                                StrokeShape="RoundRectangle 36"
+                                VerticalOptions="Center">
                                 <Label
-                                    Grid.Row="0"
+                                    FontFamily="FontAwesomeSolid"
+                                    FontSize="40"
+                                    HorizontalOptions="Center"
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.CircleUser}"
+                                    TextColor="{StaticResource PrimaryColor}"
+                                    VerticalOptions="Center" />
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                                <Label
                                     FontAttributes="Bold"
-                                    FontSize="Title"
-                                    HorizontalTextAlignment="Start"
-                                    Text="{Binding nome}"
-                                    TextColor="{StaticResource SecondaryColor}" />
+                                    FontSize="19"
+                                    Text="{Binding LoggedUser.nome}"
+                                    TextColor="{StaticResource PrimaryColor}" />
                                 <Label
-                                    Grid.Row="1"
-                                    HorizontalTextAlignment="Start"
-                                    Style="{StaticResource Body2}"
-                                    Text="{Binding email}"
-                                    TextColor="{StaticResource DarkOnLightBackground}" />
-                            </Grid>
+                                    FontSize="14"
+                                    Text="{Binding LoggedUser.email}"
+                                    TextColor="{StaticResource Gray400}" />
+                            </VerticalStackLayout>
                         </Grid>
                     </Border>
 
-                    <VerticalStackLayout
-                        Grid.Row="1"
-                        Spacing="8"
-                        VerticalOptions="Center">
+                    <!-- Ações de suporte -->
+                    <VerticalStackLayout Spacing="10" Margin="0,0,0,20">
 
+                        <!-- WhatsApp -->
+                        <Border
+                            Padding="16,5"
+                            Background="White"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Opacity="0.05" Radius="10" Offset="0,3" />
+                            </Border.Shadow>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AbrirWhatsAppCommand}" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                                <Border
+                                    Grid.Column="0"
+                                    Background="White"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontFamily="FontAwesomeBrands"
+                                        FontSize="40"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static fontawesome:FontAwesomeIcons.Whatsapp}"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        Text="Fale com o suporte através do WhatsApp"
+                                        TextColor="{StaticResource DarkColor}" />
+                                    <Label
+                                        FontSize="13"
+                                        Text="Tire dúvidas e envie sugestões"
+                                        TextColor="{StaticResource Gray400}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                        <!-- Enviar banco de dados -->
+                        <Border
+                            Padding="16,5"
+                            Background="White"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Opacity="0.05" Radius="10" Offset="0,3" />
+                            </Border.Shadow>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CompartilhaDBCommand}" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                                <Border
+                                    Grid.Column="0"
+                                    Background="White"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontFamily="FontAwesomeSolid"
+                                        FontSize="40"
+                                        HorizontalOptions="Center"
+                                        Text="&#xf093;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        Text="Enviar banco de dados para suporte"
+                                        TextColor="{StaticResource DarkColor}" />
+                                    <Label
+                                        FontSize="13"
+                                        Text="Em caso de erros no aplicativo"
+                                        TextColor="{StaticResource Gray400}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                        <!-- Política de privacidade -->
+                        <Border
+                            Padding="16,5"
+                            Background="White"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Opacity="0.05" Radius="10" Offset="0,3" />
+                            </Border.Shadow>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AbrirPoliticaPrivacidadeCommand}" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                                <Border
+                                    Grid.Column="0"
+                                    Background="White"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 12"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontFamily="FontAwesomeSolid"
+                                        FontSize="40"
+                                        HorizontalOptions="Center"
+                                        Text="&#xf15c;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    Text="Política de privacidade"
+                                    TextColor="{StaticResource DarkColor}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+
+
+                    <!-- Botões de debug (apenas em DEBUG) -->
+                    <VerticalStackLayout Spacing="8" Margin="0,0,0,16">
                         <buttons:SfButton
-                            x:Name="downloadDataWeb"
-                            Margin="0"
                             Background="Red"
                             Command="{Binding DownloadDataWebCommand}"
                             CornerRadius="10"
-                            HeightRequest="50"
+                            HeightRequest="44"
                             IsVisible="{Binding IsDebug}"
                             Text="Baixar dados da Web"
                             TextColor="White" />
                         <buttons:SfButton
-                            x:Name="goToLogin"
-                            Margin="0"
                             Background="Red"
                             Command="{Binding GoToLoginWithoutLogOffCommand}"
                             CornerRadius="10"
-                            HeightRequest="50"
+                            HeightRequest="44"
                             IsVisible="{Binding IsDebug}"
                             Text="Faz novo login, sem dar Log Off"
                             TextColor="White" />
                         <buttons:SfButton
-                            x:Name="compartilhaDB"
-                            Margin="0"
-                            Background="Red"
-                            Command="{Binding CompartilhaDBCommand}"
-                            CornerRadius="10"
-                            HeightRequest="50"
-                            IsVisible="{Binding IsDebug}"
-                            Text="Compartilhar Banco de Dados"
-                            TextColor="White" />
-                        <buttons:SfButton
-                            x:Name="enviarReset"
-                            Margin="0"
                             Background="Red"
                             Command="{Binding EnviarResetCommand}"
                             CornerRadius="10"
-                            HeightRequest="50"
+                            HeightRequest="44"
                             IsVisible="{Binding IsDebug}"
                             Text="Enviar Metodos Reset"
                             TextColor="White" />
-
-                        <buttons:SfButton
-                            Margin="0,10,0,0"
-                            Command="{Binding LogOffCommand}"
-                            CornerRadius="20"
-                            HeightRequest="70"
-                            HorizontalOptions="Center"
-                            ShowIcon="False"
-                            Style="{StaticResource sfButtonWhite}">
-                            <buttons:SfButton.Content>
-                                <DataTemplate>
-                                    <HorizontalStackLayout
-                                        Padding="10"
-                                        HorizontalOptions="Center"
-                                        Spacing="10"
-                                        VerticalOptions="Center">
-                                        <Label
-                                            FontFamily="FontAwesomeRegular"
-                                            Text="{x:Static fontawesome:FontAwesomeIcons.ArrowRightFromBracket}"
-                                            TextColor="{StaticResource PrimaryColor}"
-                                            VerticalTextAlignment="Center" />
-                                        <Label
-                                            Text="{localization:Translate DeslogarConta}"
-                                            TextColor="{StaticResource PrimaryColor}"
-                                            VerticalTextAlignment="Center" />
-                                    </HorizontalStackLayout>
-                                </DataTemplate>
-                            </buttons:SfButton.Content>
-                        </buttons:SfButton>
                     </VerticalStackLayout>
 
-                    <Border
-                        Grid.Row="2"
-                        Margin="0,10,0,0"
-                        Padding="10"
-                        Style="{StaticResource CardStyle}">
-                        <Grid
-                            ColumnDefinitions="Auto,*"
-                            ColumnSpacing="20"
-                            RowDefinitions="Auto,Auto"
-                            RowSpacing="4">
+                </VerticalStackLayout>
+            </ScrollView>
 
+            <VerticalStackLayout Grid.Row="2" Background="{StaticResource Gray100}">
+                <!-- Encerrar sessão -->
+                <Border
+         Margin="20,0,20,0"
+         Padding="16,5"
+         Background="White"
+                    
+         StrokeThickness="0"
+         StrokeShape="RoundRectangle 14">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Opacity="0.05" Radius="10" Offset="0,3" />
+                    </Border.Shadow>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogOffCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                        <Border
+                 Grid.Column="0"
+                 Background="White"
+                 StrokeThickness="0"
+                 StrokeShape="RoundRectangle 12"
+                 VerticalOptions="Center">
                             <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                HorizontalTextAlignment="End"
-                                Style="{StaticResource Caption1Strong}"
-                                Text="{localization:Translate NumeroDoDispositivo}"
-                                TextColor="Gray" />
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                HorizontalTextAlignment="Start"
-                                Style="{StaticResource Caption1}"
-                                Text="{Binding LoggedUser.dispositivoId}"
-                                TextColor="Gray" />
+                                Padding="0"
+                                Margin="0"
+                     FontFamily="FontAwesomeSolid"
+                     FontSize="20"
+                     HorizontalOptions="Center"
+                     Text="&#xf2f5;"
+                     TextColor="{StaticResource PrimaryColor}"
+                     VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                 Grid.Column="1"
+                 FontAttributes="Bold"
+                 FontSize="15"
+                 Text="Encerrar sessão"
+                 TextColor="{StaticResource DarkColor}"
+                 VerticalOptions="Center" />
+                    </Grid>
+                </Border>
 
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                HorizontalTextAlignment="End"
-                                Style="{StaticResource Caption1Strong}"
-                                Text="{localization:Translate Sessão}"
-                                TextColor="Gray" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                HorizontalTextAlignment="Start"
-                                Style="{StaticResource Caption1}"
-                                Text="{Binding LoggedUser.session}"
-                                TextColor="Gray" />
-                        </Grid>
-                    </Border>
-                </Grid>
 
 
-            </Grid>
-        </ScrollView>
-    </ContentPage.Content>
-</utils:ContentPageWithLocalization>
+                <!-- Rodapé com versão e info do dispositivo -->
+                <VerticalStackLayout Spacing="6" Background="{StaticResource Gray100}" Padding="0,5">
+                    <Label
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding VersaoApp}"
+                            TextColor="{StaticResource Gray400}" />
+                    <Label
+                            FontSize="11"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{StaticResource Gray300}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="ID do dispositivo: " FontAttributes="Bold" />
+                                <Span Text="{Binding DispositivoId}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                            FontSize="11"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{StaticResource Gray300}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Sessão: " FontAttributes="Bold" />
+                                <Span Text="{Binding SessionId}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+
+
+
+            </VerticalStackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

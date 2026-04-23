@@ -236,14 +236,15 @@ namespace SilvaData.Models
     {
         public string? RegionalNome { get; set; }
         public string? PropriedadeNome { get; set; }
+        public int QuantidadeLotes { get; set; }
 
-        /// <summary>
-        /// MIGRADO: Retorna a lista ao invés de modificar estático
-        /// </summary>
         public static async Task<List<UnidadeEpidemiologicaComDetalhes>> PegaListaUnidadesComDetalhesAsync()
         {
             const string sql = @"
-                SELECT ue.*, p.nome AS PropriedadeNome, r.nome AS RegionalNome 
+                SELECT ue.*,
+                       p.nome AS PropriedadeNome,
+                       r.nome AS RegionalNome,
+                       (SELECT COUNT(*) FROM Lote l WHERE l.unidadeEpidemiologicaId = ue.id AND COALESCE(l.excluido, 0) = 0) AS QuantidadeLotes
                 FROM UnidadeEpidemiologica ue
                 LEFT OUTER JOIN Propriedade p ON p.id = ue.propriedadeId
                 LEFT OUTER JOIN Regional r ON r.id = p.regionalId

@@ -28,7 +28,16 @@ namespace SilvaData.ViewModels
         private dataLoginResult? _loggedUser;
 
         [ObservableProperty]
+        private string _dispositivoId = string.Empty;
+
+        [ObservableProperty]
+        private string _sessionId = "---";
+
+        [ObservableProperty]
         private bool _isDebug = false;
+
+        [ObservableProperty]
+        private string _versaoApp = $"Silvadata  •  Versão {AppInfo.VersionString}";
 
         // Paths para download temporário
         private static string PathZipTemp => Path.Combine(FileSystem.CacheDirectory, "TempDownload");
@@ -42,12 +51,27 @@ namespace SilvaData.ViewModels
             _webService = webService;
             _cacheService = cacheService;
 
-            // Carrega o usuário inicial
-            CarregarDadosUsuario();
+            // Escuta mudanças no LoggedUser do WebService para atualizar a UI automaticamente
+            _webService.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(ISIWebService.LoggedUser))
+                {
+                    CarregarDadosUsuario();
+                }
+            };
 
 #if DEBUG
             IsDebug = true;
 #endif
+
+            // Ouve se o usuário logou para recarregar os dados
+            WeakReferenceMessenger.Default.Register<LoginSuccessMessage>(this, (r, m) =>
+            {
+                CarregarDadosUsuario();
+            });
+
+            // Carrega o usuário inicial
+            CarregarDadosUsuario();
         }
 
         /// <summary>
@@ -74,6 +98,12 @@ namespace SilvaData.ViewModels
         public void CarregarDadosUsuario()
         {
             LoggedUser = _webService.LoggedUser;
+
+            // O ID do dispositivo deve aparecer mesmo se não estiver logado (recuperado de Preferences)
+            DispositivoId = Preferences.Get("my_id", "Não identificado");
+
+            // A sessão depende do usuário logado
+            SessionId = LoggedUser?.session ?? "---";
         }
 
         /// <summary>
@@ -109,6 +139,18 @@ namespace SilvaData.ViewModels
 
             // Envia a mensagem para o AppShell/MainPage fechar tudo
             WeakReferenceMessenger.Default.Send(new LogoutSuccessMessage());
+        }
+
+        [RelayCommand]
+        private static async Task AbrirWhatsApp()
+        {
+            await Launcher.OpenAsync("https://wa.me/554391626247");
+        }
+
+        [RelayCommand]
+        private static async Task AbrirPoliticaPrivacidade()
+        {
+            await Launcher.OpenAsync("https://www.silvateam.com.br/node/211");
         }
 
         #region Comandos de Debug

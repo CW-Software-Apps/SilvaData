@@ -15,9 +15,8 @@
         VerticalOptions="Fill">
 
         <BoxView
-            BackgroundColor="Black"
+            BackgroundColor="White"
             HorizontalOptions="Fill"
-            Opacity="0.5"
             VerticalOptions="Fill" />
 
         <Border

@@ -13,6 +13,10 @@
     x:DataType="viewModels:LoteISIMacroViewModel"
     Background="{StaticResource PrimaryColor}">
 
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource PrimaryColor}" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
     <Grid
         Background="{StaticResource QuaseBranco}"
         RowDefinitions="Auto,Auto,*"
@@ -102,7 +106,9 @@
             ItemSize="90"
             ItemSpacing="4"
             ItemsSource="{Binding IsiMacroList}"
-            SelectionMode="None"
+            ItemTapped="OnIsiMacroItemTapped"
+            SelectionBackground="#330888CD"
+            SelectionMode="Single"
             VerticalOptions="Fill">
 
             <listView:SfListView.ItemsLayout>
@@ -188,18 +194,8 @@
                                 Offset="0,2" />
                         </Border.Shadow>
 
-                        <Border.Behaviors>
-                            <toolkit:TouchBehavior
-                                DefaultOpacity="1"
-                                DefaultScale="1"
-                                PressedAnimationDuration="100"
-                                PressedOpacity="0.7"
-                                PressedScale="0.95" />
-                        </Border.Behaviors>
 
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ShowISIMacroCommand}" CommandParameter="{Binding .}" />
-                        </Border.GestureRecognizers>
+
 
                         <Grid
                             ColumnDefinitions="*,Auto"

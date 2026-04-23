@@ -1,0 +1,120 @@
+<ContentView
+    x:Class="SilvaData.Controls.MercadosDashboardView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:SilvaData.FontAwesome"
+    xmlns:models="clr-namespace:SilvaData.Models"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
+    x:DataType="viewModels:MercadosDashboardViewModel">
+
+    <Grid RowDefinitions="Auto,*" BackgroundColor="{StaticResource QuaseBranco}">
+
+        <!-- Header com gradiente -->
+        <Grid Grid.Row="0" Padding="20,16,20,20">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Offset="0.0" Color="{StaticResource PrimaryLightColor}" />
+                    <GradientStop Offset="1.0" Color="{StaticResource QuaseBranco}" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                <Image
+                    Grid.Column="0"
+                    HeightRequest="44"
+                    WidthRequest="44"
+                    Aspect="AspectFit"
+                    Source="silvadatalogo" />
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Silvadata"
+                        TextColor="{StaticResource SecondaryColor}" />
+                    <Label
+                        FontSize="12"
+                        Text="from Silvateam"
+                        TextColor="{StaticResource Gray400}" />
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+
+        <!-- Conteúdo -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,10,20,20" Spacing="24">
+
+                <!-- Seção: Mercado -->
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Mercado"
+                        TextColor="{StaticResource PrimaryColor}" />
+                    <Label
+                        FontSize="13"
+                        Text="Seu usuário tem acesso a clientes do seguinte mercado"
+                        TextColor="{StaticResource Gray400}" />
+                    <Border
+                        Padding="16,14"
+                        BackgroundColor="{StaticResource LightSecondaryBackground}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 10">
+                        <Label
+                            FontSize="15"
+                            Text="{Binding MercadoNome}"
+                            TextColor="{StaticResource Gray400}" />
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Seção: Clientes -->
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Clientes"
+                        TextColor="{StaticResource PrimaryColor}" />
+                    <Label
+                        FontSize="13"
+                        Text="Selecione um cliente para ingressar na base de dados"
+                        TextColor="{StaticResource Gray400}" />
+
+                    <VerticalStackLayout Spacing="8" BindableLayout.ItemsSource="{Binding Clientes}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:Propriedade">
+                                <Border
+                                    Padding="16,14"
+                                    BackgroundColor="White"
+                                    Stroke="{StaticResource PrimaryColor}"
+                                    StrokeThickness="1.5"
+                                    StrokeShape="RoundRectangle 10">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding SelecionaClienteCommand, Source={RelativeSource AncestorType={x:Type viewModels:MercadosDashboardViewModel}}}"
+                                            CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="15"
+                                            Text="{Binding nome}"
+                                            TextColor="{StaticResource DarkColor}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontFamily="FontAwesomeSolid"
+                                            FontSize="15"
+                                            Text="&#xf2f6;"
+                                            TextColor="{StaticResource PrimaryColor}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentView>

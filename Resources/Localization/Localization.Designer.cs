@@ -1717,7 +1717,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISI Macro.
+        ///   Looks up a localized string similar to Necrópsia.
         /// </summary>
         public static string ISIMacro {
             get {
@@ -1726,7 +1726,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISI Macro adicionado com Sucesso!.
+        ///   Looks up a localized string similar to Necrópsia adicionada com Sucesso!.
         /// </summary>
         public static string ISIMacroAdicionadoComSucesso {
             get {
@@ -1735,7 +1735,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISI Micro.
+        ///   Looks up a localized string similar to Histologia.
         /// </summary>
         public static string ISIMicro {
             get {
@@ -1744,7 +1744,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISI Score médio.
+        ///   Looks up a localized string similar to Escore Final médio.
         /// </summary>
         public static string ISIScoreMédioDoLote {
             get {
@@ -1753,7 +1753,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISI Score Total.
+        ///   Looks up a localized string similar to Escore Final.
         /// </summary>
         public static string ISIScoreTotal {
             get {
@@ -1956,6 +1956,24 @@ namespace SilvaData.Resources.Localization {
         public static string Melhor {
             get {
                 return ResourceManager.GetString("Melhor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mercado.
+        /// </summary>
+        public static string Mercado {
+            get {
+                return ResourceManager.GetString("Mercado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mercados.
+        /// </summary>
+        public static string Mercados {
+            get {
+                return ResourceManager.GetString("Mercados", resourceCulture);
             }
         }
         
@@ -2194,7 +2212,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum ISI Macro cadastrado....
+        ///   Looks up a localized string similar to Nenhuma Necrópsia cadastrada....
         /// </summary>
         public static string NenhumISIMacroCadastrado {
             get {
@@ -2572,7 +2590,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pesquisa ISI Macro.
+        ///   Looks up a localized string similar to Pesquisa de Necrópsia.
         /// </summary>
         public static string PesquisaISIMacro {
             get {
@@ -3391,7 +3409,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UNIDADE EPID..
+        ///   Looks up a localized string similar to GALPÃO.
         /// </summary>
         public static string UNIDADEEPID {
             get {
@@ -3400,7 +3418,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unidade Epidemiológica.
+        ///   Looks up a localized string similar to Galpão.
         /// </summary>
         public static string UnidadeEpidemiológica {
             get {
@@ -3427,7 +3445,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unidades Epidemiológicas.
+        ///   Looks up a localized string similar to Galpões.
         /// </summary>
         public static string UnidadesEpidemiológicas {
             get {

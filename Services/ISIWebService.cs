@@ -71,7 +71,8 @@ namespace SilvaData.Utils
 
         #region Properties
 
-        public dataLoginResult? LoggedUser { get; set; }
+        [ObservableProperty]
+        private dataLoginResult? _loggedUser;
 
         /// <summary>
         /// Singleton via ServiceHelper para compatibilidade com chamadas estáticas, mas preferencialmente via DI.
@@ -85,6 +86,9 @@ namespace SilvaData.Utils
         {
             _instance = this;
             _resizeImageService = resizeImageService;
+
+            // Carrega o usuário logado (se existir) dos Preferences logo no início
+            CheckLoggedUser();
 
             var handler = new HttpClientHandler
             {

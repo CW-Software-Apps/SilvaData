@@ -13,7 +13,7 @@
     xmlns:views="clr-namespace:SilvaData.Pages"
     x:Name="mainPage"
     x:DataType="pageModels:MainPageModel"
-    Background="{StaticResource PrimaryColor}"
+    Background="{StaticResource QuaseBranco}"
     Shell.NavBarIsVisible="false">
 
     <ContentPage.Behaviors>
@@ -22,118 +22,34 @@
 
     <ContentPage.Resources>
         <Style x:Key="BaseTabStyle" TargetType="sf:SfTabItem">
-            <Setter Property="ImageSize" Value="35" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="FontAwesomeSolid" />
         </Style>
+
         <Style
-            x:Key="DashboardTabStyle"
+            x:Key="MercadosTabStyle"
             BasedOn="{StaticResource BaseTabStyle}"
-            TargetType="sf:SfTabItem">
-            <Setter Property="ImageSource" Value="dashboard.png" />
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Normal">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="dashboard.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="dashboardselected.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
+            TargetType="sf:SfTabItem" />
+
+        <Style
+            x:Key="GalpoesTabStyle"
+            BasedOn="{StaticResource BaseTabStyle}"
+            TargetType="sf:SfTabItem" />
+
         <Style
             x:Key="LotesTabStyle"
             BasedOn="{StaticResource BaseTabStyle}"
-            TargetType="sf:SfTabItem">
-            <Setter Property="ImageSource" Value="lotes.png" />
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Normal">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="lotes.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="lotesselected.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
+            TargetType="sf:SfTabItem" />
+
         <Style
             x:Key="SyncTabStyle"
             BasedOn="{StaticResource BaseTabStyle}"
-            TargetType="sf:SfTabItem">
-            <Setter Property="ImageSource" Value="sync.png" />
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Normal">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="sync.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="syncselected.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
+            TargetType="sf:SfTabItem" />
+
         <Style
-            x:Key="ConfigTabStyle"
+            x:Key="ContaTabStyle"
             BasedOn="{StaticResource BaseTabStyle}"
-            TargetType="sf:SfTabItem">
-            <Setter Property="ImageSource" Value="config.png" />
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Normal">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="config.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="configselected.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-        <Style
-            x:Key="SuporteTabStyle"
-            BasedOn="{StaticResource BaseTabStyle}"
-            TargetType="sf:SfTabItem">
-            <Setter Property="ImageSource" Value="suporte.png" />
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Normal">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="suporte.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="ImageSource" Value="suporteselected.png" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
+            TargetType="sf:SfTabItem" />
     </ContentPage.Resources>
 
     <Grid Background="{StaticResource QuaseBranco}" RowDefinitions="*">
@@ -143,30 +59,180 @@
             x:Name="mainTabView"
             Grid.Row="0"
             HeaderDisplayMode="Image"
-            IndicatorBackground="{SolidColorBrush Color={StaticResource Primary}}"
+            IndicatorBackground="{StaticResource PrimaryBrush}"
+            IndicatorHeight="4"
+            IndicatorPlacement="Bottom"
+            IndicatorWidthMode="Stretch"
             IsVisible="{Binding IsBusy, Converter={StaticResource InvertBoolean}}"
-            SelectionChanged="OnTabSelectionChanged"
-            TabBarHeight="50"
+            SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+            SelectedTabItemFontColor="{StaticResource Primary}"
+            TabBarBackground="{StaticResource QuaseBranco}"
+            TabBarHeight="70"
             TabBarPlacement="Bottom"
+            TabItemFontColor="{StaticResource Gray300}"
             VerticalOptions="Fill">
 
-            <sf:SfTabItem Header="Dashboard" Style="{StaticResource DashboardTabStyle}">
-                <controls:DashboardView />
+            <sf:SfTabItem Style="{StaticResource MercadosTabStyle}">
+                <sf:SfTabItem.HeaderContent>
+                    <Grid HeightRequest="28" WidthRequest="28">
+                        <!-- Unselected Icon -->
+                        <Image
+                            Aspect="AspectFit"
+                            Source="iconmercado.svg">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Gray300}" />
+                            </Image.Behaviors>
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                    TargetType="Image"
+                                    Value="0">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <!-- Selected Icon -->
+                        <Image
+                            Aspect="AspectFit"
+                            IsVisible="False"
+                            Source="iconmercado.svg">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                            </Image.Behaviors>
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                    TargetType="Image"
+                                    Value="0">
+                                    <Setter Property="IsVisible" Value="True" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </Grid>
+                </sf:SfTabItem.HeaderContent>
+                <controls:MercadosDashboardView />
             </sf:SfTabItem>
-            
-            <sf:SfTabItem Header="Lotes" Style="{StaticResource LotesTabStyle}">
+
+            <sf:SfTabItem Style="{StaticResource GalpoesTabStyle}">
+                <sf:SfTabItem.HeaderContent>
+                    <Grid HeightRequest="28" WidthRequest="28">
+                        <Image
+                            Aspect="AspectFit"
+                            Source="icongalpao.svg">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Gray300}" />
+                            </Image.Behaviors>
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                    TargetType="Image"
+                                    Value="1">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Image
+                            Aspect="AspectFit"
+                            IsVisible="False"
+                            Source="icongalpao.svg">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                            </Image.Behaviors>
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                    TargetType="Image"
+                                    Value="1">
+                                    <Setter Property="IsVisible" Value="True" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </Grid>
+                </sf:SfTabItem.HeaderContent>
+                <controls:GalpoesView />
+            </sf:SfTabItem>
+
+            <sf:SfTabItem Style="{StaticResource LotesTabStyle}">
+                <sf:SfTabItem.HeaderContent>
+                    <Grid HeightRequest="28" WidthRequest="28">
+                        <Image
+                            Aspect="AspectFit"
+                            Source="iconlotes.svg">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Gray300}" />
+                            </Image.Behaviors>
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                    TargetType="Image"
+                                    Value="2">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Image
+                            Aspect="AspectFit"
+                            IsVisible="False"
+                            Source="iconlotes.svg">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                            </Image.Behaviors>
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                    TargetType="Image"
+                                    Value="2">
+                                    <Setter Property="IsVisible" Value="True" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </Grid>
+                </sf:SfTabItem.HeaderContent>
                 <controls:LoteView />
             </sf:SfTabItem>
-            <sf:SfTabItem
-              Header="{localization:Translate Sincronização}"
-              Style="{StaticResource SyncTabStyle}">
+
+            <sf:SfTabItem Style="{StaticResource SyncTabStyle}">
+                <sf:SfTabItem.HeaderContent>
+                    <Label
+                        FontFamily="FontAwesomeSolid"
+                        FontSize="28"
+                        HorizontalOptions="Center"
+                        Text="&#xf021;"
+                        TextColor="{StaticResource Gray300}"
+                        VerticalOptions="Center">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                TargetType="Label"
+                                Value="3">
+                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </sf:SfTabItem.HeaderContent>
                 <controls:SincronizacaoPendentesView />
             </sf:SfTabItem>
-            <sf:SfTabItem Header="Configurações" Style="{StaticResource ConfigTabStyle}">
-                <controls:ConfigView />
-            </sf:SfTabItem>
-            <sf:SfTabItem Header="Suporte" Style="{StaticResource SuporteTabStyle}">
-                <controls:SuportePage />
+
+            <sf:SfTabItem Style="{StaticResource ContaTabStyle}">
+                <sf:SfTabItem.HeaderContent>
+                    <Label
+                        FontFamily="FontAwesomeSolid"
+                        FontSize="28"
+                        HorizontalOptions="Center"
+                        Text="&#xf007;"
+                        TextColor="{StaticResource Gray300}"
+                        VerticalOptions="Center">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedIndex, Source={x:Reference mainTabView}}"
+                                TargetType="Label"
+                                Value="4">
+                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </sf:SfTabItem.HeaderContent>
+                <controls:MinhaConta />
             </sf:SfTabItem>
 
         </sf:SfTabView>
@@ -176,14 +242,11 @@
             IsVisible="{Binding IsBusy}">
 
             <Grid.Background>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Offset="0.1" Color="{StaticResource SecondaryColor}" />
-                    <GradientStop Offset="1.0" Color="{StaticResource PrimaryColor}" />
-                </LinearGradientBrush>
+                <SolidColorBrush Color="White" />
             </Grid.Background>
 
             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="40">
-                
+
                 <!-- Large Centered Logo -->
                 <Image
                     Source="silvadatalogo"
@@ -200,13 +263,13 @@
                 <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
                     <ActivityIndicator
                         IsRunning="True"
-                        Color="White"
+                        Color="{StaticResource Primary}"
                         HorizontalOptions="Center"
                         HeightRequest="40"
                         WidthRequest="40" />
                     <Label
                         Text="{Binding LoadingText}"
-                        TextColor="White"
+                        TextColor="{StaticResource Primary}"
                         FontSize="20"
                         FontAttributes="Bold"
                         HorizontalTextAlignment="Center"

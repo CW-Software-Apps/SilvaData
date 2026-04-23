@@ -151,7 +151,7 @@
     <value>Número do Lote</value>
   </data>
   <data name="UnidadeEpidemiológica" xml:space="preserve">
-    <value>Unidade Epidemiológica</value>
+    <value>Galpão</value>
   </data>
   <data name="Salvar" xml:space="preserve">
     <value>Salvar</value>
@@ -199,10 +199,10 @@
     <value>Avaliações no Galpão</value>
   </data>
   <data name="ISIMacro" xml:space="preserve">
-    <value>ISI Macro</value>
+    <value>Necrópsia</value>
   </data>
   <data name="ISIMicro" xml:space="preserve">
-    <value>ISI Micro</value>
+    <value>Histologia</value>
   </data>
   <data name="Sanidade" xml:space="preserve">
     <value>Sanidade</value>
@@ -249,11 +249,17 @@
   <data name="Proprietários" xml:space="preserve">
     <value>Proprietários</value>
   </data>
+  <data name="Mercado" xml:space="preserve">
+    <value>Mercado</value>
+  </data>
+  <data name="Mercados" xml:space="preserve">
+    <value>Mercados</value>
+  </data>
   <data name="Regionais" xml:space="preserve">
     <value>Regionais</value>
   </data>
   <data name="UnidadesEpidemiológicas" xml:space="preserve">
-    <value>Unidades Epidemiológicas</value>
+    <value>Galpões</value>
   </data>
   <data name="Propriedades" xml:space="preserve">
     <value>Propriedades</value>
@@ -502,7 +508,7 @@
     <value>Este usuário tem uma sessão ativa no dispositivo {0} desde {1}. Se você continuar, todas as alterações ainda não sincronizadas naquele dispositivo serão perdidas! Deseja continuar mesmo assim?</value>
   </data>
   <data name="ISIMacroAdicionadoComSucesso" xml:space="preserve">
-    <value>ISI Macro adicionado com Sucesso!</value>
+    <value>Necrópsia adicionada com Sucesso!</value>
   </data>
   <data name="CadastrarMais1" xml:space="preserve">
     <value>Cadastrar +1</value>
@@ -676,7 +682,7 @@
     <value>IEP</value>
   </data>
   <data name="ISIScoreTotal" xml:space="preserve">
-    <value>ISI Score Total</value>
+    <value>Escore Final</value>
   </data>
   <data name="ScoreSemDoisPontos" xml:space="preserve">
     <value>Score</value>
@@ -688,7 +694,7 @@
     <value>INÍCIO</value>
   </data>
   <data name="UNIDADEEPID" xml:space="preserve">
-    <value>UNIDADE EPID.</value>
+    <value>GALPÃO</value>
   </data>
   <data name="SCOREMaiusculo" xml:space="preserve">
     <value>SCORE</value>
@@ -697,7 +703,7 @@
     <value>Score médio do lote:</value>
   </data>
   <data name="ISIScoreMédioDoLote" xml:space="preserve">
-    <value>ISI Score médio</value>
+    <value>Escore Final médio</value>
   </data>
   <data name="OpcoesDeMonitoramento" xml:space="preserve">
     <value>Opções de monitoramento</value>
@@ -931,7 +937,7 @@
     <value>Não há nenhum tratamento cadastrado. Para cadastrar um tratamento, use o botão Adicionar Tratamento no diagnóstico de enfermidade.</value>
   </data>
   <data name="NenhumISIMacroCadastrado" xml:space="preserve">
-    <value>Nenhum ISI Macro cadastrado...</value>
+    <value>Nenhuma Necrópsia cadastrada...</value>
   </data>
   <data name="NunhumISIMicroCadastrado" xml:space="preserve">
     <value>Nunhum ISI Micro cadastrado...</value>
@@ -1015,7 +1021,7 @@
     <value>Acesse nosso site</value>
   </data>
   <data name="PesquisaISIMacro" xml:space="preserve">
-    <value>Pesquisa ISI Macro</value>
+    <value>Pesquisa de Necrópsia</value>
   </data>
   <data name="DigiteParaPesquisar" xml:space="preserve">
     <value>Digite para pesquisar...</value>

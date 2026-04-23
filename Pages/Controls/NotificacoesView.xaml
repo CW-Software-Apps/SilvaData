@@ -16,8 +16,11 @@
     x:Name="AtividadesView"
     Title="{localization:Translate Notificações}"
     BackgroundColor="{StaticResource PrimaryColor}"
-    Shell.NavBarIsVisible="false"
     Shell.TabBarIsVisible="false">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource PrimaryColor}" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <ResourceDictionary>

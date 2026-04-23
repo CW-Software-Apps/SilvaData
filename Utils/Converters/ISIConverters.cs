@@ -259,7 +259,7 @@ namespace SilvaData.Converters
     public class BoolToColorConverter : IValueConverter
     {
         public Color TrueColor { get; set; } = Colors.LightGray;
-        public Color FalseColor { get; set; } = Color.FromArgb("#0888CD"); // Primary
+        public Color FalseColor { get; set; } = Color.FromArgb("#212121"); // Gray900
         public Color AccentColor { get; set; } = Color.FromArgb("#07AD53");
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {

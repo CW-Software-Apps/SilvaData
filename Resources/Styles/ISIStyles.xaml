@@ -120,10 +120,10 @@
         <Setter Property="StrokeShape" Value="RoundRectangle 10" />
     </Style>
 
-    <!--  Badge azul (Primary)  -->
+    <!--  Badge Verde Suave (Primary)  -->
     <Style x:Key="BadgePrimary" TargetType="Border">
         <Setter Property="Padding" Value="10,6" />
-        <Setter Property="Background" Value="#E3F2FD" />
+        <Setter Property="Background" Value="#F1F8E9" />
         <Setter Property="StrokeShape" Value="RoundRectangle 10" />
         <Setter Property="StrokeThickness" Value="0" />
     </Style>
@@ -1006,12 +1006,18 @@
     <Style TargetType="SearchBar">
         <Setter Property="Placeholder" Value="{localization:Translate Procurar}" />
         <Setter Property="Margin" Value="0,1,0,0" />
-        <Setter Property="Background" Value="AliceBlue" />
+        <Setter Property="Background" Value="White" />
         <Setter Property="TextColor" Value="{StaticResource ButtonColor}" />
     </Style>
 
     <Style TargetType="numericEntry:SfNumericEntry">
         <Setter Property="Background" Value="White" />
+    </Style>
+
+    <Style ApplyToDerivedTypes="True" TargetType="numericEntry:SfComboBox">
+        <Setter Property="TextColor" Value="{StaticResource Gray900}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
+        <Setter Property="DropDownBackground" Value="White" />
     </Style>
 
     <!--

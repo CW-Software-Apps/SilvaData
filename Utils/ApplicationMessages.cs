@@ -765,6 +765,13 @@ namespace SilvaData.Utilities
     /// </summary>
     public class LogoutSuccessMessage { }
 
+    /// <summary>
+    /// ★ Notifica que o usuário fez login com sucesso.
+    /// Enviada por: LoginViewModel.LoginNowAsync().
+    /// Recebida por: ViewModels que precisam atualizar dados do usuário logado.
+    /// </summary>
+    public class LoginSuccessMessage { }
+
     // ═══════════════════════════════════════════════════════════════════════════════
     // SEÇÃO 10: MENSAGENS GENÉRICAS E UTILITÁRIAS
     // ═══════════════════════════════════════════════════════════════════════════════
