@@ -96,7 +96,7 @@ namespace SilvaData.Models
         /// Dispara o evento StaticPropertyChanged para notificar a UI sobre mudanças.
         /// </summary>
         /// <param name="propertyName">Nome da propriedade estática que mudou.</param>
-        private static void NotifyStaticPropertyChanged([CallerMemberName] string propertyName = null)
+        private static void NotifyStaticPropertyChanged([CallerMemberName] string propertyName = "")
         {
             StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
         }
