@@ -275,24 +275,31 @@
                             IsVisible="{Binding IsAvaliacaoGalpaoVisible}"
                             Style="{StaticResource MonitoramentoButton}"
                             WidthRequest="165"
-                            Margin="5">
-                            <VerticalStackLayout VerticalOptions="Center" Spacing="4">
-                                <Image Source="icongalpao.svg" 
-                                       Margin="0,-15,0,5"
-                                       HeightRequest="50" 
-                                       WidthRequest="50" 
-                                       HorizontalOptions="Center">
-                                    <Image.Behaviors>
-                                        <toolkit:IconTintColorBehavior TintColor="{StaticResource SecondaryColor}" />
-                                    </Image.Behaviors>
-                                </Image>
-                                <Label Text="{localization:Translate AvaliacoesNoGalpao}" 
-                                       HorizontalTextAlignment="Center"
-                                       FontFamily="Nunito"
-                                       FontSize="Small"
-                                       FontAttributes="Bold"
-                                       TextColor="{StaticResource SecondaryColor}" />
-                            </VerticalStackLayout>
+                            Margin="5"
+                            ShowIcon="False">
+                            <buttons:SfButton.Content>
+                                <DataTemplate>
+                                    <VerticalStackLayout VerticalOptions="Center" Spacing="4">
+                                        <Image
+                                            Source="icongalpao.png"
+                                            Margin="0,-15,0,5"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            HorizontalOptions="Center">
+                                            <Image.Behaviors>
+                                                <toolkit:IconTintColorBehavior TintColor="{StaticResource SecondaryColor}" />
+                                            </Image.Behaviors>
+                                        </Image>
+                                        <Label
+                                            Text="{localization:Translate AvaliacoesNoGalpao}"
+                                            HorizontalTextAlignment="Center"
+                                            FontFamily="Nunito"
+                                            FontSize="Small"
+                                            FontAttributes="Bold"
+                                            TextColor="{StaticResource SecondaryColor}" />
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </buttons:SfButton.Content>
                         </buttons:SfButton>
 
                         <buttons:SfButton
