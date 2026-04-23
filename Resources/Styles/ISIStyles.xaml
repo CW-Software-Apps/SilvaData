@@ -25,6 +25,8 @@
     <Color x:Key="SecondaryColor">#5A8A32</Color>
     <Color x:Key="DarkColor">#3D3D3D</Color>
     <Color x:Key="HeaderColor">#282828</Color>
+    <Color x:Key="SeparatorColor">#E0E0E0</Color>
+    <Color x:Key="Gray200">#E0E0E0</Color>
 
     <Color x:Key="ButtonColor">#70AC3E</Color>
     <Color x:Key="CorBotao">#70AC3E</Color>

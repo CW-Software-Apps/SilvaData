@@ -123,7 +123,7 @@
                         Margin="0"
                         Padding="5,0"
                         FontSize="Micro"
-                        Text="{localization:Translate UnidadeEpidemiológica}"
+                        Text="{localization:Translate UNIDADEEPID}"
                         TextColor="White" />
                     <Border
                         Margin="0"
@@ -139,14 +139,11 @@
                             DisplayMemberPath="nome"
                             IsEditable="True"
                             ItemsSource="{Binding UEList}"
-                            SelectionColor="{StaticResource PrimaryColor}"
-                            SelectedItem="{Binding SelectedFiltroUE, Mode=TwoWay}" />
+                            SelectedValue="{Binding SelectedUEId, Mode=TwoWay}" />
                     </Border>
                 </StackLayout>
 
-
-
-                <!--  Botões  -->
+                <!-- Botões -->
                 <Grid
                     Grid.Row="3"
                     Margin="10,5"
@@ -332,8 +329,8 @@
                                     VerticalOptions="Center" />
                                 <Label
                                     Grid.Column="1"
+                                    FontAttributes="Bold"
                                     FontSize="14"
-                                    HorizontalTextAlignment="Center"
                                     Text="{Binding numero}"
                                     TextColor="{StaticResource DarkColor}"
                                     VerticalOptions="Center" />
@@ -341,11 +338,18 @@
                                     Grid.Column="2"
                                     FontSize="14"
                                     HorizontalTextAlignment="End"
-                                    Text="{Binding dataInicio, StringFormat='{0:dd/MM/yyyy}'}"
+                                    Text="{Binding dataInicioText}"
                                     TextColor="{StaticResource DarkColor}"
                                     VerticalOptions="Center" />
                             </Grid>
-                            <BoxView Grid.Row="1" HeightRequest="1" Color="{StaticResource Gray200}" Margin="15,12,15,0" />
+
+                            <!-- Modern thin separator -->
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.ColumnSpan="3"
+                                HeightRequest="0.5"
+                                Color="{StaticResource SeparatorColor}"
+                                VerticalOptions="End" />
                         </Grid>
                     </DataTemplate>
                 </listview:SfListView.ItemTemplate>
