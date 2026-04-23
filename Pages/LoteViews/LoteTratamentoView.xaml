@@ -104,7 +104,6 @@
             <listView:SfListView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:TratamentoButton">
                     <buttons:SfButton
-                        x:DataType="x:Null"
                         Background="Transparent"
                         Command="{Binding BindingContext.ShowTratamentosCommand, Source={x:Reference LoteTratamentoPage}}"
                         CommandParameter="{Binding .}"

@@ -38,7 +38,7 @@
                     StrokeThickness="0">
 
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer x:DataType="x:Null" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:AtividadeViewModel}}, Path=MostraDetalheAtividadeCommand}" CommandParameter="{Binding .}" />
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference AtividadesView}, Path=BindingContext.MostraDetalheAtividadeCommand}" CommandParameter="{Binding .}" />
                     </Border.GestureRecognizers>
 
                     <Grid ColumnDefinitions="15,*,Auto" RowDefinitions="Auto,Auto">

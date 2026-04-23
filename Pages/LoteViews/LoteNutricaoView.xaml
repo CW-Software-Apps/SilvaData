@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="ISIInstitute.Views.LoteViews.LoteNutricaoView"
+    x:Name="Root"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -104,42 +105,39 @@
                 <DataTemplate x:DataType="viewModels:NutricaoButton">
                     <buttons:SfButton
                         Background="Transparent"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LoteNutricaoViewModel}}, x:DataType={x:Type viewModels:LoteNutricaoViewModel}, Path=ShowNutricaoCommand}"
+                        Command="{Binding BindingContext.ShowNutricaoCommand, Source={x:Reference Root}}"
                         CommandParameter="{Binding .}"
                         CornerRadius="20"
                         HeightRequest="45"
                         ShowIcon="False">
-
                         <buttons:SfButton.Content>
-                            <DataTemplate x:DataType="viewModels:NutricaoButton">
-                                <Border
-                                    Padding="10,5"
-                                    Background="White"
-                                    Stroke="{StaticResource PrimaryColor}"
-                                    StrokeShape="RoundRectangle 20"
-                                    StrokeThickness="1">
-                                    <Grid
-                                        ColumnDefinitions="40,*"
-                                        RowDefinitions="40"
-                                        VerticalOptions="Center">
+                            <Border
+                                Padding="10,5"
+                                Background="White"
+                                Stroke="{StaticResource PrimaryColor}"
+                                StrokeShape="RoundRectangle 20"
+                                StrokeThickness="1">
+                                <Grid
+                                    ColumnDefinitions="40,*"
+                                    RowDefinitions="40"
+                                    VerticalOptions="Center">
 
-                                        <Image
-                                            Grid.Column="0"
-                                            Margin="5,0"
-                                            HeightRequest="45"
-                                            Source="nutricao.png"
-                                            VerticalOptions="Center" />
+                                    <Image
+                                        Grid.Column="0"
+                                        Margin="5,0"
+                                        HeightRequest="45"
+                                        Source="nutricao.png"
+                                        VerticalOptions="Center" />
 
-                                        <Label
-                                            Grid.Column="1"
-                                            FontSize="Small"
-                                            HorizontalTextAlignment="Start"
-                                            Text="{Binding Fase}"
-                                            TextColor="{StaticResource SecondaryColor}"
-                                            VerticalTextAlignment="Center" />
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="Small"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding Fase}"
+                                        TextColor="{StaticResource SecondaryColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                            </Border>
                         </buttons:SfButton.Content>
                     </buttons:SfButton>
                 </DataTemplate>

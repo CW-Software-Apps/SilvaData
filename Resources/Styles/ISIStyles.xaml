@@ -220,42 +220,42 @@
 
       <DataTemplate x:Key="ISIMacroTemplate">
           <VerticalStackLayout>
-              <controls:ISIMacroNota IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type viewModels:BaseEditViewModel}}, Path=ReadOnly, Mode=OneWay}" />
+              <controls:ISIMacroNota IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ReadOnly, Mode=OneWay}" />
           </VerticalStackLayout>
       </DataTemplate>
 
     <DataTemplate x:Key="Alternativas">
         <VerticalStackLayout Padding="10,2">
             <controls:Grupo />
-            <controls:ComboAlternativas IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type viewModels:BaseEditViewModel}}, Path=ReadOnly, Mode=OneWay}" />
+            <controls:ComboAlternativas IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ReadOnly, Mode=OneWay}" />
         </VerticalStackLayout>
     </DataTemplate>
 
     <DataTemplate x:Key="ValorInteiro">
         <VerticalStackLayout Padding="10,2">
             <controls:Grupo />
-            <controls:ValorInteiroComBotoes IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type viewModels:BaseEditViewModel}}, Path=ReadOnly, Mode=OneWay}" />
+            <controls:ValorInteiroComBotoes IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ReadOnly, Mode=OneWay}" />
         </VerticalStackLayout>
     </DataTemplate>
 
     <DataTemplate x:Key="CheckList">
         <VerticalStackLayout Padding="10,2">
             <controls:Grupo />
-            <controls:YesNoToggle IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type viewModels:BaseEditViewModel}}, Path=ReadOnly, Mode=OneWay}" />
+            <controls:YesNoToggle IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ReadOnly, Mode=OneWay}" />
         </VerticalStackLayout>
     </DataTemplate>
 
     <DataTemplate x:Key="ValorDouble">
         <VerticalStackLayout Padding="10,2">
             <controls:Grupo />
-            <controls:ValorDouble IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type viewModels:BaseEditViewModel}}, Path=ReadOnly, Mode=OneWay}" />
+            <controls:ValorDouble IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ReadOnly, Mode=OneWay}" />
         </VerticalStackLayout>
     </DataTemplate>
 
     <DataTemplate x:Key="CampoTexto">
         <VerticalStackLayout Padding="10,2">
             <controls:Grupo />
-            <controls:CampoTexto IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type viewModels:BaseEditViewModel}}, Path=ReadOnly, Mode=OneWay}" />
+            <controls:CampoTexto IsReadOnly="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ReadOnly, Mode=OneWay}" />
         </VerticalStackLayout>
     </DataTemplate>
 

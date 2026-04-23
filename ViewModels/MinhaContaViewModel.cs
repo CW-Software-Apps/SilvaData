@@ -142,13 +142,13 @@ namespace SilvaData.ViewModels
         }
 
         [RelayCommand]
-        private static async Task AbrirWhatsApp()
+        private async Task AbrirWhatsApp()
         {
             await Launcher.OpenAsync("https://wa.me/554391626247");
         }
 
         [RelayCommand]
-        private static async Task AbrirPoliticaPrivacidade()
+        private async Task AbrirPoliticaPrivacidade()
         {
             await Launcher.OpenAsync("https://www.silvateam.com.br/node/211");
         }

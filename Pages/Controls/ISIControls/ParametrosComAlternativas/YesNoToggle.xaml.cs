@@ -1,5 +1,7 @@
 using CommunityToolkit.Mvvm.Messaging;
+
 using SilvaData.Models;
+
 using System.Diagnostics;
 
 namespace SilvaData.Controls
@@ -138,48 +140,172 @@ namespace SilvaData.Controls
             UpdateColorText();
         }
 
+        #region Color Customization BindableProperties
+
+        public static readonly BindableProperty SelectedYesColorProperty =
+            BindableProperty.Create(nameof(SelectedYesColor), typeof(Color), typeof(YesNoToggle), Color.FromArgb("#C8E6C9"), propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color SelectedYesColor
+        {
+            get => (Color)GetValue(SelectedYesColorProperty);
+            set => SetValue(SelectedYesColorProperty, value);
+        }
+
+        public static readonly BindableProperty UnselectedYesColorProperty =
+            BindableProperty.Create(nameof(UnselectedYesColor), typeof(Color), typeof(YesNoToggle), Colors.WhiteSmoke, propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color UnselectedYesColor
+        {
+            get => (Color)GetValue(UnselectedYesColorProperty);
+            set => SetValue(UnselectedYesColorProperty, value);
+        }
+
+        public static readonly BindableProperty SelectedNoColorProperty =
+            BindableProperty.Create(nameof(SelectedNoColor), typeof(Color), typeof(YesNoToggle), Color.FromArgb("#FFCDD2"), propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color SelectedNoColor
+        {
+            get => (Color)GetValue(SelectedNoColorProperty);
+            set => SetValue(SelectedNoColorProperty, value);
+        }
+
+        public static readonly BindableProperty UnselectedNoColorProperty =
+            BindableProperty.Create(nameof(UnselectedNoColor), typeof(Color), typeof(YesNoToggle), Colors.WhiteSmoke, propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color UnselectedNoColor
+        {
+            get => (Color)GetValue(UnselectedNoColorProperty);
+            set => SetValue(UnselectedNoColorProperty, value);
+        }
+
+        public static readonly BindableProperty SelectedYesTextColorProperty =
+            BindableProperty.Create(nameof(SelectedYesTextColor), typeof(Color), typeof(YesNoToggle), Color.FromArgb("#1B5E20"), propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color SelectedYesTextColor
+        {
+            get => (Color)GetValue(SelectedYesTextColorProperty);
+            set => SetValue(SelectedYesTextColorProperty, value);
+        }
+
+        public static readonly BindableProperty UnselectedYesTextColorProperty =
+            BindableProperty.Create(nameof(UnselectedYesTextColor), typeof(Color), typeof(YesNoToggle), Color.FromArgb("#4CAF50"), propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color UnselectedYesTextColor
+        {
+            get => (Color)GetValue(UnselectedYesTextColorProperty);
+            set => SetValue(UnselectedYesTextColorProperty, value);
+        }
+
+        public static readonly BindableProperty SelectedNoTextColorProperty =
+            BindableProperty.Create(nameof(SelectedNoTextColor), typeof(Color), typeof(YesNoToggle), Color.FromArgb("#B71C1C"), propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color SelectedNoTextColor
+        {
+            get => (Color)GetValue(SelectedNoTextColorProperty);
+            set => SetValue(SelectedNoTextColorProperty, value);
+        }
+
+        public static readonly BindableProperty UnselectedNoTextColorProperty =
+            BindableProperty.Create(nameof(UnselectedNoTextColor), typeof(Color), typeof(YesNoToggle), Color.FromArgb("#F44336"), propertyChanged: (b, o, n) => ((YesNoToggle)b).UpdateColorText());
+
+        public Color UnselectedNoTextColor
+        {
+            get => (Color)GetValue(UnselectedNoTextColorProperty);
+            set => SetValue(UnselectedNoTextColorProperty, value);
+        }
+
+        #endregion
+
+        #region Applied Colors (Bindable)
+
+        public static readonly BindableProperty TextColorProperty =
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(YesNoToggle), Colors.Black);
+
+        public Color TextColor
+        {
+            get => (Color)GetValue(TextColorProperty);
+            set => SetValue(TextColorProperty, value);
+        }
+
+        public static readonly BindableProperty YesBrushProperty =
+            BindableProperty.Create(nameof(YesBrush), typeof(Brush), typeof(YesNoToggle), new SolidColorBrush(Colors.WhiteSmoke));
+
+        public Brush YesBrush
+        {
+            get => (Brush)GetValue(YesBrushProperty);
+            set => SetValue(YesBrushProperty, value);
+        }
+
+        public static readonly BindableProperty YesTextColorProperty =
+            BindableProperty.Create(nameof(YesTextColor), typeof(Color), typeof(YesNoToggle), Colors.Black);
+
+        public Color YesTextColor
+        {
+            get => (Color)GetValue(YesTextColorProperty);
+            set => SetValue(YesTextColorProperty, value);
+        }
+
+        public static readonly BindableProperty NoBrushProperty =
+            BindableProperty.Create(nameof(NoBrush), typeof(Brush), typeof(YesNoToggle), new SolidColorBrush(Colors.WhiteSmoke));
+
+        public Brush NoBrush
+        {
+            get => (Brush)GetValue(NoBrushProperty);
+            set => SetValue(NoBrushProperty, value);
+        }
+
+        public static readonly BindableProperty NoTextColorProperty =
+            BindableProperty.Create(nameof(NoTextColor), typeof(Color), typeof(YesNoToggle), Colors.Black);
+
+        public Color NoTextColor
+        {
+            get => (Color)GetValue(NoTextColorProperty);
+            set => SetValue(NoTextColorProperty, value);
+        }
+
+        #endregion
+
         /// <summary>
         /// Atualiza cores e texto quando o valor muda.
-        /// Dispatcher.Dispatch garante que as cores sejam aplicadas APÓS as transições internas
-        /// do SfButton (que resetam Background para branco via VSM global).
         /// </summary>
         private void UpdateColorText()
         {
             try
             {
-                if (Dispatcher != null)
-                {
-                    Dispatcher.Dispatch(() =>
-                    {
-                        OnPropertyChanged(nameof(YesNoText));
-                        OnPropertyChanged(nameof(TextColor));
-                        OnPropertyChanged(nameof(YesColor));
-                        OnPropertyChanged(nameof(YesTextColor));
-                        OnPropertyChanged(nameof(NoColor));
-                        OnPropertyChanged(nameof(NoTextColor));
-                    });
-                }
-                else if (Application.Current?.Dispatcher != null)
-                {
-                    Application.Current.Dispatcher.Dispatch(() =>
-                    {
-                        OnPropertyChanged(nameof(YesNoText));
-                        OnPropertyChanged(nameof(TextColor));
-                        OnPropertyChanged(nameof(YesColor));
-                        OnPropertyChanged(nameof(YesTextColor));
-                        OnPropertyChanged(nameof(NoColor));
-                        OnPropertyChanged(nameof(NoTextColor));
-                    });
-                }
-                else
+                Action updateAction = () =>
                 {
                     OnPropertyChanged(nameof(YesNoText));
-                    OnPropertyChanged(nameof(TextColor));
-                    OnPropertyChanged(nameof(YesColor));
-                    OnPropertyChanged(nameof(YesTextColor));
-                    OnPropertyChanged(nameof(NoColor));
-                    OnPropertyChanged(nameof(NoTextColor));
-                }
+
+                    // Atualiza cores calculadas nos BindableProperties
+                    TextColor = HasError ? Colors.Red : ValidationVisualHelper.GetPrimaryColor();
+
+                    if (ParametroComAlternativas?.ValorSimNao == true)
+                    {
+                        YesBrush = new SolidColorBrush(SelectedYesColor);
+                        YesTextColor = SelectedYesTextColor;
+                        NoBrush = new SolidColorBrush(UnselectedNoColor);
+                        NoTextColor = UnselectedNoTextColor;
+                    }
+                    else if (ParametroComAlternativas?.ValorSimNao == false)
+                    {
+                        YesBrush = new SolidColorBrush(UnselectedYesColor);
+                        YesTextColor = UnselectedYesTextColor;
+                        NoBrush = new SolidColorBrush(SelectedNoColor);
+                        NoTextColor = SelectedNoTextColor;
+                    }
+                    else
+                    {
+                        YesBrush = new SolidColorBrush(UnselectedYesColor);
+                        YesTextColor = UnselectedYesTextColor;
+                        NoBrush = new SolidColorBrush(UnselectedNoColor);
+                        NoTextColor = UnselectedNoTextColor;
+                    }
+                };
+
+                if (Dispatcher != null && Dispatcher.IsDispatchRequired)
+                    Dispatcher.Dispatch(updateAction);
+                else
+                    updateAction();
             }
             catch (Exception ex)
             {
@@ -198,81 +324,15 @@ namespace SilvaData.Controls
 
         protected override void ApplyValidationVisualState(bool hasError)
         {
-            OnPropertyChanged(nameof(TextColor));
+            UpdateColorText();
         }
 
-        #region Propriedades Calculadas (Cores e Texto)
-
-        /// <summary>
-        /// Cor do texto do Label (vermelho se erro, cor secundária se OK).
-        /// </summary>
-        public Color TextColor => HasError
-            ? Colors.Red
-            : ValidationVisualHelper.GetPrimaryColor();
-
-        /// <summary>
-        /// Cor de fundo do botão "Sim" (VERDE BRILHANTE quando selecionado).
-        /// </summary>
-        public Color YesColor
-        {
-            get
-            {
-                if (ParametroComAlternativas?.ValorSimNao == true)
-                    return Color.FromArgb("#C8E6C9");
-
-                return Colors.Transparent;
-            }
-        }
-
-        /// <summary>
-        /// Cor do texto do botão "Sim" (Sempre verde).
-        /// </summary>
-        public Color YesTextColor
-        {
-            get
-            {
-                if (ParametroComAlternativas?.ValorSimNao == true)
-                    return Color.FromArgb("#1B5E20");
-
-                return Color.FromArgb("#4CAF50");
-            }
-        }
-
-        /// <summary>
-        /// Cor de fundo do botão "Não" (Fundo vermelho claro quando selecionado).
-        /// </summary>
-        public Color NoColor
-        {
-            get
-            {
-                if (ParametroComAlternativas?.ValorSimNao == false)
-                    return Color.FromArgb("#FFCDD2");
-
-                return Colors.Transparent;
-            }
-        }
-
-        /// <summary>
-        /// Cor do texto do botão "Não" (Sempre vermelho).
-        /// </summary>
-        public Color NoTextColor
-        {
-            get
-            {
-                if (ParametroComAlternativas?.ValorSimNao == false)
-                    return Color.FromArgb("#B71C1C");
-
-                return Color.FromArgb("#F44336");
-            }
-        }
-
-        /// <summary>
-        /// Texto exibido (Sim/Não ou vazio).
-        /// </summary>
         public string? YesNoText => (ParametroComAlternativas == null || ParametroComAlternativas.ValorSimNao == null)
             ? null
             : (ParametroComAlternativas.ValorSimNao == true ? Traducao.Sim : Traducao.Nao);
 
+        #region Propriedades Calculadas legadas (removidas em favor dos BindableProperties)
+        // Removidas YesColor, NoColor para usar YesBrush e NoBrush
         #endregion
     }
 }

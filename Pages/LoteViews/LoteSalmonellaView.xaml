@@ -103,7 +103,6 @@
             <listView:SfListView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:SalmonellaButton">
                     <buttons:SfButton
-                        x:DataType="x:Null"
                         Background="Transparent"
                         Command="{Binding BindingContext.ShowSalmonellaCommand, Source={x:Reference LoteSalmonellaPage}}"
                         CommandParameter="{Binding .}"

@@ -168,7 +168,7 @@
                                             PressedScale="0.95" />
                                     </Border.Behaviors>
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer x:DataType="x:Null" Command="{Binding BindingContext.ShowManejoGeralCommand, Source={x:Reference LoteManejoPage}}" CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer  Command="{Binding BindingContext.ShowManejoGeralCommand, Source={x:Reference LoteManejoPage}}" CommandParameter="{Binding .}" />
                                     </Border.GestureRecognizers>
                                     <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="15">
                                         <HorizontalStackLayout Grid.Column="0">

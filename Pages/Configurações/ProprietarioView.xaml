@@ -121,7 +121,6 @@
                                     Grid.Column="1"
                                     Margin="0,0,10,0"
                                     Command="{Binding Path=BindingContext.EditCommand, Source={RelativeSource AncestorType={x:Type controls:ProprietarioView}}}"
-                                    x:DataType="x:Null"
                                     CommandParameter="{Binding .}"
                                     FontFamily="FontAwesomeRegular"
                                     FontSize="Medium"

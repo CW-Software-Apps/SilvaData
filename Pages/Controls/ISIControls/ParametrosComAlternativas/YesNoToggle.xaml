@@ -10,15 +10,38 @@
     x:Name="yesNoToggle"
     Padding="2">
 
-    <ContentView.Resources>
-        <!-- Estilo local para ignorar o VSM global que força fundo branco -->
+    <controls:ValidatableFieldBase.Resources>
+        <!-- Estilo local para ignorar o VSM global que força fundo verde -->
         <Style x:Key="ToggleButtonStyle" TargetType="buttons:SfButton">
-         
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.95" />
+                                <Setter Property="Opacity" Value="0.8" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="Opacity" Value="0.5" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+            <Setter Property="MinimumHeightRequest" Value="0" />
+            <Setter Property="MinimumWidthRequest" Value="0" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="CharacterSpacing" Value="0" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="Shadow" Value="{x:Null}" />
         </Style>
-    </ContentView.Resources>
+    </controls:ValidatableFieldBase.Resources>
 
     <Border
-        Padding="10,10"
+        Padding="0,10"
         Background="Transparent"
         Stroke="{StaticResource PrimaryColor}"
         StrokeShape="RoundRectangle 8"
@@ -34,10 +57,9 @@
             </DataTrigger>
         </Border.Triggers>
 
-        <Grid ColumnDefinitions="*,60,60" RowDefinitions="Auto" x:DataType="models:ParametroComAlternativas">
+        <Grid ColumnDefinitions="*,60,60" RowDefinitions="Auto" x:DataType="models:ParametroComAlternativas" ColumnSpacing="5">
 
-            <!--  Label com nome do parâmetro + asterisco  -->
-            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center" Padding="10,0">
                 <Label
                     Grid.Column="0"
                     FontSize="Small"
@@ -76,41 +98,77 @@
                 </Label>
             </Grid>
 
-            <!--  Botão Sim  -->
+            <!-- Botão Sim -->
             <buttons:SfButton
                 x:Name="btYes"
                 Grid.Column="1"
                 Padding="0"
-                Background="{Binding YesColor, Source={x:Reference yesNoToggle}}"
                 Clicked="BtYes_Clicked"
-                CornerRadius="40"
+                CornerRadius="8"
                 FontAttributes="Bold"
                 FontFamily="FontAwesomeRegular"
                 FontSize="20"
-                HeightRequest="50"
-                ShowIcon="False"
-                Style="{StaticResource ToggleButtonStyle}"
+                HeightRequest="44"
+                WidthRequest="50"
                 Text="{x:Static fontawesome:FontAwesomeIcons.Check}"
-                TextColor="{Binding YesTextColor, Source={x:Reference yesNoToggle}}"
-                VerticalOptions="Center" />
+                VerticalOptions="Center">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Background" Value="{Binding YesBrush, Source={x:Reference yesNoToggle}}" />
+                                    <Setter Property="TextColor" Value="{Binding YesTextColor, Source={x:Reference yesNoToggle}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Background" Value="{Binding YesBrush, Source={x:Reference yesNoToggle}}" />
+                                    <Setter Property="TextColor" Value="{Binding YesTextColor, Source={x:Reference yesNoToggle}}" />
+                                    <Setter Property="Opacity" Value="0.7" />
+                                    <Setter Property="Scale" Value="0.95" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+            </buttons:SfButton>
 
-            <!--  Botão Não  -->
+            <!-- Botão Não -->
             <buttons:SfButton
                 x:Name="btNo"
                 Grid.Column="2"
                 Padding="0"
-                Background="{Binding NoColor, Source={x:Reference yesNoToggle}}"
                 Clicked="BtNo_Clicked"
-                CornerRadius="40"
+                CornerRadius="8"
                 FontAttributes="Bold"
                 FontFamily="FontAwesomeRegular"
                 FontSize="20"
-                HeightRequest="50"
-                ShowIcon="False"
-                Style="{StaticResource ToggleButtonStyle}"
+                HeightRequest="44"
+                WidthRequest="50"
                 Text="{x:Static fontawesome:FontAwesomeIcons.X}"
-                TextColor="{Binding NoTextColor, Source={x:Reference yesNoToggle}}"
-                VerticalOptions="Center" />
+                VerticalOptions="Center">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Background" Value="{Binding NoBrush, Source={x:Reference yesNoToggle}}" />
+                                    <Setter Property="TextColor" Value="{Binding NoTextColor, Source={x:Reference yesNoToggle}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Background" Value="{Binding NoBrush, Source={x:Reference yesNoToggle}}" />
+                                    <Setter Property="TextColor" Value="{Binding NoTextColor, Source={x:Reference yesNoToggle}}" />
+                                    <Setter Property="Opacity" Value="0.7" />
+                                    <Setter Property="Scale" Value="0.95" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+            </buttons:SfButton>
         </Grid>
     </Border>
 </controls:ValidatableFieldBase>

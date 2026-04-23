@@ -1,11 +1,14 @@
 <ContentView
     x:Class="SilvaData.Controls.GalpoesView"
+    x:Name="Root"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:models="clr-namespace:SilvaData.Models"
     xmlns:viewModels="clr-namespace:SilvaData.ViewModels"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:local="clr-namespace:SilvaData.Controls"
     x:DataType="viewModels:GalpoesViewModel">
 
     <Grid RowDefinitions="Auto,Auto,Auto,*" BackgroundColor="{StaticResource QuaseBranco}">
@@ -89,26 +92,37 @@
         <!-- ── Linha 2: Cabeçalho das colunas ── -->
         <Grid
             Grid.Row="2"
-            ColumnDefinitions="*,60,48,48"
-            Padding="16,4,16,4">
+            ColumnDefinitions="*,80,100"
+            Padding="16,8,16,4"
+            Margin="0,4">
             <Label
                 Grid.Column="0"
                 FontAttributes="Bold"
                 FontSize="13"
                 Text="Galpão"
-                TextColor="{StaticResource PrimaryColor}" />
+                TextColor="{StaticResource PrimaryColor}"
+                VerticalTextAlignment="Center" />
             <Label
                 Grid.Column="1"
                 FontAttributes="Bold"
                 FontSize="13"
                 HorizontalTextAlignment="Center"
                 Text="Lotes"
-                TextColor="{StaticResource PrimaryColor}" />
+                TextColor="{StaticResource PrimaryColor}"
+                VerticalTextAlignment="Center" />
+            <Label
+                Grid.Column="2"
+                FontAttributes="Bold"
+                FontSize="13"
+                HorizontalTextAlignment="Center"
+                Text="Ações"
+                TextColor="{StaticResource PrimaryColor}"
+                VerticalTextAlignment="Center" />
             <BoxView
                 Grid.Column="0"
-                Grid.ColumnSpan="4"
+                Grid.ColumnSpan="3"
                 BackgroundColor="{StaticResource PrimaryColor}"
-                HeightRequest="1.5"
+                HeightRequest="1"
                 VerticalOptions="End" />
         </Grid>
 
@@ -124,9 +138,10 @@
                 <listView:SfListView.ItemTemplate>
                     <DataTemplate x:DataType="models:UnidadeEpidemiologicaComDetalhes">
                         <Grid
-                            BackgroundColor="{StaticResource QuaseBranco}"
-                            ColumnDefinitions="*,60,48,48"
-                            Padding="16,0">
+                            BackgroundColor="Transparent"
+                            ColumnDefinitions="*,80,100"
+                            Padding="16,0"
+                            HeightRequest="56">
                             <Label
                                 Grid.Column="0"
                                 FontSize="14"
@@ -140,30 +155,61 @@
                                 Text="{Binding QuantidadeLotes}"
                                 TextColor="{StaticResource DarkColor}"
                                 VerticalOptions="Center" />
-                            <buttons:SfButton
-                                Grid.Column="2"
-                                Command="{Binding EditarCommand, Source={RelativeSource AncestorType={x:Type viewModels:GalpoesViewModel}}}"
-                                CommandParameter="{Binding .}"
-                                Background="Transparent"
-                                FontFamily="FontAwesomeSolid"
-                                FontSize="20"
-                                Text="&#xf044;"
-                                TextColor="{StaticResource SecondaryColor}"
-                                VerticalOptions="Center" />
-                            <buttons:SfButton
-                                Grid.Column="3"
-                                Command="{Binding ShowLoteCommand, Source={RelativeSource AncestorType={x:Type viewModels:GalpoesViewModel}}}"
-                                x:DataType="x:Null"
-                                CommandParameter="{Binding .}"
-                                Background="Transparent"
-                                FontFamily="FontAwesomeSolid"
-                                FontSize="20"
-                                Text="&#xf65e;"
-                                TextColor="{StaticResource PrimaryColor}"
-                                VerticalOptions="Center" />
+
+                            <HorizontalStackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="8">
+                                <!-- Ver Lotes (com ícone +) -->
+                                <buttons:SfButton
+                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.ShowLoteCommand}"
+                                    CommandParameter="{Binding .}"
+                                    x:DataType="x:Null"
+                                    Background="Transparent"
+                                    HeightRequest="44"
+                                    WidthRequest="44"
+                                    Padding="4"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    ShowIcon="False">
+                                    <buttons:SfButton.Content>
+                                        <DataTemplate x:DataType="models:UnidadeEpidemiologicaComDetalhes">
+                                            <Grid HeightRequest="36" WidthRequest="36">
+                                                <Image Source="iconlotes.svg" Aspect="AspectFit" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center">
+                                                    <Image.Behaviors>
+                                                        <toolkit:IconTintColorBehavior TintColor="{StaticResource PrimaryColor}" />
+                                                    </Image.Behaviors>
+                                                </Image>
+                                                <Label Text="+" 
+                                                       FontAttributes="Bold" 
+                                                       FontSize="18" 
+                                                       TextColor="{StaticResource PrimaryColor}"
+                                                       HorizontalOptions="End" 
+                                                       VerticalOptions="Start"
+                                                       Margin="0,-6,-4,0" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </buttons:SfButton.Content>
+                                </buttons:SfButton>
+
+                                <!-- Editar -->
+                                <buttons:SfButton
+                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.EditarCommand}"
+                                    CommandParameter="{Binding .}"
+                                    x:DataType="x:Null"
+                                    Background="Transparent"
+                                    HeightRequest="44"
+                                    WidthRequest="40"
+                                    Padding="0"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    FontFamily="FontAwesomeSolid"
+                                    FontSize="20"
+                                    Text="&#xf303;"
+                                    TextColor="{StaticResource SecondaryColor}"
+                                    ToolTipProperties.Text="Editar Galpão" />
+                            </HorizontalStackLayout>
+
                             <BoxView
                                 Grid.Column="0"
-                                Grid.ColumnSpan="4"
+                                Grid.ColumnSpan="3"
                                 BackgroundColor="{StaticResource Gray100}"
                                 HeightRequest="1"
                                 VerticalOptions="End" />
@@ -175,22 +221,11 @@
                     <listView:LinearLayout />
                 </listView:SfListView.ItemsLayout>
             </listView:SfListView>
-
-            <!-- FAB -->
             <buttons:SfButton
-                Command="{Binding AdicionarGalpaoCommand}"
-                IsVisible="{x:Static viewModels:GalpoesViewModel.PodeAdicionar}"
-                Background="{StaticResource PrimaryBrush}"
-                CornerRadius="28"
-                HeightRequest="56"
-                HorizontalOptions="End"
-                Margin="0,0,20,20"
-                VerticalOptions="End"
-                WidthRequest="56"
-                FontFamily="FontAwesomeSolid"
-                FontSize="22"
-                Text="&#xf067;"
-                TextColor="White" />
+                Grid.Row="3"
+                Style="{StaticResource CircleButtonPlus}"
+                ZIndex="1"
+                Command="{Binding AdicionarGalpaoCommand}" />
         </Grid>
 
     </Grid>

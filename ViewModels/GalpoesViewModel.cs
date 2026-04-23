@@ -15,6 +15,9 @@ namespace SilvaData.ViewModels
         public static bool PodeAdicionar => Permissoes.PodeAdicionarUE;
         public static bool PodeEditar => Permissoes.PodeEditarUE;
 
+        public bool PodeAdicionarUE => Permissoes.PodeAdicionarUE;
+        public bool PodeEditarUE => Permissoes.PodeEditarUE;
+
         public int TotalGalpoes => _listaFiltrada.Count;
 
         public GalpoesViewModel(CacheService cacheService)
@@ -63,19 +66,19 @@ namespace SilvaData.ViewModels
         }
 
         [RelayCommand]
-        private static async Task AdicionarGalpao()
+        private async Task AdicionarGalpao()
         {
             await NavigationUtils.ShowViewAsModalAsync<UnidadeEpidemiologicaView_Edit>();
         }
 
         [RelayCommand]
-        private static async Task Editar(UnidadeEpidemiologicaComDetalhes ue)
+        private async Task Editar(UnidadeEpidemiologicaComDetalhes ue)
         {
             await NavigationUtils.ShowViewAsModalAsync<UnidadeEpidemiologicaView_Edit>(ue);
         }
 
         [RelayCommand]
-        private static async Task ShowLote(UnidadeEpidemiologicaComDetalhes ue)
+        private async Task ShowLote(UnidadeEpidemiologicaComDetalhes ue)
         {
             var loteViewModel = ServiceHelper.GetRequiredService<LoteViewModel>();
             await loteViewModel.LimparFiltros();

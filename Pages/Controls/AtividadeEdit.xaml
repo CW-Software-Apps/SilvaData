@@ -246,7 +246,6 @@
                                                 StrokeShape="RoundRectangle 8"
                                                 StrokeThickness="1">
                                                 <inputs:SfComboBox
-                                                    x:DataType="x:Null"
                                                     BackgroundColor="White"
                                                     ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:AtividadeEditViewModel}}, Path=NotificacaoDias}"
                                                     ShowBorder="False"
@@ -261,7 +260,6 @@
                                                 StrokeShape="RoundRectangle 8"
                                                 StrokeThickness="1">
                                                 <inputs:SfComboBox
-                                                    x:DataType="x:Null"
                                                     ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:AtividadeEditViewModel}}, Path=AtividadeNotificacaoTipo}"
                                                     ShowBorder="False"
                                                     Text="{Binding Tipo}" />
@@ -269,7 +267,6 @@
 
                                             <buttons:SfButton
                                                 x:Name="btRemove"
-                                                x:DataType="x:Null"
                                                 Grid.Column="2"
                                                 BackgroundColor="Transparent"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:AtividadeEditViewModel}}, Path=RemoveNotificacaoCommand}"
