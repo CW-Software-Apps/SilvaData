@@ -77,7 +77,7 @@ namespace SilvaData.Models
         /// Garante que todas as tabelas do aplicativo existam no banco de dados.
         /// Executa migrações simples (Drop/Create) para tabelas que causam erro.
         /// </summary>
-        public static async Task CriaOuAtualizaTabelas(SQLiteAsyncConnection? connection)
+        public static async Task CriaOuAtualizaTabelas(SQLiteAsyncConnection? connection = null)
         {
             if (connection == null)
             {

@@ -103,43 +103,34 @@
 
             <listView:SfListView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:NutricaoButton">
-                    <buttons:SfButton
-                        Background="Transparent"
-                        Command="{Binding BindingContext.ShowNutricaoCommand, Source={x:Reference Root}}"
-                        CommandParameter="{Binding .}"
-                        CornerRadius="20"
-                        HeightRequest="45"
-                        ShowIcon="False">
-                        <buttons:SfButton.Content>
-                            <Border
-                                Padding="10,5"
-                                Background="White"
-                                Stroke="{StaticResource PrimaryColor}"
-                                StrokeShape="RoundRectangle 20"
-                                StrokeThickness="1">
-                                <Grid
-                                    ColumnDefinitions="40,*"
-                                    RowDefinitions="40"
-                                    VerticalOptions="Center">
-
-                                    <Image
-                                        Grid.Column="0"
-                                        Margin="5,0"
-                                        HeightRequest="45"
-                                        Source="nutricao.png"
-                                        VerticalOptions="Center" />
-
-                                    <Label
-                                        Grid.Column="1"
-                                        FontSize="Small"
-                                        HorizontalTextAlignment="Start"
-                                        Text="{Binding Fase}"
-                                        TextColor="{StaticResource SecondaryColor}"
-                                        VerticalTextAlignment="Center" />
-                                </Grid>
-                            </Border>
-                        </buttons:SfButton.Content>
-                    </buttons:SfButton>
+                    <Border
+                        Padding="10,5"
+                        Background="White"
+                        Stroke="{StaticResource PrimaryColor}"
+                        StrokeShape="RoundRectangle 20"
+                        StrokeThickness="1">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowNutricaoCommand}" CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        <Grid
+                            ColumnDefinitions="40,*"
+                            RowDefinitions="40"
+                            VerticalOptions="Center">
+                            <Image
+                                Grid.Column="0"
+                                Margin="5,0"
+                                HeightRequest="45"
+                                Source="nutricao.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding Fase}"
+                                TextColor="{StaticResource SecondaryColor}"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </listView:SfListView.ItemTemplate>
         </listView:SfListView>
