@@ -278,8 +278,9 @@
                             Margin="5">
                             <VerticalStackLayout VerticalOptions="Center" Spacing="4">
                                 <Image Source="icongalpao.svg" 
-                                       HeightRequest="40" 
-                                       WidthRequest="40" 
+                                       Margin="0,-15,0,5"
+                                       HeightRequest="50" 
+                                       WidthRequest="50" 
                                        HorizontalOptions="Center">
                                     <Image.Behaviors>
                                         <toolkit:IconTintColorBehavior TintColor="{StaticResource SecondaryColor}" />

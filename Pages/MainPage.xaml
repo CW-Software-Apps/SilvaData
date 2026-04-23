@@ -79,8 +79,8 @@
                         <!-- Unselected Icon -->
                         <Image
                             Aspect="AspectFit"
-                            HeightRequest="24"
-                            WidthRequest="24"
+                            HeightRequest="26"
+                            WidthRequest="26"
                             Source="iconmercado.svg">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{StaticResource Gray300}" />
@@ -97,8 +97,8 @@
                         <!-- Selected Icon -->
                         <Image
                             Aspect="AspectFit"
-                            HeightRequest="24"
-                            WidthRequest="24"
+                            HeightRequest="26"
+                            WidthRequest="26"
                             IsVisible="False"
                             Source="iconmercado.svg">
                             <Image.Behaviors>
@@ -123,12 +123,13 @@
                     <Grid
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        HeightRequest="28"
-                        WidthRequest="28">
+                        HeightRequest="34"
+                        WidthRequest="34">
                         <Image
                             Aspect="AspectFit"
-                            HeightRequest="24"
-                            WidthRequest="24"
+                            Margin="0,5,0,0"
+                            HeightRequest="37"
+                            WidthRequest="37"
                             Source="icongalpao.svg">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{StaticResource Gray300}" />
@@ -144,8 +145,9 @@
                         </Image>
                         <Image
                             Aspect="AspectFit"
-                            HeightRequest="24"
-                            WidthRequest="24"
+                            Margin="0,5,0,0"
+                            HeightRequest="37"
+                            WidthRequest="37"
                             IsVisible="False"
                             Source="icongalpao.svg">
                             <Image.Behaviors>
@@ -170,12 +172,12 @@
                     <Grid
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        HeightRequest="28"
-                        WidthRequest="28">
+                        HeightRequest="34"
+                        WidthRequest="34">
                         <Image
                             Aspect="AspectFit"
-                            HeightRequest="24"
-                            WidthRequest="24"
+                            HeightRequest="34"
+                            WidthRequest="34"
                             Source="iconlotes.svg">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{StaticResource Gray300}" />
@@ -191,8 +193,8 @@
                         </Image>
                         <Image
                             Aspect="AspectFit"
-                            HeightRequest="24"
-                            WidthRequest="24"
+                            HeightRequest="34"
+                            WidthRequest="34"
                             IsVisible="False"
                             Source="iconlotes.svg">
                             <Image.Behaviors>
@@ -214,7 +216,7 @@
 
             <sf:SfTabItem Style="{StaticResource SyncTabStyle}">
                 <sf:SfTabItem.HeaderContent>
-                    <Grid HeightRequest="28" WidthRequest="28">
+                    <Grid HeightRequest="34" WidthRequest="34">
                         <Label
                             FontFamily="FontAwesomeSolid"
                             FontSize="24"
@@ -238,7 +240,7 @@
 
             <sf:SfTabItem Style="{StaticResource ContaTabStyle}">
                 <sf:SfTabItem.HeaderContent>
-                    <Grid HeightRequest="28" WidthRequest="28">
+                    <Grid HeightRequest="34" WidthRequest="34">
                         <Label
                             FontFamily="FontAwesomeSolid"
                             FontSize="24"
