@@ -36,7 +36,7 @@ namespace SilvaData.ViewModels
         }
 
         [RelayCommand]
-        private static Task SelecionaCliente(Propriedade _)
+        private Task SelecionaCliente(Propriedade _)
         {
             // TODO: navegar para a base de dados do cliente selecionado
             return Task.CompletedTask;

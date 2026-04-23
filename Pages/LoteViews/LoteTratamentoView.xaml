@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="ISIInstitute.Views.LoteViews.LoteTratamentoView"
+    x:Name="LoteTratamentoPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -89,7 +90,7 @@
                 <VerticalStackLayout
                     Grid.Row="1"
                     Margin="15,10"
-                    IsVisible="{Binding SalmonellaList, Converter={StaticResource NaoTemDados}}">
+                    IsVisible="{Binding TratamentosList, Converter={StaticResource NaoTemDados}}">
                     <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Center"
@@ -103,8 +104,9 @@
             <listView:SfListView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:TratamentoButton">
                     <buttons:SfButton
+                        x:DataType="x:Null"
                         Background="Transparent"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LoteTratamentoViewModel}}, x:DataType={x:Type viewModels:LoteTratamentoViewModel}, Path=ShowTratamentosCommand}"
+                        Command="{Binding BindingContext.ShowTratamentosCommand, Source={x:Reference LoteTratamentoPage}}"
                         CommandParameter="{Binding .}"
                         CornerRadius="20"
                         HeightRequest="45"

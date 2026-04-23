@@ -5,10 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:fontawesome="clr-namespace:SilvaData.FontAwesome"
     xmlns:controls="clr-namespace:SilvaData.Controls"
+    xmlns:models="clr-namespace:SilvaData.Models"
     x:Name="valorInteiro">
 
     <controls:ValidatableFieldBase.Content>
-        <StackLayout Padding="2" Spacing="4">
+        <StackLayout Padding="2" Spacing="4" x:DataType="models:ParametroComAlternativas">
 
             <!--  Título + asterisco de obrigatório  -->
             <Grid ColumnDefinitions="*,Auto">

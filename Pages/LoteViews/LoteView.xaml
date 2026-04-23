@@ -70,7 +70,6 @@
                             Command="{Binding ShowHidePesquisaCommand}"
                             FontFamily="FontAwesomeLight"
                             FontSize="Small"
-                            ShowIcon="False"
                             Text="{x:Static fontawesome:FontAwesomeIcons.Down}"
                             TextColor="{StaticResource PrimaryColor}"
                             VerticalOptions="Center"
@@ -110,7 +109,6 @@
                         <Entry
                             x:Name="PesquisaEntry"
                             Background="White"
-                            SelectionColor="{StaticResource PrimaryColor}"
                             Text="{Binding PesquisaLoteText, Mode=TwoWay}"
                             TextColor="{StaticResource SecondaryColor}" />
                     </Border>

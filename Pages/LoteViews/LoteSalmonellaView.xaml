@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="ISIInstitute.Views.LoteViews.LoteSalmonellaView"
+    x:Name="LoteSalmonellaPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -102,8 +103,9 @@
             <listView:SfListView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:SalmonellaButton">
                     <buttons:SfButton
+                        x:DataType="x:Null"
                         Background="Transparent"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LoteSalmonellaViewModel}}, x:DataType={x:Type viewModels:LoteSalmonellaViewModel}, Path=ShowSalmonelasCommand}"
+                        Command="{Binding BindingContext.ShowSalmonellaCommand, Source={x:Reference LoteSalmonellaPage}}"
                         CommandParameter="{Binding .}"
                         CornerRadius="20"
                         HeightRequest="45"

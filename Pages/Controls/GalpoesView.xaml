@@ -147,7 +147,6 @@
                                 Background="Transparent"
                                 FontFamily="FontAwesomeSolid"
                                 FontSize="20"
-                                ShowIcon="False"
                                 Text="&#xf044;"
                                 TextColor="{StaticResource SecondaryColor}"
                                 VerticalOptions="Center" />
@@ -159,7 +158,6 @@
                                 Background="Transparent"
                                 FontFamily="FontAwesomeSolid"
                                 FontSize="20"
-                                ShowIcon="False"
                                 Text="&#xf65e;"
                                 TextColor="{StaticResource PrimaryColor}"
                                 VerticalOptions="Center" />
@@ -191,7 +189,6 @@
                 WidthRequest="56"
                 FontFamily="FontAwesomeSolid"
                 FontSize="22"
-                ShowIcon="False"
                 Text="&#xf067;"
                 TextColor="White" />
         </Grid>

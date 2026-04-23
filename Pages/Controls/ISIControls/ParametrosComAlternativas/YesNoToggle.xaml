@@ -6,6 +6,7 @@
     xmlns:controls="clr-namespace:SilvaData.Controls"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:fontawesome="clr-namespace:SilvaData.FontAwesome"
+    xmlns:models="clr-namespace:SilvaData.Models"
     x:Name="yesNoToggle"
     Padding="2">
 
@@ -33,7 +34,7 @@
             </DataTrigger>
         </Border.Triggers>
 
-        <Grid ColumnDefinitions="*,60,60" RowDefinitions="Auto">
+        <Grid ColumnDefinitions="*,60,60" RowDefinitions="Auto" x:DataType="models:ParametroComAlternativas">
 
             <!--  Label com nome do parâmetro + asterisco  -->
             <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">

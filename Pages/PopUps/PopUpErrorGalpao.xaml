@@ -56,7 +56,7 @@
                 </VerticalStackLayout>
 
                 <!-- Stats Grid -->
-                <Frame Padding="16" HasShadow="False" BackgroundColor="#F8FAFC" CornerRadius="16" BorderColor="#E2E8F0">
+                <Frame Padding="16" BackgroundColor="#F8FAFC" CornerRadius="16" BorderColor="#E2E8F0">
                     <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="4">
                         <!-- Mínimo -->
                         <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">

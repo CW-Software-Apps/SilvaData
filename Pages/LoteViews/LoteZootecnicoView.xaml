@@ -174,7 +174,7 @@
                                             PressedScale="0.95" />
                                     </Border.Behaviors>
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding BindingContext.ShowZootecnicoGeralCommand, Source={x:Reference page}}" CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer x:DataType="x:Null" Command="{Binding BindingContext.ShowZootecnicoGeralCommand, Source={x:Reference page}}" CommandParameter="{Binding .}" />
                                     </Border.GestureRecognizers>
                                     <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="15">
                                         <HorizontalStackLayout Grid.Column="0">

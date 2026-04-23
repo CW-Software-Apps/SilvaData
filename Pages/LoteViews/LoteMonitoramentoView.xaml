@@ -81,6 +81,7 @@
                 </HorizontalStackLayout>
 
                 <toolkit:Expander
+                    x:Name="LoteInfoExpander"
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
                     Margin="15,0,0,20"
@@ -98,7 +99,7 @@
                                 VerticalTextAlignment="Center">
                                 <Label.Triggers>
                                     <DataTrigger
-                                        Binding="{Binding Source={RelativeSource AncestorType={x:Type toolkit:Expander}}, Path=IsExpanded}"
+                                                                                 Binding="{Binding IsExpanded, Source={x:Reference LoteInfoExpander}}"
                                         TargetType="Label"
                                         Value="True">
                                         <Setter Property="Text" Value="{x:Static fontawesome:FontAwesomeIcons.AngleDown}" />

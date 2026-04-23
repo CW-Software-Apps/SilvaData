@@ -55,7 +55,7 @@
                 </VerticalStackLayout>
 
                 <!-- Stats Grid -->
-                <Frame Padding="16" HasShadow="False" BackgroundColor="#F8FAFC" CornerRadius="16" BorderColor="#E2E8F0">
+                <Frame Padding="16" BackgroundColor="#F8FAFC" CornerRadius="16" BorderColor="#E2E8F0">
                     <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="4">
                         <!-- Mínimo -->
                         <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
@@ -84,7 +84,7 @@
                 </Frame>
 
                 <!-- Discarded Info (if any) -->
-                <Frame IsVisible="{Binding TemMsgDescarte}" Padding="12" HasShadow="False" BackgroundColor="#FFFBEB" CornerRadius="12" BorderColor="#FEF3C7">
+                <Frame IsVisible="{Binding TemMsgDescarte}" Padding="12" BackgroundColor="#FFFBEB" CornerRadius="12" BorderColor="#FEF3C7">
                     <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                         <Label Grid.Column="0" Text="&#xf071;" FontFamily="FontAwesomeSolid" FontSize="16" TextColor="#B45309" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="{Binding MsgDescarte}" FontSize="13" TextColor="#B45309" VerticalOptions="Center" LineBreakMode="WordWrap"/>

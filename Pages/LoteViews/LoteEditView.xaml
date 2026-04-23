@@ -96,7 +96,7 @@
                     <StackLayout BindableLayout.ItemsSource="{Binding LoteVisitas}" IsVisible="{Binding ReadOnly}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:LoteVisita">
-                                <Label Text="{Binding dataVisita, StringFormat='{0:d}'}" />
+                                <Label Text="{Binding dataInicio, StringFormat='{0:d}'}" />
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
