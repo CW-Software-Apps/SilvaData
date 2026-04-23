@@ -539,6 +539,11 @@ namespace SilvaData.Utils
             {
                 // Guid único por tentativa evita conflito de nome entre downloads paralelos do mesmo arquivo.
                 string tempPath = $"{localPath}.tmp_{Guid.NewGuid()}";
+                
+                // Timeout individual de 30 segundos por imagem para evitar travamento da sub-tarefa.
+                using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+                cts.CancelAfter(TimeSpan.FromSeconds(30));
+
                 try
                 {
                     Debug.WriteLine($"[{taskNumber}] Download {currentRetry + 1}/{maxRetries} - {url}");
@@ -556,7 +561,7 @@ namespace SilvaData.Utils
                     // o arquivo de destino corrompido. Só é movido após download completo.
                     using (var fileStream = new FileStream(tempPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, useAsync: true))
                     {
-                        var success = await _client.DownloadAsync(url, fileStream, progress, cancellationToken).ConfigureAwait(false);
+                        var success = await _client.DownloadAsync(url, fileStream, progress, cts.Token).ConfigureAwait(false);
                         if (!success) throw new Exception("DownloadAsync retornou falso");
                     }
 
@@ -575,6 +580,14 @@ namespace SilvaData.Utils
                         Debug.WriteLine($"[{taskNumber}] Arquivo recebido vazio, retry {currentRetry}/{maxRetries}");
                     }
                 }
+                // Timeout disparado pelo cts.CancelAfter(30s).
+                // Se o cancellationToken (do usuário) não foi cancelado, então foi um timeout da nossa tarefa.
+                catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+                {
+                    currentRetry++;
+                    Debug.WriteLine($"[{taskNumber}] Timeout no download (30s atingido), retry {currentRetry}/{maxRetries}");
+                    await Task.Delay(1000 * currentRetry, cancellationToken).ConfigureAwait(false);
+                }
                 // OperationCanceledException excluída: cancelamento do usuário não deve
                 // ser tratado como erro e não deve acionar retentativas.
                 catch (Exception ex) when (ex is not OperationCanceledException)
@@ -588,7 +601,7 @@ namespace SilvaData.Utils
                             SentryHelper.CaptureExceptionWithUser(ex, url);
                         }
                     }
-                    await Task.Delay(500 * currentRetry, cancellationToken).ConfigureAwait(false);
+                    await Task.Delay(1000 * currentRetry, cancellationToken).ConfigureAwait(false);
                 }
                 finally
                 {

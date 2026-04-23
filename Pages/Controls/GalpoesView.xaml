@@ -159,7 +159,7 @@
                             <HorizontalStackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="8">
                                 <!-- Ver Lotes (com ícone +) -->
                                 <buttons:SfButton
-                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.ShowLoteCommand}"
+                                    Command="{Binding BindingContext.ShowLoteCommand, Source={RelativeSource AncestorType={x:Type local:GalpoesView}}}"
                                     CommandParameter="{Binding .}"
                                     x:DataType="x:Null"
                                     Background="Transparent"
@@ -170,7 +170,7 @@
                                     VerticalOptions="Center"
                                     ShowIcon="False">
                                     <buttons:SfButton.Content>
-                                        <DataTemplate x:DataType="models:UnidadeEpidemiologicaComDetalhes">
+                                        <DataTemplate>
                                             <Grid HeightRequest="36" WidthRequest="36">
                                                 <Image Source="iconlotes" Aspect="AspectFit" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center">
                                                     <Image.Behaviors>
@@ -191,7 +191,7 @@
 
                                 <!-- Editar -->
                                 <buttons:SfButton
-                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.EditarCommand}"
+                                    Command="{Binding BindingContext.EditarCommand, Source={RelativeSource AncestorType={x:Type local:GalpoesView}}}"
                                     CommandParameter="{Binding .}"
                                     x:DataType="x:Null"
                                     Background="Transparent"
