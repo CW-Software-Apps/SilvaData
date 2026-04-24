@@ -1,5 +1,5 @@
-using AndroidX.AppCompat.Widget;
 using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
 
 namespace SilvaData.Platforms.Android
 {
@@ -16,7 +16,7 @@ namespace SilvaData.Platforms.Android
     // normal continuam funcionando pois MAUI recria o handler para cada Entry.
     public class NumericEntryHandler : EntryHandler
     {
-        protected override AppCompatEditText CreatePlatformView()
+        protected override MauiAppCompatEditText CreatePlatformView()
         {
             var view = base.CreatePlatformView();
             view.SetEmojiCompatEnabled(false);
