@@ -1258,7 +1258,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Editar Unidade Epidemiológica.
+        ///   Looks up a localized string similar to Editar Galpão.
         /// </summary>
         public static string EditarUnidadeEpidemiológica {
             get {
@@ -1573,7 +1573,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gerencie suas Unidades Epidemiológicas.
+        ///   Looks up a localized string similar to Gerencie seus galpões.
         /// </summary>
         public static string GerencieSuasUnidadesEpidemiológicas {
             get {
@@ -2338,7 +2338,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nova unidade epidemiológica.
+        ///   Looks up a localized string similar to Novo Galpão.
         /// </summary>
         public static string NovaUnidadeEpidemiológica {
             get {
@@ -3427,7 +3427,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unidade Epidemiológica adicionada com sucesso.
+        ///   Looks up a localized string similar to Galpão adicionado com sucesso.
         /// </summary>
         public static string UnidadeEpidemiológicaAdicionadaComSucesso {
             get {
@@ -3436,7 +3436,7 @@ namespace SilvaData.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unidade Epidemiológica editada com sucesso.
+        ///   Looks up a localized string similar to Galpão editado com sucesso.
         /// </summary>
         public static string UnidadeEpidemiológicaEditadaComSucesso {
             get {

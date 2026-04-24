@@ -193,7 +193,7 @@ namespace SilvaData
             builder.Services.AddTransient<ConfigViewModel>();
 
 
-            builder.Services.AddTransient<LoteAvaliacaoGalpaoViewModel>();
+            builder.Services.AddSingleton<LoteAvaliacaoGalpaoViewModel>();
             builder.Services.AddTransient<LoteDiagnosticoViewModel>();
             builder.Services.AddTransient<LoteISIMicroViewModel>();
             

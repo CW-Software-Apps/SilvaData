@@ -8,10 +8,43 @@ using SilvaData.Models;
 using SilvaData.Pages.PopUps;
 using SilvaData.Utilities;
 
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace SilvaData.ViewModels
 {
+    public partial class ParametroGalpaoResumo : ObservableObject
+    {
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IconText))]
+        private Parametro parametro = null!;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(BadgeColor))]
+        private int count;
+
+        public string Nome => Parametro?.nome ?? "";
+
+        public string TipoLabel => Parametro?.campoTipo switch
+        {
+            null or "" or "0" => "Quantitativo",
+            "1" => "Qualitativo Único",
+            "2" => "Qualitativo Múltiplo",
+            _   => ""
+        };
+
+        public Brush BadgeColor => Count > 0
+            ? new SolidColorBrush(Color.FromArgb("#548C3C"))
+            : new SolidColorBrush(Color.FromArgb("#BBBBBB"));
+
+        public string IconText => Parametro?.campoTipo switch
+        {
+            null or "" or "0" => "≡",
+            "1" => "◯",
+            "2" => "☑",
+            _   => "☑"
+        };
+    }
     /// <summary>
     /// ViewModel para monitoramento do lote (migrado de Xamarin.Forms para MAUI).
     /// </summary>
@@ -49,6 +82,11 @@ namespace SilvaData.ViewModels
         [ObservableProperty] private bool isSalmonellaVisible = false;
         [ObservableProperty] private bool isVacinasVisible = false;
 
+        // Avaliações de galpão resumo
+        [ObservableProperty] private ObservableCollection<ParametroGalpaoResumo> parametrosGalpaoResumo = new();
+        [ObservableProperty] private bool isAvaliacaoGalpaoSectionVisible = false;
+        [ObservableProperty] private bool isLoadingGalpaoResumo = false;
+
         public LoteMonitoramentoViewModel(CacheService cacheService)
         {
             _cacheService = cacheService ?? throw new ArgumentNullException(nameof(cacheService));
@@ -79,6 +117,14 @@ namespace SilvaData.ViewModels
                     LoteAtual.ISIMacroScoreMedio = message.NovoISIMacroScoreMedio;
                     OnPropertyChanged(nameof(LoteAtual));
                 });
+            });
+
+            WeakReferenceMessenger.Default.Register<FormularioSalvoMessage>(this, (sender, message) =>
+            {
+                if (LoteAtual != null && message.FormularioSalvo?.loteId == LoteAtual.id && message.FormularioSalvo?.parametroTipoId == 20)
+                {
+                    _ = Task.Run(async () => await LoadParametrosGalpaoResumoAsync());
+                }
             });
 
             // Registrar listener para mudanças nas permissões
@@ -143,6 +189,14 @@ namespace SilvaData.ViewModels
             lote.EnsureNames(_cacheService);
             LoteAtual = lote;
             AtualizaPodeFecharLote();
+        }
+
+        /// <summary>
+        /// Chamado após a página aparecer para carregar os resumos de avaliação de galpão.
+        /// </summary>
+        public async Task LoadDataAfterAppear()
+        {
+            await LoadParametrosGalpaoResumoAsync();
         }
 
         public async Task GetItemOrCreateANew()
@@ -384,6 +438,120 @@ namespace SilvaData.ViewModels
             }
         }
 
+        [RelayCommand]
+        public async Task VaiParaAvaliacaoGalpao(ParametroGalpaoResumo resumo)
+        {
+            if (LoteAtual == null || resumo?.Parametro == null) return;
+            try
+            {
+                HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+                await Task.Delay(250);
+                var vm = ServiceHelper.GetRequiredService<LoteAvaliacaoGalpaoViewModel>();
+                vm.ParametroInicial = resumo.Parametro;
+                await NavigationUtils.ShowViewAsModalAsync<LoteAvaliacaoGalpaoView>(LoteAtual);
+                await LoadParametrosGalpaoResumoAsync();
+            }
+            catch (Exception ex)
+            {
+                await PopUpOK.ShowAsync(Traducao.Erro, ex.Message);
+            }
+        }
+
+        private async Task LoadParametrosGalpaoResumoAsync()
+        {
+            Debug.WriteLine($"[Resumo] LoadParametrosGalpaoResumoAsync chamado | LoteAtual={LoteAtual?.numero} | id={LoteAtual?.id}");
+            if (LoteAtual?.id == null)
+            {
+                Debug.WriteLine($"[Resumo] ABORTADO — LoteAtual.id é null");
+                return;
+            }
+
+            // Só mostra spinner se ainda não tem dados carregados
+            if (ParametrosGalpaoResumo.Count == 0)
+                IsLoadingGalpaoResumo = true;
+
+            try
+            {
+                Debug.WriteLine($"[Resumo] ═══ LoadParametrosGalpaoResumoAsync INICIADO (LoteId={LoteAtual.id}) ═══");
+
+                var parametros = await LoteFormAvaliacaoGalpao.ListaParametrosAvalicaoGalpao();
+                Debug.WriteLine($"[Resumo] Parâmetros carregados: {parametros?.Count ?? 0}");
+                if (parametros == null || parametros.Count == 0)
+                {
+                    IsAvaliacaoGalpaoSectionVisible = false;
+                    return;
+                }
+
+                // Query otimizada: agrupa por parametroId e conta formulários únicos
+                var formTable = await Db.Table<LoteForm>();
+                var forms = await formTable
+                    .Where(lf => lf.loteId == (int)LoteAtual.id
+                              && lf.parametroTipoId == 20
+                              && (lf.excluido == null || lf.excluido != 1))
+                    .ToListAsync();
+
+                var formIds = forms.Select(lf => lf.id).ToList();
+                Debug.WriteLine($"[Resumo] Formulários encontrados: {formIds.Count}");
+
+                if (formIds.Count == 0)
+                {
+                    IsAvaliacaoGalpaoSectionVisible = false;
+                    return;
+                }
+
+                // Carrega respostas somente para os formIds do lote
+                var respostasTable = await Db.Table<LoteFormParametro>();
+                var todasRespostas = await respostasTable
+                    .ToListAsync(); // Carrega tudo e filtra em memória
+
+                var respostasFiltradasPorForm = todasRespostas
+                    .Where(lfp => lfp.LoteFormId.HasValue && formIds.Contains((int)lfp.LoteFormId))
+                    .ToList();
+
+                Debug.WriteLine($"[Resumo] Total de respostas: {todasRespostas.Count}, Filtradas: {respostasFiltradasPorForm.Count}");
+
+                var resumos = new List<ParametroGalpaoResumo>();
+                foreach (var param in parametros)
+                {
+                    // Conta quantos formulários DIFERENTES têm respostas para este parâmetro
+                    var count = respostasFiltradasPorForm
+                        .Where(r => r.parametroId == param.id)
+                        .Select(r => r.LoteFormId)
+                        .Distinct()
+                        .Count();
+
+                    resumos.Add(new ParametroGalpaoResumo
+                    {
+                        Parametro = param,
+                        Count = count
+                    });
+
+                    Debug.WriteLine($"  [{param.id}] {param.nome} - Count: {count}");
+                }
+
+                var resumosOrdenados = resumos.OrderByDescending(r => r.Count).ToList();
+
+                await MainThread.InvokeOnMainThreadAsync(() =>
+                {
+                    ParametrosGalpaoResumo.Clear();
+                    foreach (var resumo in resumosOrdenados)
+                    {
+                        Debug.WriteLine($"[Resumo UI] {resumo.Nome} - Count: {resumo.Count}");
+                        ParametrosGalpaoResumo.Add(resumo);
+                    }
+                    IsAvaliacaoGalpaoSectionVisible = ParametrosGalpaoResumo.Count > 0;
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[LoteMonitoramento] Erro ao carregar resumo de galpão: {ex.Message}\n{ex.StackTrace}");
+            }
+            finally
+            {
+                IsLoadingGalpaoResumo = false;
+            }
+        }
+
         private void AtualizaPodeFecharLote()
         {
             PodeFecharLote = (Permissoes.UsuarioPermissoes?.lotes.fechar ?? false)
@@ -417,7 +585,8 @@ namespace SilvaData.ViewModels
         {
             WeakReferenceMessenger.Default.Unregister<ISIMacroScoreMedioAtualizadoMessage>(this);
             WeakReferenceMessenger.Default.Unregister<LoteAlteradoMessage>(this);
-            
+            WeakReferenceMessenger.Default.Unregister<FormularioSalvoMessage>(this);
+
             // Remover listener de permissões para evitar memory leak
             Permissoes.StaticPropertyChanged -= OnPermissoesChanged;
         }

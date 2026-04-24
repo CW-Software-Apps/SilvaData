@@ -3,6 +3,7 @@
     x:Class="SilvaData.Pages.PopUps.DetailedErrorPopup"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
     BackgroundColor="#80000000">
 
     <Border
@@ -32,7 +33,7 @@
                         <Label
                             FontAttributes="Bold"
                             FontSize="18"
-                            Text="Erro Detalhado"
+                            Text="{localization:Translate ErroDetalhado}"
                             TextColor="{AppThemeBinding Light=#D32F2F,
                                                         Dark=#F44336}" />
                         <Border
@@ -91,7 +92,7 @@
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="14"
-                                Text="Mensagem de Erro"
+                                Text="{localization:Translate MensagemDeErro}"
                                 TextColor="{AppThemeBinding Light=#E65100,
                                                             Dark=#FFCC80}" />
                             <Label
@@ -118,7 +119,7 @@
                                 FontAttributes="Bold"
                                 HorizontalOptions="Start"
                                 Padding="0"
-                                Text="▶ Ver Detalhes Técnicos"
+                                Text="{localization:Translate VerDetalhesTecnicos}"
                                 TextColor="{AppThemeBinding Light=#1976D2,
                                                             Dark=#64B5F6}" />
 
@@ -133,7 +134,7 @@
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="13"
-                                        Text="Informações da Requisição"
+                                        Text="{localization:Translate InformacoesDaRequisicao}"
                                         TextColor="{AppThemeBinding Light=#424242,
                                                                     Dark=#BDBDBD}" />
                                     <Label
@@ -164,7 +165,7 @@
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="13"
-                                        Text="Payload da Requisição"
+                                        Text="{localization:Translate PayloadDaRequisicao}"
                                         TextColor="{AppThemeBinding Light=#424242,
                                                                     Dark=#BDBDBD}" />
                                     <Editor
@@ -181,7 +182,7 @@
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="13"
-                                        Text="Resposta do Servidor"
+                                        Text="{localization:Translate RespostaDoServidor}"
                                         TextColor="{AppThemeBinding Light=#424242,
                                                                     Dark=#BDBDBD}" />
                                     <Editor
@@ -198,7 +199,7 @@
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="13"
-                                        Text="Stack Trace"
+                                        Text="{localization:Translate StackTrace}"
                                         TextColor="{AppThemeBinding Light=#424242,
                                                                     Dark=#BDBDBD}" />
                                     <Editor
@@ -217,7 +218,7 @@
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="13"
-                                        Text="Contexto Adicional"
+                                        Text="{localization:Translate ContextoAdicional}"
                                         TextColor="{AppThemeBinding Light=#424242,
                                                                     Dark=#BDBDBD}" />
                                     <Editor
@@ -245,7 +246,7 @@
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="13"
-                                Text="Informações de Retry"
+                                Text="{localization:Translate InformacoesDeRetry}"
                                 TextColor="{AppThemeBinding Light=#2E7D32,
                                                             Dark=#81C784}" />
                             <Label
@@ -275,7 +276,7 @@
                 <Label
                     Grid.Column="0"
                     FontSize="12"
-                    Text="Compartilhe este erro para análise técnica"
+                    Text="{localization:Translate CompartilheErroAnaliseTecnica}"
                     TextColor="{AppThemeBinding Light=#757575,
                                                 Dark=#AAAAAA}"
                     VerticalOptions="Center" />
@@ -289,7 +290,7 @@
                     Clicked="OnCopyClicked"
                     CornerRadius="6"
                     FontSize="12"
-                    Text="Copiar"
+                    Text="{localization:Translate Copiar}"
                     TextColor="White" />
 
                 <Button
@@ -300,7 +301,7 @@
                     Clicked="OnShareClicked"
                     CornerRadius="6"
                     FontSize="12"
-                    Text="Compartilhar"
+                    Text="{localization:Translate Compartilhar}"
                     TextColor="White" />
 
                 <Button
@@ -312,7 +313,7 @@
                     Clicked="OnCloseClicked"
                     CornerRadius="6"
                     FontSize="12"
-                    Text="Fechar"
+                    Text="{localization:Translate Fechar}"
                     TextColor="{AppThemeBinding Light=#212121,
                                                 Dark=#E0E0E0}" />
             </Grid>

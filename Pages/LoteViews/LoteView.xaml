@@ -136,7 +136,7 @@
                             DisplayMemberPath="nome"
                             IsEditable="True"
                             ItemsSource="{Binding UEList}"
-                            SelectedValue="{Binding SelectedUEId, Mode=TwoWay}" />
+                            SelectedItem="{Binding SelectedFiltroUE, Mode=TwoWay}" />
                     </Border>
                 </StackLayout>
 

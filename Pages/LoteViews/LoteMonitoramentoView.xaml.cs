@@ -33,17 +33,27 @@ public partial class LoteMonitoramentoView : ContentPage
     {
         try
         {
+            System.Diagnostics.Debug.WriteLine($"[LoteMonitoramentoView.OnAppearing] _hasAppearedOnce={_hasAppearedOnce}");
+
+            // Carrega dados em paralelo com a animação (não bloqueia um no outro)
+            var loadTask = _viewModel.LoadDataAfterAppear();
+
             if (!_hasAppearedOnce)
             {
                 _hasAppearedOnce = true;
+                System.Diagnostics.Debug.WriteLine($"[LoteMonitoramentoView.OnAppearing] Executando RunEntranceAnimationAsync");
                 await RunEntranceAnimationAsync();
             }
+
+            System.Diagnostics.Debug.WriteLine($"[LoteMonitoramentoView.OnAppearing] Aguardando LoadDataAfterAppear");
+            await loadTask;
+            System.Diagnostics.Debug.WriteLine($"[LoteMonitoramentoView.OnAppearing] LoadDataAfterAppear concluído");
 
             await _viewModel.GetItemOrCreateANew();
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"[LoteMonitoramentoView] Erro em OnAppearing: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"[LoteMonitoramentoView] Erro em OnAppearing: {ex.Message}\n{ex.StackTrace}");
         }
     }
 
@@ -77,6 +87,21 @@ public partial class LoteMonitoramentoView : ContentPage
             ContentStack.TranslateToAsync(0, 0, 280, Easing.CubicOut));
 
         await Task.WhenAll(headerIn, contentIn);
+    }
+
+    private void OnParametroGalpaoTapped(object sender, TappedEventArgs e)
+    {
+        if (sender is not Border border || border.BindingContext is not ParametroGalpaoResumo resumo) return;
+
+        _ = Task.Run(async () =>
+        {
+            await MainThread.InvokeOnMainThreadAsync(async () =>
+            {
+                await border.FadeTo(0.4, 80);
+                await border.FadeTo(1.0, 80);
+            });
+            await _viewModel.VaiParaAvaliacaoGalpaoCommand.ExecuteAsync(resumo);
+        });
     }
 
     /// <summary>

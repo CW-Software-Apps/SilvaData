@@ -46,11 +46,16 @@ public partial class LoteAvaliacaoGalpaoViewModel : ViewModelBase
 
     [ObservableProperty] private ObservableCollection<AvaliacaoGalpaoButton> avaliacaoGalpaoList = new();
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private string quantidadeMinimaFormatada = "";
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private string quantidadeMaximaFormatada = "";
+
+    /// <summary>
+    /// Parâmetro inicial a pré-selecionar (passado do resumo)
+    /// </summary>
+    public Parametro? ParametroInicial { get; set; }
 
     private List<LoteForm> AvaliacaoGalpaoListForm = new();
     private bool CarregandoFormulariosPreenchidos;
@@ -113,8 +118,13 @@ public partial class LoteAvaliacaoGalpaoViewModel : ViewModelBase
             // Carrega lista de parâmetros
             ParametrosAvaliacaoGalpaoList = await LoteFormAvaliacaoGalpao.ListaParametrosAvalicaoGalpao();
 
-            // ★ SELECIONA PARÂMETRO PADRÃO (primeiro da lista)
-            if (ParametrosAvaliacaoGalpaoList?.Count > 0)
+            // ★ SELECIONA PARÂMETRO (ParametroInicial se fornecido, senão o primeiro da lista)
+            if (ParametroInicial != null && ParametrosAvaliacaoGalpaoList?.Any(p => p.id == ParametroInicial.id) == true)
+            {
+                Debug.WriteLine($"[LoteAvaliacaoGalpaoViewModel] Selecionando parâmetro inicial: {ParametroInicial.nome}");
+                ParametroSelecionado = ParametroInicial;
+            }
+            else if (ParametrosAvaliacaoGalpaoList?.Count > 0)
             {
                 Debug.WriteLine($"[LoteAvaliacaoGalpaoViewModel] Selecionando parâmetro padrão: {ParametrosAvaliacaoGalpaoList[0].nome}");
                 ParametroSelecionado = ParametrosAvaliacaoGalpaoList[0];

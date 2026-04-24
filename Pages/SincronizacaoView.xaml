@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:conv="clr-namespace:SilvaData.Converters"
+    xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
     xmlns:viewmodels="clr-namespace:SilvaData.ViewModels"
     x:DataType="viewmodels:SincronizacaoViewModel"
     BackgroundColor="#F5F5F5">
@@ -51,7 +52,7 @@
                 FontSize="24"
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center"
-                Text="Sincronização de Dados"
+                Text="{localization:Translate SincronizacaoDeDados}"
                 TextColor="{StaticResource PrimaryColor}" />
 
             <Border
@@ -98,7 +99,7 @@
                         <HorizontalStackLayout HorizontalOptions="Fill">
                             <Label
                                 FontSize="13"
-                                Text="Progresso:"
+                                Text="{localization:Translate Progresso}"
                                 TextColor="#757575" />
                             <Label
                                 Padding="5,0"
@@ -120,7 +121,7 @@
                                 Padding="0,0,4,0"
                                 FontSize="12"
                                 Opacity="0.7"
-                                Text="Sub-tarefa:"
+                                Text="{localization:Translate SubTarefa}"
                                 TextColor="#757575" />
                             <Label
                                 FontSize="12"
@@ -140,7 +141,7 @@
                         <VerticalStackLayout Spacing="4">
                             <Label
                                 FontSize="11"
-                                Text="Tempo Decorrido"
+                                Text="{localization:Translate TempoDecorrido}"
                                 TextColor="{StaticResource SecondaryColor}" />
                             <Label
                                 FontAttributes="Bold"

@@ -337,13 +337,13 @@
     <value>Proprietário</value>
   </data>
   <data name="GerencieSuasUnidadesEpidemiológicas" xml:space="preserve">
-    <value>Gerencie suas Unidades Epidemiológicas</value>
+    <value>Gerencie seus galpões</value>
   </data>
   <data name="EditarUnidadeEpidemiológica" xml:space="preserve">
-    <value>Editar Unidade Epidemiológica</value>
+    <value>Editar Galpão</value>
   </data>
   <data name="NovaUnidadeEpidemiológica" xml:space="preserve">
-    <value>Nova unidade epidemiológica</value>
+    <value>Novo Galpão</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Longitude</value>
@@ -355,10 +355,10 @@
     <value>Propriedade</value>
   </data>
   <data name="UnidadeEpidemiológicaEditadaComSucesso" xml:space="preserve">
-    <value>Unidade Epidemiológica editada com sucesso</value>
+    <value>Galpão editado com sucesso</value>
   </data>
   <data name="UnidadeEpidemiológicaAdicionadaComSucesso" xml:space="preserve">
-    <value>Unidade Epidemiológica adicionada com sucesso</value>
+    <value>Galpão adicionado com sucesso</value>
   </data>
   <data name="SincronizaçãoPendente" xml:space="preserve">
     <value>Sincronização pendente</value>
@@ -1304,5 +1304,89 @@
   </data>
   <data name="SelecioneUmaFoto" xml:space="preserve">
     <value>Selecione uma foto</value>
+  </data>
+  <data name="TempoDecorrido" xml:space="preserve">
+    <value>Tempo Decorrido</value>
+  </data>
+  <data name="Registro" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="ErroDetalhado" xml:space="preserve">
+    <value>Erro Detalhado</value>
+  </data>
+  <data name="StackTrace" xml:space="preserve">
+    <value>Stack Trace</value>
+  </data>
+  <data name="ContextoAdicional" xml:space="preserve">
+    <value>Contexto Adicional</value>
+  </data>
+  <data name="Copiar" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="Compartilhar" xml:space="preserve">
+    <value>Compartilhar</value>
+  </data>
+  <data name="CarregarDados" xml:space="preserve">
+    <value>Carregar Dados</value>
+  </data>
+  <data name="EnviarMetodosReset" xml:space="preserve">
+    <value>Enviar Metodos Reset</value>
+  </data>
+  <data name="Clientes" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="NaoFoiPossivelIdentificarDiagnostico" xml:space="preserve">
+    <value>Não foi possível identificar o diagnóstico</value>
+  </data>
+  <data name="Configuracoes" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="Notificacoes" xml:space="preserve">
+    <value>Notificações</value>
+  </data>
+  <data name="Proprietarios" xml:space="preserve">
+    <value>Proprietários</value>
+  </data>
+  <data name="PoliticaPrivacidade" xml:space="preserve">
+    <value>Política de Privacidade</value>
+  </data>
+  <data name="OQueDesejaConfigurar" xml:space="preserve">
+    <value>O que você deseja configurar?</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="SincronizacaoDeDados" xml:space="preserve">
+    <value>Sincronização de Dados</value>
+  </data>
+  <data name="Progresso" xml:space="preserve">
+    <value>Progresso:</value>
+  </data>
+  <data name="SubTarefa" xml:space="preserve">
+    <value>Sub-tarefa:</value>
+  </data>
+  <data name="MensagemDeErro" xml:space="preserve">
+    <value>Mensagem de Erro</value>
+  </data>
+  <data name="VerDetalhesTecnicos" xml:space="preserve">
+    <value>▶ Ver Detalhes Técnicos</value>
+  </data>
+  <data name="InformacoesDaRequisicao" xml:space="preserve">
+    <value>Informações da Requisição</value>
+  </data>
+  <data name="PayloadDaRequisicao" xml:space="preserve">
+    <value>Payload da Requisição</value>
+  </data>
+  <data name="RespostaDoServidor" xml:space="preserve">
+    <value>Resposta do Servidor</value>
+  </data>
+  <data name="InformacoesDeRetry" xml:space="preserve">
+    <value>Informações de Retry</value>
+  </data>
+  <data name="CompartilheErroAnaliseTecnica" xml:space="preserve">
+    <value>Compartilhe este erro para análise técnica</value>
+  </data>
+  <data name="Fechar" xml:space="preserve">
+    <value>Fechar</value>
   </data>
 </root>

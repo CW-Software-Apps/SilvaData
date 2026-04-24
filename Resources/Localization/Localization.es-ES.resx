@@ -337,13 +337,13 @@
     <value>Propietario</value>
   </data>
   <data name="GerencieSuasUnidadesEpidemiológicas" xml:space="preserve">
-    <value>Gestiona tus Unidades Epidemiológicas</value>
+    <value>Gestiona tus galpones</value>
   </data>
   <data name="EditarUnidadeEpidemiológica" xml:space="preserve">
-    <value>Editar Unidad Epidemiológica</value>
+    <value>Editar Galpón</value>
   </data>
   <data name="NovaUnidadeEpidemiológica" xml:space="preserve">
-    <value>Nueva Unidad Epidemiológica</value>
+    <value>Nuevo Galpón</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Longitud</value>
@@ -355,10 +355,10 @@
     <value>Propiedad</value>
   </data>
   <data name="UnidadeEpidemiológicaEditadaComSucesso" xml:space="preserve">
-    <value>Unidad Epidemiológica editada con éxito</value>
+    <value>Galpón editado con éxito</value>
   </data>
   <data name="UnidadeEpidemiológicaAdicionadaComSucesso" xml:space="preserve">
-    <value>Unidad Epidemiológica añadida con éxito</value>
+    <value>Galpón añadido con éxito</value>
   </data>
   <data name="SincronizaçãoPendente" xml:space="preserve">
     <value>¡Sincronización pendiente!</value>
@@ -1277,5 +1277,65 @@
   </data>
   <data name="SelecioneUmaFoto" xml:space="preserve">
     <value>Seleccione una foto</value>
+  </data>
+  <data name="TempoDecorrido" xml:space="preserve">
+    <value>Tiempo Transcurrido</value>
+  </data>
+  <data name="Registro" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="ErroDetalhado" xml:space="preserve">
+    <value>Error Detallado</value>
+  </data>
+  <data name="StackTrace" xml:space="preserve">
+    <value>Pila de Llamadas</value>
+  </data>
+  <data name="ContextoAdicional" xml:space="preserve">
+    <value>Contexto Adicional</value>
+  </data>
+  <data name="Copiar" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="Compartilhar" xml:space="preserve">
+    <value>Compartir</value>
+  </data>
+  <data name="CarregarDados" xml:space="preserve">
+    <value>Cargar Datos</value>
+  </data>
+  <data name="EnviarMetodosReset" xml:space="preserve">
+    <value>Enviar Métodos de Reset</value>
+  </data>
+  <data name="Clientes" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="NaoFoiPossivelIdentificarDiagnostico" xml:space="preserve">
+    <value>No se pudo identificar el diagnóstico</value>
+  </data>
+  <data name="SubTarefa" xml:space="preserve">
+    <value>Subtarea:</value>
+  </data>
+  <data name="MensagemDeErro" xml:space="preserve">
+    <value>Mensaje de Error</value>
+  </data>
+  <data name="VerDetalhesTecnicos" xml:space="preserve">
+    <value>▶ Ver Detalles Técnicos</value>
+  </data>
+  <data name="InformacoesDaRequisicao" xml:space="preserve">
+    <value>Información de la Solicitud</value>
+  </data>
+  <data name="PayloadDaRequisicao" xml:space="preserve">
+    <value>Payload de la Solicitud</value>
+  </data>
+  <data name="RespostaDoServidor" xml:space="preserve">
+    <value>Respuesta del Servidor</value>
+  </data>
+  <data name="InformacoesDeRetry" xml:space="preserve">
+    <value>Información de Reintento</value>
+  </data>
+  <data name="CompartilheErroAnaliseTecnica" xml:space="preserve">
+    <value>Comparta este error para análisis técnico</value>
+  </data>
+  <data name="Fechar" xml:space="preserve">
+    <value>Cerrar</value>
   </data>
 </root>

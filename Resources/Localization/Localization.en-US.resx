@@ -144,6 +144,33 @@
   <data name="PesoInicial" xml:space="preserve">
     <value>Initial Weight (g)</value>
   </data>
+  <data name="SubTarefa" xml:space="preserve">
+    <value>Sub-task:</value>
+  </data>
+  <data name="MensagemDeErro" xml:space="preserve">
+    <value>Error Message</value>
+  </data>
+  <data name="VerDetalhesTecnicos" xml:space="preserve">
+    <value>▶ View Technical Details</value>
+  </data>
+  <data name="InformacoesDaRequisicao" xml:space="preserve">
+    <value>Request Information</value>
+  </data>
+  <data name="PayloadDaRequisicao" xml:space="preserve">
+    <value>Request Payload</value>
+  </data>
+  <data name="RespostaDoServidor" xml:space="preserve">
+    <value>Server Response</value>
+  </data>
+  <data name="InformacoesDeRetry" xml:space="preserve">
+    <value>Retry Information</value>
+  </data>
+  <data name="CompartilheErroAnaliseTecnica" xml:space="preserve">
+    <value>Share this error for technical analysis</value>
+  </data>
+  <data name="Fechar" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
@@ -337,13 +364,13 @@
     <value>Owner</value>
   </data>
   <data name="GerencieSuasUnidadesEpidemiológicas" xml:space="preserve">
-    <value>Manage your Epidemiological Units</value>
+    <value>Manage your barns</value>
   </data>
   <data name="EditarUnidadeEpidemiológica" xml:space="preserve">
-    <value>Edit Epidemiological Unit</value>
+    <value>Edit Barn</value>
   </data>
   <data name="NovaUnidadeEpidemiológica" xml:space="preserve">
-    <value>New Epidemiological Unit</value>
+    <value>New Barn</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Longitude</value>
@@ -355,10 +382,10 @@
     <value>Property</value>
   </data>
   <data name="UnidadeEpidemiológicaEditadaComSucesso" xml:space="preserve">
-    <value>Epidemiological Unit successfully edited</value>
+    <value>Barn edited successfully</value>
   </data>
   <data name="UnidadeEpidemiológicaAdicionadaComSucesso" xml:space="preserve">
-    <value>Epidemiological Unit successfully added</value>
+    <value>Barn added successfully</value>
   </data>
   <data name="SincronizaçãoPendente" xml:space="preserve">
     <value>Pending sync</value>
@@ -1275,5 +1302,71 @@
   </data>
   <data name="SelecioneUmaFoto" xml:space="preserve">
     <value>Select a photo</value>
+  </data>
+  <data name="TempoDecorrido" xml:space="preserve">
+    <value>Elapsed Time</value>
+  </data>
+  <data name="Registro" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="ErroDetalhado" xml:space="preserve">
+    <value>Detailed Error</value>
+  </data>
+  <data name="StackTrace" xml:space="preserve">
+    <value>Stack Trace</value>
+  </data>
+  <data name="ContextoAdicional" xml:space="preserve">
+    <value>Additional Context</value>
+  </data>
+  <data name="Copiar" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Compartilhar" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="CarregarDados" xml:space="preserve">
+    <value>Load Data</value>
+  </data>
+  <data name="EnviarMetodosReset" xml:space="preserve">
+    <value>Send Reset Methods</value>
+  </data>
+  <data name="Clientes" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="NaoFoiPossivelIdentificarDiagnostico" xml:space="preserve">
+    <value>Could not identify the diagnosis</value>
+  </data>
+  <data name="SincronizacaoDeDados" xml:space="preserve">
+    <value>Data Synchronization</value>
+  </data>
+  <data name="Progresso" xml:space="preserve">
+    <value>Progress:</value>
+  </data>
+  <data name="SubTarefa" xml:space="preserve">
+    <value>Sub-task:</value>
+  </data>
+  <data name="MensagemDeErro" xml:space="preserve">
+    <value>Error Message</value>
+  </data>
+  <data name="VerDetalhesTecnicos" xml:space="preserve">
+    <value>▶ View Technical Details</value>
+  </data>
+  <data name="InformacoesDaRequisicao" xml:space="preserve">
+    <value>Request Information</value>
+  </data>
+  <data name="PayloadDaRequisicao" xml:space="preserve">
+    <value>Request Payload</value>
+  </data>
+  <data name="RespostaDoServidor" xml:space="preserve">
+    <value>Server Response</value>
+  </data>
+  <data name="InformacoesDeRetry" xml:space="preserve">
+    <value>Retry Information</value>
+  </data>
+  <data name="CompartilheErroAnaliseTecnica" xml:space="preserve">
+    <value>Share this error for technical analysis</value>
+  </data>
+  <data name="Fechar" xml:space="preserve">
+    <value>Close</value>
   </data>
 </root>

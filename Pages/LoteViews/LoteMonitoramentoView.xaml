@@ -188,183 +188,178 @@
                 </toolkit:Expander>
             </Grid>
 
-            <Grid Grid.Row="1" RowDefinitions="Auto,*" RowSpacing="0">
-                <Border
-                    Margin="10,10,10,0"
-                    Padding="0"
-                    Background="White"
-                    StrokeShape="RoundRectangle 30">
-
-                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto">
-                        <VerticalStackLayout
-                            Grid.Column="0"
-                            Padding="20,15,0,15"
-                            Spacing="2"
-                            VerticalOptions="Center">
-                            <Label
-                                FontSize="Small"
-                                Text="{localization:Translate ISIScoreMédioDoLote}"
-                                TextColor="{StaticResource ScoreTextColor}" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Title"
-                                Text="{Binding LoteAtual.ISIMacroScoreMedioStatusText}"
-                                TextColor="{Binding LoteAtual.StatusColor}" />
-                        </VerticalStackLayout>
-
-                        <controls:CirculoScoreLote
-                            x:Name="CirculoScore"
-                            Grid.Column="1"
-                            HeightRequest="120"
-                            HorizontalOptions="End"
-                            Valor="{Binding LoteAtual.ISIMacroScoreMedio}"
-                            WidthRequest="150" />
-                    </Grid>
-                </Border>
-
-                <ScrollView x:Name="MainScrollView" Grid.Row="1">
+            <Grid Grid.Row="1" RowDefinitions="*" RowSpacing="0">
+                <ScrollView x:Name="MainScrollView" Grid.Row="0">
                     <VerticalStackLayout
                     x:Name="ContentStack"
                     Padding="10,15,10,20"
                     Spacing="15">
 
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="Medium"
-                        HorizontalTextAlignment="Center"
-                        Text="{localization:Translate OpcoesDeMonitoramento}"
-                        TextColor="{StaticResource PrimaryColor}" />
+                    <!--  Loading de Avaliações Diversas -->
+                    <ActivityIndicator
+                        IsRunning="{Binding IsLoadingGalpaoResumo}"
+                        IsVisible="{Binding IsLoadingGalpaoResumo}"
+                        Color="{StaticResource PrimaryColor}"
+                        HorizontalOptions="Center"
+                        Margin="0,10" />
 
-                    <FlexLayout
-                        AlignItems="Center"
-                        AlignContent="Center"
-                        Direction="Row"
-                        JustifyContent="SpaceEvenly"
-                        Wrap="Wrap"
-                        Padding="5">
-                        
+                    <!--  Seção: Avaliações Diversas (Galpão) -->
+                    <VerticalStackLayout IsVisible="{Binding IsAvaliacaoGalpaoSectionVisible}" Spacing="5">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            HorizontalTextAlignment="Start"
+                            Text="Avaliações diversas"
+                            TextColor="{StaticResource PrimaryColor}"
+                            Margin="10,0,0,0" />
+
+                        <CollectionView ItemsSource="{Binding ParametrosGalpaoResumo}" SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="viewModels:ParametroGalpaoResumo">
+                                    <Border
+                                        Margin="5"
+                                        Padding="10"
+                                        Background="White"
+                                        StrokeShape="RoundRectangle 12">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnParametroGalpaoTapped" />
+                                        </Border.GestureRecognizers>
+
+                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" HorizontalOptions="Fill">
+                                            <!-- Icon -->
+                                            <Label
+                                                Grid.Column="0"
+                                                FontFamily="FontAwesomeLight"
+                                                FontSize="Medium"
+                                                Text="{Binding IconText}"
+                                                TextColor="{StaticResource PrimaryColor}"
+                                                VerticalOptions="Center" />
+
+                                            <!-- Name + Type -->
+                                            <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="Small"
+                                                    Text="{Binding Nome}"
+                                                    TextColor="#333"
+                                                    LineBreakMode="TailTruncation" />
+                                                <Label
+                                                    FontSize="Micro"
+                                                    Text="{Binding TipoLabel}"
+                                                    TextColor="#999"
+                                                    LineBreakMode="TailTruncation" />
+                                            </VerticalStackLayout>
+
+                                            <!-- Badge Count -->
+                                            <Border
+                                                Grid.Column="2"
+                                                Padding="0"
+                                                Background="{Binding BadgeColor}"
+                                                StrokeShape="Ellipse"
+                                                WidthRequest="32"
+                                                HeightRequest="32"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="Center">
+                                                <Label
+                                                    Text="{Binding Count}"
+                                                    TextColor="White"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    HorizontalTextAlignment="Center"
+                                                    VerticalTextAlignment="Center" />
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+
+                    <!--  Seção: Outros Monitoramentos -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            HorizontalTextAlignment="Start"
+                            Text="Outros monitoramentos"
+                            TextColor="{StaticResource PrimaryColor}"
+                            Margin="10,0,0,0" />
+
                         <buttons:SfButton
                             Command="{Binding ManejoCommand}"
                             ImageSource="manejo.png"
                             IsVisible="{Binding IsManejoVisible}"
-                            Style="{StaticResource MonitoramentoButton}"
-                            Text="{localization:Translate Manejo}"
-                            WidthRequest="165"
-                            Margin="5" />
+                            Style="{StaticResource SubMonitoramentoButton}"
+                            Text="{localization:Translate Manejo}" />
 
                         <buttons:SfButton
                             Command="{Binding ZootecnicoCommand}"
                             ImageSource="zootecnico.png"
                             IsVisible="{Binding IsZootecnicoVisible}"
-                            Style="{StaticResource MonitoramentoButton}"
-                            Text="{localization:Translate Zootécnico}"
-                            WidthRequest="165"
-                            Margin="5" />
+                            Style="{StaticResource SubMonitoramentoButton}"
+                            Text="{localization:Translate Zootécnico}" />
 
                         <buttons:SfButton
                             Command="{Binding ISIMacroCommand}"
                             ImageSource="isimacro.png"
                             IsVisible="{Binding IsIsiMacroVisible}"
-                            Style="{StaticResource MonitoramentoButton}"
-                            Text="{localization:Translate ISIMacro}"
-                            WidthRequest="165"
-                            Margin="5" />
-
-                        <buttons:SfButton
-                            Command="{Binding AvaliacoesGalpaoCommand}"
-                            IsVisible="{Binding IsAvaliacaoGalpaoVisible}"
-                            Style="{StaticResource MonitoramentoButton}"
-                            WidthRequest="165"
-                            Margin="5"
-                            ShowIcon="False">
-                            <buttons:SfButton.Content>
-                                <DataTemplate>
-                                    <VerticalStackLayout VerticalOptions="Center" Spacing="4">
-                                        <Image
-                                            Source="icongalpao.png"
-                                            Margin="0,-15,0,5"
-                                            HeightRequest="50"
-                                            WidthRequest="50"
-                                            HorizontalOptions="Center">
-                                            <Image.Behaviors>
-                                                <toolkit:IconTintColorBehavior TintColor="{StaticResource SecondaryColor}" />
-                                            </Image.Behaviors>
-                                        </Image>
-                                        <Label
-                                            Text="{localization:Translate AvaliacoesNoGalpao}"
-                                            HorizontalTextAlignment="Center"
-                                            FontFamily="Nunito"
-                                            FontSize="Small"
-                                            FontAttributes="Bold"
-                                            TextColor="{StaticResource SecondaryColor}" />
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </buttons:SfButton.Content>
-                        </buttons:SfButton>
+                            Style="{StaticResource SubMonitoramentoButton}"
+                            Text="{localization:Translate ISIMacro}" />
 
                         <buttons:SfButton
                             Command="{Binding ShowHideSanidadeCommand}"
                             ImageSource="sanidade.png"
                             IsVisible="{Binding IsSanidadeVisible}"
-                            Style="{StaticResource MonitoramentoButton}"
-                            Text="{localization:Translate Sanidade}"
-                            WidthRequest="165"
-                            Margin="5" />
+                            Style="{StaticResource SubMonitoramentoButton}"
+                            Text="{localization:Translate Sanidade}" />
+
+                        <VerticalStackLayout IsVisible="{Binding SanidadeVisible}" Spacing="10" Margin="20,5,10,0">
+                            <buttons:SfButton
+                                Command="{Binding DiagnosticoCommand}"
+                                ImageSource="diagnosticoenfermidade.png"
+                                IsVisible="{Binding IsDiagnosticoVisible}"
+                                Style="{StaticResource SubMonitoramentoButton}"
+                                Text="{localization:Translate DiagnósticoDeEnfermidades}" />
+
+                            <buttons:SfButton
+                                Command="{Binding TratamentoCommand}"
+                                ImageSource="tratamentoviaagua.png"
+                                IsVisible="{Binding IsTratamentoVisible}"
+                                Style="{StaticResource SubMonitoramentoButton}"
+                                Text="{localization:Translate TratamentoViaÁgua}" />
+
+                            <buttons:SfButton
+                                Command="{Binding SalmonellaCommand}"
+                                ImageSource="analisesalmonela.png"
+                                IsVisible="{Binding IsSalmonellaVisible}"
+                                Style="{StaticResource SubMonitoramentoButton}"
+                                Text="{localization:Translate AnáliseDeSalmonella}" />
+
+                            <buttons:SfButton
+                                Command="{Binding VacinasCommand}"
+                                ImageSource="vacinas.png"
+                                IsVisible="{Binding IsVacinasVisible}"
+                                Style="{StaticResource SubMonitoramentoButton}"
+                                Text="{localization:Translate Vacinas}" />
+
+                            <buttons:SfButton
+                                Command="{Binding ISIMicroCommand}"
+                                ImageSource="isimicro.png"
+                                IsVisible="{Binding IsIsiMicroVisible}"
+                                Style="{StaticResource SubMonitoramentoButton}"
+                                Text="{localization:Translate ISIMicro}" />
+                        </VerticalStackLayout>
 
                         <buttons:SfButton
                             Command="{Binding NutricaoCommand}"
                             ImageSource="nutricao.png"
                             IsVisible="{Binding IsNutricaoVisible}"
-                            Style="{StaticResource MonitoramentoButton}"
-                            Text="{localization:Translate Nutrição}"
-                            WidthRequest="165"
-                            Margin="5" />
-                    </FlexLayout>
-
-                    <Label
-                        FontFamily="FontAwesomeLight"
-                        FontSize="Large"
-                        HorizontalOptions="Center"
-                        IsVisible="{Binding SanidadeVisible}"
-                        Text="{x:Static fontawesome:FontAwesomeIcons.ArrowDown}"
-                        TextColor="{StaticResource PrimaryColor}" />
-
-                    <VerticalStackLayout IsVisible="{Binding SanidadeVisible}" Spacing="10">
-                        <buttons:SfButton
-                            Command="{Binding DiagnosticoCommand}"
-                            ImageSource="diagnosticoenfermidade.png"
-                            IsVisible="{Binding IsDiagnosticoVisible}"
                             Style="{StaticResource SubMonitoramentoButton}"
-                            Text="{localization:Translate DiagnósticoDeEnfermidades}" />
-
-                        <buttons:SfButton
-                            Command="{Binding TratamentoCommand}"
-                            ImageSource="tratamentoviaagua.png"
-                            IsVisible="{Binding IsTratamentoVisible}"
-                            Style="{StaticResource SubMonitoramentoButton}"
-                            Text="{localization:Translate TratamentoViaÁgua}" />
-
-                        <buttons:SfButton
-                            Command="{Binding SalmonellaCommand}"
-                            ImageSource="analisesalmonela.png"
-                            IsVisible="{Binding IsSalmonellaVisible}"
-                            Style="{StaticResource SubMonitoramentoButton}"
-                            Text="{localization:Translate AnáliseDeSalmonella}" />
-
-                        <buttons:SfButton
-                            Command="{Binding VacinasCommand}"
-                            ImageSource="vacinas.png"
-                            IsVisible="{Binding IsVacinasVisible}"
-                            Style="{StaticResource SubMonitoramentoButton}"
-                            Text="{localization:Translate Vacinas}" />
-
-                        <buttons:SfButton
-                            Command="{Binding ISIMicroCommand}"
-                            ImageSource="isimicro.png"
-                            IsVisible="{Binding IsIsiMicroVisible}"
-                            Style="{StaticResource SubMonitoramentoButton}"
-                            Text="{localization:Translate ISIMicro}" />
+                            Text="{localization:Translate Nutrição}" />
                     </VerticalStackLayout>
+
                 </VerticalStackLayout>
                 </ScrollView>
             </Grid>
