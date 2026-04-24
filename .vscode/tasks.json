@@ -17,6 +17,28 @@
 			],
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "Git Sync Clean (pull --rebase, commit, push)",
+			"type": "shell",
+			"command": "sh",
+			"args": [
+				"-c",
+				"git pull --rebase && git add . && git commit -m 'sync: atualiza e sincroniza alterações locais' && git push"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Git Commit, Rebase Pull, Push (Clean)",
+			"type": "shell",
+			"command": "sh",
+			"args": [
+				"-c",
+				"git add . && git commit -m 'sync: atualiza e sincroniza alterações locais' && git pull --rebase && git push"
+			],
+			"problemMatcher": [],
+			"group": "build"
 		}
 	]
 }
