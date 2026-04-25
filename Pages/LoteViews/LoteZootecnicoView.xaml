@@ -76,7 +76,7 @@
                             CornerRadius="24"
                             FontAttributes="Bold"
                             FontSize="14"
-                            Text="{localization:Translate AbaGeral}"
+                            Text="{Binding TextoAbaGeral}"
                             TextColor="{StaticResource PrimaryColor}">
                             <buttons:SfButton.Triggers>
                                 <DataTrigger
@@ -105,7 +105,7 @@
                             CornerRadius="24"
                             FontAttributes="Bold"
                             FontSize="14"
-                            Text="{localization:Translate AbaPorIdade}"
+                            Text="{Binding TextoAbaPorIdade}"
                             TextColor="{StaticResource PrimaryColor}">
                             <buttons:SfButton.Triggers>
                                 <DataTrigger

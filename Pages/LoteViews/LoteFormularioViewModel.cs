@@ -606,6 +606,7 @@ public partial class LoteFormularioViewModel : ViewModelBase
         var continuandoPreenchimento = LoteFormulario != null && jaTemDados;
 
         LoteFormulario ??= new LoteFormulario();
+        await MainThread.InvokeOnMainThreadAsync(() => SetTitle()).ConfigureAwait(false);
 
         Debug.WriteLine($"[LoteFormularioViewModel.CarregaFormularioAsync] ▶ Carregando lote... | ms={loadSw.ElapsedMilliseconds} | thread={Environment.CurrentManagedThreadId} | main={MainThread.IsMainThread}");
         var loteResult = await Lote.PegaLoteAsync(LoteId).ConfigureAwait(false);
@@ -644,6 +645,7 @@ public partial class LoteFormularioViewModel : ViewModelBase
         {
             Debug.WriteLine($"[LoteFormularioViewModel.CarregaFormularioAsync] ▶ Novo formulário — inicializando LoteForm");
             InicializaNovoLoteForm(modeloIsiMacroSelecionado);
+            await MainThread.InvokeOnMainThreadAsync(() => SetTitle()).ConfigureAwait(false);
             NovoFormulario = true;
 
             if (IsISIMacro)
@@ -703,7 +705,11 @@ public partial class LoteFormularioViewModel : ViewModelBase
             8 => $"{Traducao.Manejo} - {Traducao.Crescimento2}",
             9 => $"{Traducao.Manejo} - {Traducao.Final}",
             10 => $"{Traducao.Manejo} - {Traducao.Biosseguridade}",
-            11 => Fase == null ? $"{Traducao.Zootécnico}" : $"{Traducao.Zootécnico} - {FaseComoDias} {Traducao.Dias}",
+            11 => (Fase == 7) 
+                ? $"{Traducao.Zootécnico} Geral - {(LoteFormulario?.LoteForm?.data ?? DateTime.Now):dd/MM/yyyy} - {IdadeLote}"
+                : (Fase == null 
+                    ? $"{Traducao.Zootécnico}" 
+                    : $"{Traducao.Zootécnico} - {FaseComoDias} {Traducao.Dias}"),
             12 => $"{Traducao.Sanidade} - {Traducao.Nutrição}",
             13 => $"{Traducao.Sanidade} - {Traducao.DiagnósticoDeEnfermidade}",
             14 => $"{Traducao.Sanidade} - {Traducao.TratamentoViaÁgua}",
@@ -821,8 +827,8 @@ public partial class LoteFormularioViewModel : ViewModelBase
             dataInicioPreenchimento = DateTime.Now
         };
 
-        //Se for Zootécnico, seta a data conforme a fase
-        if (ParametroTipo == 11 && Lote?.dataInicio != null && Fase != null)
+        //Se for Zootécnico, seta a data conforme a fase (exceto Geral que mantém a data atual)
+        if (ParametroTipo == 11 && Lote?.dataInicio != null && Fase != null && Fase != 7)
             LoteFormulario.LoteForm.data = ((DateTime)Lote.dataInicio).AddDays(FaseComoDias);
     }
 
@@ -1083,6 +1089,9 @@ public partial class LoteFormularioViewModel : ViewModelBase
             }
 
             WeakReferenceMessenger.Default.Send(new FormularioSalvoMessage(LoteFormulario.LoteForm));
+
+            // ★ NOVO: Garante título atualizado para o popup (Data e Idade)
+            SetTitle();
 
             if (NovoFormulario && IsISIMacro)
             {

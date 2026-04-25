@@ -52,6 +52,9 @@ namespace SilvaData.ViewModels
         public bool IsAbaGeralSelecionada => TabSelecionada == TabKind.Geral;
         public bool IsAbaPorIdadeSelecionada => TabSelecionada == TabKind.PorIdade;
 
+        public string TextoAbaGeral => $"{Traducao.AbaGeral} ({ZootecnicoGeralList.Count})";
+        public string TextoAbaPorIdade => $"{Traducao.AbaPorIdade} ({ZootecnicoList.Count})";
+
         public LoteZootecnicoViewModel()
         {
             WeakReferenceMessenger.Default.Register<FormularioSalvoMessage>(this, async (r, m) => await OnFormularioSalvo(m.FormularioSalvo));
@@ -164,6 +167,7 @@ namespace SilvaData.ViewModels
                     await box.PegaDados(Lote, PodeEditarManejo, PodeVerZootecnico);
                     ZootecnicoList.Add(box);
                 }
+                OnPropertyChanged(nameof(TextoAbaPorIdade));
             }
             catch (Exception ex) { await PopUpOK.ShowAsync(Traducao.Erro, $"Erro: {ex.Message}"); }
             finally { IsBusy = false; }
@@ -178,8 +182,13 @@ namespace SilvaData.ViewModels
 
             try
             {
-                // ★ Carrega formulários do banco
-                var forms = await LoteForm.PegaListaFormulariosLoteList((int)Lote.id, 11, null);
+                // ★ Carrega formulários do banco (Fase 7 = Geral, null = Legado/Outros)
+                var forms7Task = LoteForm.PegaListaFormulariosLoteList((int)Lote.id, 11, 7);
+                var formsNullTask = LoteForm.PegaListaFormulariosLoteList((int)Lote.id, 11, null);
+
+                await Task.WhenAll(forms7Task, formsNullTask);
+
+                var forms = forms7Task.Result.Concat(formsNullTask.Result).ToList();
 
                 if (forms == null || forms.Count == 0)
                 {
@@ -187,12 +196,12 @@ namespace SilvaData.ViewModels
                     return;
                 }
 
-                // ★ OTIMIZAÇÃO 1: Popula cache do Lote UMA VEZ (ao invés de N vezes no loop)
+                // ★ OTIMIZAÇÃO 1: Popula cache do Lote UMA VEZ (importante para cálculo de IdadeLote na lista)
                 if (Lote.id != null)
-                    _ = Lote.PegaLoteAsync((int)Lote.id); // Fire-and-forget (já está em cache)
+                    await Lote.PegaLoteAsync((int)Lote.id);
 
-                // ★ OTIMIZAÇÃO 2: Ordena ANTES de manipular UI (evita re-sorting na thread principal)
-                var formsOrdenados = forms.OrderByDescending(f => f.data).ToList();
+                // ★ OTIMIZAÇÃO 2: Ordena por data decrescente (mais recentes primeiro)
+                var formsOrdenados = forms.OrderByDescending(f => f.data).ThenByDescending(f => f.DBId).ToList();
 
                 // ★ OTIMIZAÇÃO 3: Atualiza UI em batch único
                 await MainThread.InvokeOnMainThreadAsync(() =>
@@ -200,9 +209,11 @@ namespace SilvaData.ViewModels
                     ZootecnicoGeralList.Clear();
                     foreach (var form in formsOrdenados)
                         ZootecnicoGeralList.Add(form);
+
+                    OnPropertyChanged(nameof(TextoAbaGeral));
                 });
 
-                Debug.WriteLine($"[LoteZootecnicoViewModel] ✓ {formsOrdenados.Count} formulários carregados");
+                Debug.WriteLine($"[LoteZootecnicoViewModel] ✓ {formsOrdenados.Count} formulários carregados (Fase 7 e null)");
             }
             catch (Exception ex)
             {
