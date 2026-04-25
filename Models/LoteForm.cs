@@ -525,7 +525,7 @@ namespace SilvaData.Models
                             await Db.ExecuteAsync($"update LoteForm set temmudanca=0 where id={alteracao.idApp}");
                         else
                         {
-                            await SentryHelper.LogErrorAsync(updateJson, "Formulários do Lote", result.data);
+                            await SentryHelper.LogErrorAsync(updateJson, "Formulários do Lote", $"Mensagem: {result.mensagem} | Data: {result.data}");
                             throw new Exception(!string.IsNullOrEmpty(result.mensagem) ? result.mensagem : (!string.IsNullOrEmpty(result.data) ? result.data : "Erro desconhecido ao enviar formulários"));
                         }
                     }
@@ -641,10 +641,13 @@ namespace SilvaData.Models
         internal static async Task UploadUpdates()
         {
             const string sql = @"
-                select lf.id, lf.idApp, count(*) total 
-                from LoteFormImagem lfi 
-                inner join LoteForm lf on lf.id=lfi.LoteFormId 
-                where not exists (select * from loteVisita lv where lv.lote=lf.loteId and lv.loteVisitaStatus=1) 
+                select lf.id, lf.idApp, count(*) total
+                from LoteFormImagem lfi
+                inner join LoteForm lf on lf.id=lfi.LoteFormId
+                where lfi.temmudanca=1
+                and lf.idApp is not null and lf.idApp > 0
+                and lf.id != lf.idApp
+                and not exists (select * from loteVisita lv where lv.lote=lf.loteId and lv.loteVisitaStatus=1)
                 group by lf.id, lf.idApp";
 
             var alteracoes = await Db.QueryAsync<LoteFormIdList>(sql);
@@ -699,7 +702,16 @@ namespace SilvaData.Models
             if (result.sucesso)
                 await Db.ExecuteAsync($"update LoteFormImagem set temmudanca=0 where LoteFormId={loteFormId} and temmudanca=1");
             else
-                await SentryHelper.LogErrorAsync(updateJson, "Formulários do Lote - Imagens", result.data);
+            {
+                var img1Exists = !string.IsNullOrEmpty(image1) && File.Exists(image1);
+                var img2Exists = !string.IsNullOrEmpty(image2) && File.Exists(image2);
+                var img3Exists = !string.IsNullOrEmpty(image3) && File.Exists(image3);
+                var errorDetail = $"Mensagem: {result.mensagem} | Data: {result.data} | " +
+                                  $"Img1: {image1} (existe={img1Exists}) | " +
+                                  $"Img2: {image2} (existe={img2Exists}) | " +
+                                  $"Img3: {image3} (existe={img3Exists})";
+                await SentryHelper.LogErrorAsync(updateJson, "Formulários do Lote - Imagens", errorDetail);
+            }
         }
     }
 }

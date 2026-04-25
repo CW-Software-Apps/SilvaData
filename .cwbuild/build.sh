@@ -62,10 +62,17 @@ else
     exit 1
 fi
 
-# NOTA: O script atual apenas move para o volume de saída. 
-# Se for necessário upload real para o Google Play, deve-se adicionar o comando do local-google-play-publisher aqui.
+# 5. Upload para a Store (Etapa 5: Enviando para Store)
 if [ -n "$GOOGLE_PLAY_KEY_PATH" ] && [ -f "$GOOGLE_PLAY_KEY_PATH" ]; then
-    echo "INFO: GOOGLE_PLAY_KEY_PATH detectado, mas nenhum comando de upload (ex: fastlane ou gplay-cli) está configurado neste script."
+    echo "Iniciando upload automático para a Play Store..."
+    dotnet $CW_REPORTER_PATH upload-google \
+        --out-dir "$CW_OUT_DIR" \
+        --package-name "com.cwsoftware.silvadata" \
+        --aab-path "$TARGET_FILE" \
+        --track "internal" \
+        --key-path "$GOOGLE_PLAY_KEY_PATH"
+else
+    echo "⚠️ GOOGLE_PLAY_KEY_PATH não detectado ou arquivo não encontrado. Pulando upload para a Store."
 fi
 
 # 5. Finaliza e alerta SUCESSO no portal (Etapa 6: Completado)
