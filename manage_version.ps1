@@ -22,12 +22,7 @@ if (-not (Test-Path $projFile)) {
     exit 
 }
 
-function Get-CodesignInfo {
-    $content = Get-Content $projFile -Raw
-    $key = ([regex]'<CodesignKey>([^<]+)</CodesignKey>').Match($content).Groups[1].Value
-    $prov = ([regex]'<CodesignProvision>([^<]+)</CodesignProvision>').Match($content).Groups[1].Value
-    return @{ Key = $key; Provision = $prov }
-}
+
 
 function Get-CurrentVersion {
     $manifest = Get-Content $manifestPath -Raw
@@ -105,11 +100,8 @@ function Execute-Action($choice, $v) {
             if ($Action -eq 0) { Read-Host "`nPressione Enter para continuar..." }
         }
         "3" {
-            $info = Get-CodesignInfo
             Write-Host "`nIniciando Publish para iOS (Release)..." -ForegroundColor Yellow
-            $cmd = "dotnet publish -f net10.0-ios -c Release -r ios-arm64 /p:ArchiveOnBuild=true"
-            if ($info.Key) { $cmd += " /p:CodesignKey=`"$($info.Key)`"" }
-            if ($info.Provision) { $cmd += " /p:CodesignProvision=`"$($info.Provision)`"" }
+            $cmd = "dotnet publish -f net10.0-ios -c Release /p:ArchiveOnBuild=true"
             
             Write-Host "Executando: $cmd" -ForegroundColor Gray
             Invoke-Expression $cmd
