@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -30,10 +30,12 @@
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>CFBundleDisplayName</key>
 	<string>Silvadata</string>
-	$13.2.3</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.2.3</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>pt_BR</string>
-	$1272</string>
+	<key>CFBundleVersion</key>
+	<string>280</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Tirar Fotos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
