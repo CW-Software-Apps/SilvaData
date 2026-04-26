@@ -43,8 +43,8 @@ function Update-VersionFiles($newName, $newCode) {
 
     # Atualizar Info.plist
     $content = Get-Content $plistPath -Raw
-    $content = $content -replace '(?s)(<key>CFBundleShortVersionString</key>\s*<string>)[^<]+(</string>)', ('$1' + $newName + '$2')
-    $content = $content -replace '(?s)(<key>CFBundleVersion</key>\s*<string>)[^<]+(</string>)', ('$1' + $newCode + '$2')
+    $content = $content -replace '(?s)(<key>CFBundleShortVersionString</key>\s*<string>)[^<]+(</string>)', ('${1}' + $newName + '${2}')
+    $content = $content -replace '(?s)(<key>CFBundleVersion</key>\s*<string>)[^<]+(</string>)', ('${1}' + $newCode + '${2}')
     Set-Content $plistPath $content
 
     # Atualizar .csproj
