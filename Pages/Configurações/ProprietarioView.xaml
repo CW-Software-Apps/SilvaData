@@ -28,8 +28,8 @@
 
             <Grid
                 Grid.Row="0"
-                Margin="0,0,0,5"
-                Padding="0,0,0,20"
+                Margin="0,0,0,0"
+                Padding="0,0,0,8"
                 ColumnDefinitions="*,Auto"
                 RowDefinitions="Auto,Auto">
 
@@ -79,6 +79,7 @@
                 Background="{StaticResource QuaseBranco}"
                 HeaderSize="50"
                 IsScrollingEnabled="True"
+                ItemSeparatorSize="0"
                 ItemSize="70"
                 ItemSpacing="5"
                 ItemsSource="{Binding ListaProprietarios, Source={x:Reference proprietarioView}}"
@@ -87,7 +88,7 @@
                 <listView:SfListView.HeaderTemplate>
                     <DataTemplate>
                         <SearchBar
-                            Margin="2,0,2,5"
+                            Margin="8,6,8,4"
                             Background="White"
                             TextChanged="SearchBar_TextChanged" />
                     </DataTemplate>

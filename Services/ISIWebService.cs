@@ -1183,8 +1183,9 @@ namespace SilvaData.Utils
                 // (Seu código de redimensionamento permanece aqui...)
                 var resizeResult = await _resizeImageService.ExecuteAsync(new()
                 {
-                    Height = 480,
-                    Width = 640,
+                    Height = 1440,
+                    Width = 1920,
+                    Quality = 0.90f,
                     OriginalImage = bytes
                 }).ConfigureAwait(false);
 

@@ -8,6 +8,7 @@ using SilvaData.Services;
 using SilvaData.ViewModels;
 using SilvaData.Utilities;
 using SilvaData.Controls;
+using SilvaData.Infrastructure;
 using SilvaData.Pages.LoteViews;
 
 using LocalizationResourceManager.Maui;
@@ -42,7 +43,22 @@ namespace SilvaData
 #if IOS || MACCATALYST
     				handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items2.CollectionViewHandler2>();
 #endif
-                }).UseLocalizationResourceManager(settings =>
+                })
+                .ConfigureMauiHandlers(handlers =>
+                {
+                    Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
+                    {
+#if ANDROID
+                        handler.PlatformView.Background = null;
+                        int searchPlateId = handler.PlatformView.Context!.Resources!
+                            .GetIdentifier("search_plate", "id", "android");
+                        var searchPlate = handler.PlatformView.FindViewById(searchPlateId);
+                        if (searchPlate != null)
+                            searchPlate.Background = null;
+#endif
+                    });
+                })
+                .UseLocalizationResourceManager(settings =>
                 {
                     settings.AddResource(Traducao.ResourceManager);
                     settings.RestoreLatestCulture(true);
