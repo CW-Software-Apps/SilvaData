@@ -61,6 +61,7 @@ namespace SilvaData.ViewModels
         private bool _isDisposed = false;
         private readonly SemaphoreSlim _carregaLotesLock = new(1, 1);
         private bool _jaInicializou = false;
+        private PropertyChangedEventHandler? _permissoesChangedHandler;
 
         // Debounce
         private CancellationTokenSource? _debounceTokenSource;
@@ -89,6 +90,14 @@ namespace SilvaData.ViewModels
             WeakReferenceMessenger.Default.Register<LoteAlteradoMessage>(this, (r, m) => HandleLoteAlterado(m));
             WeakReferenceMessenger.Default.Register<ISIMacroSalvoMessage>(this, (r, m) => HandleISIMacroSalvo(m));
             WeakReferenceMessenger.Default.Register<UpdateDadosIniciaisMessage>(this, (r, m) => ForceRefreshAsync());
+
+            // Listener para atualizar IsNovoLoteVisible quando permissões mudarem (iOS issue fix)
+            _permissoesChangedHandler = (s, e) =>
+            {
+                if (!_isDisposed)
+                    IsNovoLoteVisible = Permissoes.UsuarioPermissoes?.lotes.cadastrar ?? false;
+            };
+            Permissoes.StaticPropertyChanged += _permissoesChangedHandler;
         }
 
         // ═══════════════════════════════════════════════════════════
@@ -544,6 +553,8 @@ namespace SilvaData.ViewModels
             if (disposing)
             {
                 WeakReferenceMessenger.Default.UnregisterAll(this);
+                if (_permissoesChangedHandler != null)
+                    Permissoes.StaticPropertyChanged -= _permissoesChangedHandler;
                 _carregaLotesLock.Dispose();
                 _debounceTokenSource?.Cancel();
                 _debounceTokenSource?.Dispose();

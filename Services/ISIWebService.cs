@@ -57,7 +57,7 @@ namespace SilvaData.Utils
     {
         #region Constants & Fields
 
-        public const string UrlAcesso = "https://webapp.isiinstitute.com/wsisi/app/request.cfc";
+        public const string UrlAcesso = "https://webapp.silvateam.com.br/wssilva/app/request.cfc";
         private const string AccessKey = "21479726A36B71FCAD673DB9CD495AB32E2E65DAEE6BCA7EE9EBC5F0D43BED88";
         private const int DefaultTimeoutSeconds = 30;
         private const int UploadTimeoutSeconds = 120;
@@ -1006,16 +1006,10 @@ namespace SilvaData.Utils
             Debug.WriteLine($"[REQ:{requestId}] Response Size: {rawResult.Length} chars");
 
             // 3. Validação de Erro HTML (Servidor retornando página de erro 500/404 ao invés de JSON)
-            if (!string.IsNullOrWhiteSpace(rawResult))
+            if (!string.IsNullOrWhiteSpace(rawResult) && IsHtmlResponse(rawResult))
             {
-                var trimmed = rawResult.TrimStart();
-                if (trimmed.StartsWith("<!DOCTYPE html", StringComparison.OrdinalIgnoreCase) ||
-                    trimmed.StartsWith("<html", StringComparison.OrdinalIgnoreCase))
-                {
-                    // Dispara o fluxo de exibição de erro HTML
-                    await ShowHtmlErrorModalAsync(rawResult, methodName).ConfigureAwait(false);
-                    throw new WebServiceHtmlErrorException("O servidor retornou HTML.", rawResult, methodName);
-                }
+                await ShowHtmlErrorModalAsync(rawResult, methodName).ConfigureAwait(false);
+                throw new WebServiceHtmlErrorException("O servidor retornou HTML.", rawResult, methodName);
             }
 
             // 4. Validação de Status HTTP
@@ -1154,6 +1148,17 @@ namespace SilvaData.Utils
                 return IsNetworkException(ex.InnerException);
 
             return false;
+        }
+
+        private static bool IsHtmlResponse(string raw)
+        {
+            // Procura nos primeiros 512 chars para cobrir BOM, whitespace e output de debug do ColdFusion antes do DOCTYPE
+            var probe = raw.Length > 512 ? raw[..512] : raw;
+            var idx = probe.IndexOf('<');
+            if (idx < 0) return false;
+            var fromTag = probe.AsSpan(idx);
+            return fromTag.StartsWith("<!DOCTYPE html", StringComparison.OrdinalIgnoreCase) ||
+                   fromTag.StartsWith("<html", StringComparison.OrdinalIgnoreCase);
         }
 
         private void AddEncryptedField(MultipartFormDataContent form, string name, string value)

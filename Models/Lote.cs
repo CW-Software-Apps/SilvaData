@@ -416,7 +416,7 @@ namespace SilvaData.Models
 
                 var loteIds = lotes.Select(l => l.idApp).ToList();
                 string idList = string.Join(",", loteIds);
-                await Db.ExecuteAsync($"update Lote set temmudanca=0 where id IN ({idList})");
+                await Db.ExecuteAsync($"update Lote set temmudanca=0 where idApp IN ({idList})");
             }
             else
             {

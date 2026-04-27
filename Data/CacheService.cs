@@ -11,41 +11,12 @@ using System.Diagnostics;
 namespace SilvaData.Infrastructure
 {
     /// <summary>
-    /// Contrato para o serviço de cache centralizado.
-    /// Gerencia APENAS listas compartilhadas entre ViewModels.
-    /// </summary>
-    public interface ICacheService
-    {
-        // Coleções compartilhadas (read-only para UI)
-        ObservableCollection<Propriedade> PropriedadeList { get; }
-        ObservableCollection<UnidadeEpidemiologicaComDetalhes> UEList { get; }
-        ObservableCollection<Regional> RegionalList { get; }
-        ObservableCollection<Proprietario> ProprietarioList { get; }
-
-        // Dados em cache (propriedades)
-        List<Parametro> TodosParametrosList { get; }
-        List<ParametroAlternativas> TodosParametrosAlternativasList { get; }
-
-        // Métodos de carregamento
-        Task PegaDadosIniciais(bool forceRefresh = false);
-        Task Refresh();
-        Task UpdateUnidadesEpidemiologicas();
-        Task UpdatePropriedade();
-        Task UpdateProprietarios();
-        Task UpdateRegionais();
-
-        // Limpeza
-        void ClearAllData();
-    }
-
-
-    /// <summary>
     /// Serviço de cache centralizado que gerencia apenas listas compartilhadas.
     /// Thread-safe com suporte a sincronização de coleções.
-    /// 
+    ///
     /// ⚠️ IMPORTANTE: Dados específicos do fluxo (Lote, UE, etc.) são gerenciados pelos ViewModels individuais.
     /// </summary>
-    public partial class CacheService : ObservableObject, ICacheService
+    public partial class CacheService : ObservableObject
     {
         private bool _jaPegouDadosIniciais = false;
         private bool _estaAtualizando = false;

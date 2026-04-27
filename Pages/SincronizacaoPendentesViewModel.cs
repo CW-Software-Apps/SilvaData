@@ -207,23 +207,20 @@ namespace SilvaData.ViewModels
                 // ⚠️ Verifica o estado REAL no banco após todos os uploads
                 var totalPendenteReal = await AtualizaListaAlteracoes();
 
-                if (totalPendenteReal == 0)
+                if (totalPendenteReal == 0 && !erros.Any())
                 {
-                    // ✅ SUCESSO: Todos os dados foram enviados
+                    // ✅ SUCESSO TOTAL: Todos os dados foram enviados sem erros
                     Debug.WriteLine("[Sync] Upload concluído com sucesso — nenhum registro pendente.");
 
-                    // Limpa estado de formulário em andamento
                     Preferences.Set("FormularioEmAndamento", "");
 
-                    // Remove lotes fechados que já subiram (otimização de espaço)
                     await Lote.ApagaLotesFechadosQueJaFizeramUploadEEstaoFechados();
                     Lote.NeedRefresh = true;
 
-                    // Atualiza cache local com dados mais recentes do servidor
                     try
                     {
-                        var cache = ServiceHelper.GetRequiredService<ICacheService>();
-                        await cache.PegaDadosIniciais(forceRefresh: true);
+                        var cache = ServiceHelper.GetRequiredService<CacheService>();
+                        await cache.PegaDadosIniciais(true);
                     }
                     catch (Exception ex)
                     {
@@ -231,6 +228,17 @@ namespace SilvaData.ViewModels
                     }
 
                     await PopUpOK.ShowAsync(Traducao.Sucesso, Traducao.DadosEnviadosComSucesso);
+                }
+                else if (totalPendenteReal == 0 && erros.Any())
+                {
+                    // ⚠️ SUCESSO PARCIAL: Dados enviados, mas houve erros em algumas etapas
+                    Debug.WriteLine($"[Sync] Upload concluído com avisos: {erros.Count} erro(s).");
+
+                    Preferences.Set("FormularioEmAndamento", "");
+                    Lote.NeedRefresh = true;
+
+                    var mensagem = $"{Traducao.DadosEnviadosComSucesso}\n\n⚠️ Atenção — ocorreram erros em algumas etapas:\n{string.Join("\n", erros)}";
+                    await PopUpOK.ShowAsync(Traducao.Atenção, mensagem);
                 }
                 else
                 {

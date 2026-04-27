@@ -216,7 +216,7 @@
 
             <sf:SfTabItem Style="{StaticResource SyncTabStyle}">
                 <sf:SfTabItem.HeaderContent>
-                    <Grid HeightRequest="34" WidthRequest="34">
+                    <Grid HeightRequest="35" WidthRequest="35">
                         <Label
                             FontFamily="FontAwesomeSolid"
                             FontSize="24"
@@ -233,6 +233,28 @@
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
+                        <Border
+                            Margin="0,-8,-8,0"
+                            Padding="0"
+                            Background="#E53935"
+                            HeightRequest="18"
+                            WidthRequest="18"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
+                            StrokeThickness="0"
+                            IsVisible="{Binding SyncPendingCount, Converter={StaticResource IsNotNullOrEmptyConverter}}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9" />
+                            </Border.StrokeShape>
+                            <Label
+                                Padding="0"
+                                FontSize="10"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                TextColor="White"
+                                Text="{Binding SyncPendingCount}" />
+                        </Border>
                     </Grid>
                 </sf:SfTabItem.HeaderContent>
                 <controls:SincronizacaoPendentesView />
