@@ -54,6 +54,12 @@
                 "panel": "shared"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "maui: build",
+            "type": "maui",
+            "command": "build",
+            "problemMatcher": "$msCompile"
         }
     ]
 }
