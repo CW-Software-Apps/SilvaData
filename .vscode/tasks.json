@@ -56,7 +56,7 @@
             "problemMatcher": []
         },
         {
-            "label": "maui: build",
+            "label": "maui-build",
             "type": "maui",
             "command": "build",
             "problemMatcher": "$msCompile"
