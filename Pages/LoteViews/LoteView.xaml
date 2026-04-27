@@ -368,9 +368,10 @@
             Grid.Row="1"
             Command="{Binding NovoLoteCommand}"
             IsVisible="{Binding IsNovoLoteVisible}"
-            Margin="{OnPlatform iOS='5,5,5,60', Default='5'}"
             Style="{StaticResource CircleButtonPlus}"
-            VerticalOptions="End" />
+            Margin="{OnPlatform iOS='5,5,5,60', Default='5'}"
+            VerticalOptions="End"
+            HorizontalOptions="End" />
     </Grid>
 
 </ContentView>
