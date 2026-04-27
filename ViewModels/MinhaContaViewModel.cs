@@ -127,14 +127,7 @@ namespace SilvaData.ViewModels
             }
 
             IsBusy = true;
-            await _webService.LogOut();
-
-            // MIGRADO: Limpa o cache ao invés de DadosStatic
-            _cacheService.ClearAllData();
-
-            // Limpa o cache de gráficos
-            Graficos.ZeraDadosGraficos();
-
+            await _webService.LogOut(limpaTudo: true);
             IsBusy = false;
 
             // Envia a mensagem para o AppShell/MainPage fechar tudo
