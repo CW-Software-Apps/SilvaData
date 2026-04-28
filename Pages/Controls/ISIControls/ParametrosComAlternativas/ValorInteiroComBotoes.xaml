@@ -73,6 +73,7 @@
                     </DataTrigger>
                 </Border.Triggers>
                 <controls:ISINumericUpDown
+                    x:Name="innerNumeric"
                     FontSize="{OnIdiom 18, Desktop=24}"
                     IsReadOnly="{Binding IsReadOnly, Source={x:Reference valorInteiro}}"
                     Maximum="{Binding ParametroComAlternativas.valorMaximo, Source={x:Reference valorInteiro}}"

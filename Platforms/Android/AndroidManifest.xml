@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.cwsoftware.silvadata" android:versionCode="284" android:versionName="3.2.6">
-	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="Silvadata">
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="Silvadata" android:usesCleartextTraffic="true">
 		<!--
 		    Desabilita a inicialização automática do EmojiCompat (androidx.emoji2).
 		    Sem isso, o EmojiTextWatcher é instalado em todos os EditText e lança
@@ -28,6 +28,7 @@
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 	<uses-feature android:name="android.hardware.location" android:required="false" />
 	<uses-feature android:name="android.hardware.location.gps" android:required="false" />
 	<uses-feature android:name="android.hardware.location.network" android:required="false" />

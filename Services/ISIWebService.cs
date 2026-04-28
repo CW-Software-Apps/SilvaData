@@ -535,6 +535,11 @@ namespace SilvaData.Utils
             int maxRetries = 3;
             int currentRetry = 0;
 
+            string originalUrl = url;
+            string httpsUrl = url.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+                ? url.Replace("http://", "https://", StringComparison.OrdinalIgnoreCase)
+                : url;
+
             while (currentRetry < maxRetries)
             {
                 // Guid único por tentativa evita conflito de nome entre downloads paralelos do mesmo arquivo.
@@ -544,9 +549,11 @@ namespace SilvaData.Utils
                 using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
                 cts.CancelAfter(TimeSpan.FromSeconds(30));
 
+                string currentUrl = (currentRetry == 0) ? httpsUrl : originalUrl;
+
                 try
                 {
-                    Debug.WriteLine($"[{taskNumber}] Download {currentRetry + 1}/{maxRetries} - {url}");
+                    Debug.WriteLine($"[{taskNumber}] Download {currentRetry + 1}/{maxRetries} - {currentUrl}");
 
                     // Criado dentro do loop: no Android 12+ o filesystem FUSE pode ainda não ter
                     // confirmado o diretório criado antes do loop quando há muitos downloads paralelos.
@@ -561,8 +568,8 @@ namespace SilvaData.Utils
                     // o arquivo de destino corrompido. Só é movido após download completo.
                     using (var fileStream = new FileStream(tempPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, useAsync: true))
                     {
-                        var success = await _client.DownloadAsync(url, fileStream, progress, cts.Token).ConfigureAwait(false);
-                        if (!success) throw new Exception("DownloadAsync retornou falso");
+                        var success = await _client.DownloadAsync(currentUrl, fileStream, progress, cts.Token).ConfigureAwait(false);
+                        if (!success) throw new Exception($"DownloadAsync retornou falso para {currentUrl}");
                     }
 
                     if (new FileInfo(tempPath).Length > 0)
@@ -577,7 +584,7 @@ namespace SilvaData.Utils
                         // DownloadAsync retornou sucesso mas o arquivo ficou vazio — avança retry
                         // explicitamente (sem isso o loop seria infinito).
                         currentRetry++;
-                        Debug.WriteLine($"[{taskNumber}] Arquivo recebido vazio, retry {currentRetry}/{maxRetries}");
+                        Debug.WriteLine($"[{taskNumber}] Arquivo recebido vazio ({currentUrl}), retry {currentRetry}/{maxRetries}");
                     }
                 }
                 // Timeout disparado pelo cts.CancelAfter(30s).
@@ -585,7 +592,7 @@ namespace SilvaData.Utils
                 catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
                 {
                     currentRetry++;
-                    Debug.WriteLine($"[{taskNumber}] Timeout no download (30s atingido), retry {currentRetry}/{maxRetries}");
+                    Debug.WriteLine($"[{taskNumber}] Timeout no download (30s atingido) para {currentUrl}, retry {currentRetry}/{maxRetries}");
                     await Task.Delay(1000 * currentRetry, cancellationToken).ConfigureAwait(false);
                 }
                 // OperationCanceledException excluída: cancelamento do usuário não deve
@@ -593,12 +600,12 @@ namespace SilvaData.Utils
                 catch (Exception ex) when (ex is not OperationCanceledException)
                 {
                     currentRetry++;
-                    Debug.WriteLine($"[{taskNumber}] Erro retry {currentRetry}: {ex.Message}");
+                    Debug.WriteLine($"[{taskNumber}] Erro retry {currentRetry} para {currentUrl}: {ex.Message}");
                     if (currentRetry >= maxRetries)
                     {
                         if (!IsNetworkException(ex))
                         {
-                            SentryHelper.CaptureExceptionWithUser(ex, url);
+                            SentryHelper.CaptureExceptionWithUser(ex, currentUrl);
                         }
                     }
                     await Task.Delay(1000 * currentRetry, cancellationToken).ConfigureAwait(false);

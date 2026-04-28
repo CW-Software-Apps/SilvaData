@@ -76,12 +76,12 @@ namespace SilvaData.Utilities
             catch (OperationCanceledException)
             {
                 // Cancelado pelo usuário/chamada
-                Debug.WriteLine("DownloadAsync cancelado.");
+                Debug.WriteLine($"DownloadAsync cancelado: {requestUri}");
                 return false;
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"Falha no DownloadAsync: {e}");
+                Debug.WriteLine($"Falha no DownloadAsync ({requestUri}): {e}");
                 return false;
             }
         }

@@ -8,7 +8,16 @@ namespace SilvaData.Controls
 {
     public partial class ValorInteiroComBotoes : ValidatableFieldBase
     {
-        public ParametroComAlternativas? ParametroComAlternativas;
+        private ParametroComAlternativas? _parametroComAlternativas;
+        public ParametroComAlternativas? ParametroComAlternativas
+        {
+            get => _parametroComAlternativas;
+            set
+            {
+                _parametroComAlternativas = value;
+                OnPropertyChanged();
+            }
+        }
         private bool _suppressValueSideEffects;
 
         #region IsReadOnly BindableProperty
@@ -225,6 +234,15 @@ namespace SilvaData.Controls
 
         protected override bool ComputeHasError()
         {
+            // ✅ Sincronização Extra: Se Valor estiver nulo mas o NumericUpDown tiver valor, força a atualização.
+            // Isso evita o erro reportado onde Valor fica null mesmo quando preenchido na UI.
+            var inner = this.FindByName<ISINumericUpDown>("innerNumeric");
+            if (!Valor.HasValue && inner != null && inner.Value.HasValue)
+            {
+                Valor = inner.Value;
+                Debug.WriteLine($"[VALIDATION] Sincronização rápida em ValorInteiro (SilvaData): Valor atualizado para {Valor}");
+            }
+
             SyncValueToParameter(Valor);
 
             // ✅ CORREÇÃO: 0 é um valor válido. O erro ocorre apenas se for nulo e obrigatório.
@@ -236,16 +254,20 @@ namespace SilvaData.Controls
 
         protected override void ApplyValidationVisualState(bool hasError)
         {
-            var titleLabel = this.FindByName<Label>("labelTitle");
-            var border = this.FindByName<Border>("valorInteiroBorder");
-
-            ValidationVisualHelper.ApplyTitleColor(titleLabel, hasError);
-
-            if (border != null)
+            // Garante que a UI seja atualizada na thread principal
+            MainThread.BeginInvokeOnMainThread(() =>
             {
-                border.Stroke = hasError ? Colors.Red : ValidationVisualHelper.GetPrimaryColor();
-                border.StrokeThickness = hasError ? 2 : 1;
-            }
+                var titleLabel = this.FindByName<Label>("labelTitle");
+                var border = this.FindByName<Border>("valorInteiroBorder");
+
+                ValidationVisualHelper.ApplyTitleColor(titleLabel, hasError);
+
+                if (border != null)
+                {
+                    border.Stroke = hasError ? Colors.Red : ValidationVisualHelper.GetPrimaryColor();
+                    border.StrokeThickness = hasError ? 2 : 1;
+                }
+            });
         }
 
         private int? NormalizeValue(int? value)
