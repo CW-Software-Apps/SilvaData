@@ -727,37 +727,55 @@ public partial class LoteFormularioViewModel : ViewModelBase
     private async Task CarregaParametrosAsync(bool novoLoteForm, int? modeloIsiMacroSelecionado)
     {
         // ★★★ RECUPERAÇÃO: Se já temos parâmetros, não carregamos novamente ★★★
-        if (LoteFormulario.Formulario_ParametrosComAlternativas.Any())
+        if (LoteFormulario?.Formulario_ParametrosComAlternativas?.Any() == true)
         {
-            Debug.WriteLine($"[CarregaParametrosAsync] ✓ Já possui dados de parâmetros (Recovery?) - Ignorando carga");
+            Debug.WriteLine($"[CarregaParametrosAsync] ✓ Já possui dados de parâmetros (Recovery?) - Ignorando carga | count={LoteFormulario.Formulario_ParametrosComAlternativas.Count} | ParametroTipo={ParametroTipo} | LoteFormId={LoteFormId}");
+            return;
+        }
+
+        if (LoteFormulario == null)
+        {
+            Debug.WriteLine($"[CarregaParametrosAsync] ⚠️ LoteFormulario é null — ignorando carga");
             return;
         }
 
         var cacheKey = $"{ParametroTipo}_{(novoLoteForm ? -1 : LoteFormId)}_{LoteFormVinculado}_{modeloIsiMacroSelecionado}";
+        Debug.WriteLine($"[CarregaParametrosAsync] ▶ Iniciando | novoLoteForm={novoLoteForm} | ParametroTipo={ParametroTipo} | LoteFormId={LoteFormId} | modeloIsiMacroSelecionado={modeloIsiMacroSelecionado} | cacheKey={cacheKey}");
 
         List<ParametroComAlternativas> parametros;
 
         if (novoLoteForm)
         {
+            Debug.WriteLine($"[CarregaParametrosAsync] ▶ Consultando banco (novoLoteForm) | modeloIsiMacroSelecionado={modeloIsiMacroSelecionado}");
             parametros = (await ParametroComAlternativas.LoteForm_PegaListaParametros(
                 ParametroTipo,
                 -1,
                 LoteFormVinculado,
                 modeloIsiMacroSelecionado)).ToList();
+            Debug.WriteLine($"[CarregaParametrosAsync] ✓ Banco retornou {parametros.Count} parâmetros (novoLoteForm)");
         }
         else if (!_parametrosCache.TryGetValue(cacheKey, out parametros))
         {
+            Debug.WriteLine($"[CarregaParametrosAsync] ▶ Consultando banco (cache miss) | LoteFormId={LoteFormId}");
             parametros = (await ParametroComAlternativas.LoteForm_PegaListaParametros(
                 ParametroTipo,
                 LoteFormId,
                 LoteFormVinculado,
                 modeloIsiMacroSelecionado)).ToList();
+            Debug.WriteLine($"[CarregaParametrosAsync] ✓ Banco retornou {parametros.Count} parâmetros | salvando no cache");
 
             if (_parametrosCache.Count > 10)
                 _parametrosCache.Clear();
 
             _parametrosCache[cacheKey] = parametros;
         }
+        else
+        {
+            Debug.WriteLine($"[CarregaParametrosAsync] ✓ Cache hit | {parametros.Count} parâmetros");
+        }
+
+        if (parametros.Count == 0)
+            Debug.WriteLine($"[CarregaParametrosAsync] ⚠️ LISTA VAZIA — nenhum parâmetro encontrado para ParametroTipo={ParametroTipo} | LoteFormId={LoteFormId} | modeloIsiMacroSelecionado={modeloIsiMacroSelecionado} | novoLoteForm={novoLoteForm}");
 
         var parametrosCollection = new ObservableCollection<ParametroComAlternativas>(parametros);
 

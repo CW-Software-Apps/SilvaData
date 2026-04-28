@@ -178,19 +178,23 @@ namespace SilvaData.ViewModels
                     NavigationUtils.LogExternal(nameof(LoteISIMacroViewModel), $"NovoISIMacro modelos carregados | total={ModelosIsiMacro.Count}");
                 }
 
-                if (ModelosIsiMacro.Count == 0)
+                // Filtra apenas modelos que têm parâmetros vinculados — modelo sem parâmetros abre formulário vazio.
+                var modelosComParametros = ModelosIsiMacro.Where(m => m.Parametros?.Count > 0).ToList();
+                if (modelosComParametros.Count == 0)
                 {
-                    await PopUpOK.ShowAsync(Traducao.Atenção, Traducao.NenhumModeloDisponivel);
+                    NavigationUtils.LogExternal(nameof(LoteISIMacroViewModel), $"NovoISIMacro todos os modelos estão sem parâmetros | total modelos={ModelosIsiMacro.Count}");
+                    await PopUpOK.ShowAsync(Traducao.Atenção, "Os modelos ISI Macro não possuem parâmetros configurados. Realize uma sincronização e tente novamente.");
                     return;
                 }
-                else if (ModelosIsiMacro.Count == 1)
+
+                if (modelosComParametros.Count == 1)
                 {
-                    ModeloIsiMacroSelecionado = ModelosIsiMacro[0];
+                    ModeloIsiMacroSelecionado = modelosComParametros[0];
                 }
                 else
                 {
                     var popup = ActivatorUtilities.CreateInstance<SelectModeloPopup>(ServiceHelper.Services!);
-                    popup.UpdateModelos(ModelosIsiMacro);
+                    popup.UpdateModelos(modelosComParametros);
                     var selectedModeloObj = await NavigationUtils.ShowPopupAsync<ModeloIsiMacroComParametros>(popup);
                     if (selectedModeloObj is not ModeloIsiMacroComParametros selectedModelo) return;
                     ModeloIsiMacroSelecionado = selectedModelo;

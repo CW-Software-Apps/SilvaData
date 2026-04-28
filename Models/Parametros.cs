@@ -606,10 +606,15 @@ namespace SilvaData.Models
                 if (isiMacroModelId.HasValue)
                     parametrosConsulta.Add(isiMacroModelId.Value);
 
+                var sql = sqlBuilder.ToString();
+                Debug.WriteLine($"[GetForFormAsync] SQL={sql.Replace(Environment.NewLine," ")} | params={string.Join(",", parametrosConsulta)}");
+
                 var parametros = await Db.QueryAsync<ParametroComAlternativas>(
-                    sqlBuilder.ToString(),
+                    sql,
                     parametrosConsulta.ToArray()
                 ).ConfigureAwait(false);
+
+                Debug.WriteLine($"[GetForFormAsync] Query retornou {parametros.Count} linhas | parameterType={parameterType} | isiMacroModelId={isiMacroModelId}");
 
                 List<ParametroRespondidoPadrao> parametrosPreenchidos = null;
                 if (formId != -1)
@@ -617,11 +622,14 @@ namespace SilvaData.Models
                     parametrosPreenchidos = await ParametroRespondidoPadrao.PegaParametrosRespondidos(
                         nameof(LoteFormParametro), "LoteFormId", formId)
                         .ConfigureAwait(false);
+                    Debug.WriteLine($"[GetForFormAsync] PegaParametrosRespondidos retornou {parametrosPreenchidos?.Count ?? 0} respostas | formId={formId}");
                 }
 
                 parametros = await PegaAlternativasERespostas(
                     parametros, formId != -1, parametrosPreenchidos, linkedFormId)
                     .ConfigureAwait(false);
+
+                Debug.WriteLine($"[GetForFormAsync] PegaAlternativasERespostas retornou {parametros.Count} parâmetros finais");
 
                 if (parameterType == 15) // ISIMacro
                     parametros = parametros.OrderBy(p => p.ordem).ToList();

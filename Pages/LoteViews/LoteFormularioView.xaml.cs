@@ -117,6 +117,8 @@ namespace SilvaData.Controls
 
         if (!_heavyTemplatesInjected)
             _ = InjectHeavyTemplatesAsync();
+        else
+            _ = CarregarAposAppearingAsync();
     }
 
     private async Task InjectHeavyTemplatesAsync()
@@ -137,7 +139,17 @@ namespace SilvaData.Controls
 
         Debug.WriteLine("[LoteFormularioView] Templates pesados injetados após animação iOS (700ms delay)");
 
-        Debug.WriteLine("[LoteFormularioView] ▶ Disparando Carregar() pós-OnAppearing/pós-injeção");
+        Debug.WriteLine("[LoteFormularioView] ▶ Disparando Carregar() pós-injeção de templates");
+        await _loteFormViewModel.Carregar();
+    }
+
+    // Chamado no OnAppearing a partir da segunda abertura (templates já injetados, singleton reutilizado).
+    private async Task CarregarAposAppearingAsync()
+    {
+        if (DeviceInfo.Platform == DevicePlatform.iOS)
+            await Task.Delay(700);
+
+        Debug.WriteLine("[LoteFormularioView] ▶ Disparando Carregar() pós-OnAppearing (singleton reutilizado)");
         await _loteFormViewModel.Carregar();
     }
 
